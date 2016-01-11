@@ -1,0 +1,425 @@
+/* Common */
+input.confirm{
+	background-color: #69BD45!important;
+	margin-top: 25x!important;
+	padding: 10px!important;
+	margin-left: calc(100% - 180px)!important;
+	border: 2px solid white;
+
+}
+input.cancel{
+	background-color: #ED1F24 !important;
+	margin-top: 25px;
+	padding: 10px;
+	margin-left: 20px;
+	border: 2px solid white;
+}
+.clear{
+	clear: both;
+}
+section#page-wrap{
+	height: inherit;
+	background-color:#74C8B3;
+	color: white;
+}
+.search-button {
+    vertical-align: bottom;
+}
+.search-bar {
+    height: 20px;
+    width: calc(100% - 100px);
+    margin: 15px 15px 20px;
+    background-color: rgb(116, 200, 179);
+    border: none;
+	border-bottom: 1px solid white;
+	margin-bottom: 13px;
+}
+.header{
+	font-size: large;
+}
+.headerLarge{
+	font-size: x-large;
+}
+/*
+*	Components
+*/
+
+/* Tabs */
+.tabs {
+	position: relative;   
+	height: 100%; /* This part sucks */
+	clear: both;
+}
+.tab {
+	float: left;
+	width: 20%;
+}
+.tab label {
+	background: #36A189; 
+	padding: 20px 10px; 
+	border: 1px solid #ccc; 
+	display: inline-block;
+	margin-left: -1px;
+	width: 100%;
+	text-align: center;
+	position: relative;
+	left: 1px; 
+	height: 30px;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+.tab:last-child label {
+	background: #00B4B8; 
+}
+.tab [type=radio] {
+	display: none;   
+}
+.content {
+	overflow-y: scroll; 
+	position: absolute;
+	top: 71px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 20px;
+	border: 1px solid #ccc; 
+	height: inherit;
+}
+[type=radio]:checked ~ label {
+	background: #025C47;
+	border-bottom: 1px solid white;
+	z-index: 2;
+}
+.tab:last-child [type=radio]:checked ~ label {
+	background: #025C47;
+	border-bottom: 1px solid white;
+	z-index: 2;
+}
+[type=radio]:checked ~ label ~ .content {
+	z-index: 1;
+}
+.content {
+	opacity: 0;
+	-webkit-transform: translate3d(0, 0, 0);
+	-webkit-transform: translateX(-100%);
+	-moz-transform:    translateX(-100%);
+	-ms-transform:     translateX(-100%);
+	-o-transform:      translateX(-100%);
+	-webkit-transition: all 0.6s ease;
+	-moz-transition:    all 0.6s ease;
+	-ms-transition:     all 0.6s ease;
+	-o-transition:      all 0.6s ease;
+}
+[type=radio]:checked ~ label ~ .content {
+      z-index: 1;
+}
+[type=radio]:checked ~ label ~ .content {
+	opacity: 1;
+	-webkit-transform: translateX(0);
+	-moz-transform:    translateX(0);
+	-ms-transform:     translateX(0);
+	-o-transform:      translateX(0);
+}
+
+/*
+*	Views
+*/
+
+/* Sales */
+form#sales figure.location {
+    float: left;
+    margin:0;
+    background-color: #0DB6B9;
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    display: table;
+} 
+figcaption {
+	vertical-align: middle;
+	display: table-cell;
+} 
+form#sales fieldset{
+ border-color:white;
+ border-width: 2pt;
+ border-radius: 15px 15px;
+ text-align: right;
+}
+form#sales fieldset input, form#sales fieldset select{
+	background-color: rgb(116, 200, 179);
+	border: none;
+	border-bottom: 1px solid white;
+	margin-bottom: 13px;
+	width: 65%;
+}
+/*New Sale*/
+article#newSale{
+	width: 100%;
+}
+article#newSale select#newSaleSlaughterDate{
+	background-color: #00B4B8;
+	color: white;
+	margin: 10px;
+	width: 90%;
+	padding: 5px;
+	border: 2px solid white;
+}
+article#newSale input{
+	background-color: #00B4B8;
+	color: white;
+	margin-bottom: 15px;
+	border: 2px solid white;
+}
+article#newSale input#newSaleFirstName, article#newSale input#newSaleLastName{
+	margin: 10px 1% 15px 1%;
+	width: calc(40% - 20px);
+	float: right;
+	padding: 3px;
+}
+article#newSale figure.location {
+    float: left;
+    margin: 7px 1% 15px 0;
+    background-color: #0DB6B9;
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: table;
+}
+article#newSale input#newSaleEmail{
+	width: calc(99% - 15px);
+	padding: 5px;
+}
+article#newSale input#newSaleTelephone{
+	width: calc(99% - 15px);
+	padding: 5px;
+}
+article#newSale textarea#newSaleAddress{
+	background-color: #00B4B8;
+	color: white;
+	margin-bottom: 15px;
+	border: 2px solid white;
+	width: calc(99% - 15px);
+	padding: 5px;
+}
+article#newSale select#newSaleLocationSelect{
+	width: 25%;
+	max-width: 80px;
+	border: 2px solid #FFF;
+	padding: 4px;
+	background-color: #00B4B8;
+	color: white;
+}
+article#newSale input#newSaleAddLocationText{
+	width: 50%;
+	max-width: 120px;
+	border: 2px solid white;
+	margin: 0px -1px;
+	padding: 5px;
+}
+article#newSale input#newSaleAddLocationBtn{
+	border: 2px solid white;
+	padding: 5px;
+	background-color: #989898;
+}
+article.acc-open input#newSaleEmail{
+	display: none;
+}
+article.acc-open input#newSaleTelephone{
+	display: none;
+}
+article.acc-open textarea#newSaleAddress{
+	display: none;
+}
+article.acc-open select#newSaleLocationSelect{
+	display: none;
+}
+article.acc-open input#newSaleAddLocationText{
+	display: none;
+}
+article.acc-open input#newSaleAddLocationBtn{
+	display: none;
+}
+article.acc-open br.clear{
+	display: none;
+}
+article#newSale table#newSalePurchaseTable{
+	width: 80%;
+	margin: 10px auto 0 auto;
+	padding: 2px;
+}
+article#newSale table#newSalePurchaseTable td{
+	padding: 2px;
+}
+article#newSale table#newSalePurchaseTable td.headerLarge{
+	padding: 10px;
+	text-align: center;
+}
+article#newSale table#newSalePurchaseTable input{
+	width: calc(100% - 10px)!important;
+	margin: 0!important;
+	padding: 5px;
+}
+/* Customers */
+form#customers fieldset{
+	border: none;
+}
+form#customers fieldset fieldset{
+	border: none;
+	overflow: hidden;
+	padding: 0px 0px 150px;
+	transition: padding-bottom 0.6s ease;
+	height: 0px;
+	padding-bottom: 0px;
+}
+form#customers fieldset fieldset.acc-open{
+	padding-bottom: 190px;
+}
+form#customers fieldset input, form#customers fieldset select{
+	background-color: rgb(116, 200, 179);
+	border: none;
+	border-bottom: 1px solid white;
+	margin-bottom: 13px;
+	width: 65%;
+}
+form#customers fieldset fieldset legend input{
+	width: 100%;
+	border: medium none;
+}
+form#customers figure.location {
+    float: left;
+    margin:0;
+    background-color: #0DB6B9;
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    display: table;
+} 
+form#customers figcaption {
+	vertical-align: middle;
+	display: table-cell;
+} 
+/*New Customer*/
+article#newCustomer{
+	text-align: right;
+}
+article#newCustomer span{
+	float: left;
+	margin-bottom: 15px;
+}
+article#newCustomer input, article#newCustomer textarea, article#newCustomer select{
+	background-color: #00B4B8;
+	color: #FFF;
+	margin-bottom: 15px;
+	border: 2px solid white;
+	padding: 5px;
+}
+article#newCustomer input#newCustomerEmail, article#newCustomer input#newCustomerTelephone{
+	width: calc(100% - 25px);
+	padding: 7px;
+}
+article#newCustomer input#newCustomerFirstName, article#newCustomer input#newCustomerLastName{
+	width:calc(50% - 20px);
+}
+article#newCustomer textarea#newCustomerAddress{
+	width: calc(100% - 22px);
+}
+article#newCustomer select#newCustomerLocationSelect{
+	width: 25%;
+	max-width: 80px;
+	border: 2px solid #FFF;
+	padding: 4px;
+}
+article#newCustomer input#newCustomerAddLocationText{
+	width: 50%;
+	max-width: 120px;
+	border: 2px solid white;
+	margin: 0px -6px;
+	padding: 5px;
+}
+article#newCustomer input#newCustomerAddLocationBtn{
+	border: 2px solid white;
+	padding: 5px;
+	background-color: #989898;
+}
+article#newCustomer input.cancel{
+	padding: 10px;
+}
+/* Items */
+form#items fieldset{
+	border: none;
+	width: 100%;
+}
+form#items fieldset fieldset{
+	border: none;
+	overflow: hidden;
+	padding: 0px 0px 150px;
+	transition: padding-bottom 0.6s ease;
+	height: 0px;
+	padding-bottom: 0px;
+}
+form#items fieldset.acc-open{
+	width: unset;
+}
+form#items fieldset article input.itemName{
+	background-color: rgb(116, 200, 179);
+	border: none;
+	vertical-align: top;
+	margin-top: 10px;
+}
+form#items fieldset article input.itemCode{
+	background-color: rgb(116, 200, 179);
+	border: none;
+	vertical-align: top;
+	float: right;
+	width: 60px;
+	margin-top: 10px;
+}
+form#items fieldset article input.cancel{
+	margin: 0px;
+	vertical-align: top;
+	float: right;
+}
+form#items fieldset article{
+	margin: 20px 0px 20px 20px;
+	width: calc(100% - 20px);
+	height: 60px;
+}
+/*New Item*/
+article#newItem{
+
+}
+article#newItem [type=text]{
+	background-color: #00B4B8;
+	color: white;
+	margin-bottom: 15px;
+	border: 2px solid white;
+	padding: 5px;
+	width: calc(40% - 20px);
+	margin: 2%;
+}
+/* Slaughters */
+article#slaughters{
+
+}
+article#slaughters input, article#slaughters select{
+	background-color: #00B4B8;
+	color: white;
+	margin-bottom: 15px;
+}
+/*New Slaughter*/
+article#newSlaughter{
+
+}
+article#newSlaughter input#newSlaughterDate{
+	background-color: #00B4B8;
+	color: white;
+	margin-top: 15px;
+	border: 2px solid white;
+	padding: 5px;
+}

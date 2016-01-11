@@ -1,0 +1,88 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Gaz</title>
+  <meta name="description" content="app">
+  <meta name="author" content="Dagan Read">
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pikaday.css">
+  <script src="js/pikaday.js"></script>
+  <script src="js/object-observe-lite.min.js"></script>
+  <script src="js/classie.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+	<section id="page-wrap">
+	    <div class="tabs">
+	        
+	       <div class="tab">
+	           <input type="radio" value="Sales" onChange="app.nav.to(this.value)" id="tab-1" name="PrimaryNav" checked>
+	           <label for="tab-1">Sales</label>
+	           
+	           <div class="content">
+	           	 <form id="sales">
+
+				</form> 
+	           </div> 
+	       </div>
+	        
+	       <div class="tab">
+	           <input type="radio" value="Customers" onChange="app.nav.to(this.value)" id="tab-2" name="PrimaryNav">
+	           <label for="tab-2">Customers</label>
+	           
+	           <div class="content">
+	               	<article class="search" >
+	               		<input type="text" class="search-bar" />
+	               		<input type="image" src="images/icon_search.svg" class="search-button" onclick="alert('Do search filter!')">
+	               	</article>
+	               	<form id="customers">
+	               	</form>
+	           </div> 
+	       </div>
+	        
+	        <div class="tab">
+	           <input type="radio" value="Items" onChange="app.nav.to(this.value)" id="tab-3" name="PrimaryNav">
+	           <label for="tab-3">Items</label>
+	         
+	           	<div class="content">
+	               	<article class="search" >
+	               		<input type="text" class="search-bar" />
+	               		<input type="image" src="images/icon_search.svg" class="search-button" onclick="alert('Do search filter!')">
+	               	</article>
+	               	<form id="items">
+	               	</form>
+	            </div> 
+	       </div>
+
+	       <div class="tab">
+	           <input type="radio" value="Slaughters" onChange="app.nav.to(this.value)" id="tab-4" name="PrimaryNav">
+	           <label for="tab-4">Slaughters</label>
+	         
+	           	<div class="content">
+		               	<article id="slaughters">
+		               	</article>
+	        	</div> 
+	       </div>
+
+	       <div class="tab" id="new-tab">
+	           <input type="radio" value="New" onChange="app.nav.to(this.value, this.parentNode)" id="tab-5" name="PrimaryNav">
+	           <label for="tab-5">New Sale</label>
+	         
+	           <div class="content">
+	               <article id="newSale" ></article>
+	           </div> 
+	       </div>
+	    </div>
+	</section>
+  <script src="js/main.js"></script>
+</body>
+</html>

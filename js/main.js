@@ -84,9 +84,9 @@
 						HTMLFrag += element.location;
 						HTMLFrag += `</option>`;
 					});
-					HTMLFrag += `</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" touchStart="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable">`;
-					HTMLFrag += `<tr><td><input type="text" class="tableInput" touchStart="app.purchaseTableAdd(this)" placeholder="Item Code" /></td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>`;
-					HTMLFrag += `</table><br /><input type="button" class="confirm" value="Confirm" touchStart="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>`;
+					HTMLFrag += `</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" ontouchstart="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable">`;
+					HTMLFrag += `<tr><td><input type="text" class="tableInput" ontouchstart="app.purchaseTableAdd(this)" placeholder="Item Code" /></td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>`;
+					HTMLFrag += `</table><br /><input type="button" class="confirm" value="Confirm" ontouchstart="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>`;
 				app.DOM.newSale.innerHTML = HTMLFrag;
 				/* Sales */
 				var HTMLFrag = ``;
@@ -147,7 +147,7 @@
 					            };
 			               		HTMLFrag += `<fieldset><legend><input type="button" value="`;
 				               	HTMLFrag += element.firstName;
-				               	HTMLFrag += `" touchStart="app.accordion(this.parentNode.parentNode)"/></legend>`;
+				               	HTMLFrag += `" ontouchstart="app.accordion(this.parentNode.parentNode)"/></legend>`;
 				               	
 				               	HTMLFrag += `<input type="text" placeholder="`;
 				               	HTMLFrag += element.firstName;
@@ -176,7 +176,7 @@
 				               	compareChar = newChar;
 			               		HTMLFrag += `<fieldset><legend><input type="button" value="`;
 				               	HTMLFrag += element.firstName;
-				               	HTMLFrag += `" touchStart="app.accordion(this.parentNode.parentNode)"/></legend>`;
+				               	HTMLFrag += `" ontouchstart="app.accordion(this.parentNode.parentNode)"/></legend>`;
 				               	
 				               	HTMLFrag += `<input type="text" placeholder="`;
 				               	HTMLFrag += element.firstName;
@@ -194,7 +194,7 @@
 			               	}else if(newChar == compareChar){
 			               		HTMLFrag += `<fieldset><legend><input type="button" value="`;
 				               	HTMLFrag += element.firstName;
-				               	HTMLFrag += `" touchStart="app.accordion(this.parentNode.parentNode)"/></legend>`;
+				               	HTMLFrag += `" ontouchstart="app.accordion(this.parentNode.parentNode)"/></legend>`;
 				               	
 				               	HTMLFrag += `<input type="text" placeholder="`;
 				               	HTMLFrag += element.firstName;
@@ -586,9 +586,9 @@
 									HTMLFrag += element.location;
 									HTMLFrag += `</option>`;
 								}); 
-								HTMLFrag += `</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" touchStart="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable">`;
-								HTMLFrag += `<tr><td><input type="text" class="tableInput" touchStart="app.purchaseTableAdd(this)" placeholder="Item Code" /></td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>`;
-								HTMLFrag += `</table><br /><input type="button" class="confirm" value="Confirm" touchStart="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>`;
+								HTMLFrag += `</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" ontouchstart="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable">`;
+								HTMLFrag += `<tr><td><input type="text" class="tableInput" ontouchstart="app.purchaseTableAdd(this)" placeholder="Item Code" /></td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>`;
+								HTMLFrag += `</table><br /><input type="button" class="confirm" value="Confirm" ontouchstart="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>`;
 	               			parent.children[2].innerHTML = HTMLFrag;
 							break;
 						case "Customers" :
@@ -610,9 +610,9 @@
 									});
 									HTMLFrag += `</select>
 									<input type="text" placeholder="New Location" id="newCustomerAddLocationText"/>
-									<input type="button" id="newCustomerAddLocationBtn" value="Add" touchStart="app.newLocation()">
+									<input type="button" id="newCustomerAddLocationBtn" value="Add" ontouchstart="app.newLocation()">
 									<br class="clear"/>
-									<input type="button" class="confirm" value="Confirm" touchStart="app.newCustomer()" />
+									<input type="button" class="confirm" value="Confirm" ontouchstart="app.newCustomer()" />
 									<input type="button" class="cancel" value="Cancel">
 								</article>
 							`;
@@ -624,7 +624,7 @@
 									<input type="text" id="newItemName" placeholder="Item Name"/>
 									<input type="text" id="newItemCode" placeholder="Item Code"/>
 									<br />
-									<input type="button" class="confirm"value="Confirm" touchStart="app.newItem()" />
+									<input type="button" class="confirm"value="Confirm" ontouchstart="app.newItem()" />
 									<input type="button" class="cancel" value="Cancel">
 								</article>
 							`;
@@ -636,7 +636,7 @@
 									<br />
 									<input type="text" id="newSlaughterDate" placeholder="Fri Jan 01 2016"/>
 									<br />
-									<input type="button" class="confirm" value="Confirm" touchStart="app.newSlaughter()" />
+									<input type="button" class="confirm" value="Confirm" ontouchstart="app.newSlaughter()" />
 									<input type="button" class="cancel" value="Cancel">
 								</article>
 							`;
@@ -870,7 +870,7 @@
 							            };
 					               		HTMLFrag += `<fieldset><legend><input type="button" value="`;
 						               	HTMLFrag += element.firstName;
-						               	HTMLFrag += `" touchStart="app.accordion(this.parentNode.parentNode)"/></legend>`;
+						               	HTMLFrag += `" ontouchstart="app.accordion(this.parentNode.parentNode)"/></legend>`;
 						               	
 						               	HTMLFrag += `<input type="text" placeholder="`;
 						               	HTMLFrag += element.firstName;
@@ -899,7 +899,7 @@
 						               	compareChar = newChar;
 					               		HTMLFrag += `<fieldset><legend><input type="button" value="`;
 						               	HTMLFrag += element.firstName;
-						               	HTMLFrag += `" touchStart="app.accordion(this.parentNode.parentNode)"/></legend>`;
+						               	HTMLFrag += `" ontouchstart="app.accordion(this.parentNode.parentNode)"/></legend>`;
 						               	
 						               	HTMLFrag += `<input type="text" placeholder="`;
 						               	HTMLFrag += element.firstName;
@@ -917,7 +917,7 @@
 					               	}else if(newChar == compareChar){
 					               		HTMLFrag += `<fieldset><legend><input type="button" value="`;
 						               	HTMLFrag += element.firstName;
-						               	HTMLFrag += `" touchStart="app.accordion(this.parentNode.parentNode)"/></legend>`;
+						               	HTMLFrag += `" ontouchstart="app.accordion(this.parentNode.parentNode)"/></legend>`;
 						               	
 						               	HTMLFrag += `<input type="text" placeholder="`;
 						               	HTMLFrag += element.firstName;
@@ -1063,7 +1063,7 @@
 			if(!classie.hasClass(target, 'touched')){
 				classie.addClass(target, 'touched');
 				var input = document.createElement('tr');
-				input.innerHTML = `<td><input type="text" class="tableInput" touchStart="app.purchaseTableAdd(this)" placeholder="itemCode" /></td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td>`;
+				input.innerHTML = `<td><input type="text" class="tableInput" ontouchstart="app.purchaseTableAdd(this)" placeholder="itemCode" /></td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td>`;
 				document.getElementById('newSalePurchaseTable').children[0].appendChild(input);
 			};
 		},

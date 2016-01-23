@@ -5,7 +5,16 @@
 			sales: document.getElementById('sales'),
 			customers: document.getElementById('customers'),
 			items: document.getElementById('items'),
-			slaughters: document.getElementById('slaughters')
+			slaughters: document.getElementById('slaughters'),
+			body: function() {
+				  var el = document.body;
+				  el.addEventListener("touchstart", this.simulate, false);
+				  el.addEventListener("touchend", this.simulate, false);
+				  el.addEventListener("touchcancel", this.simulate, false);
+				  el.addEventListener("touchmove", this.simulate, false);
+				  console.log("initialized touch.");
+				  return el;
+			}()
 		},
 		settings : {
 			verboseConsole : false
@@ -16,6 +25,32 @@
 			items:[],
 			slaughters:[],
 			locations:[]
+		},
+		simulate : function(evt) {
+		  evt.preventDefault();
+		  alert("touchstart.");
+		  var el = document.body;
+		  var ctx = el.getContext("2d");
+		  var touches = evt.changedTouches;
+		        
+		  for (var i = 0; i < touches.length; i++) {
+		    alert("touchstart:" + i + "...");
+		    ongoingTouches.push(copyTouch(touches[i]));
+		    var color = colorForTouch(touches[i]);
+		    ctx.beginPath();
+		    ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
+		    ctx.fillStyle = color;
+		    ctx.fill();
+		    alert("touchstart:" + i + ".");
+		  }
+/*			console.log(target);
+		  var event = new MouseEvent('click', {
+		    'view': window,
+		    'bubbles': true,
+		    'cancelable': true
+		  });
+		  target.dispatchEvent(event);
+		  //var canceled = !target.dispatchEvent(event);*/
 		},
 		store : function(type) {
 			switch(type){
@@ -1260,6 +1295,7 @@
 		}
 	};
 
+	//eventlistener
 // transport
 if ( typeof define === 'function' && define.amd ) {
   // AMD

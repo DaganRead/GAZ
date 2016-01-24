@@ -84,7 +84,7 @@ var app = {
             };      
             this.data = JSON.parse(window.localStorage['data']);
             //app.binding();
-            alert(this.data);  
+            alert(JSON.stringify(this.data));  
 
         }()
 };

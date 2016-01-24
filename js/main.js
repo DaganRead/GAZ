@@ -82,7 +82,6 @@ var app = {
                                     });
                 alert('installing...');
             };      
-return function () {
                 this.data = JSON.parse(window.localStorage['data']);
                 alert(this.data);
                 //app.binding();
@@ -365,6 +364,5 @@ return function () {
                 app.DOM.slaughters.innerHTML = HTMLFrag;
 
                 console.log('initialization complete.');
-            }  
         }()
 };

@@ -84,6 +84,27 @@ var app = {
             };      
             this.data = JSON.parse(window.localStorage['data']);
             //app.binding();
-            console.log(this.data);  
+            alert(this.data);  
+            /*New Sales*/
+                var HTMLFrag = `<article id="newSale"><span class="header">Slaughter Date:</span><br /><select id="newSaleSlaughterDate">`;
+                this.data.slaughters.forEach(function(element, index, array) {
+                    HTMLFrag += `<option value="`;
+                    HTMLFrag += element.slaughterDate;
+                    HTMLFrag += `">`;
+                    HTMLFrag += element.slaughterDate;
+                    HTMLFrag += `</option>`;
+                });
+                HTMLFrag += `</select><br /><span class="header">Customer:</span><br /><figure class="location"><figcaption id="newSaleLocation"></figcaption></figure><input type="text" placeholder="Last Name" oninput="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" oninput="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">`;
+                    this.data.locations.forEach(function(element, index, array) {
+                        HTMLFrag += `<option value="`;
+                        HTMLFrag += element.location;
+                        HTMLFrag += `">`;
+                        HTMLFrag += element.location;
+                        HTMLFrag += `</option>`;
+                    });
+                    HTMLFrag += `</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable">`;
+                    HTMLFrag += `<tr><td><input type="text" class="tableInput" onclick="app.purchaseTableAdd(this)" placeholder="Item Code" /></td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>`;
+                    HTMLFrag += `</table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>`;
+                app.DOM.newSale.innerHTML = HTMLFrag;
         }()
 };

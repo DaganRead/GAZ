@@ -31,7 +31,7 @@ var app = {
                         touches[i].target.control.onclick.call(touches[i].target.control);
                         break;
                     case "INPUT" :
-                        console.log('trigger');
+                        alert('trigger');
                         break;
                 };      
             };
@@ -42,31 +42,31 @@ var app = {
                             var temp = JSON.parse(window.localStorage['data']);
                             temp.sales = this.data.sales;
                             window.localStorage['data'] = JSON.stringify(temp);
-                            console.log(window.localStorage['data']);
+                            alert(window.localStorage['data']);
                             break;
                         case "customer" :
                             var temp = JSON.parse(window.localStorage['data']);
                             temp.customers = this.data.customers;
                             window.localStorage['data'] = JSON.stringify(temp);
-                            console.log(window.localStorage['data']);
+                            alert(window.localStorage['data']);
                             break;
                         case "item" :
                             var temp = JSON.parse(window.localStorage['data']);
                             temp.items = this.data.items;
                             window.localStorage['data'] = JSON.stringify(temp);
-                            console.log(window.localStorage['data']);
+                            alert(window.localStorage['data']);
                             break;
                         case "slaughter" :
                             var temp = JSON.parse(window.localStorage['data']);
                             temp.slaughters = this.data.slaughters;
                             window.localStorage['data'] = JSON.stringify(temp);
-                            console.log(window.localStorage['data']);
+                            alert(window.localStorage['data']);
                             break;
                         case "location" :
                             var temp = JSON.parse(window.localStorage['data']);
                             temp.locations = this.data.locations;
                             window.localStorage['data'] = JSON.stringify(temp);
-                            console.log(window.localStorage['data']);
+                            alert(window.localStorage['data']);
                             break;
             }
         },
@@ -80,12 +80,12 @@ var app = {
                                         slaughters:[],
                                         locations:[]
                                     });
-                console.log('installing...');
+                alert('installing...');
             };
             return function () {
                 this.data = JSON.parse(window.localStorage['data']);
                 app.binding();
-                console.log(this.data);
+                alert(this.data);
                 /*New Sales*/
                 var HTMLFrag = `<article id="newSale"><span class="header">Slaughter Date:</span><br /><select id="newSaleSlaughterDate">`;
                 this.data.slaughters.forEach(function(element, index, array) {
@@ -153,7 +153,7 @@ var app = {
                 var newChar,
                     compareChar = '9',
                     numbersStarted = false;
-                console.log(this.data.customers);
+                alert(this.data.customers);
                 this.data.customers.sort(function(a, b) {
                     return a.firstName.localeCompare(b.firstName);
                 });
@@ -363,7 +363,7 @@ var app = {
                 });
                 app.DOM.slaughters.innerHTML = HTMLFrag;
 
-                console.log('initialization complete.');
+                alert('initialization complete.');
             }
         }(),
         forms: {
@@ -552,7 +552,7 @@ var app = {
                     };
                 };
             };
-            console.log(this.forms.newSale.purchaseTable);
+            alert(this.forms.newSale.purchaseTable);
             // Update mapped structure
             var newSale = {
                 slaughterDate: this.forms.newSale.slaughterDate(),
@@ -622,7 +622,7 @@ var app = {
             };
             if (this.data.slaughters.indexOf(newSlaughter) == -1) {
                 this.data.slaughters.push(newSlaughter);
-                console.log(this.forms.newSlaughter);
+                alert(this.forms.newSlaughter);
                 //update dataset
                 this.store('slaughter');    
             };  
@@ -634,7 +634,7 @@ var app = {
             };
             if (this.data.locations.indexOf(JSON.stringify(newLocation)) == -1) {
                 this.data.locations.push(newLocation);
-                console.log(newLocation);
+                alert(newLocation);
                 //update dataset
                 this.store('location'); 
             };
@@ -845,7 +845,7 @@ var app = {
                     return a.firstName.localeCompare(b.firstName);
                 });
                 app.store('customer');
-                console.log("contacts sync success!");
+                alert("contacts sync success!");
             },
                 items : function() {
                 app.data.items = [{
@@ -883,7 +883,7 @@ var app = {
                     return a.itemName.localeCompare(b.itemName);
                 });
                 app.store('item');
-                console.log("items sync success!");
+                alert("items sync success!");
             }
         },
         binding : function (){
@@ -1137,7 +1137,7 @@ var app = {
                             compareChar = '9',
                             numbersStarted = false;
                         //refresh with this data;
-                        console.log(element.object);
+                        alert(element.object);
                         element.object.forEach(function(innerElement, innerIndex, innerArray) {
                             HTMLFrag += `<article>`;
                             HTMLFrag += `<span class="slaughterDate">`;
@@ -1157,7 +1157,7 @@ var app = {
                 changes.forEach(function(element, index, array) {
                     if (element.type === "add") {
                         //refresh with this data;
-                        console.log(element.object);
+                        alert(element.object);
                         HTMLFrag = ``;
                         HTMLFrag += `</select><br /><span class="header">Customer:</span><br /><figure class="location"><figcaption id="newSaleLocation"></figcaption></figure><input type="text" placeholder="Last Name" oninput="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" oninput="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">`;
                         app.data.locations.forEach(function(element, index, array) {
@@ -1202,7 +1202,7 @@ var app = {
                             if (app.forms.newSale.firstNameMatch != firstName) {
                                 app.forms.newSale.firstNameMatch = firstName;
                             };
-                            console.log(app.forms.newSale.firstNameMatch);
+                            alert(app.forms.newSale.firstNameMatch);
                             if (app.forms.newSale.firstNameMatch == element.firstName && app.forms.newSale.lastNameMatch == element.lastName) {
                                 app.forms.newSale.location().innerHTML = element.location;
                                 classie.addClass(document.getElementById('newSale'), 'acc-open');
@@ -1215,7 +1215,7 @@ var app = {
                             if (app.forms.newSale.lastNameMatch != lastName) {
                                 app.forms.newSale.lastNameMatch = lastName;
                             };
-                            console.log(app.forms.newSale.lastNameMatch);
+                            alert(app.forms.newSale.lastNameMatch);
                             if (app.forms.newSale.firstNameMatch == element.firstName && app.forms.newSale.lastNameMatch == element.lastName) {
                                 app.forms.newSale.location().innerHTML = element.location;
                                 classie.addClass(document.getElementById('newSale'), 'acc-open');
@@ -1231,7 +1231,7 @@ var app = {
                     sale.purchaseTable.forEach(function(element, index, array) {
                         sale.purchaseTable[index] = JSON.parse(element)
                     });
-                    console.log(sale);
+                    alert(sale);
                 var data = function() {
                     var children = target.parentNode.parentNode.children;
                         for (var i = 0; i < sale.purchaseTable.length; i++) {
@@ -1241,7 +1241,7 @@ var app = {
                                 price: children[3].children[0].value || children[3].children[0].placeholder.slice(2, -1)
                             };
                         };
-                        console.log(sale);
+                        alert(sale);
                         return sale;
                 };
                 var totalDOM = target.parentNode.parentNode.parentNode.parentNode.parentNode.children;
@@ -1260,7 +1260,7 @@ var app = {
         },
         delete : {
             sale : function(index) {
-                console.log(index);
+                alert(index);
                 app.data.sales.splice(index, 1);
                 app.store('sale');
             },
@@ -1285,7 +1285,7 @@ var el = document.body;
 el.addEventListener("touchend", app.simulate, false);
 //el.addEventListener("touchcancel", app.simulate, false);
 //el.addEventListener("touchmove", app.simulate, false);
-console.log("initialized touch.");
+alert("initialized touch.");
 // transport
 if ( typeof define === 'function' && define.amd ) {
   // AMD

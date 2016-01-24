@@ -1,190 +1,525 @@
-html {
-    height: 100%;
-}
+/* Common */
+input.confirm{
+    background-color: #69BD45!important;
+    margin-top: 25x!important;
+    padding: 10px!important;
+    margin-left: calc(100% - 180px)!important;
+    border: 2px solid white;
 
-body {
-    font-family: source-sans-pro, serif;
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background-color: #fff;
-    overflow: hidden;
-    position: relative;
 }
-
-.header {
-    background: #666;
-    -webkit-background-size: 1px 44px;
-    -moz-background-size: 1px 44px;
-    -ms-background-size: 1px 44px;
-    -o-background-size: 1px 44px;
-    background-size: 1px 44px;
-    height: 44px;
-    line-height: 44px;
-    width: 100%;
-    color: #fff;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    border-bottom: solid 1px #eee;
+input.cancel{
+    background-color: #ED1F24 !important;
+    margin-top: 25px;
+    padding: 10px;
+    margin-left: 20px;
+    border: 2px solid white;
 }
-
-.header h1 {
-    padding: 0;
-    text-align: center;
-    font-size: 20px;
-    margin: 0;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    box-flex: 1;
+.clear{
+    clear: both;
 }
-
-.header-button {
-    position: absolute;
-    top: 6;
-    padding: 7px 5px;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    line-height: 1em;
+section#page-wrap{
+    height: inherit;
+    background-color:#74C8B3;
+    color: white;
 }
-
-.header-button-left {
-    left: 4;
+.search-button {
+    vertical-align: bottom;
 }
-
 .search-bar {
-    background: #ccc;
-    height: 32px;
-    padding-left:6px;
-    padding-right: 6px;
-    padding-top: 6px;
-    margin-bottom: 6px;
-    border-bottom: solid 1px #666;
+    height: 20px;
+    width: calc(100% - 100px);
+    margin: 15px 15px 20px;
+    background-color: rgb(116, 200, 179);
+    border: none;
+    border-bottom: 1px solid white;
+    margin-bottom: 13px;
 }
-
-input[type="search"] {
-    width:100%;
-	border: none;
-	border-radius: 4px;
-	padding: 4px 0px 2px 2px;
-	margin-top: 0px;
-	font-size: 16px;
-	box-shadow: inset 0 2px 2px rgba(0,0,0,.5), 0 1px #fff;
-	background: #eee;
-    -webkit-appearance:none;
+.header{
+    font-size: large;
 }
-
-input[type="search"]:focus {
-	outline: none;
-	box-shadow: inset 0 4px 8px rgba(0,0,0,.5), 0 1px #fff;
+.headerLarge{
+    font-size: x-large;
 }
+/*
+*   Components
+*/
 
-ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    background-color: #fafafa;
-    border-bottom: 1px solid #e0e0e0;
+/* Tabs */
+.tabs {
+    position: relative;   
+    height: 100%; /* This part sucks */
+    clear: both;
 }
-
-li {
-    display: block;
-    border-top: 1px solid #c0c0c0;
-    padding: 10px;
+.tab {
+    float: left;
+    width: 20%;
 }
-
-ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    background-color: #fff;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-li {
-    display: block;
-    border-top: 1px solid #e0e0e0;
-    padding: 10px;
-}
-
-li {
-    padding: 0;
-    display: -webkit-box;
-    display: -moz-box;
-    display: box;
+.tab label {
+    background: #36A189; 
+    padding: 20px 10px; 
+    border: 1px solid #ccc; 
+    display: inline-block;
+    margin-left: -1px;
     width: 100%;
+    text-align: center;
+    position: relative;
+    left: 1px; 
+    height: 30px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.tab:last-child label {
+    background: #00B4B8; 
+}
+.tab [type=radio] {
+    display: none;   
+}
+.content {
+    overflow-y: scroll; 
+    position: absolute;
+    top: 71px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2px;
+    border: 1px solid #ccc; 
+    height: inherit;
+}
+[type=radio]:checked ~ label {
+    background: #025C47;
+    border-bottom: 1px solid white;
+    z-index: 2;
+}
+.tab:last-child [type=radio]:checked ~ label {
+    background: #025C47;
+    border-bottom: 1px solid white;
+    z-index: 2;
+}
+[type=radio]:checked ~ label ~ .content {
+    z-index: 1;
+}
+.content {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-transform: translateX(-100%);
+    -moz-transform:    translateX(-100%);
+    -ms-transform:     translateX(-100%);
+    -o-transform:      translateX(-100%);
+    -webkit-transition: all 0.6s ease;
+    -moz-transition:    all 0.6s ease;
+    -ms-transition:     all 0.6s ease;
+    -o-transition:      all 0.6s ease;
+}
+[type=radio]:checked ~ label ~ .content {
+      z-index: 1;
+}
+[type=radio]:checked ~ label ~ .content {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -moz-transform:    translateX(0);
+    -ms-transform:     translateX(0);
+    -o-transform:      translateX(0);
 }
 
-li>a {
-    color: #000;
-    display: block;
+/*
+*   Views
+*/
+
+/* Sales */
+form#sales figure.location {
+    float: left;
+    margin:0;
+    background-color: #0DB6B9;
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    display: table;
+} 
+figcaption {
+    vertical-align: middle;
+    display: table-cell;
+} 
+form#sales fieldset{
+ border-color:white;
+ border-width: 2pt;
+ border-radius: 15px 15px;
+ text-align: right;
+ margin-bottom: 15px;
+}
+form#sales table{
+    width: 98%;
+    margin-top: 15px;
+}
+form#sales table td.headerLarge{
+    width: 15%;
+    text-align: center;
+}
+form#sales table td.large{
+    width: 5%;
+}
+form#sales table td.small{
+    width: 8%;
+}
+form#sales table td:first-child{
+    width: 50%;
+    min-width: 65px;
+}
+form#sales table td:last-child{
+    min-width: 75px;
+}
+form#sales input.priceTag{
+    background-color: #00B4B8;
+    color: #FFF;
+    border: 2px solid #FFF;
     padding: 5px;
-    text-decoration: none;
+    margin-left: 10px;
+    width: 30px;
+    text-align: center;
+}
+form#sales input.itemCode{
+    background-color: #00B4B8;
+    color: #FFF;
+    border: 2px solid #FFF;
+    padding: 5px;
+    width: calc(100% - 20px);
+    text-align: center;
+}
+form#sales input.quantity{
+    background-color: #00B4B8;
+    color: #FFF;
+    border: 2px solid #FFF;
+    padding: 5px;
+    width: 40px;
+    text-align: center;
+}
+form#sales input.weight{
+    background-color: #00B4B8;
+    color: #FFF;
+    border: 2px solid #FFF;
+    padding: 5px;
+    width: 40px;
+    text-align: center;
+}
+form#sales input.cancel{
+    margin: 0!important;
+    float: left;
+}
+/*New Sale*/
+article#newSale{
     width: 100%;
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    box-flex: 1;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    background-position: -10px 0;
-    background-repeat: no-repeat;
-    -webkit-background-size: 10px 100%;
-    -moz-background-size: 10px 100%;
-    -ms-background-size: 10px 100%;
-    -o-background-size: 10px 100%;
-    background-size: 10px 100%;
 }
-
-li>a * {
-    pointer-events: none;
+article#newSale select#newSaleSlaughterDate{
+    background-color: #00B4B8;
+    color: white;
+    margin: 10px;
+    width: 90%;
+    padding: 5px;
+    border: 2px solid white;
 }
-
-.button {
-	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
-	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
-	background-color:#ededed;
-	-moz-border-radius:2px;
-	-webkit-border-radius:2px;
-	border-radius:2px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	color:#666666;
-	font-size:14px;
-	text-decoration:none;
-	text-shadow:1px 1px 0px #ffffff;
+article#newSale input{
+    background-color: #00B4B8;
+    color: white;
+    margin-bottom: 15px;
+    border: 2px solid white;
 }
-
-.button:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
-	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
-	background-color:#dfdfdf;
-
+article#newSale input#newSaleFirstName, article#newSale input#newSaleLastName{
+    margin: 10px 1% 15px 1%;
+    width: calc(40% - 20px);
+    float: right;
+    padding: 3px;
 }
-
-h1 {
-    font-size: 18px;
-    padding: 20 0 0 0;
+article#newSale figure.location {
+    float: left;
+    margin: 7px 1% 15px 0;
+    background-color: #0DB6B9;
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: table;
+}
+article#newSale input#newSaleEmail{
+    width: calc(99% - 15px);
+    padding: 5px;
+}
+article#newSale input#newSaleTelephone{
+    width: calc(99% - 15px);
+    padding: 5px;
+}
+article#newSale textarea#newSaleAddress{
+    background-color: #00B4B8;
+    color: white;
+    margin-bottom: 15px;
+    border: 2px solid white;
+    width: calc(99% - 15px);
+    padding: 5px;
+}
+article#newSale select#newSaleLocationSelect{
+    width: 25%;
+    max-width: 80px;
+    border: 2px solid #FFF;
+    padding: 4px;
+    background-color: #00B4B8;
+    color: white;
+}
+article#newSale input#newSaleAddLocationText{
+    width: 50%;
+    max-width: 120px;
+    border: 2px solid white;
+    margin: 0px -1px;
+    padding: 5px;
+}
+article#newSale input#newSaleAddLocationBtn{
+    border: 2px solid white;
+    padding: 5px;
+    background-color: #989898;
+}
+article.acc-open input#newSaleEmail{
+    display: none;
+}
+article.acc-open input#newSaleTelephone{
+    display: none;
+}
+article.acc-open textarea#newSaleAddress{
+    display: none;
+}
+article.acc-open select#newSaleLocationSelect{
+    display: none;
+}
+article.acc-open input#newSaleAddLocationText{
+    display: none;
+}
+article.acc-open input#newSaleAddLocationBtn{
+    display: none;
+}
+article.acc-open br.clear{
+    display: none;
+}
+article#newSale table#newSalePurchaseTable{
+    width: 80%;
+    margin: 10px auto 0 auto;
+    padding: 2px;
+}
+article#newSale table#newSalePurchaseTable td{
+    padding: 2px;
+}
+article#newSale table#newSalePurchaseTable td.headerLarge{
+    padding: 10px;
+    text-align: center;
+}
+article#newSale table#newSalePurchaseTable input{
+    width: calc(100% - 10px)!important;
+    margin: 0!important;
+    padding: 5px;
+}
+article#newSale table#newSalePurchaseTable td:nth-child(3) input{
+    width: calc(25% - 10px)!important;
+    margin: 0!important;
+    padding: 5px;
+}
+article#newSale input.confirm{
+    margin: 0!important;
+}
+/* Customers */
+form#customers fieldset{
+    border: none;
+}
+form#customers fieldset fieldset{
+    border: none;
+    overflow: hidden;
+    padding: 0px 0px 0px 10%;
+    transition: padding-bottom 0.6s ease;
+    height: 0px;
+}
+form#customers fieldset fieldset.acc-open{
+    padding-bottom: 240px;
+}
+form#customers fieldset fieldset input:nth-child(2), form#customers fieldset fieldset input:nth-child(3){
+    width: 45%!important;
+}
+form#customers fieldset input{
+    background-color: rgb(116, 200, 179);
+    border: none;
+    border-bottom: 1px solid white;
+    margin-bottom: 13px;
+    width: 90%;
+}
+form#customers fieldset textarea{
+    background-color: rgb(116, 200, 179);
+    border: none;
+    border-bottom: 1px solid white;
+    margin-bottom: 13px;
+    width: calc(99% - 120px);
+    display: inline-block;
+    height: 75px;
+    resize:none;
+}
+form#customers fieldset article{
+    margin-bottom: 13px;
+    width: 120px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+form#customers fieldset select{
+    background-color: rgb(116, 200, 179);
+    border: none;
+    border-bottom: 1px solid white;
+    margin-bottom: 13px;
+    width: 100%;
+    vertical-align: top;
+}
+form#customers fieldset input.cancel{
+    width: 100%;
+    margin: 0!important;
+}
+form#customers fieldset fieldset legend input{
+    width: 100%;
+    border: medium none;
+    margin-left: -75%;
+}
+form#customers figure.location {
+    margin:0;
+    margin-right: 15px;
+    background-color: #0DB6B9;
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    display: table;
+} 
+form#customers figcaption {
+    vertical-align: middle;
+    display: table-cell;
+} 
+/*New Customer*/
+article#newCustomer{
+    text-align: right;
+}
+article#newCustomer span{
+    float: left;
+    margin-bottom: 15px;
+}
+article#newCustomer input, article#newCustomer textarea, article#newCustomer select{
+    background-color: #00B4B8;
+    color: #FFF;
+    margin-bottom: 15px;
+    border: 2px solid white;
+    padding: 5px;
+}
+article#newCustomer input#newCustomerEmail, article#newCustomer input#newCustomerTelephone{
+    width: calc(100% - 25px);
+    padding: 7px;
+}
+article#newCustomer input#newCustomerFirstName, article#newCustomer input#newCustomerLastName{
+    width:calc(50% - 20px);
+}
+article#newCustomer textarea#newCustomerAddress{
+    width: calc(100% - 22px);
+}
+article#newCustomer select#newCustomerLocationSelect{
+    width: 25%;
+    max-width: 80px;
+    border: 2px solid #FFF;
+    padding: 4px;
+}
+article#newCustomer input#newCustomerAddLocationText{
+    width: 50%;
+    max-width: 120px;
+    border: 2px solid white;
+    margin: 0px -6px;
+    padding: 5px;
+}
+article#newCustomer input#newCustomerAddLocationBtn{
+    border: 2px solid white;
+    padding: 5px;
+    background-color: #989898;
+}
+article#newCustomer input.cancel{
+    padding: 10px;
+}
+/* Items */
+form#items fieldset{
+    border: none;
+    width: 100%;
+}
+form#items fieldset fieldset{
+    border: none;
+    overflow: hidden;
+    padding: 0px 0px 150px;
+    transition: padding-bottom 0.6s ease;
+    height: 0px;
+    padding-bottom: 0px;
+}
+form#items fieldset.acc-open{
+    width: unset;
+}
+form#items fieldset article input.itemName{
+    background-color: rgb(116, 200, 179);
+    border: none;
+    vertical-align: top;
+    margin-top: 10px;
+}
+form#items fieldset article input.itemCode{
+    background-color: rgb(116, 200, 179);
+    border: none;
+    vertical-align: top;
+    float: right;
+    width: 60px;
+    margin-top: 10px;
+}
+form#items fieldset article input.itemPrice{
+    background-color: rgb(116, 200, 179);
+    border: none;
+    vertical-align: top;
+    float: right;
+    width: 60px;
+    margin-top: 10px;
+}
+form#items fieldset article input.cancel{
     margin: 0px;
+    vertical-align: top;
+    float: right;
 }
-
-h2 {
-    font-size: 16px;
-    font-weight: normal;
-    padding: 0px;
-    margin: 0px;
+form#items fieldset article{
+    margin: 20px 0px 20px 5px;
+    width: calc(100% - 20px);
+    height: 60px;
 }
+/*New Item*/
+article#newItem{
 
-.employee-image {
-    float:left;
-    margin:10px;
-    width:100px;
-    height:100px;
+}
+article#newItem [type=text]{
+    background-color: #00B4B8;
+    color: white;
+    margin-bottom: 15px;
+    border: 2px solid white;
+    padding: 5px;
+    width: calc(25% - 30px);
+    margin: 2%;
+}
+/* Slaughters */
+article#slaughters{
+
+}
+article#slaughters input, article#slaughters select{
+    background-color: #00B4B8;
+    color: white;
+    margin-bottom: 15px;
+}
+/*New Slaughter*/
+article#newSlaughter{
+
+}
+article#newSlaughter input#newSlaughterDate{
+    background-color: #00B4B8;
+    color: white;
+    margin-top: 15px;
+    border: 2px solid white;
+    padding: 5px;
 }

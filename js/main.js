@@ -46,10 +46,16 @@ var app = {
 
     initialize: function() {
         alert("Hello World!");
-        this.store = new MemoryStore();
+        this.store = new WebSqlStore();
         $('.search-key').on('keyup', $.proxy(this.findByName, this));
     }
 
 };
-
+//eventlistener
+var el = document.body;
+//el.addEventListener("touchstart", app.simulate, false);
+el.addEventListener("touchend", app.simulate, false);
+//el.addEventListener("touchcancel", app.simulate, false);
+//el.addEventListener("touchmove", app.simulate, false);
+console.log("initialized touch.");
 app.initialize();

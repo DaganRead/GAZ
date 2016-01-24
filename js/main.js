@@ -28,7 +28,8 @@ var app = {
                             tabs[ii].children[0].checked = false;
                         };
                         touches[i].target.control.checked = true;
-                        touches[i].target.control.onClick.call(touches[i].target.control);
+                        console.log(touches[i].target.control.onclick);
+                        touches[i].target.control.onclick.call(touches[i].target.control);
                         break;
                     case "INPUT" :
                         console.log('trigger');

@@ -47,9 +47,52 @@ var app = {
             }
         });
     },
-
+    store : function(type) {
+            switch(type){
+                        case "sale" :
+                            var temp = JSON.parse(window.localStorage['data']);
+                            temp.sales = this.data.sales;
+                            window.localStorage['data'] = JSON.stringify(temp);
+                            console.log(window.localStorage['data']);
+                            break;
+                        case "customer" :
+                            var temp = JSON.parse(window.localStorage['data']);
+                            temp.customers = this.data.customers;
+                            window.localStorage['data'] = JSON.stringify(temp);
+                            console.log(window.localStorage['data']);
+                            break;
+                        case "item" :
+                            var temp = JSON.parse(window.localStorage['data']);
+                            temp.items = this.data.items;
+                            window.localStorage['data'] = JSON.stringify(temp);
+                            console.log(window.localStorage['data']);
+                            break;
+                        case "slaughter" :
+                            var temp = JSON.parse(window.localStorage['data']);
+                            temp.slaughters = this.data.slaughters;
+                            window.localStorage['data'] = JSON.stringify(temp);
+                            console.log(window.localStorage['data']);
+                            break;
+                        case "location" :
+                            var temp = JSON.parse(window.localStorage['data']);
+                            temp.locations = this.data.locations;
+                            window.localStorage['data'] = JSON.stringify(temp);
+                            console.log(window.localStorage['data']);
+                            break;
+            }
+        },
     initialize: function() {
-        alert("Hello World!");
+            if (!window.localStorage['installed']) {
+                window.localStorage['installed'] = true;
+                window.localStorage['data'] = JSON.stringify({
+                                        sales:[],
+                                        customers:[],
+                                        items:[],
+                                        slaughters:[],
+                                        locations:[]
+                                    });
+                alert('installing...');
+            };
         this.store = new WebSqlStore();
         $('.search-key').on('keyup', $.proxy(this.findByName, this));
     }

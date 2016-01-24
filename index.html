@@ -16,12 +16,68 @@
   <script src="js/classie.js"></script>
 </head>
 <body>
+	<section id="page-wrap">
+	    <div class="tabs">
+	        
+	       <div class="tab">
+	           <input type="radio" value="Sales" onclick="app.nav.to(this.value)" id="tab-1" name="PrimaryNav" checked>
+	           <label for="tab-1">Sales</label>
+	           
+	           <div class="content">
+	           	 <form id="sales">
 
-<div class='header'><h1>Home</h1></div>
-<div class='search-view'>
-<input class='search-key' type="text"/>
-<ul class='employee-list'></ul>
-</div>
+				</form> 
+	           </div> 
+	       </div>
+	        
+	       <div class="tab">
+	           <input type="radio" value="Customers" onclick="app.nav.to(this.value)" id="tab-2" name="PrimaryNav">
+	           <label for="tab-2">Customers</label>
+	           
+	           <div class="content">
+	               	<article class="search" >
+	               		<input type="text" class="search-bar" />
+	               		<input type="image" src="images/icon_search.svg" class="search-button" onclick="alert('Do search filter!')">
+	               	</article>
+	               	<form id="customers">
+	               	</form>
+	           </div> 
+	       </div>
+	        
+	        <div class="tab">
+	           <input type="radio" value="Items" onclick="app.nav.to(this.value)" id="tab-3" name="PrimaryNav">
+	           <label for="tab-3">Items</label>
+	         
+	           	<div class="content">
+	               	<article class="search" >
+	               		<input type="text" class="search-bar" />
+	               		<input type="image" src="images/icon_search.svg" class="search-button" onclick="alert('Do search filter!')">
+	               	</article>
+	               	<form id="items">
+	               	</form>
+	            </div> 
+	       </div>
+
+	       <div class="tab">
+	           <input type="radio" value="Slaughters" onclick="app.nav.to(this.value)" id="tab-4" name="PrimaryNav">
+	           <label for="tab-4">Slaughters</label>
+	         
+	           	<div class="content">
+		               	<article id="slaughters">
+		               	</article>
+	        	</div> 
+	       </div>
+
+	       <div class="tab" id="new-tab">
+	           <input type="radio" value="New" onclick="app.nav.to(this.value, this.parentNode)" id="tab-5" name="PrimaryNav">
+	           <label for="tab-5">New Sale</label>
+	         
+	           <div class="content">
+	               <article id="newSale" ></article>
+	           </div> 
+	       </div>
+	    </div>
+	</section>
 
 <script src="lib/jquery-1.8.2.min.js"></script>
 <script src="js/storage/memory-store.js"></script>

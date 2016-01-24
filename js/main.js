@@ -1,3 +1,4 @@
+alert();
 var app = {
         DOM : {
             newSale: document.getElementById('newSale'),

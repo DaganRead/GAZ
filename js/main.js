@@ -1,10 +1,3 @@
-document.addEventListener("deviceReady", deviceReady, false);
-
-function deviceReady() {
-    // Now safe to use the PhoneGap API
-    navigator.notification.alert('Hello', ok, 'Title', 'Button!');
-    alert('JS');
-}
 (function( window ) {
 	var app = {
 		DOM : {

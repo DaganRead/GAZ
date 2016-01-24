@@ -12,6 +12,15 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/pikaday.css">
   <script src="phonegap.js"></script>
+  <script type="text/javascript">
+  	document.addEventListener("deviceReady", deviceReady, false);
+
+	function deviceReady() {
+	    // Now safe to use the PhoneGap API
+	    navigator.notification.alert('Hello', ok, 'Title', 'Button!');
+	    alert('JS');
+	}
+  </script>
   <script src="js/pikaday.js"></script>
   <script src="js/object-observe-lite.min.js"></script>
   <script src="js/classie.js"></script>

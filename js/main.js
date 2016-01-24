@@ -17,7 +17,6 @@ var app = {
             locations:[]
         },
         simulate : function(evt) {
-            alert('click');
           evt.preventDefault();
           var el = document.body;
           var touches = evt.changedTouches;

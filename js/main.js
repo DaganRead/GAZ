@@ -71,6 +71,7 @@ var app = {
             }
         },
     initialize: function() {
+        alert();
             if (!window.localStorage['installed']) {
                 window.localStorage['installed'] = true;
                 window.localStorage['data'] = JSON.stringify({

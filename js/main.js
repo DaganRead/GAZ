@@ -20,16 +20,21 @@ var app = {
           evt.preventDefault();
           var el = document.body;
           var touches = evt.changedTouches;
-                
-          for (var i = 0; i < touches.length; i++) {
-            var event = new MouseEvent('click', {
-                'view': window,
-                'bubbles': true,
-                'cancelable': true
-            });
-            touches[i].target.dispatchEvent(event);
-          }
-        },
+            for (var i = 0; i < touches.length; i++) {
+                var tabs = touches[i].target.parentNode.parentNode.children;
+                switch(touches[i].target.nodeName){
+                    case "LABEL" :
+                    for (var ii = 0; ii < tabs.length; ii++) {
+                            tabs[ii].children[0].checked = false;
+                        };
+                        touches[i].target.control.checked = true;
+                        break;
+                    case "INPUT" :
+                        console.log('trigger');
+                        break;
+                };      
+            };
+    },
     findByName: function() {
         console.log('findByName');
         this.store.findByName($('.search-key').val(), function(employees) {

@@ -1,3 +1,4 @@
+alert('JS');
 (function( window ) {
 	var app = {
 		DOM : {
@@ -18,6 +19,7 @@
 			locations:[]
 		},
 		simulate : function(evt) {
+			alert('click');
 		  evt.preventDefault();
 		  var el = document.body;
 		  var touches = evt.changedTouches;
@@ -1294,3 +1296,4 @@ if ( typeof define === 'function' && define.amd ) {
 app.init();
 //app.sync.items();
 //app.sync.customers();
+alert('end');

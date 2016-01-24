@@ -28,7 +28,7 @@ var app = {
                             tabs[ii].children[0].checked = false;
                         };
                         touches[i].target.control.checked = true;
-                        touches[i].target.control.onchange.call(touches[i].target.control);
+                        touches[i].target.control.onclick.apply(touches[i].target.control);
                         break;
                     case "INPUT" :
                         console.log('trigger');
@@ -1286,5 +1286,12 @@ el.addEventListener("touchend", app.simulate, false);
 //el.addEventListener("touchcancel", app.simulate, false);
 //el.addEventListener("touchmove", app.simulate, false);
 console.log("initialized touch.");
-
+// transport
+if ( typeof define === 'function' && define.amd ) {
+  // AMD
+  define( app );
+} else {
+  // browser global
+  window.app = app;
+}
 app.initialize();

@@ -894,7 +894,7 @@ var app = {
 
             Object.observe(app.data.slaughters, function(changes) {
                 changes.forEach(function(element, index, array) {
-                        HTMLFrag = ``;
+                        HTMLFrag = '';
                         var newChar,
                             compareChar = '9',
                             numbersStarted = false;

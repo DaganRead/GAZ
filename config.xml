@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns       = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "org.coenraets.employeedirectory"
+        versionCode = "10"
+        version     = "1.1.0">
+ 
+    <name>Farm Manager</name>
+ 
+    <description>
+        A simple productivity boost tool.
+    </description>
+ 
+    <author href="www.blackladder.co.za" email="daganread@gmail.com">
+        Dagan Read
+    </author>
+     <feature name="http://api.phonegap.com/1.0/contacts"/>
+</widget>

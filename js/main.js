@@ -83,7 +83,7 @@ var app = {
                 alert('installing...');
             };      
             this.data = JSON.parse(window.localStorage['data']);
-            //app.binding();
+            app.binding();
             alert(JSON.stringify(this.data));  
 
         }()

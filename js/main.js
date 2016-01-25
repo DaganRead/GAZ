@@ -17,7 +17,7 @@ var app = {
             locations:[]
         },
         simulate : function(evt) {
-          evt.preventDefault();
+          //evt.preventDefault();
           var el = document.body;
           var touches = evt.changedTouches;
             for (var i = 0; i < touches.length; i++) {
@@ -32,7 +32,7 @@ var app = {
                         break;
                     case "INPUT" :
                         if (touches[i].target.control.onclick != undefined) {
-                            touches[i].target.control.onclick.call(touches[i].target.control);
+                            //touches[i].target.control.onclick.call(touches[i].target.control);
                         };
                         break;
                 };      

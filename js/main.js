@@ -87,7 +87,7 @@ var app = {
                 //app.binding();
                 alert(JSON.stringify(this.data));  
                 /*New Sales*/
-                var HTMLFrag='<h1>Bla</h1>';
+                var HTMLFrag=`<h1>Bla</h1>`;
                 app.DOM.newSale.innerHTML = HTMLFrag;
             };
         }()

@@ -92,3 +92,4 @@ var app = {
             };
         }()
 };
+app.initialize();

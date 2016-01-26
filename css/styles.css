@@ -332,10 +332,10 @@ form#customers fieldset fieldset{
     overflow: hidden;
     padding: 0px 0px 0px 10%;
     transition: padding-bottom 0.6s ease;
-    height: 15px;
+    height: 20px;
 }
 form#customers fieldset fieldset.acc-open{
-    padding-bottom: 240px;
+    padding-bottom: 260px;
 }
 form#customers fieldset fieldset input:nth-child(2), form#customers fieldset fieldset input:nth-child(3){
     width: 45%!important;

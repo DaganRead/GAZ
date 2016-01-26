@@ -742,8 +742,7 @@ var app = {
                                         HTMLFrag += innerElement.telephone;
                                         HTMLFrag += '"/><br /><article>';
                                         HTMLFrag += '<figure class="location" ><figcaption>';
-                                        HTMLFrag += innerElement.location;
-                                        HTMLFrag += '</figcaption></figure><select>';
+                                        HTMLFrag += '<select>';
                                         app.data.locations.forEach(function(inElem, inIndx, inArr) {
                                             HTMLFrag += '<option value="'
                                             HTMLFrag += inElem.location;
@@ -751,7 +750,7 @@ var app = {
                                             HTMLFrag += inElem.location;
                                         HTMLFrag += '</option>';
                                         });
-                                        HTMLFrag += '</select></article><textarea>';
+                                        HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                         HTMLFrag += innerElement.address;
                                         HTMLFrag += '</textarea><input type="button" class="cancel" onclick="app.delete.customer(this.alt)" value="Delete" alt="';
                                         HTMLFrag += innerIndex;
@@ -773,8 +772,7 @@ var app = {
                                         HTMLFrag += '"/><input type="text" placeholder="';
                                         HTMLFrag += innerElement.telephone;
                                         HTMLFrag += '"/><br /><article><figure class="location" ><figcaption>';
-                                        HTMLFrag += innerElement.location;
-                                        HTMLFrag += '</figcaption></figure><select>';
+                                        HTMLFrag += '<select>';
                                         app.data.locations.forEach(function(inElem, inIndx, inArr) {
                                             HTMLFrag += '<option value="'
                                             HTMLFrag += inElem.location;
@@ -782,7 +780,7 @@ var app = {
                                             HTMLFrag += inElem.location;
                                         HTMLFrag += '</option>';
                                         });
-                                        HTMLFrag += '</select></article><textarea>';
+                                        HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                         HTMLFrag += innerElement.address;
                                         HTMLFrag += '</textarea><input type="button" class="cancel" onclick="app.delete.customer(this.alt)" value="Delete" alt="';
                                         HTMLFrag += innerIndex;
@@ -799,8 +797,7 @@ var app = {
                                         HTMLFrag += '"/><input type="text" placeholder="';
                                         HTMLFrag += innerElement.telephone;
                                         HTMLFrag += '"/><br /><article><figure class="location" ><figcaption>';
-                                        HTMLFrag += innerElement.location;
-                                        HTMLFrag += '</figcaption></figure><select>';
+                                        HTMLFrag += '<select>';
                                         app.data.locations.forEach(function(inElem, inIndx, inArr) {
                                             HTMLFrag += '<option value="'
                                             HTMLFrag += inElem.location;
@@ -808,7 +805,7 @@ var app = {
                                             HTMLFrag += inElem.location;
                                         HTMLFrag += '</option>';
                                         });
-                                        HTMLFrag += '</select></article><textarea>';
+                                        HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                         HTMLFrag += innerElement.address;
                                         HTMLFrag += '</textarea><input type="button" class="cancel" onclick="app.delete.customer(this.alt)" value="Delete" alt="';
                                         HTMLFrag += innerIndex;

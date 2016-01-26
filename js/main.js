@@ -155,7 +155,6 @@ var app = {
                                 HTMLFrag += '<fieldset><legend><input type="button" value="';
                                 HTMLFrag += element.firstName;
                                 HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
-                                
                                 HTMLFrag += '<input type="text" placeholder="';
                                 HTMLFrag += element.firstName;
                                 HTMLFrag += '"/><input type="text" placeholder="';
@@ -180,8 +179,7 @@ var app = {
                                 HTMLFrag += '</textarea>';
                                 HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.customer(this.alt)" value="Delete" alt="';
                                 HTMLFrag += index;
-                                HTMLFrag += '"/>';                              
-                                HTMLFrag += '</fieldset>';
+                                HTMLFrag += '"/></fieldset>';
                             };
                             if (newChar > compareChar){
                                 HTMLFrag += '</fieldset><fieldset><legend>';                              

@@ -165,8 +165,7 @@ var app = {
                                 HTMLFrag += element.telephone
                                 HTMLFrag += '"/><br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += element.location;
-                                HTMLFrag += '</figcaption></figure><select>';
+                                HTMLFrag += '<select>';
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
                                     HTMLFrag += innerElement.location;
@@ -174,7 +173,7 @@ var app = {
                                     HTMLFrag += innerElement.location;
                                     HTMLFrag += '</option>';
                                 });
-                                HTMLFrag += '</select></article><textarea>';
+                                HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                 HTMLFrag += element.address;
                                 HTMLFrag += '</textarea>';
                                 HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.customer(this.alt)" value="Delete" alt="';
@@ -199,8 +198,7 @@ var app = {
                                 HTMLFrag += element.telephone
                                 HTMLFrag += '"/><br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += element.location;
-                                HTMLFrag += '</figcaption></figure><select>';
+                                HTMLFrag += '<select>';
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
                                     HTMLFrag += innerElement.location;
@@ -208,7 +206,7 @@ var app = {
                                     HTMLFrag += innerElement.location;
                                     HTMLFrag += '</option>';
                                 });
-                                HTMLFrag += '</select></article><textarea>';
+                                HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                 HTMLFrag += element.address;
                                 HTMLFrag += '</textarea>';
                                 HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.customer(this.alt)" value="Delete" alt="';
@@ -229,8 +227,7 @@ var app = {
                                 HTMLFrag += element.telephone
                                 HTMLFrag += '"/><br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += element.location;
-                                HTMLFrag += '</figcaption></figure><select>';
+                                HTMLFrag += '<select>';
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
                                     HTMLFrag += innerElement.location;
@@ -238,7 +235,7 @@ var app = {
                                     HTMLFrag += innerElement.location;
                                     HTMLFrag += '</option>';
                                 });
-                                HTMLFrag += '</select></article><textarea>';
+                                HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                 HTMLFrag += element.address;
                                 HTMLFrag += '</textarea>';
                                 HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.customer(this.alt)" value="Delete" alt="';

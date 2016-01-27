@@ -1043,10 +1043,12 @@ function onDeviceReady() {
                     syncNumber = 0;
 
                 contacts.forEach(function(element, index, array) {
-                    if (app.data.customers.indexOf(element) == -1) {
-                        syncNumber++;
-                        syncArr.push(element);
-                        msg += (index + 1) +' - ' + JSON.stringify(element)  + '\n';
+                    if (element.name.formatted !== '' || element.displayName !== null) {
+                        if (app.data.customers.indexOf(element) == -1) {
+                            syncNumber++;
+                            syncArr.push(element);
+                            msg += (index + 1) +' - ' + (element.name.formatted || element.displayName)  + '\n';
+                        };
                     };
                 });
 

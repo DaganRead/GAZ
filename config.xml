@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+    id          = "AZ"
+    versionCode = "10"
+    version     = "1.0.0" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Farm Manager</name>
+
+    <description>
+      A simple productivity boost tool.
+    </description>
+
+    <author href="https://blackladder.co.za" email="daganread@gmail.com">
+      Dagan Read
+    </author>
+
+    <!-- We'll include the contacts plugin as an example -->
+    <plugin name="cordova-plugin-dialogs" spec="1.1.1" source="pgb" />
+    <plugin name="cordova-plugin-contacts" spec="1.1.0" source="pgb" />
+</widget>

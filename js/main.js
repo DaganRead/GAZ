@@ -1015,3 +1015,14 @@ el.addEventListener("touchend", app.simulate, false);
 //el.addEventListener("touchcancel", app.simulate, false);
 //el.addEventListener("touchmove", app.simulate, false);
 app.initialize();
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    navigator.notification.alert(
+        'You are the winner!',  // message
+        function() {
+            console.log(navigator.notification);
+        },
+        'Game Over',            // title
+        'Done'                  // buttonName
+    );
+}

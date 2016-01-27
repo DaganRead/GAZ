@@ -1038,7 +1038,7 @@ function onDeviceReady() {
     function onPrompt(results) {
         //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
             function onSuccess(contacts) {
-                var msg = contacts.length + ' contacts successfully retrieved;',
+                var msg = contacts.length + ' contacts successfully retrieved;\n\n',
                     syncArr = [],
                     syncNumber = 0;
 
@@ -1046,7 +1046,7 @@ function onDeviceReady() {
                     if (app.data.customers.indexOf(element) == -1) {
                         syncNumber++;
                         syncArr.push(element);
-                        msg += (index + 1) +' - ' + element.name + '\n';
+                        msg += (index + 1) +' - ' + JSON.stringify(element.name) + '\n';
                     };
                 });
 

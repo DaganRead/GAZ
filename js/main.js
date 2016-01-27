@@ -1038,27 +1038,30 @@ function onDeviceReady() {
     function onPrompt(results) {
         //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
             function onSuccess(contacts) {
-                var msg = contacts.length + ' contacts successfully retrieved;\n\n',
-                    syncArr = [],
-                    syncNumber = 0;
+                var data {
+                    msg : contacts.length + ' contacts successfully retrieved;\n\n',
+                    syncArr : [],
+                    syncNumber : 1
+                };
+                
+                msg += data.syncNumber;
+                msg += ' contacts are not in the customer listing:\n';
 
                 contacts.forEach(function(element, index, array) {
                     if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
                         if (app.data.customers.indexOf(element) == -1) {
-                            syncNumber++;
-                            syncArr.push(element);
-                            msg += (index + 1) +' - ' + (element.name.formatted || element.displayName)  + '\n';
+                            data.syncNumber++;
+                            data.syncArr.push(element);
+                            msg += data.syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
                         };
                     };
                 });
-
-                msg += syncNumber + ' contacts are not in the customer listing:\n';
                 
                 navigator.notification.confirm(
                     msg,
                     function(buttonIndex) {
                         if (!buttonIndex) {
-                            syncArr.forEach(function(element, index, array) {
+                            data.syncArr.forEach(function(element, index, array) {
                                 app.data.customers.push(element);
                             });
                         };

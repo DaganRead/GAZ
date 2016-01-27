@@ -1043,7 +1043,7 @@ function onDeviceReady() {
                     syncNumber = 0;
 
                 contacts.forEach(function(element, index, array) {
-                    if (element.name.formatted !== '' || element.displayName !== null) {
+                    if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
                         if (app.data.customers.indexOf(element) == -1) {
                             syncNumber++;
                             syncArr.push(element);

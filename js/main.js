@@ -1051,16 +1051,17 @@ function onDeviceReady() {
                         };
                     };
                 });
-                msg += syncNumber + ' contacts are not in the customer listing:\n\n' + temp;                
+                msg += (syncNumber-1) + ' contacts are not in the customer listing:\n\n' + temp;                
                 navigator.notification.confirm(
                     msg,
                     function(buttonIndex) {
+                        alert(buttonIndex);
                         if (!buttonIndex) {
                             syncArr.forEach(function(element, index, array) {
                                 app.data.customers.push(element);
                             });
-                            alert(JSON.stringify(app.data.customers));
                         };
+                        alert(JSON.stringify(app.data.customers));
                     },
                     'Confirm Sync',
                     ['Add','Cancel']

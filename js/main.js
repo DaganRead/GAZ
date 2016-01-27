@@ -1038,31 +1038,25 @@ function onDeviceReady() {
     function onPrompt(results) {
         //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
             function onSuccess(contacts) {
-                var data = {
-                    msg : contacts.length + ' contacts successfully retrieved;\n\n',
-                    syncArr : [],
-                    syncNumber : 1
-                },
-                foo = data.syncNumber;
-                
-                data.msg += foo;
-                data.msg += ' contacts are not in the customer listing:\n';
-
+                var msg = contacts.length + ' contacts successfully retrieved;\n\n',
+                    temp = '',
+                    syncArr = [],
+                    syncNumber = 1;
                 contacts.forEach(function(element, index, array) {
                     if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
                         if (app.data.customers.indexOf(element) == -1) {
-                            data.syncNumber++;
-                            data.syncArr.push(element);
-                            data.msg += data.syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
+                            syncNumber++;
+                            syncArr.push(element);
+                            temp += syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
                         };
                     };
                 });
-                
+                msg += syncNumber + ' contacts are not in the customer listing:\n' + temp;                
                 navigator.notification.confirm(
-                    data.msg,
+                    msg,
                     function(buttonIndex) {
                         if (!buttonIndex) {
-                            data.syncArr.forEach(function(element, index, array) {
+                            syncArr.forEach(function(element, index, array) {
                                 app.data.customers.push(element);
                             });
                         };

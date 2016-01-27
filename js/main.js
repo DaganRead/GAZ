@@ -1052,7 +1052,6 @@ function onDeviceReady() {
     var options      = new ContactFindOptions();
     options.filter   = "D";
     options.multiple = true;
-    options.desiredFields = [navigator.contacts.fieldType.id];
     var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
     navigator.contacts.find(fields, onSuccess, onError, options);
 }

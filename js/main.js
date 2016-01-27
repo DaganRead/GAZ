@@ -1018,8 +1018,11 @@ app.initialize();
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     function onSuccess(contacts) {
-        var msg = 'Found ' + contacts.length + ' contacts.';
-            navigator.notification.alert(msg, function() {}, 'Contacts Found!', 'Done');
+        var msg = '';
+        contacts.forEach(function(element, index, array) {
+            msg += element;
+        });
+        navigator.notification.alert(msg, function() {}, 'Contacts Found!', 'Done');
     };
 
     function onError(contactError) {

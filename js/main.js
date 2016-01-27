@@ -1046,7 +1046,7 @@ function onDeviceReady() {
                     if (app.data.customers.indexOf(element) == -1) {
                         syncNumber++;
                         syncArr.push(element);
-                        msg += (index + 1) +' - ' + (JSON.stringify(element) )  + '\n';
+                        msg += (index + 1) +' - ' + JSON.stringify(element)  + '\n';
                     };
                 });
 

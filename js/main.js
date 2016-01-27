@@ -1042,11 +1042,12 @@ function onDeviceReady() {
                 contacts.forEach(function(element, index, array) {
                     msg += JSON.stringify(element);
                 });
+                alert();
                 navigator.notification.alert(msg, function() {}, 'Contacts Found!', 'Done');
             };
 
             function onError(contactError) {
-                alert('onError!');
+                alert(results.input1);
                 navigator.notification.alert('error', function() {}, 'No Contacts Found!', 'Try Again');
             };
 
@@ -1059,10 +1060,10 @@ function onDeviceReady() {
     }
 
     navigator.notification.prompt(
-        'Please enter your name',  // message
+        'Please enter a search term',  // message
         onPrompt,                  // callback to invoke
-        'Registration',            // title
-        ['Ok','Exit'],             // buttonLabels
-        'Jane Doe'                 // defaultText
+        'Contact Sync',            // title
+        ['Search','Cancel'],             // buttonLabels
+        'batamgula'                 // defaultText
     );
 }

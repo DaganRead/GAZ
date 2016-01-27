@@ -1038,7 +1038,7 @@ function onDeviceReady() {
     function onPrompt(results) {
         //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
             function onSuccess(contacts) {
-                var data {
+                var data = {
                     msg : contacts.length + ' contacts successfully retrieved;\n\n',
                     syncArr : [],
                     syncNumber : 1

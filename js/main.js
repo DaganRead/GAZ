@@ -1038,12 +1038,32 @@ function onDeviceReady() {
     function onPrompt(results) {
         //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
             function onSuccess(contacts) {
-                var msg = '';
+                var msg = contacts.length + ' contacts successfully retrieved;',
+                    syncArr = [],
+                    syncNumber = 0;
+
                 contacts.forEach(function(element, index, array) {
-                    msg += JSON.stringify(element);
+                    if (app.data.customers.indexOf(element) == -1) {
+                        syncNumber++;
+                        syncArr.push(element);
+                        msg += (index + 1) +' - ' + element.name + '\n';
+                    };
                 });
-                alert();
-                navigator.notification.alert(msg, function() {}, 'Contacts Found!', 'Done');
+
+                msg += syncNumber + ' contacts are not in the customer listing:\n';
+                
+                navigator.notification.confirm(
+                    msg,
+                    function(buttonIndex) {
+                        if (!buttonIndex) {
+                            syncArr.forEach(function(element, index, array) {
+                                app.data.customers.push(element);
+                            });
+                        };
+                    },
+                    'Confirm Sync',
+                    ['Add','Cancel']
+                );
             };
 
             function onError(contactError) {

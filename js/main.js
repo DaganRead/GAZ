@@ -1038,7 +1038,7 @@ function onDeviceReady() {
     function onPrompt(results) {
         //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
             function onSuccess(contacts) {
-                var msg = contacts.length + ' contacts successfully retrieved;',
+                var msg = contacts.length + ' contacts successfully retrieved; ',
                     temp = '',
                     syncArr = [],
                     syncNumber = 1;
@@ -1056,12 +1056,11 @@ function onDeviceReady() {
                     msg,
                     function(buttonIndex) {
                         alert(buttonIndex);
-                        if (!buttonIndex) {
+                        if (buttonIndex) {
                             syncArr.forEach(function(element, index, array) {
                                 app.data.customers.push(element);
                             });
                         };
-                        alert(JSON.stringify(app.data.customers));
                     },
                     'Confirm Sync',
                     ['Add','Cancel']

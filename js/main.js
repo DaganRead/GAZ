@@ -1017,12 +1017,21 @@ el.addEventListener("touchend", app.simulate, false);
 app.initialize();
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-    navigator.notification.alert(
-        'You are the winner!',  // message
-        function() {
-            console.log(navigator.notification);
-        },
-        'Game Over',            // title
-        'Done'                  // buttonName
-    );
+    function onSuccess(contacts) {
+        var msg = 'Found ' + contacts.length + ' contacts.';
+            navigator.notification.alert(msg, function() {}, 'Contacts Found!', 'Done');
+    };
+
+    function onError(contactError) {
+        alert('onError!');
+        navigator.notification.alert('error', function() {}, 'No Contacts Found!', 'Try Again');
+    };
+
+    // find all contacts with 'Bob' in any name field
+    var options      = new ContactFindOptions();
+    options.filter   = "D";
+    options.multiple = true;
+    options.desiredFields = [navigator.contacts.fieldType.id];
+    var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+    navigator.contacts.find(fields, onSuccess, onError, options);
 }

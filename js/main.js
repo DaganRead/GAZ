@@ -1038,12 +1038,14 @@ function onDeviceReady() {
     function onPrompt(results) {
         //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
             function onSuccess(contacts) {
-                var msg = contacts.length + ' contacts successfully retrieved; ',
+                var msg = '',
                     temp = '',
                     syncArr = [],
+                    tempNumber = 1,
                     syncNumber = 1;
                 contacts.forEach(function(element, index, array) {
                     if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
+                    tempNumber ++;
                         if (app.data.customers.indexOf(element) == -1) {
                             temp += syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
                             syncNumber++;
@@ -1051,15 +1053,15 @@ function onDeviceReady() {
                         };
                     };
                 });
-                msg += (syncNumber-1) + ' contacts are not in the customer listing:\n\n' + temp;                
+                msg += tempNumber + ' contacts successfully retrieved; ' + (syncNumber-1) + ' contacts are not in the customer listing:\n\n' + temp;                
                 navigator.notification.confirm(
                     msg,
                     function(buttonIndex) {
-                        alert(buttonIndex);
                         if (buttonIndex) {
                             syncArr.forEach(function(element, index, array) {
                                 app.data.customers.push(element);
                             });
+                            alert(JSON.stringify(app.data.customers));
                         };
                     },
                     'Confirm Sync',

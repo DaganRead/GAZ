@@ -1,4 +1,6 @@
-var app = {
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {    
+    var app = {
         DOM : {
             newSale: document.getElementById('newSale'),
             sales: document.getElementById('sales'),
@@ -1033,8 +1035,6 @@ el.addEventListener("touchend", app.simulate, false);
 //el.addEventListener("touchcancel", app.simulate, false);
 //el.addEventListener("touchmove", app.simulate, false);
 app.initialize();
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
     function onPrompt(results) {
         //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
             function onSuccess(contacts) {
@@ -1053,8 +1053,8 @@ function onDeviceReady() {
                         };
                     };
                 });
-                msg += tempNumber + ' contacts successfully retrieved; ' + (syncNumber-1) + ' contacts are not in the customer listing:\n\n' + temp;                
-                navigator.notification.confirm(
+            msg += tempNumber + ' contacts successfully retrieved; ' + (syncNumber-1) + ' contacts are not in the customer listing:\n\n' + temp;                
+            navigator.notification.confirm(
                     msg,
                     function(buttonIndex) {
                         if (buttonIndex) {
@@ -1080,7 +1080,7 @@ function onDeviceReady() {
             options.multiple = true;
             var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
             navigator.contacts.find(fields, onSuccess, onError, options);
-    }
+    };
 
     navigator.notification.prompt(
         'Please enter a search term',  // message
@@ -1090,3 +1090,4 @@ function onDeviceReady() {
         'batamgula'                 // defaultText
     );
 }
+};

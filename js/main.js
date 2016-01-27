@@ -1035,23 +1035,34 @@ el.addEventListener("touchend", app.simulate, false);
 app.initialize();
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-    function onSuccess(contacts) {
-        var msg = '';
-        contacts.forEach(function(element, index, array) {
-            msg += JSON.stringify(element);
-        });
-        navigator.notification.alert(msg, function() {}, 'Contacts Found!', 'Done');
-    };
+    function onPrompt(results) {
+        //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+            function onSuccess(contacts) {
+                var msg = '';
+                contacts.forEach(function(element, index, array) {
+                    msg += JSON.stringify(element);
+                });
+                navigator.notification.alert(msg, function() {}, 'Contacts Found!', 'Done');
+            };
 
-    function onError(contactError) {
-        alert('onError!');
-        navigator.notification.alert('error', function() {}, 'No Contacts Found!', 'Try Again');
-    };
+            function onError(contactError) {
+                alert('onError!');
+                navigator.notification.alert('error', function() {}, 'No Contacts Found!', 'Try Again');
+            };
 
-    // find all contacts with 'Bob' in any name field
-    var options      = new ContactFindOptions();
-    options.filter   = "tiz";
-    options.multiple = true;
-    var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
-    navigator.contacts.find(fields, onSuccess, onError, options);
+            // find all contacts with 'Bob' in any name field
+            var options      = new ContactFindOptions();
+            options.filter   = results.input1;
+            options.multiple = true;
+            var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+            navigator.contacts.find(fields, onSuccess, onError, options);
+    }
+
+    navigator.notification.prompt(
+        'Please enter your name',  // message
+        onPrompt,                  // callback to invoke
+        'Registration',            // title
+        ['Ok','Exit'],             // buttonLabels
+        'Jane Doe'                 // defaultText
+    );
 }

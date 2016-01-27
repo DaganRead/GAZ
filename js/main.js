@@ -1045,21 +1045,21 @@ function onDeviceReady() {
                 },
                 foo = data.syncNumber;
                 
-                msg += foo;
-                msg += ' contacts are not in the customer listing:\n';
+                data.msg += foo;
+                data.msg += ' contacts are not in the customer listing:\n';
 
                 contacts.forEach(function(element, index, array) {
                     if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
                         if (app.data.customers.indexOf(element) == -1) {
                             data.syncNumber++;
                             data.syncArr.push(element);
-                            msg += data.syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
+                            data.msg += data.syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
                         };
                     };
                 });
                 
                 navigator.notification.confirm(
-                    msg,
+                    data.msg,
                     function(buttonIndex) {
                         if (!buttonIndex) {
                             data.syncArr.forEach(function(element, index, array) {

@@ -1042,9 +1042,10 @@ function onDeviceReady() {
                     msg : contacts.length + ' contacts successfully retrieved;\n\n',
                     syncArr : [],
                     syncNumber : 1
-                };
+                },
+                foo = data.syncNumber;
                 
-                msg += data.syncNumber;
+                msg += foo;
                 msg += ' contacts are not in the customer listing:\n';
 
                 contacts.forEach(function(element, index, array) {

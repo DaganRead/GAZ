@@ -1059,7 +1059,7 @@ function onDeviceReady() {
                             syncArr.forEach(function(element, index, array) {
                                 app.data.customers.push(element);
                             });
-                            alert('yes');
+                            alert(JSON.stringify(app.data.customers));
                         };
                     },
                     'Confirm Sync',

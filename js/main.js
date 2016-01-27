@@ -1005,6 +1005,24 @@ var app = {
                 app.data.slaughters.splice(index, 1);
                 app.store('slaughter');
             }
+        },
+        sync : {
+            customers : function() {
+                //app.data.customers = [];
+                app.data.customers.sort(function(a, b) {
+                    return a.firstName.localeCompare(b.firstName);
+                });
+                app.store('customer');
+                alert("contacts sync success!");
+            },
+            items : function() {
+                //app.data.items = [];
+                app.data.items.sort(function(a, b) {
+                    return a.itemName.localeCompare(b.itemName);
+                });
+                app.store('item');
+                alert("items sync success!");
+            }
         }
     };
 
@@ -1020,7 +1038,7 @@ function onDeviceReady() {
     function onSuccess(contacts) {
         var msg = '';
         contacts.forEach(function(element, index, array) {
-            msg += element;
+            msg += JSON.stringify(element);
         });
         navigator.notification.alert(msg, function() {}, 'Contacts Found!', 'Done');
     };

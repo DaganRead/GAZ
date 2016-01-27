@@ -1061,7 +1061,7 @@ function onDeviceReady() {
                             syncArr.forEach(function(element, index, array) {
                                 app.data.customers.push(element);
                             });
-                            alert(JSON.stringify(app.data.customers));
+                            app.store('customer');
                         };
                     },
                     'Confirm Sync',

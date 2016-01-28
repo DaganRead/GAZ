@@ -23,11 +23,11 @@ section#page-wrap{
     color: white;
 }
 .search-button {
-    height: 50px;
+    height: 30px;
 }
 .search-bar {
     height: 20px;
-    width: calc(100% - 100px);
+    width: calc(100% - 80px);
     margin: 15px 15px 20px;
     background-color: rgb(116, 200, 179);
     border: none;
@@ -401,12 +401,9 @@ form#customers figcaption {
     vertical-align: middle;
     display: table-cell;
 } 
-label[for=tab2] + div article input.sync-button {
-    height: 50px;
-}
-label[for=tab2] + div article input.search-bar {
+[for=tab2] + div article.search input.search-bar {
     height: 20px;
-    width: calc(100% - 150px);
+    width: calc(100% - 110px);
     margin: 15px 15px 20px;
     background-color: rgb(116, 200, 179);
     border: none;

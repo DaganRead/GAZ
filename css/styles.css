@@ -23,6 +23,9 @@ section#page-wrap{
     color: white;
 }
 .search-button {
+    height: 50px;
+}
+.sync-button {
     vertical-align: bottom;
 }
 .search-bar {
@@ -514,7 +517,7 @@ article#slaughters{
 }
 article#slaughters .cancel{
     height: 30px;
-    
+
 }
 article#slaughters input, article#slaughters select{
     background-color: #00B4B8;

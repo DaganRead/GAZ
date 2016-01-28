@@ -25,6 +25,9 @@ section#page-wrap{
 .search-button {
     height: 30px;
 }
+.sync-button {
+    height: 30px;
+}
 .search-bar {
     height: 20px;
     width: calc(100% - 80px);
@@ -401,7 +404,7 @@ form#customers figcaption {
     vertical-align: middle;
     display: table-cell;
 } 
-[for=tab2] + div article.search input.search-bar {
+.tab [for=tab-2] + div.content article.search input.search-bar {
     height: 20px;
     width: calc(100% - 110px);
     margin: 15px 15px 20px;

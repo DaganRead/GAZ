@@ -667,8 +667,6 @@ function onDeviceReady() {
                             break;
 
                     }
-                }else{
-                    this.newTab.children[1].innerHTML = "New " + value.slice(0, -1);
                 };
             }
         },

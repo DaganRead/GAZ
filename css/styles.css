@@ -56,7 +56,7 @@ section#page-wrap{
 }
 .tab label {
     background: #36A189; 
-    padding: 20px 10px; 
+    padding-bottom: 40px;
     border: 1px solid #ccc; 
     display: inline-block;
     margin-left: -1px;
@@ -73,6 +73,10 @@ section#page-wrap{
 }
 .tab [type=radio] {
     display: none;   
+}
+.tab label img {
+    height: 190%;
+    margin: auto;
 }
 .content {
     overflow-y: scroll; 

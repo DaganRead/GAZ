@@ -96,7 +96,7 @@ function onDeviceReady() {
                     });
                     HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable">';
                     HTMLFrag += '<tr><td><input type="text" class="tableInput" onclick="app.purchaseTableAdd(this)" placeholder="Item Code" /></td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
-                    HTMLFrag += '</table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>';
+                    HTMLFrag += '</table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel" /></article>';
                 app.DOM.newSale.innerHTML = HTMLFrag;
 
                 /* Sales */
@@ -131,7 +131,7 @@ function onDeviceReady() {
                             });
 
                             HTMLFrag+='</table><br />';
-                            HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.sale(this.alt)" value="Delete" alt="';
+                            HTMLFrag += '<input type="img" src="img/delete.png" onclick="app.delete.sale(this.alt) class="cancel" alt="';
                             HTMLFrag += index;
                             HTMLFrag += '"/>Total:<span>';
                             HTMLFrag += element.total;
@@ -178,7 +178,7 @@ function onDeviceReady() {
                                 HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                 HTMLFrag += element.address;
                                 HTMLFrag += '</textarea>';
-                                HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.customer(this.alt)" value="Delete" alt="';
+                                HTMLFrag += '<input type="img" src="img/delete.png" onclick="app.delete.customer(this.alt) class="cancel" alt="';
                                 HTMLFrag += index;
                                 HTMLFrag += '"/></fieldset>';
                             };
@@ -211,7 +211,7 @@ function onDeviceReady() {
                                 HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                 HTMLFrag += element.address;
                                 HTMLFrag += '</textarea>';
-                                HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.customer(this.alt)" value="Delete" alt="';
+                                HTMLFrag += '<input type="img" src="img/delete.png" onclick="app.delete.customer(this.alt) class="cancel" alt="';
                                 HTMLFrag += index;
                                 HTMLFrag += '"/>';                              
                                 HTMLFrag += '</fieldset>';
@@ -240,7 +240,7 @@ function onDeviceReady() {
                                 HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                 HTMLFrag += element.address;
                                 HTMLFrag += '</textarea>';
-                                HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.customer(this.alt)" value="Delete" alt="';
+                                HTMLFrag += '<input type="img" src="img/delete.png" onclick="app.delete.customer(this.alt) class="cancel" alt="';
                                 HTMLFrag += index;
                                 HTMLFrag += '"/>';                              
                                 HTMLFrag += '</fieldset>';
@@ -264,7 +264,7 @@ function onDeviceReady() {
                                 HTMLFrag += '<article><input type="button" class="itemName" value="';
                                 HTMLFrag += element.itemName;
                                 HTMLFrag += '" />';
-                                HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="';
+                                HTMLFrag += '<input type="img" src="img/delete.png" onclick="app.delete.item(this.alt) class="cancel" alt="';
                                 HTMLFrag += index;
                                 HTMLFrag += '" />';
                                 HTMLFrag+='<input type="text" class="itemCode" placeholder="';
@@ -283,7 +283,7 @@ function onDeviceReady() {
                                 HTMLFrag += '<article><input type="button" class="itemName" value="';
                                 HTMLFrag += element.itemName;
                                 HTMLFrag += '" />';
-                                HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="';
+                                HTMLFrag += '<input type="img" src="img/delete.png" onclick="app.delete.item(this.alt) class="cancel" alt="';
                                 HTMLFrag += index;
                                 HTMLFrag += '"/>';
                                 HTMLFrag+='<input type="text" class="itemCode" placeholder="';
@@ -297,7 +297,7 @@ function onDeviceReady() {
                                 HTMLFrag += '<article><input type="button" class="itemName" value="';
                                 HTMLFrag += element.itemName;
                                 HTMLFrag += '" />';
-                                HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="';
+                                HTMLFrag += '<input type="img" src="img/delete.png" onclick="app.delete.item(this.alt) class="cancel" alt="';
                                 HTMLFrag += index;
                                 HTMLFrag += '" />';
                                 HTMLFrag+='<input type="text" class="itemCode" placeholder="';
@@ -321,7 +321,7 @@ function onDeviceReady() {
                     HTMLFrag += element.slaughterDate;
                     HTMLFrag += '</span><b>-</b><span>Total: </span><input type="text" value="R';
                     HTMLFrag += element.total;
-                    HTMLFrag += '"/><input type="button" class="cancel" value="X" onclick="app.delete.slaughter(this.alt)" alt="';
+                    HTMLFrag += '"/><input type="img" src="img/delete.png" onclick="app.delete.slaughter(this.alt) class="cancel" alt="';
                     HTMLFrag += index;
                     HTMLFrag += '" />';
                     HTMLFrag += '</article>';
@@ -705,7 +705,7 @@ function onDeviceReady() {
                                         HTMLFrag += '"/></td><td><span id="priceTag">R 0</span></td></tr>';
                                     });
 
-                                    HTMLFrag+='</table><br /><input type="button" class="cancel" onclick="app.delete.sale(this.alt)" value="Delete" alt="';
+                                    HTMLFrag+='</table><br /><input type="img" src="img/delete.png" onclick="app.delete.slaughter(this.alt) class="cancel" alt="';
                                     HTMLFrag += index;
                                     HTMLFrag += '"/>Total:<span>';
                                     HTMLFrag += element.total;
@@ -754,7 +754,7 @@ function onDeviceReady() {
                                         });
                                         HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                         HTMLFrag += innerElement.address;
-                                        HTMLFrag += '</textarea><input type="button" class="cancel" onclick="app.delete.customer(this.alt)" value="Delete" alt="';
+                                        HTMLFrag += '</textarea><input type="img" src="img/delete.png" onclick="app.delete.customer(this.alt) class="cancel" alt="';
                                         HTMLFrag += innerIndex;
                                         HTMLFrag += '"/></fieldset>';
                                     };
@@ -784,7 +784,7 @@ function onDeviceReady() {
                                         });
                                         HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                         HTMLFrag += innerElement.address;
-                                        HTMLFrag += '</textarea><input type="button" class="cancel" onclick="app.delete.customer(this.alt)" value="Delete" alt="';
+                                        HTMLFrag += '</textarea><input type="img" src="img/delete.png" onclick="app.delete.customer(this.alt) class="cancel" alt="';
                                         HTMLFrag += innerIndex;
                                         HTMLFrag += '"/></fieldset>';
                                     }else if(newChar == compareChar){
@@ -809,7 +809,7 @@ function onDeviceReady() {
                                         });
                                         HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                         HTMLFrag += innerElement.address;
-                                        HTMLFrag += '</textarea><input type="button" class="cancel" onclick="app.delete.customer(this.alt)" value="Delete" alt="';
+                                        HTMLFrag += '</textarea><input type="img" src="img/delete.png" onclick="app.delete.customer(this.alt) class="cancel" alt="';
                                         HTMLFrag += innerIndex;
                                         HTMLFrag += '"/></fieldset>';
                                     };
@@ -837,7 +837,7 @@ function onDeviceReady() {
                                 };
                                 HTMLFrag += '<article><input type="button" class="itemName" value="';
                                 HTMLFrag += innerElement.itemName;
-                                HTMLFrag += '" /><input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="';
+                                HTMLFrag += '" /><input type="img" src="img/delete.png" onclick="app.delete.item(this.alt) class="cancel" alt="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '" /><input type="text" class="itemCode" placeholder="';
                                 HTMLFrag += innerElement.itemCode;
@@ -850,7 +850,7 @@ function onDeviceReady() {
                                 compareChar = newChar;
                                 HTMLFrag += '<article><input type="button" class="itemName" value="';
                                 HTMLFrag += innerElement.itemName;
-                                HTMLFrag += '" /><input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="';
+                                HTMLFrag += '" /><input type="img" src="img/delete.png" onclick="app.delete.item(this.alt) class="cancel" alt="';
                                 HTMLFrag += innerElement;
                                 HTMLFrag += '" /><input type="text" class="itemCode" placeholder="';
                                 HTMLFrag += innerElement.itemCode;
@@ -859,7 +859,7 @@ function onDeviceReady() {
                             }else if(newChar == compareChar){
                                 HTMLFrag += '<article><input type="button" class="itemName" value="';
                                 HTMLFrag += innerElement.itemName;
-                                HTMLFrag += '" /><input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="';
+                                HTMLFrag += '" /><input type="img" src="img/delete.png" onclick="app.delete.item(this.alt) class="cancel" alt="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"/><input type="text" class="itemCode" placeholder="';
                                 HTMLFrag += innerElement.itemCode;
@@ -882,7 +882,7 @@ function onDeviceReady() {
                             HTMLFrag += innerElement.slaughterDate;
                             HTMLFrag += '</span><b>-</b><span>Total: </span><input type="text" value="R';
                             HTMLFrag += innerElement.total;
-                            HTMLFrag += '"/><input type="button" class="cancel" value="X" onclick="app.delete.slaughter(this.alt)" alt="';
+                            HTMLFrag += '"/><<input type="img" src="img/delete.png" onclick="app.delete.slaughter(this.alt) class="cancel" alt="';
                             HTMLFrag += innerIndex;
                             HTMLFrag += '" /></article>';
                         });
@@ -1089,5 +1089,4 @@ app.initialize();
         ['Search','Cancel'],             // buttonLabels
         'batamgula'                 // defaultText
     );
-}
 };

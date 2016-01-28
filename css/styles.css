@@ -212,6 +212,7 @@ form#sales input.weight{
 form#sales input.cancel{
     margin: 0!important;
     float: left;
+    max-height: 45px;
 }
 /*New Sale*/
 article#newSale{

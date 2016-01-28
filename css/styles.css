@@ -401,10 +401,10 @@ form#customers figcaption {
     vertical-align: middle;
     display: table-cell;
 } 
-label[for=tab2] + div .sync-button {
+label[for=tab2] + div article input.sync-button {
     height: 50px;
 }
-label[for=tab2] + div  .search-bar {
+label[for=tab2] + div article input.search-bar {
     height: 20px;
     width: calc(100% - 150px);
     margin: 15px 15px 20px;

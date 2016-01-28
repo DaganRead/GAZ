@@ -25,9 +25,6 @@ section#page-wrap{
 .search-button {
     height: 50px;
 }
-.sync-button {
-    vertical-align: bottom;
-}
 .search-bar {
     height: 20px;
     width: calc(100% - 100px);
@@ -404,6 +401,18 @@ form#customers figcaption {
     vertical-align: middle;
     display: table-cell;
 } 
+label[for=tab2] + div .sync-button {
+    height: 50px;
+}
+label[for=tab2] + div  .search-bar {
+    height: 20px;
+    width: calc(100% - 150px);
+    margin: 15px 15px 20px;
+    background-color: rgb(116, 200, 179);
+    border: none;
+    border-bottom: 1px solid white;
+    margin-bottom: 13px;
+}
 /*New Customer*/
 article#newCustomer{
     text-align: right;

@@ -1,4 +1,5 @@
 var app;
+document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {    
     app = {
         DOM : {
@@ -1031,8 +1032,7 @@ function onDeviceReady() {
 //eventlistener
 var el = document.body;
 //el.addEventListener("touchstart", app.simulate, false);
-el.addEventListener("touchend", app.simulate, false);
-document.addEventListener("deviceready", onDeviceReady, false);
+el.addEventListener("touchend", app.simulate, false)
 
 //el.addEventListener("touchcancel", app.simulate, false);
 //el.addEventListener("touchmove", app.simulate, false);

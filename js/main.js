@@ -258,39 +258,65 @@ function onDeviceReady() {
                 });
                 this.data.items.forEach(function(element, index, array) {
                             newChar = element.itemName.charAt(0);
-                            if (newChar < compareChar) {
-                                if (innerElement == innerArray[0]) {
-                                    HTMLFrag += '<fieldset><legend>#</legend>';
+                                                        if (newChar < compareChar) {
+                                if (element == array[0]) {
+                                    HTMLFrag += `
+                                    <fieldset>
+                                        <legend>#</legend>
+                                    `;
                                 };
-                                HTMLFrag += '<article><input type="button" class="itemName" value="';
+                                HTMLFrag += `<article><input type="button" class="itemName" value="`;
                                 HTMLFrag += element.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" onclick="app.delete.item(this.alt)" class="cancel" alt="';
-                                HTMLFrag += innerIndexindex;
-                                HTMLFrag += '" /><input type="text" class="itemCode" placeholder="';
+                                HTMLFrag += `" />`;
+                                HTMLFrag += `<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="`;
+                                HTMLFrag += index;
+                                HTMLFrag += `" />`;
+                                HTMLFrag+=`<input type="text" class="itemCode" placeholder="`;
                                 HTMLFrag += element.itemCode;
-                                HTMLFrag += '" /></article>';
+                                HTMLFrag += `" />`;
+                                HTMLFrag += `<input type="text" class="itemPrice" placeholder="`;
+                                HTMLFrag += element.itemPrice;
+                                HTMLFrag += `" />`;
+                                HTMLFrag +=`</article>`;
                             };
                             if (newChar > compareChar){
-                                HTMLFrag += '</fieldset><fieldset><legend>';                              
+                                HTMLFrag += `
+                                </fieldset>
+                                <fieldset>
+                                    <legend>
+                                `;                              
                                 HTMLFrag += newChar;
-                                HTMLFrag += '</legend>';  
+                                HTMLFrag += `
+                                    </legend>
+                                `;  
                                 compareChar = newChar;
-                                HTMLFrag += '<article><input type="button" class="itemName" value="';
+                                HTMLFrag += `<article><input type="button" class="itemName" value="`;
                                 HTMLFrag += element.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" onclick="app.delete.item(this.alt)" class="cancel" alt="';
-                                HTMLFrag += element;
-                                HTMLFrag += '" /><input type="text" class="itemCode" placeholder="';
-                                HTMLFrag += element.itemCode;
-                                HTMLFrag += '" />';
-                                HTMLFrag += '</article>';
-                            }else if(newChar == compareChar){
-                                HTMLFrag += '<article><input type="button" class="itemName" value="';
-                                HTMLFrag += element.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" onclick="app.delete.item(this.alt)" class="cancel" alt="';
+                                HTMLFrag += `" />`;
+                                HTMLFrag += `<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="`;
                                 HTMLFrag += index;
-                                HTMLFrag += '"/><input type="text" class="itemCode" placeholder="';
+                                HTMLFrag += `"/>`;
+                                HTMLFrag+=`<input type="text" class="itemCode" placeholder="`;
                                 HTMLFrag += element.itemCode;
-                                HTMLFrag += '" /></article>';
+                                HTMLFrag += `" />`;
+                                HTMLFrag += `<input type="text" class="itemPrice" placeholder="`;
+                                HTMLFrag += element.itemPrice;
+                                HTMLFrag += `" />`;
+                                HTMLFrag +=`</article>`;
+                            }else if(newChar == compareChar){
+                                HTMLFrag += `<article><input type="button" class="itemName" value="`;
+                                HTMLFrag += element.itemName;
+                                HTMLFrag += `" />`;
+                                HTMLFrag += `<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="`;
+                                HTMLFrag += index;
+                                HTMLFrag += `" />`;
+                                HTMLFrag+=`<input type="text" class="itemCode" placeholder="`;
+                                HTMLFrag += element.itemCode;
+                                HTMLFrag += `" />`;
+                                HTMLFrag += `<input type="text" class="itemPrice" placeholder="`;
+                                HTMLFrag += element.itemPrice;
+                                HTMLFrag += `" />`;
+                                HTMLFrag +=`</article>`;
                             };
                         app.DOM.items.innerHTML = HTMLFrag;
                 });
@@ -814,40 +840,65 @@ function onDeviceReady() {
                         arr.forEach(function(innerElement, innerIndex, innerArray) {
                             newChar = innerElement.itemName.charAt(0);
                             if (newChar < compareChar) {
-                                if (innerElement == innerArray[0]) {
-                                    HTMLFrag += '<fieldset><legend>#</legend>';
+                                if (element == array[0]) {
+                                    HTMLFrag += `
+                                    <fieldset>
+                                        <legend>#</legend>
+                                    `;
                                 };
-                                HTMLFrag += '<article><input type="button" class="itemName" value="';
+                                HTMLFrag += `<article><input type="button" class="itemName" value="`;
                                 HTMLFrag += innerElement.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" onclick="app.delete.item(this.alt)" class="cancel" alt="';
+                                HTMLFrag += `" />`;
+                                HTMLFrag += `<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="`;
                                 HTMLFrag += innerIndex;
-                                HTMLFrag += '" /><input type="text" class="itemCode" placeholder="';
+                                HTMLFrag += `" />`;
+                                HTMLFrag+=`<input type="text" class="itemCode" placeholder="`;
                                 HTMLFrag += innerElement.itemCode;
-                                HTMLFrag += '" /></article>';
+                                HTMLFrag += `" />`;
+                                HTMLFrag += `<input type="text" class="itemPrice" placeholder="`;
+                                HTMLFrag += innerElement.itemPrice;
+                                HTMLFrag += `" />`;
+                                HTMLFrag +=`</article>`;
                             };
                             if (newChar > compareChar){
-                                HTMLFrag += '</fieldset><fieldset><legend>';                              
+                                HTMLFrag += `
+                                </fieldset>
+                                <fieldset>
+                                    <legend>
+                                `;                              
                                 HTMLFrag += newChar;
-                                HTMLFrag += '</legend>';  
+                                HTMLFrag += `
+                                    </legend>
+                                `;  
                                 compareChar = newChar;
-                                HTMLFrag += '<article><input type="button" class="itemName" value="';
+                                HTMLFrag += `<article><input type="button" class="itemName" value="`;
                                 HTMLFrag += innerElement.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" onclick="app.delete.item(this.alt)" class="cancel" alt="';
-                                HTMLFrag += innerElement;
-                                HTMLFrag += '" /><input type="text" class="itemCode" placeholder="';
-                                HTMLFrag += innerElement.itemCode;
-                                HTMLFrag += '" />';
-                                HTMLFrag += '</article>';
-                            }else if(newChar == compareChar){
-                                HTMLFrag += '<article><input type="button" class="itemName" value="';
-                                HTMLFrag += innerElement.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" onclick="app.delete.item(this.alt)" class="cancel" alt="';
+                                HTMLFrag += `" />`;
+                                HTMLFrag += `<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="`;
                                 HTMLFrag += innerIndex;
-                                HTMLFrag += '"/><input type="text" class="itemCode" placeholder="';
+                                HTMLFrag += `"/>`;
+                                HTMLFrag+=`<input type="text" class="itemCode" placeholder="`;
                                 HTMLFrag += innerElement.itemCode;
-                                HTMLFrag += '" /></article>';
+                                HTMLFrag += `" />`;
+                                HTMLFrag += `<input type="text" class="itemPrice" placeholder="`;
+                                HTMLFrag += innerElement.itemPrice;
+                                HTMLFrag += `" />`;
+                                HTMLFrag +=`</article>`;
+                            }else if(newChar == compareChar){
+                                HTMLFrag += `<article><input type="button" class="itemName" value="`;
+                                HTMLFrag += innerElement.itemName;
+                                HTMLFrag += `" />`;
+                                HTMLFrag += `<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="`;
+                                HTMLFrag += innerIndex;
+                                HTMLFrag += `" />`;
+                                HTMLFrag+=`<input type="text" class="itemCode" placeholder="`;
+                                HTMLFrag += innerElement.itemCode;
+                                HTMLFrag += `" />`;
+                                HTMLFrag += `<input type="text" class="itemPrice" placeholder="`;
+                                HTMLFrag += innerElement.itemPrice;
+                                HTMLFrag += `" />`;
+                                HTMLFrag +=`</article>`;
                             };
-                        });
                         app.DOM.items.innerHTML = HTMLFrag;
                 });
             });

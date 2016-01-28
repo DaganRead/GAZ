@@ -881,7 +881,7 @@ function onDeviceReady() {
                             HTMLFrag += innerElement.slaughterDate;
                             HTMLFrag += '</span><b>-</b><span>Total: </span><input type="text" value="R';
                             HTMLFrag += innerElement.total;
-                            HTMLFrag += '"/><<input type="image" src="img/delete.png" onclick="app.delete.slaughter(this.alt) class="cancel" alt="';
+                            HTMLFrag += '"/><input type="image" src="img/delete.png" onclick="app.delete.slaughter(this.alt) class="cancel" alt="';
                             HTMLFrag += innerIndex;
                             HTMLFrag += '" /></article>';
                         });
@@ -1009,12 +1009,63 @@ function onDeviceReady() {
         },
         sync : {
             customers : function() {
-                //app.data.customers = [];
-                app.data.customers.sort(function(a, b) {
-                    return a.firstName.localeCompare(b.firstName);
-                });
-                app.store('customer');
-                alert("contacts sync success!");
+                function onPrompt(results) {
+                //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+                    function onSuccess(contacts) {
+                        var msg = '',
+                            temp = '',
+                            syncArr = [],
+                            tempNumber = 1,
+                            syncNumber = 1;
+                        contacts.forEach(function(element, index, array) {
+                            if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
+                            tempNumber ++;
+                                if (app.data.customers.indexOf(element) == -1) {
+                                    temp += syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
+                                    syncNumber++;
+                                    syncArr.push(element);
+                                };
+                            };
+                        });
+                    msg += tempNumber + ' contacts successfully retrieved; ' + (syncNumber-1) + ' contacts are not in the customer listing:\n\n' + temp;                
+                    navigator.notification.confirm(
+                            msg,
+                            function(buttonIndex) {
+                                if (buttonIndex) {
+                                    syncArr.forEach(function(element, index, array) {
+                                        app.data.customers.push(element);
+                                    });
+                                    app.data.customers.sort(function(a, b) {
+                                        return a.firstName.localeCompare(b.firstName);
+                                    });
+                                    app.store('customer');
+                                };
+                            },
+                            'Confirm Sync',
+                            ['Add','Cancel']
+                        );
+                    };
+
+                    function onError(contactError) {
+                        alert(results.input1);
+                        navigator.notification.alert('error', function() {}, 'No Contacts Found!', 'Try Again');
+                    };
+
+                    // find all contacts with 'Bob' in any name field
+                    var options      = new ContactFindOptions();
+                    options.filter   = results.input1;
+                    options.multiple = true;
+                    var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+                    navigator.contacts.find(fields, onSuccess, onError, options);
+            };
+
+            navigator.notification.prompt(
+                'Please enter a search term',  // message
+                onPrompt,                  // callback to invoke
+                'Contact Sync',            // title
+                ['Search','Cancel'],             // buttonLabels
+                'batamgula'                 // defaultText
+            );
             },
             items : function() {
                 //app.data.items = [];
@@ -1027,66 +1078,12 @@ function onDeviceReady() {
         }
     };
 
-//eventlistener
-var el = document.body;
-//el.addEventListener("touchstart", app.simulate, false);
-el.addEventListener("touchend", app.simulate, false)
+    //eventlistener
+    var el = document.body;
+    //el.addEventListener("touchstart", app.simulate, false);
+    el.addEventListener("touchend", app.simulate, false)
 
-//el.addEventListener("touchcancel", app.simulate, false);
-//el.addEventListener("touchmove", app.simulate, false);
-app.initialize();
-    function onPrompt(results) {
-        //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
-            function onSuccess(contacts) {
-                var msg = '',
-                    temp = '',
-                    syncArr = [],
-                    tempNumber = 1,
-                    syncNumber = 1;
-                contacts.forEach(function(element, index, array) {
-                    if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
-                    tempNumber ++;
-                        if (app.data.customers.indexOf(element) == -1) {
-                            temp += syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
-                            syncNumber++;
-                            syncArr.push(element);
-                        };
-                    };
-                });
-            msg += tempNumber + ' contacts successfully retrieved; ' + (syncNumber-1) + ' contacts are not in the customer listing:\n\n' + temp;                
-            navigator.notification.confirm(
-                    msg,
-                    function(buttonIndex) {
-                        if (buttonIndex) {
-                            syncArr.forEach(function(element, index, array) {
-                                app.data.customers.push(element);
-                            });
-                            app.store('customer');
-                        };
-                    },
-                    'Confirm Sync',
-                    ['Add','Cancel']
-                );
-            };
-
-            function onError(contactError) {
-                alert(results.input1);
-                navigator.notification.alert('error', function() {}, 'No Contacts Found!', 'Try Again');
-            };
-
-            // find all contacts with 'Bob' in any name field
-            var options      = new ContactFindOptions();
-            options.filter   = results.input1;
-            options.multiple = true;
-            var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
-            navigator.contacts.find(fields, onSuccess, onError, options);
-    };
-
-    navigator.notification.prompt(
-        'Please enter a search term',  // message
-        onPrompt,                  // callback to invoke
-        'Contact Sync',            // title
-        ['Search','Cancel'],             // buttonLabels
-        'batamgula'                 // defaultText
-    );
+    //el.addEventListener("touchcancel", app.simulate, false);
+    //el.addEventListener("touchmove", app.simulate, false);
+    app.initialize();
 };

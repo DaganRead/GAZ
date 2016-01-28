@@ -512,6 +512,10 @@ article#newItem [type=text]{
 article#slaughters{
 
 }
+article#slaughters .cancel{
+    height: 30px;
+    
+}
 article#slaughters input, article#slaughters select{
     background-color: #00B4B8;
     color: white;

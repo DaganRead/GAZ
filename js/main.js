@@ -127,14 +127,15 @@ function onDeviceReady() {
                                 HTMLFrag += innerElement.weight;
                                 HTMLFrag += '</span></td><td><span id="priceTag">R 0</span></td></tr>';
                             });
-
-                            HTMLFrag+='</table><br />';
+                            HTMLFrag += '</table><br />';
                             HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.sale(this.alt)" class="cancel" alt="';
                             HTMLFrag += index;
                             HTMLFrag += '"/>Total:<span>';
-                            HTMLFrag += element.total;
-                            HTMLFrag += '</span>';
-                            HTMLFrag+='</fieldset>';
+                            HTMLFrag += '</span><br /><textarea class="notes" alt="';
+                            HTMLFrag += index;
+                            HTMLFrag += '" oninput="app.update.sale(this)" > '; 
+                            HTMLFrag += element.notes;
+                            HTMLFrag += '</textarea></fieldset>';
                         });
                 app.DOM.sales.innerHTML = HTMLFrag;
                 /*customers*/
@@ -686,7 +687,11 @@ function onDeviceReady() {
                         HTMLFrag += index;
                         HTMLFrag += '"/>Total:<span>';
                         HTMLFrag += element.total;
-                        HTMLFrag += '</span></fieldset>';
+                        HTMLFrag += '</span><br /><textarea class="notes" alt="';
+                        HTMLFrag += index;
+                        HTMLFrag += '" oninput="app.update.sale(this)" > '; 
+                        HTMLFrag += element.notes;
+                        HTMLFrag += '</textarea></fieldset>';
                     });
                     app.DOM.sales.innerHTML = HTMLFrag;
                 });

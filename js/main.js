@@ -1,6 +1,4 @@
-var app;
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {    
+var app;   
     app = {
         DOM : {
             newSale: document.getElementById('newSale'),
@@ -1120,4 +1118,3 @@ function onDeviceReady() {
     //el.addEventListener("touchcancel", app.simulate, false);
     //el.addEventListener("touchmove", app.simulate, false);
     app.initialize();
-};

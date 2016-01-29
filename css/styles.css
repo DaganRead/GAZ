@@ -230,13 +230,13 @@ form#sales input.weight{
     text-align: center;
 }
 form#sales input.cancel{
-    margin: 0!important;
+    margin: 10px 0 !important;
     float: left;
-    max-height: 45px;
+    max-height: 42px;
 }
 form#sales textarea.notes {
     width: calc(99% - 50px);
-    max-width: calc(99% - 50px)!important;
+    max-width: calc(99% - 80px)!important;
     background-color: #00B4B8;
     color: #FFF;
     border: 2px solid #FFF;

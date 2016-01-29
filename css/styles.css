@@ -175,7 +175,7 @@ form#sales fieldset{
      text-align: right;
      margin: auto;
      margin-bottom: 15px;
-     width: 95%;
+     width: (99% - 5px);
 }
 form#sales table{
     width: 98%;

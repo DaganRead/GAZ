@@ -232,9 +232,13 @@ form#sales input.weight{
     text-align: center;
 }
 form#sales input.cancel{
-    margin: 5px auto 5px auto!important;
-    max-height: 52px;
-    padding: 5px 40% 5px 40%;
+    margin: 0px !important;
+    height: 40px;
+    padding: 5px 41%;
+}
+form#sales span.noteHeader{
+    color: white;
+    float: left;
 }
 form#sales input.noteClear{
     margin: 10px 0 !important;
@@ -244,8 +248,8 @@ form#sales input.noteClear{
     border: 2px solid white;
 }
 form#sales textarea.notes {
-    width: calc(99% - 80px);
-    max-width: calc(99% - 80px)!important;
+    width: calc(99% - 70px);
+    max-width: calc(99% - 70px)!important;
     background-color: #00B4B8;
     color: #FFF;
     border: 2px solid #FFF;

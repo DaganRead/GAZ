@@ -430,6 +430,7 @@ form#customers fieldset select{
     -webkit-user-select: none;
     -moz-appearance: none;
     outline: none;
+    text-align: center;
 }
 form#customers fieldset fieldset legend input{
     width: 100%;

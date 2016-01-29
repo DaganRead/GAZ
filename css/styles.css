@@ -231,7 +231,7 @@ form#sales input.cancel{
     max-height: 45px;
 }
 form#sales textarea.notes {
-    width: 99%;
+    max-width: calc(99% - 50px);
     background-color: #00B4B8;
     color: #FFF;
     border: 2px solid #FFF;
@@ -409,6 +409,7 @@ form#customers fieldset select{
     width: 95%;
     vertical-align: middle;
     -webkit-appearance: none;
+    -webkit-user-select: none;
     -moz-appearance: none;
 }
 form#customers fieldset fieldset legend input{

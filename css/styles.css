@@ -348,6 +348,9 @@ form#customers fieldset fieldset{
 }
 form#customers fieldset fieldset .cancel{
     height: 45px;
+    width: 45px;
+    margin: 0px !important;
+    padding: 10px 40%;
 }
 form#customers fieldset fieldset.acc-open{
     padding-bottom: 260px;
@@ -533,7 +536,9 @@ article#slaughters{
 }
 article#slaughters .cancel{
     height: 30px;
-
+    margin: 0;
+    vertical-align: bottom;
+    margin-left: 20px;
 }
 article#slaughters input, article#slaughters select{
     background-color: #00B4B8;

@@ -230,6 +230,14 @@ form#sales input.cancel{
     float: left;
     max-height: 45px;
 }
+form#sales textarea.notes {
+    width: 99%;
+    background-color: #00B4B8;
+    color: #FFF;
+    border: 2px solid #FFF;
+    padding: 5px;
+    margin: 10px 0 10px 0;
+}
 /*New Sale*/
 article#newSale{
     width: 100%;
@@ -366,7 +374,7 @@ form#customers fieldset fieldset .cancel{
     padding: 10px 40%;
 }
 form#customers fieldset fieldset.acc-open{
-    padding-bottom: 270px;
+    padding-bottom: 285px;
 }
 form#customers fieldset fieldset input:nth-child(2), form#customers fieldset fieldset input:nth-child(3){
     width: 45%!important;

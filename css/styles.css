@@ -232,15 +232,14 @@ form#sales input.weight{
     text-align: center;
 }
 form#sales input.cancel{
-    margin: 10px auto !important;
-    max-height: 42px;
-    width: 90%;
+    margin: 5px auto 5px auto!important;
+    max-height: 52px;
+    padding: 5px 40% 5px 40%;
 }
 form#sales input.noteClear{
     margin: 10px 0 !important;
     float: left;
     max-height: 42px;
-    width: 50px;
 }
 form#sales textarea.notes {
     width: calc(99% - 80px);

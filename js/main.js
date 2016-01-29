@@ -210,7 +210,7 @@ function onDeviceReady() {
                                 HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                 HTMLFrag += element.address;
                                 HTMLFrag += '</textarea>';
-                                HTMLFrag += '<input type="image" src="img/delete.png" onclick="alert(this.alt)" class="cancel" alt="';
+                                HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
                                 HTMLFrag += index;
                                 HTMLFrag += '"/>';                              
                                 HTMLFrag += '</fieldset>';
@@ -239,7 +239,7 @@ function onDeviceReady() {
                                 HTMLFrag += '</select></figcaption></figure></article><textarea>';
                                 HTMLFrag += element.address;
                                 HTMLFrag += '</textarea>';
-                                HTMLFrag += '<input type="image" src="img/delete.png" onclick="alert(this.alt)" class="cancel" alt="';
+                                HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
                                 HTMLFrag += index;
                                 HTMLFrag += '"/>';                              
                                 HTMLFrag += '</fieldset>';

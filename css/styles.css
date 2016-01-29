@@ -346,6 +346,9 @@ form#customers fieldset fieldset{
     height: 20px;
     width: 100%;
 }
+form#customers fieldset fieldset .cancel{
+    height: 45px;
+}
 form#customers fieldset fieldset.acc-open{
     padding-bottom: 260px;
 }

@@ -390,10 +390,6 @@ form#customers fieldset select{
     width: 100%;
     vertical-align: top;
 }
-form#customers fieldset input.cancel{
-    width: 100%;
-    margin: 0!important;
-}
 form#customers fieldset fieldset legend input{
     width: 100%;
     border: medium none;
@@ -511,6 +507,8 @@ form#items fieldset article input.cancel{
     margin: 0px;
     vertical-align: top;
     float: right;
+    width: 45px;
+    height: 45px;
 }
 form#items fieldset article{
     margin: 20px 0px 20px 5px;

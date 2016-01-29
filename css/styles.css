@@ -404,12 +404,12 @@ form#customers fieldset article{
     text-align: center;
 }
 form#customers fieldset select{
-    background-color: rgb(116, 200, 179);
+    background-color:#0DB6B9;
     border: none;
-    border-bottom: 1px solid white;
-    margin-bottom: 13px;
-    width: 100%;
-    vertical-align: top;
+    width: 95%;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 form#customers fieldset fieldset legend input{
     width: 100%;

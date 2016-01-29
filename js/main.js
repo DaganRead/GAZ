@@ -258,63 +258,54 @@ function onDeviceReady() {
                             newChar = element.itemName.charAt(0);
                             if (newChar < compareChar) {
                                 if (element == array[0]) {
-                                    HTMLFrag += `
-                                    <fieldset>
-                                        <legend>#</legend>
-                                    `;
+                                    HTMLFrag += '<fieldset><legend>#</legend>';
                                 };
-                                HTMLFrag += `<article><input type="button" class="itemName" value="`;
+                                HTMLFrag += '<article><input type="button" class="itemName" value="';
                                 HTMLFrag += element.itemName;
-                                HTMLFrag += `" />`;
-                                HTMLFrag += `<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="`;
+                                HTMLFrag += '" />';
+                                HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="';
                                 HTMLFrag += index;
-                                HTMLFrag += `" />`;
-                                HTMLFrag+=`<input type="text" class="itemCode" placeholder="`;
+                                HTMLFrag += '" />';
+                                HTMLFrag+='<input type="text" class="itemCode" placeholder="';
                                 HTMLFrag += element.itemCode;
-                                HTMLFrag += `" />`;
-                                HTMLFrag += `<input type="text" class="itemPrice" placeholder="`;
+                                HTMLFrag += '" />';
+                                HTMLFrag += '<input type="text" class="itemPrice" placeholder="';
                                 HTMLFrag += element.itemPrice;
-                                HTMLFrag += `" />`;
-                                HTMLFrag +=`</article>`;
+                                HTMLFrag += '" />';
+                                HTMLFrag +='</article>';
                             };
                             if (newChar > compareChar){
-                                HTMLFrag += `
-                                </fieldset>
-                                <fieldset>
-                                    <legend>
-                                `;                              
+                                HTMLFrag += '</fieldset><fieldset><legend>';                              
                                 HTMLFrag += newChar;
-                                HTMLFrag += `
-                                    </legend>
-                                `;  
+                                HTMLFrag += '</legend>';  
                                 compareChar = newChar;
-                                HTMLFrag += `<article><input type="button" class="itemName" value="`;
+                                HTMLFrag += '<article><input type="button" class="itemName" value="';
                                 HTMLFrag += element.itemName;
-                                HTMLFrag += `" />`;
-                                HTMLFrag += `<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="`;
+                                HTMLFrag += '" />';
+                                HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="';
                                 HTMLFrag += index;
-                                HTMLFrag += `"/>`;
-                                HTMLFrag+=`<input type="text" class="itemCode" placeholder="`;
+                                HTMLFrag += '"/>';
+                                HTMLFrag += '<input type="text" class="itemCode" placeholder="';
                                 HTMLFrag += element.itemCode;
-                                HTMLFrag += `" />`;
-                                HTMLFrag += `<input type="text" class="itemPrice" placeholder="`;
+                                HTMLFrag += '" />';
+                                HTMLFrag += '<input type="text" class="itemPrice" placeholder="';
                                 HTMLFrag += element.itemPrice;
-                                HTMLFrag += `" />`;
-                                HTMLFrag +=`</article>`;
+                                HTMLFrag += '" />';
+                                HTMLFrag +='</article>';
                             }else if(newChar == compareChar){
-                                HTMLFrag += `<article><input type="button" class="itemName" value="`;
+                                HTMLFrag += '<article><input type="button" class="itemName" value="';
                                 HTMLFrag += element.itemName;
-                                HTMLFrag += `" />`;
-                                HTMLFrag += `<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="`;
+                                HTMLFrag += '" />';
+                                HTMLFrag += '<input type="button" class="cancel" onclick="app.delete.item(this.alt)" value="X" alt="';
                                 HTMLFrag += index;
-                                HTMLFrag += `" />`;
-                                HTMLFrag+=`<input type="text" class="itemCode" placeholder="`;
+                                HTMLFrag += '" />';
+                                HTMLFrag += '<input type="text" class="itemCode" placeholder="';
                                 HTMLFrag += element.itemCode;
-                                HTMLFrag += `" />`;
-                                HTMLFrag += `<input type="text" class="itemPrice" placeholder="`;
+                                HTMLFrag += '" />';
+                                HTMLFrag += '<input type="text" class="itemPrice" placeholder="';
                                 HTMLFrag += element.itemPrice;
-                                HTMLFrag += `" />`;
-                                HTMLFrag +=`</article>`;
+                                HTMLFrag += '" />';
+                                HTMLFrag +='</article>';
                             };
                         app.DOM.items.innerHTML = HTMLFrag;
                 });

@@ -240,6 +240,8 @@ form#sales input.noteClear{
     margin: 10px 0 !important;
     float: left;
     max-height: 42px;
+    background-color: #ED1F24 !important;
+    border: 2px solid white;
 }
 form#sales textarea.notes {
     width: calc(99% - 80px);

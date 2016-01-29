@@ -131,7 +131,7 @@ var app;
                             HTMLFrag += '" oninput="app.update.sale(this)" > '; 
                             HTMLFrag += element.notes;
                             HTMLFrag += '</textarea>';
-                            HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="alert(JSON.stringify(this))" /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.alt)" class="cancel" alt="';
+                            HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.alt)" class="cancel" alt="';
                             HTMLFrag += index;
                             HTMLFrag += '"/></fieldset>';
                         });

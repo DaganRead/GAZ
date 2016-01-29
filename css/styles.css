@@ -235,7 +235,7 @@ form#sales input.cancel{
     max-height: 42px;
 }
 form#sales textarea.notes {
-    width: calc(99% - 50px);
+    width: calc(99% - 80px);
     max-width: calc(99% - 80px)!important;
     background-color: #00B4B8;
     color: #FFF;

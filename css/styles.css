@@ -1,4 +1,7 @@
 /* Common */
+input::-moz-placeholder {
+    color: white;
+}
 input.confirm{
     background-color: #69BD45!important;
     margin-top: 25x!important;

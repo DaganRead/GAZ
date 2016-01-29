@@ -34,8 +34,8 @@ function onDeviceReady() {
                         break;
                 };      
             };
-    },
-    store : function(type) {
+        },
+        store : function(type) {
             switch(type){
                         case "sale" :
                             var temp = JSON.parse(window.localStorage['data']);
@@ -99,7 +99,6 @@ function onDeviceReady() {
                     HTMLFrag += '<tr><td><input type="text" class="tableInput" onclick="app.purchaseTableAdd(this)" placeholder="Item Code" /></td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                     HTMLFrag += '</table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel" /></article>';
                 app.DOM.newSale.innerHTML = HTMLFrag;
-
                 /* Sales */
                 var HTMLFrag = '';
                 this.data.sales.forEach(function(element, index, array) {
@@ -140,7 +139,6 @@ function onDeviceReady() {
                             HTMLFrag+='</fieldset>';
                         });
                 app.DOM.sales.innerHTML = HTMLFrag;
-
                 /*customers*/
                 HTMLFrag = '';
                 var newChar,
@@ -258,7 +256,7 @@ function onDeviceReady() {
                 });
                 this.data.items.forEach(function(element, index, array) {
                             newChar = element.itemName.charAt(0);
-                                                        if (newChar < compareChar) {
+                            if (newChar < compareChar) {
                                 if (element == array[0]) {
                                     HTMLFrag += `
                                     <fieldset>
@@ -335,10 +333,8 @@ function onDeviceReady() {
                     HTMLFrag += index;
                     HTMLFrag += '" />';
                     HTMLFrag += '</article>';
-                        
                 });
                 app.DOM.slaughters.innerHTML = HTMLFrag;
-
             };
         }(),
         forms: {
@@ -674,7 +670,6 @@ function onDeviceReady() {
                                 }
                             });
                             break;
-
                     }
                 };
             }
@@ -712,7 +707,6 @@ function onDeviceReady() {
                                         HTMLFrag += innerElement.weight;
                                         HTMLFrag += '"/></td><td><span id="priceTag">R 0</span></td></tr>';
                                     });
-
                                     HTMLFrag+='</table><br /><input type="image" src="img/delete.png" onclick="app.delete.slaughter(this.alt)" class="cancel" alt="';
                                     HTMLFrag += index;
                                     HTMLFrag += '"/>Total:<span>';
@@ -722,7 +716,6 @@ function onDeviceReady() {
                                 app.DOM.sales.innerHTML = HTMLFrag;
                 });
             });
-
             Object.observe(app.data.customers, function(changes) {
                 changes.forEach(function(element, index, array) {
                         var arr = element.object,
@@ -825,7 +818,6 @@ function onDeviceReady() {
                         app.DOM.customers.innerHTML = HTMLFrag;
                 });
             });
-
             Object.observe(app.data.items, function(changes) {      
                 changes.forEach(function(element, index, array) {
                         var arr = element.object,
@@ -902,7 +894,6 @@ function onDeviceReady() {
                         app.DOM.items.innerHTML = HTMLFrag;
                 });
             });
-
             Object.observe(app.data.slaughters, function(changes) {
                 changes.forEach(function(element, index, array) {
                         HTMLFrag = '';
@@ -922,7 +913,6 @@ function onDeviceReady() {
                         app.DOM.slaughters.innerHTML = HTMLFrag;
                 });
             });
-
             Object.observe(app.data.locations, function(changes) {
                 changes.forEach(function(element, index, array) {
                     if (element.type === "add") {
@@ -936,7 +926,6 @@ function onDeviceReady() {
                             HTMLFrag += element.location;
                             HTMLFrag += '</option>';
                         });
-
                         var temp = document.getElementsByTagName('select');
                         for (var i = temp.length - 1; i >= 0; i--) {
                             if (temp[i].id == "newSaleLocationSelect") {
@@ -1116,7 +1105,6 @@ function onDeviceReady() {
     var el = document.body;
     //el.addEventListener("touchstart", app.simulate, false);
     el.addEventListener("touchend", app.simulate, false)
-
     //el.addEventListener("touchcancel", app.simulate, false);
     //el.addEventListener("touchmove", app.simulate, false);
     app.initialize();

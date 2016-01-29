@@ -123,11 +123,9 @@ function onDeviceReady() {
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '" oninput="app.update.sale(this)" placeholder="';
                                 HTMLFrag += innerElement.quantity;
-                                HTMLFrag += '"/></td><td class="small"><input type="text" class="priceTag" alt="';
-                                HTMLFrag += innerIndex;
-                                HTMLFrag += '" oninput="app.update.sale(this)" placeholder="';
+                                HTMLFrag += '"/></td><td class="small"><td class="headerLarge">@</td><td><span class="priceKG">';
                                 HTMLFrag += innerElement.weight;
-                                HTMLFrag += '"/></td><td><span id="priceTag">R 0</span></td></tr>';
+                                HTMLFrag += '</span></td><td><span id="priceTag">R 0</span></td></tr>';
                             });
 
                             HTMLFrag+='</table><br />';
@@ -680,11 +678,9 @@ function onDeviceReady() {
                             HTMLFrag += innerIndex;
                             HTMLFrag += '" oninput="app.update.sale(this)" placeholder="';
                             HTMLFrag += innerElement.quantity;
-                            HTMLFrag += '"/></td><td class="small"><input type="text" class="priceTag" alt="';
-                            HTMLFrag += innerIndex;
-                            HTMLFrag += '" oninput="app.update.sale(this)" placeholder="';
+                            HTMLFrag += '"/></td><td class="small"><td class="headerLarge">@</td><td><span class="priceKG">';
                             HTMLFrag += innerElement.weight;
-                            HTMLFrag += '"/></td><td><span id="priceTag">R 0</span></td></tr>';
+                            HTMLFrag += '</span></td><td><span id="priceTag">R 0</span></td></tr>';
                         });
                         HTMLFrag+='</table><br /><input type="image" src="img/delete.png" onclick="app.delete.slaughter(this.alt)" class="cancel" alt="';
                         HTMLFrag += index;

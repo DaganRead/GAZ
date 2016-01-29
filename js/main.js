@@ -127,15 +127,15 @@ function onDeviceReady() {
                                 HTMLFrag += innerElement.weight;
                                 HTMLFrag += '</span></td><td><span id="priceTag">R 0</span></td></tr>';
                             });
-                            HTMLFrag += '</table><br />';
-                            HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.sale(this.alt)" class="cancel" alt="';
-                            HTMLFrag += index;
-                            HTMLFrag += '"/>Total:<span>';
+                            HTMLFrag += '</table><br />Total:<span>';
                             HTMLFrag += '</span><br /><textarea class="notes" alt="';
                             HTMLFrag += index;
                             HTMLFrag += '" oninput="app.update.sale(this)" > '; 
                             HTMLFrag += element.notes;
-                            HTMLFrag += '</textarea></fieldset>';
+                            HTMLFrag += '</textarea>';
+                            HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.sale(this.alt)" class="cancel" alt="';
+                            HTMLFrag += index;
+                            HTMLFrag += '"/></fieldset>';
                         });
                 app.DOM.sales.innerHTML = HTMLFrag;
                 /*customers*/
@@ -508,7 +508,8 @@ function onDeviceReady() {
                 lastName: this.forms.newSale.lastName(),
                 purchaseTable: this.forms.newSale.purchaseTable,
                 location: this.forms.newSale.location().innerHTML,
-                total: 0
+                total: 0,
+                notes : ''
             },
             newCustomer = {
                 location : this.forms.newSale.location(),
@@ -683,15 +684,15 @@ function onDeviceReady() {
                             HTMLFrag += innerElement.weight;
                             HTMLFrag += '</span></td><td><span id="priceTag">R 0</span></td></tr>';
                         });
-                        HTMLFrag+='</table><br /><input type="image" src="img/delete.png" onclick="app.delete.slaughter(this.alt)" class="cancel" alt="';
-                        HTMLFrag += index;
-                        HTMLFrag += '"/>Total:<span>';
-                        HTMLFrag += element.total;
+                        HTMLFrag += '</table><br />Total:<span>';
                         HTMLFrag += '</span><br /><textarea class="notes" alt="';
                         HTMLFrag += index;
                         HTMLFrag += '" oninput="app.update.sale(this)" > '; 
                         HTMLFrag += element.notes;
-                        HTMLFrag += '</textarea></fieldset>';
+                        HTMLFrag += '</textarea>';
+                        HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.sale(this.alt)" class="cancel" alt="';
+                        HTMLFrag += index;
+                        HTMLFrag += '"/></fieldset>';
                     });
                     app.DOM.sales.innerHTML = HTMLFrag;
                 });

@@ -353,7 +353,7 @@ form#customers fieldset fieldset .cancel{
     padding: 10px 40%;
 }
 form#customers fieldset fieldset.acc-open{
-    padding-bottom: 260px;
+    padding-bottom: 270px;
 }
 form#customers fieldset fieldset input:nth-child(2), form#customers fieldset fieldset input:nth-child(3){
     width: 45%!important;
@@ -507,8 +507,8 @@ form#items fieldset article input.cancel{
     margin: 0px;
     vertical-align: top;
     float: right;
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
 }
 form#items fieldset article{
     margin: 20px 0px 20px 5px;
@@ -534,6 +534,7 @@ article#slaughters{
 }
 article#slaughters .cancel{
     height: 30px;
+    width: 30px;
     margin: 0;
     vertical-align: bottom;
     margin-left: 20px;

@@ -15,6 +15,10 @@
 :placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
   color:    white;
 }
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
 input.confirm{
     background-color: #69BD45!important;
     margin-top: 25x!important;
@@ -231,7 +235,8 @@ form#sales input.cancel{
     max-height: 45px;
 }
 form#sales textarea.notes {
-    max-width: calc(99% - 50px);
+    width: calc(99% - 50px);
+    max-width: calc(99% - 50px)!important;
     background-color: #00B4B8;
     color: #FFF;
     border: 2px solid #FFF;
@@ -406,11 +411,12 @@ form#customers fieldset article{
 form#customers fieldset select{
     background-color:#0DB6B9;
     border: none;
-    width: 95%;
+    width: 90%;
     vertical-align: middle;
     -webkit-appearance: none;
     -webkit-user-select: none;
     -moz-appearance: none;
+    outline: none;
 }
 form#customers fieldset fieldset legend input{
     width: 100%;

@@ -169,11 +169,12 @@ figcaption {
     display: table-cell;
 } 
 form#sales fieldset{
- border-color:white;
- border-width: 2pt;
- border-radius: 15px 15px;
- text-align: right;
- margin-bottom: 15px;
+     border-color:white;
+     border-width: 2pt;
+     border-radius: 15px 15px;
+     text-align: right;
+     margin-bottom: 15px;
+     width: 98%;
 }
 form#sales table{
     width: 98%;

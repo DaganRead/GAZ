@@ -173,8 +173,9 @@ form#sales fieldset{
      border-width: 2pt;
      border-radius: 15px 15px;
      text-align: right;
+     margin: auto;
      margin-bottom: 15px;
-     width: 98%;
+     width: 95%;
 }
 form#sales table{
     width: 98%;

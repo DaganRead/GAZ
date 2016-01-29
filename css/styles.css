@@ -1,4 +1,10 @@
 /* Common */
+input::-moz-placeholder {
+    color: white;
+}
+input:-moz-placeholder {
+    color: white;
+}
 input:placeholder-shown {
     color: white;
 }

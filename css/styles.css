@@ -1,5 +1,5 @@
 /* Common */
-input::-moz-placeholder {
+input:placeholder-shown {
     color: white;
 }
 input.confirm{

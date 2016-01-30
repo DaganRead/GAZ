@@ -154,6 +154,7 @@ var app;
                                 HTMLFrag += innerElement.quantity;
                                 HTMLFrag += '"/></td><td class="small"><td class="headerLarge">@</td><td><span class="priceKG">';
                                 HTMLFrag += 'R ' + innerElement.itemPrice;
+                                alert(innerElement.itemPrice);
                                 HTMLFrag += '</span></td><td><span id="priceTag">R ';
                                 HTMLFrag += innerElement.quantity * innerElement.itemPrice;
                                 total += innerElement.quantity * innerElement.itemPrice;

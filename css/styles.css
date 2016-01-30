@@ -182,7 +182,7 @@ form#sales table{
     margin-top: 15px;
 }
 form#sales table td.headerLarge{
-    width: 15%;
+    width: 6%;
     text-align: center;
 }
 form#sales table td.large{
@@ -207,13 +207,17 @@ form#sales input.priceTag{
     width: 30px;
     text-align: center;
 }
-form#sales input.itemCode{
+form#sales select.itemCode{
     background-color: #00B4B8;
     color: #FFF;
     border: 2px solid #FFF;
     padding: 5px;
     width: calc(100% - 20px);
     text-align: center;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    -moz-appearance: none;
+    outline: none;
 }
 form#sales input.quantity{
     background-color: #00B4B8;
@@ -365,6 +369,20 @@ article#newSale table#newSalePurchaseTable input{
     margin: 0!important;
     padding: 5px;
 }
+article#newSale table#newSalePurchaseTable select{
+    width: calc(100% - 10px)!important;
+    margin: 0!important;
+    background-color: #00B4B8;
+    color: #FFF;
+    border: 2px solid #FFF;
+    padding: 5px;
+    width: calc(100% - 20px);
+    text-align: center;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    -moz-appearance: none;
+    outline: none;
+}
 article#newSale table#newSalePurchaseTable td:nth-child(3) input{
     width: calc(25% - 10px)!important;
     margin: 0!important;
@@ -431,6 +449,7 @@ form#customers fieldset select{
     -moz-appearance: none;
     outline: none;
     text-align: center;
+    color: white;
 }
 form#customers fieldset fieldset legend input{
     width: 100%;
@@ -510,7 +529,7 @@ article#newCustomer input.cancel{
 /* Items */
 form#items fieldset{
     border: none;
-    width: 100%;
+    width: 97%;
 }
 form#items fieldset fieldset{
     border: none;

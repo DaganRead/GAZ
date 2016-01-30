@@ -30,6 +30,9 @@ var app;
                         touches[i].target.control.checked = true;
                         touches[i].target.control.onclick.call(touches[i].target.control);
                         break;
+                    case "SELECT" :
+                        touches[i].target.onchange.call(touches[i].target);
+                        break;
                 };      
             };
         },
@@ -128,7 +131,7 @@ var app;
                                 innerElement = JSON.parse(innerElement);
                                 HTMLFrag += '<tr><td>';
                                 HTMLFrag += '<select class="itemCode" onChange="this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.children[0].innerHTML = \'R \' + this.selectedOptions[0].attributes[0].value; app.update.sale(this)" alt="';
-                                HTMLFrag += index;
+                                HTMLFrag += innerIndex;
                                 HTMLFrag += '" oninput="app.update.sale(this)" >';
 
                                 app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
@@ -716,7 +719,7 @@ var app;
                             innerElement = JSON.parse(innerElement);
                             HTMLFrag += '<tr><td>';
                                 HTMLFrag += '<select class="itemCode" onChange="this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.children[0].innerHTML = \'R \' + this.selectedOptions[0].attributes[0].value; app.update.sale(this)" alt="';
-                            HTMLFrag += index;
+                            HTMLFrag += innerIndex;
                             HTMLFrag += '" oninput="app.update.sale(this)" >';
 
                             app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
@@ -1037,15 +1040,12 @@ var app;
                     });
                 var data = function() {
                     var children = target.parentNode.parentNode.children;
-                        for (var i = 0; i < sale.purchaseTable.length; i++) {
-                            sale.purchaseTable[saleAlt] = {
+                            sale.purchaseTable[target.alt||target.attributes[1]] = {
                                 itemCode : children[0].children[0].selectedOptions[0].value || children[0].children[0].placeholder,
                                 quantity: children[2].children[0].value || children[2].children[0].placeholder,
                                 itemPrice: children[5].children[0].innerHTML.slice(2)
                             };
-                            console.log(children);
                             children[children.length-1].innerHTML = 'R ' + sale.purchaseTable[saleAlt].itemPrice * sale.purchaseTable[saleAlt].quantity;
-                        };
                         return sale;
                 };
                 var totalDOM = target.parentNode.parentNode.parentNode.parentNode.parentNode.children;
@@ -1058,7 +1058,6 @@ var app;
                 totalDOM[5].innerHTML = total;
                 sale.total = total;
                 app.data.sales[saleAlt] = sale;
-                console.log(sale);
                 app.store('sale');
             }
         },

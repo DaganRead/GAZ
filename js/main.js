@@ -150,7 +150,7 @@ var app;
                                 HTMLFrag += '" oninput="app.update.sale(this)" placeholder="';
                                 HTMLFrag += innerElement.quantity;
                                 HTMLFrag += '"/></td><td class="small"><td class="headerLarge">@</td><td><span class="priceKG">';
-                                HTMLFrag += innerElement.itemPrice;
+                                HTMLFrag += 'R ' + innerElement.itemPrice;
                                 HTMLFrag += '</span></td><td><span id="priceTag">R ';
                                 HTMLFrag += innerElement.quantity * innerElement.itemPrice;
                                 total += innerElement.quantity * innerElement.itemPrice;
@@ -738,7 +738,7 @@ var app;
                             HTMLFrag += '" oninput="app.update.sale(this)" placeholder="';
                             HTMLFrag += innerElement.quantity;
                             HTMLFrag += '"/></td><td class="small"><td class="headerLarge">@</td><td><span class="priceKG">';
-                            HTMLFrag += innerElement.itemPrice;
+                            HTMLFrag += 'R ' + innerElement.itemPrice;
                             HTMLFrag += '</span></td><td><span id="priceTag">R ';
                                 HTMLFrag += innerElement.quantity * innerElement.itemPrice;
                                 total += innerElement.quantity * innerElement.itemPrice;
@@ -1052,15 +1052,13 @@ var app;
                 data();
                 var total=0;
                 sale.purchaseTable.forEach(function(element, index, array) {
-                    if (element.itemPrice != '') {
-                        total += Number.parseInt(element.quantity) * Number.parseInt(element.itemPrice);
-                        
-                    };
+                    total += Number.parseInt(element.quantity) * Number.parseInt(element.itemPrice);
                     sale.purchaseTable[index] = JSON.stringify(element);
                 });
                 totalDOM[5].innerHTML = total;
                 sale.total = total;
                 app.data.sales[saleAlt] = sale;
+                console.log(sale);
                 app.store('sale');
             }
         },

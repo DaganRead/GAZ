@@ -528,7 +528,7 @@ var app;
             for (var i = 0; i < purchaseTableSelects.length; i++) {
                 if (classie.hasClass(purchaseTableSelects[i], 'tableInput')) {
                         foo.itemCode = purchaseTableSelects[i].value;
-                        foo.itemPrice = purchaseTableSelects[i].selectedOptions[0];
+                        foo.itemPrice = 'bla';
                         foo.quantity = purchaseTableSelects[i].parentNode.nextSibling.nextSibling.children[0].value;
                         if (foo.quantity != 0) {
                             this.forms.newSale.purchaseTable.push(JSON.stringify(foo));

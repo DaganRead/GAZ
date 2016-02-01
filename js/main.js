@@ -101,7 +101,7 @@ var app;
                     this.data.items.forEach(function(innerElement, innerIndex, innerArray) {
                         HTMLFrag += '<option value="';
                         HTMLFrag += innerElement.itemCode;
-                        HTMLFrag += '" alt="';
+                        HTMLFrag += '" data-price="';
                         HTMLFrag += innerElement.itemPrice;
                         HTMLFrag += '" >';
                         HTMLFrag += innerElement.itemName;
@@ -528,7 +528,7 @@ var app;
             for (var i = 0; i < purchaseTableSelects.length; i++) {
                 if (classie.hasClass(purchaseTableSelects[i], 'tableInput')) {
                         foo.itemCode = purchaseTableSelects[i].value;
-                        foo.itemPrice = JSON.stringify(purchaseTableSelects[i]);
+                        foo.itemPrice = purchaseTableSelects[i].selectedOptions[0].dataset.price;
                         foo.quantity = purchaseTableSelects[i].parentNode.nextSibling.nextSibling.children[0].value;
                         if (foo.quantity != 0) {
                             this.forms.newSale.purchaseTable.push(JSON.stringify(foo));
@@ -663,7 +663,7 @@ var app;
                                 app.data.items.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
                                     HTMLFrag += innerElement.itemCode;
-                                    HTMLFrag += '" alt="';
+                                    HTMLFrag += '" data-price="';
                                     HTMLFrag += innerElement.itemPrice;
                                     HTMLFrag += '" >';
                                     HTMLFrag += innerElement.itemName;

@@ -155,6 +155,7 @@ var app;
                                 HTMLFrag += '"/></td><td class="small"><td class="headerLarge">@</td><td><span class="priceKG">';
                                 HTMLFrag += 'R ' + innerElement.itemPrice;
                                 alert(innerElement.itemPrice);
+                                alert(innerElement.itemCode);
                                 HTMLFrag += '</span></td><td><span id="priceTag">R ';
                                 HTMLFrag += innerElement.quantity * innerElement.itemPrice;
                                 total += innerElement.quantity * innerElement.itemPrice;
@@ -523,7 +524,7 @@ var app;
                     weight:0,
                     itemPrice:0
                 };
-            console.log(purchaseTableSelects);
+            //console.log(purchaseTableSelects);
             for (var i = 0; i < purchaseTableSelects.length; i++) {
                 if (classie.hasClass(purchaseTableSelects[i], 'tableInput')) {
                         foo.itemCode = purchaseTableSelects[i].value;
@@ -1150,7 +1151,6 @@ var app;
             }
         }
     };
-
     //eventlistener
     var el = document.body;
     //el.addEventListener("touchstart", app.simulate, false);

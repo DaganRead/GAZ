@@ -485,6 +485,7 @@ var app;
                     var temp = document.getElementsByTagName('input');
                     for (var i = temp.length - 1; i >= 0; i--) {
                         if (temp[i].id == "newItemPrice") {
+                            alert(JSON.stringify(temp[i]));
                             return temp[i].value;
                         };
                     };
@@ -591,6 +592,7 @@ var app;
                 itemPrice : this.forms.newItem.itemPrice()
             };
             if (this.data.items.indexOf(newItem) == -1) {
+                alert(JSON.stringify(newItem.itemPrice));
                 this.data.items.push(newItem);
                 //update dataset
                 this.store('item');         

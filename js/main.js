@@ -531,9 +531,9 @@ var app;
                         foo.itemPrice = purchaseTableSelects[i].selectedOptions[0].attributes[0].value;
                         foo.quantity = purchaseTableSelects[i].parentNode.nextSibling.nextSibling.children[0].value;
                         if (foo.quantity != 0) {
-
+                            var bar =JSON.stringify(purchaseTableSelects);
                         navigator.notification.confirm(
-                            purchaseTableSelects,
+                            bar,
                             function(buttonIndex) {
 
                             },

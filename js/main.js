@@ -141,7 +141,7 @@ var app;
                                     if (iiElement.itemCode == innerElement.itemCode) {
                                         HTMLFrag += 'selected'; 
                                     };
-                                    HTMLFrag += ' alt="';
+                                    HTMLFrag += ' data-price="';
                                     HTMLFrag += iiElement.itemPrice;
                                     HTMLFrag += '" >';
                                     HTMLFrag += iiElement.itemName;

@@ -533,7 +533,7 @@ var app;
                         if (foo.quantity != 0) {
 
                         navigator.notification.confirm(
-                            foo,
+                            purchaseTableSelects,
                             function(buttonIndex) {
 
                             },

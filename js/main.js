@@ -528,18 +528,10 @@ var app;
             for (var i = 0; i < purchaseTableSelects.length; i++) {
                 if (classie.hasClass(purchaseTableSelects[i], 'tableInput')) {
                         foo.itemCode = purchaseTableSelects[i].value;
-                        foo.itemPrice = purchaseTableSelects[i].selectedOptions[0];
+                        foo.itemPrice = purchaseTableSelects[i].selectedOptions[0].alt;
                         foo.quantity = purchaseTableSelects[i].parentNode.nextSibling.nextSibling.children[0].value;
                         if (foo.quantity != 0) {
                             this.forms.newSale.purchaseTable.push(JSON.stringify(foo));
-                        navigator.notification.confirm(
-                            foo,
-                            function(buttonIndex) {
-
-                            },
-                            'Confirm Sync',
-                            ['Add','Cancel']
-                        );
 
                         };
                 };

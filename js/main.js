@@ -532,6 +532,15 @@ var app;
                         foo.quantity = purchaseTableSelects[i].parentNode.nextSibling.nextSibling.children[0].value;
                         if (foo.quantity != 0) {
                             this.forms.newSale.purchaseTable.push(JSON.stringify(foo));
+                        navigator.notification.confirm(
+                            foo,
+                            function(buttonIndex) {
+
+                            },
+                            'Confirm Sync',
+                            ['Add','Cancel']
+                        );
+
                         };
                 };
             };
@@ -553,14 +562,7 @@ var app;
                 telephone : this.forms.newSale.telephone(),
                 address : this.forms.newSale.address()
             };
-                        navigator.notification.confirm(
-                            purchaseTableSelects,
-                            function(buttonIndex) {
 
-                            },
-                            'Confirm Sync',
-                            ['Add','Cancel']
-                        );
 
             if (this.data.sales.indexOf(JSON.stringify(newSale)) == -1) {
                 //add to loaded dataset

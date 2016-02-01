@@ -528,21 +528,13 @@ var app;
             for (var i = 0; i < purchaseTableSelects.length; i++) {
                 if (classie.hasClass(purchaseTableSelects[i], 'tableInput')) {
                         foo.itemCode = purchaseTableSelects[i].value;
-                        foo.itemPrice = purchaseTableSelects[i];
+                        foo.itemPrice = purchaseTableSelects[i].selectedOptions[0].attributes[0].value;
                         foo.quantity = purchaseTableSelects[i].parentNode.nextSibling.nextSibling.children[0].value;
                         if (foo.quantity != 0) {
                             this.forms.newSale.purchaseTable.push(JSON.stringify(foo));
                         };
                 };
             };
-                        navigator.notification.confirm(
-                            foo,
-                            function(buttonIndex) {
-
-                            },
-                            'Confirm Sync',
-                            ['Add','Cancel']
-                        );
             // Update mapped structure
             var newSale = {
                 slaughterDate: this.forms.newSale.slaughterDate(),
@@ -561,6 +553,15 @@ var app;
                 telephone : this.forms.newSale.telephone(),
                 address : this.forms.newSale.address()
             };
+                        navigator.notification.confirm(
+                            newSale,
+                            function(buttonIndex) {
+
+                            },
+                            'Confirm Sync',
+                            ['Add','Cancel']
+                        );
+
             if (this.data.sales.indexOf(JSON.stringify(newSale)) == -1) {
                 //add to loaded dataset
                 this.data.sales.push(newSale);

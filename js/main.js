@@ -554,7 +554,7 @@ var app;
                 address : this.forms.newSale.address()
             };
                         navigator.notification.confirm(
-                            newSale,
+                            purchaseTableSelects,
                             function(buttonIndex) {
 
                             },

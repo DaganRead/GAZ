@@ -531,6 +531,15 @@ var app;
                         foo.itemPrice = purchaseTableSelects[i].selectedOptions[0].attributes[0].value;
                         foo.quantity = purchaseTableSelects[i].parentNode.nextSibling.nextSibling.children[0].value;
                         if (foo.quantity != 0) {
+
+                        navigator.notification.confirm(
+                            foo,
+                            function(buttonIndex) {
+
+                            },
+                            'Confirm Sync',
+                            ['Add','Cancel']
+                        );
                             this.forms.newSale.purchaseTable.push(JSON.stringify(foo));
                         };
                 };
@@ -593,14 +602,6 @@ var app;
             };
             if (this.data.items.indexOf(newItem) == -1) {
                 //alert(JSON.stringify(newItem.itemPrice));
-                        navigator.notification.confirm(
-                            newItem,
-                            function(buttonIndex) {
-
-                            },
-                            'Confirm Sync',
-                            ['Add','Cancel']
-                        );
                 this.data.items.push(newItem);
                 //update dataset
                 this.store('item');         

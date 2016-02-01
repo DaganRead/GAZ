@@ -592,7 +592,7 @@ var app;
                 itemPrice : this.forms.newItem.itemPrice()
             };
             if (this.data.items.indexOf(newItem) == -1) {
-                alert(JSON.stringify(newItem.itemPrice));
+                alert(JSON.stringify(newItem));
                 this.data.items.push(newItem);
                 //update dataset
                 this.store('item');         

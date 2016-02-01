@@ -994,7 +994,7 @@ var app;
                     app.data.items.forEach(function(innerElement, innerIndex, innerArray) {
                         temp += '<option value="';
                         temp += innerElement.itemCode;
-                        temp += '" alt="';
+                        temp += '" data-price="';
                         temp += innerElement.itemPrice;
                         temp += '" >';
                         temp += innerElement.itemName;

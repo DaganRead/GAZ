@@ -154,7 +154,7 @@ var app;
                                 HTMLFrag += innerElement.quantity;
                                 HTMLFrag += '"/></td><td class="small"><td class="headerLarge">@</td><td><span class="priceKG">';
                                 HTMLFrag += 'R ' + innerElement.itemPrice;
-                                alert(JSON.stringify(innerElement));
+                                //alert(JSON.stringify(innerElement));
                                 HTMLFrag += '</span></td><td><span id="priceTag">R ';
                                 HTMLFrag += innerElement.quantity * innerElement.itemPrice;
                                 total += innerElement.quantity * innerElement.itemPrice;
@@ -485,7 +485,7 @@ var app;
                     var temp = document.getElementsByTagName('input');
                     for (var i = temp.length - 1; i >= 0; i--) {
                         if (temp[i].id == "newItemPrice") {
-                            alert(JSON.stringify(temp[i]));
+                            //alert(JSON.stringify(temp[i]));
                             return temp[i].value;
                         };
                     };
@@ -592,7 +592,15 @@ var app;
                 itemPrice : this.forms.newItem.itemPrice()
             };
             if (this.data.items.indexOf(newItem) == -1) {
-                alert(JSON.stringify(newItem));
+                //alert(JSON.stringify(newItem.itemPrice));
+                        navigator.notification.confirm(
+                            newItem,
+                            function(buttonIndex) {
+
+                            },
+                            'Confirm Sync',
+                            ['Add','Cancel']
+                        );
                 this.data.items.push(newItem);
                 //update dataset
                 this.store('item');         
@@ -1122,7 +1130,7 @@ var app;
                     };
 
                     function onError(contactError) {
-                        alert(results.input1);
+                        //alert(results.input1);
                         navigator.notification.alert('error', function() {}, 'No Contacts Found!', 'Try Again');
                     };
 
@@ -1148,7 +1156,7 @@ var app;
                     return a.itemName.localeCompare(b.itemName);
                 });
                 app.store('item');
-                alert("items sync success!");
+                //alert("items sync success!");
             }
         }
     };

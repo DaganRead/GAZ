@@ -130,7 +130,7 @@ var app;
                             element.purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                                 innerElement = JSON.parse(innerElement);
                                 HTMLFrag += '<tr><td>';
-                                HTMLFrag += '<select class="itemCode" onChange="this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.children[0].innerHTML = \'R \' + this.selectedOptions[0].attributes[0].value; app.update.sale(this)" alt="';
+                                HTMLFrag += '<select class="itemCode" onChange="this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.children[0].innerHTML = \'R \' + this.selectedOptions[0].dataset.price; app.update.sale(this)" alt="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '" oninput="app.update.sale(this)" >';
 
@@ -724,7 +724,7 @@ var app;
                         element.purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                             innerElement = JSON.parse(innerElement);
                             HTMLFrag += '<tr><td>';
-                                HTMLFrag += '<select class="itemCode" onChange="this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.children[0].innerHTML = \'R \' + this.selectedOptions[0].attributes[0].value; app.update.sale(this)" alt="';
+                                HTMLFrag += '<select class="itemCode" onChange="this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.children[0].innerHTML = \'R \' + this.selectedOptions[0].dataset.price; app.update.sale(this)" alt="';
                             HTMLFrag += innerIndex;
                             HTMLFrag += '" oninput="app.update.sale(this)" >';
 

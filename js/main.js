@@ -1,7 +1,6 @@
 var app;
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-alert("start");    
     app = {
         DOM : {
             newSale: document.getElementById('newSale'),
@@ -177,6 +176,7 @@ alert("start");
                             HTMLFrag += '"/></fieldset>';
                         });
                 app.DOM.sales.innerHTML = HTMLFrag;
+                alert("start");    
                 /*customers*/
                 HTMLFrag = '';
                 var newChar,
@@ -299,6 +299,8 @@ alert("start");
                             };
                         app.DOM.customers.innerHTML = HTMLFrag;
                 });
+                alert("end");    
+
                 /*items*/
                 HTMLFrag = '', 
                 newChar,

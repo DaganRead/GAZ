@@ -792,121 +792,97 @@ var app;
                             compareChar = '9',
                             numbersStarted = false;
                     //refresh with this data;
-                        arr.data.customers.sort(function(a, b) {
-                            return a.name.firstName.localeCompare(b.name.firstName);
+                        arr.sort(function(a, b) {
+                            return a.firstName.localeCompare(b.firstName);
                         });
-                        arr.data.customers.forEach(function(element, index, array) {
-                            newChar = element.firstName.charAt(0);
-                            if (newChar < compareChar) {
-                                if (element == array[0]) {
-                                    HTMLFrag += '<fieldset><legend>#</legend>';
-                                };
-                                HTMLFrag += '<fieldset><legend><input type="button" value="';
-                                HTMLFrag += element.displayName;
-                                HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
-                                HTMLFrag += '<input type="text" placeholder="';
-                                HTMLFrag += element.name.firstName;
-                                HTMLFrag += '"/><input type="text" placeholder="';
-                                HTMLFrag += element.name.lastName;
-                                HTMLFrag += '"/>';
-                                element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<input type="email" placeholder=""/>';
-                                });
-                                element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<input type="text" placeholder=""/>';
-                                });
-                                HTMLFrag += '<br /><article>';
-                                HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += '<select>';
-                                app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<option value="';
-                                    HTMLFrag += innerElement.location;
-                                    HTMLFrag += '" >';
-                                    HTMLFrag += innerElement.location;
-                                    HTMLFrag += '</option>';
-                                });
-                                HTMLFrag += '</select></figcaption></figure></article>';
-                                element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<textarea>';
-                                    HTMLFrag += innerElement;
-                                    HTMLFrag += '</textarea>';
-                                });
-                                HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
-                                HTMLFrag += index;
-                                HTMLFrag += '"/></fieldset>';
-                            };
-                            if (newChar > compareChar){
-                                HTMLFrag += '</fieldset><fieldset><legend>';                              
-                                HTMLFrag += newChar;
-                                HTMLFrag += '</legend>';  
-                                compareChar = newChar;
-                                HTMLFrag += '<fieldset><legend><input type="button" value="';
-                                HTMLFrag += element.displayName;
-                                HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
-                                HTMLFrag += '<input type="text" placeholder="';
-                                HTMLFrag += element.name.firstName;
-                                HTMLFrag += '" /><input type="text" placeholder="';
-                                HTMLFrag += element.name.lastName;
-                                HTMLFrag += '" />';
-                                element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<input type="email" placeholder="" />';
-                                });
-                                element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<input type="text" placeholder="" />';
-                                });
-                                HTMLFrag += '<br /><article>';
-                                HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += '<select>';
-                                app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<option value="';
-                                    HTMLFrag += innerElement.location;
-                                    HTMLFrag += '" >';
-                                    HTMLFrag += innerElement.location;
-                                    HTMLFrag += '</option>';
-                                });
-                                HTMLFrag += '</select></figcaption></figure></article>';
-                                element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<textarea>';
-                                    HTMLFrag += innerElement;
-                                    HTMLFrag += '</textarea>';
-                                });
-                                HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
-                                HTMLFrag += index;
-                                HTMLFrag += '"/>';                              
-                                HTMLFrag += '</fieldset>';
-                            }else if(newChar == compareChar){
-                                HTMLFrag += '<fieldset><legend><input type="button" value="';
-                                HTMLFrag += element.displayName;
-                                HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
-                                HTMLFrag += '<input type="text" placeholder="';
-                                HTMLFrag += element.name.firstName;
-                                HTMLFrag += '"/><input type="text" placeholder="';
-                                HTMLFrag += element.name.lastName;
-                                HTMLFrag += '"/><input type="email" placeholder="';
-                                HTMLFrag += element.email;
-                                HTMLFrag += '"/><input type="text" placeholder="';
-                                HTMLFrag += element.telephone
-                                HTMLFrag += '"/><br /><article>';
-                                HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += '<select>';
-                                app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<option value="';
-                                    HTMLFrag += innerElement.location;
-                                    HTMLFrag += '" >';
-                                    HTMLFrag += innerElement.location;
-                                    HTMLFrag += '</option>';
-                                });
-                                HTMLFrag += '</select></figcaption></figure></article>';
-                                element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<textarea>';
-                                    HTMLFrag += innerElement;
-                                    HTMLFrag += '</textarea>';
-                                });
-                                HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
-                                HTMLFrag += index;
-                                HTMLFrag += '"/>';                              
-                                HTMLFrag += '</fieldset>';
-                            };
+                        arr.forEach(function(innerElement, innerIndex, innerArray) {
+                                    newChar = innerElement.firstName.charAt(0);
+                                    if (newChar < compareChar) {
+                                        if (innerElement == innerArray[0]) {
+                                            HTMLFrag += '<fieldset><legend>#</legend>';
+                                        };
+                                        HTMLFrag += '<fieldset><legend><input type="button" value="';
+                                        HTMLFrag += innerElement.firstName;
+                                        HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend><input type="text" placeholder="';
+                                        HTMLFrag += innerElement.firstName;
+                                        HTMLFrag += '"/><input type="text" placeholder="';
+                                        HTMLFrag += innerElement.lastName;
+                                        HTMLFrag += '"/><input type="email" placeholder="';
+                                        HTMLFrag += innerElement.email;
+                                        HTMLFrag += '"/><input type="text" placeholder="';
+                                        HTMLFrag += innerElement.telephone;
+                                        HTMLFrag += '"/><br /><article>';
+                                        HTMLFrag += '<figure class="location" ><figcaption>';
+                                        HTMLFrag += '<select>';
+                                        app.data.locations.forEach(function(inElem, inIndx, inArr) {
+                                            HTMLFrag += '<option value="'
+                                            HTMLFrag += inElem.location;
+                                            HTMLFrag += '" >';
+                                            HTMLFrag += inElem.location;
+                                        HTMLFrag += '</option>';
+                                        });
+                                        HTMLFrag += '</select></figcaption></figure></article><textarea>';
+                                        HTMLFrag += innerElement.address;
+                                        HTMLFrag += '</textarea><input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/></fieldset>';
+                                    };
+                                    if (newChar > compareChar){
+                                        HTMLFrag += '</fieldset><fieldset><legend>';                              
+                                        HTMLFrag += newChar;
+                                        HTMLFrag += '</legend>';  
+                                        compareChar = newChar;
+                                        HTMLFrag += '<fieldset><legend><input type="button" value="';
+                                        HTMLFrag += innerElement.firstName;
+                                        HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend><input type="text" placeholder="';
+                                        HTMLFrag += innerElement.firstName;
+                                        HTMLFrag += '"/><input type="text" placeholder="';
+                                        HTMLFrag += innerElement.lastName;
+                                        HTMLFrag += '"/><input type="email" placeholder="';
+                                        HTMLFrag += innerElement.email;
+                                        HTMLFrag += '"/><input type="text" placeholder="';
+                                        HTMLFrag += innerElement.telephone;
+                                        HTMLFrag += '"/><br /><article><figure class="location" ><figcaption>';
+                                        HTMLFrag += '<select>';
+                                        app.data.locations.forEach(function(inElem, inIndx, inArr) {
+                                            HTMLFrag += '<option value="'
+                                            HTMLFrag += inElem.location;
+                                            HTMLFrag += '" >';
+                                            HTMLFrag += inElem.location;
+                                        HTMLFrag += '</option>';
+                                        });
+                                        HTMLFrag += '</select></figcaption></figure></article><textarea>';
+                                        HTMLFrag += innerElement.address;
+                                        HTMLFrag += '</textarea><input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/></fieldset>';
+                                    }else if(newChar == compareChar){
+                                        HTMLFrag += '<fieldset><legend><input type="button" value="';
+                                        HTMLFrag += innerElement.firstName;
+                                        HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend><input type="text" placeholder="';
+                                        HTMLFrag += innerElement.firstName;
+                                        HTMLFrag += '"/><input type="text" placeholder="';
+                                        HTMLFrag += innerElement.lastName;
+                                        HTMLFrag += '"/><input type="email" placeholder="';
+                                        HTMLFrag += innerElement.email;
+                                        HTMLFrag += '"/><input type="text" placeholder="';
+                                        HTMLFrag += innerElement.telephone;
+                                        HTMLFrag += '"/><br /><article><figure class="location" ><figcaption>';
+                                        HTMLFrag += '<select>';
+                                        app.data.locations.forEach(function(inElem, inIndx, inArr) {
+                                            HTMLFrag += '<option value="'
+                                            HTMLFrag += inElem.location;
+                                            HTMLFrag += '" >';
+                                            HTMLFrag += inElem.location;
+                                        HTMLFrag += '</option>';
+                                        });
+                                        HTMLFrag += '</select></figcaption></figure></article><textarea>';
+                                        HTMLFrag += innerElement.address;
+                                        HTMLFrag += '</textarea><input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/></fieldset>';
+                                    };
+                        });
                         app.DOM.customers.innerHTML = HTMLFrag;
                 });
             });

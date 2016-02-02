@@ -587,14 +587,17 @@ var app;
             };
         },
         newCustomer : function() {
-            var newCustomer = {
-                location : this.forms.newCustomer.location(),
-                firstName : this.forms.newCustomer.firstName(),
-                lastName : this.forms.newCustomer.lastName(),
-                email : this.forms.newCustomer.email(),
-                telephone : this.forms.newCustomer.telephone(),
-                address : this.forms.newCustomer.address()
-            };
+            var newCustomer = navigator.contacts.create({
+                "displayName": "Test User",
+                "name" : { 
+                    firstName : this.forms.newCustomer.firstName(),
+                    lastName : this.forms.newCustomer.lastName()
+                },
+                "note" : this.forms.newCustomer.location(),
+                "emails" : [this.forms.newCustomer.email()],
+                "phoneNumbers" : [this.forms.newCustomer.telephone()],
+                "addresses" : [this.forms.newCustomer.address()]
+            });
             //add to loaded dataset
             if (this.data.customers.indexOf(newCustomer) == -1) {
                 this.data.customers.push(newCustomer);

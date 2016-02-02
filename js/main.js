@@ -299,8 +299,6 @@ function onDeviceReady() {
                             };
                         app.DOM.customers.innerHTML = HTMLFrag;
                 });
-                alert("end");    
-
                 /*items*/
                 HTMLFrag = '', 
                 newChar,
@@ -1185,4 +1183,6 @@ function onDeviceReady() {
     //el.addEventListener("touchcancel", app.simulate, false);
     //el.addEventListener("touchmove", app.simulate, false);
     app.initialize();
+                    alert("end");    
+
 };

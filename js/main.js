@@ -1,6 +1,7 @@
 var app;
 document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {    
+function onDeviceReady() {
+alert("start");    
     app = {
         DOM : {
             newSale: document.getElementById('newSale'),

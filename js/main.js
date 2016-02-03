@@ -1181,5 +1181,5 @@ function onDeviceReady() {
     el.addEventListener("touchend", app.simulate, false);
     //el.addEventListener("touchcancel", app.simulate, false);
     //el.addEventListener("touchmove", app.simulate, false);
-    //app.initialize();
+    app.initialize();
 };

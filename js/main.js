@@ -695,7 +695,14 @@ function onDeviceReady() {
                                 parent.children[2].innerHTML = HTMLFrag;
                             break;
                         case "Customers" :
-                        alert(JSON.stringify(parent));
+                        navigator.notification.confirm(
+                            parent,
+                            function(buttonIndex) {
+
+                            },
+                            'Confirm Sync',
+                            ['Add','Cancel']
+                        );
                                 var HTMLFrag = '<article id="newCustomer"><span>New Customer Details:</span><br class="clear"/><input type="text" placeholder="First Name" id="newCustomerFirstName"/><input type="text" placeholder="Last Name" id="newCustomerLastName"/><br /><input type="email" placeholder="Email" id="newCustomerEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newCustomerTelephone"/><br /><textarea id="newCustomerAddress" cols="50">Address</textarea> <br class="clear" /><select id="newCustomerLocationSelect">';
                                     app.data.locations.forEach(function(element, index, array) {
                                         HTMLFrag += '<option value="';

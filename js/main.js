@@ -657,6 +657,7 @@ function onDeviceReady() {
             currentTab : 0,
             newTab : document.getElementById( 'new-tab' ),
             to :  function(value, parent) {
+                alert(value);
                 this.prevTab = this.currentTab;
                 this.currentTab = value;
                 if (value == "New") {

@@ -696,7 +696,7 @@ function onDeviceReady() {
                             break;
                         case "Customers" :
                         navigator.notification.confirm(
-                            parent,
+                            value,
                             function(buttonIndex) {
 
                             },

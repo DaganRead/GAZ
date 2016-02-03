@@ -679,45 +679,15 @@ function onDeviceReady() {
             to :  function(value, parent) {
                 this.prevTab = this.currentTab;
                 this.currentTab = value;
+                alert(value);
                 if (value == "New") {
                     switch(this.prevTab){
-                        case "Sales" :
-                            alert('running');
-                            var HTMLFrag = '<article id="newSale"><span class="header">Slaughter Date:</span><br /><select id="newSaleSlaughterDate">';
-                            app.data.slaughters.forEach(function(element, index, array) {
-                                HTMLFrag += '<option value="';
-                                HTMLFrag += element.slaughterDate;
-                                HTMLFrag += '">';
-                                HTMLFrag += element.slaughterDate;
-                                HTMLFrag += '</option>';
-                            });
-                            HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location"><figcaption id="newSaleLocation"></figcaption></figure><input type="text" placeholder="Last Name" oninput="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" oninput="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
-                                app.data.locations.forEach(function(element, index, array) {
-                                    HTMLFrag += '<option value="';
-                                    HTMLFrag += element.location;
-                                    HTMLFrag += '">';
-                                    HTMLFrag += element.location;
-                                    HTMLFrag += '</option>';
-                                }); 
-                                HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><tr><td>';
-                                HTMLFrag += '<select class="tableInput" onclick="app.purchaseTableAdd(this)" >';
-                                app.data.items.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<option value="';
-                                    HTMLFrag += innerElement.itemCode;
-                                    HTMLFrag += '" data-price="';
-                                    HTMLFrag += innerElement.itemPrice;
-                                    HTMLFrag += '" >';
-                                    HTMLFrag += innerElement.itemName;
-                                    HTMLFrag += '</option>';
-                                });
-                                HTMLFrag += '</select>';
-                                HTMLFrag += '</td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
-                                HTMLFrag += '</table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>';
-                                parent.children[2].innerHTML = HTMLFrag;
-                                alert('end');
-
+                        case "Sales":
+                        alert('running');
+                            
                             break;
-                        case "Customers" :
+                        case "Customers":
+                        alert('running');
                                 var HTMLFrag = '<article id="newCustomer"><span>New Customer Details:</span><br class="clear"/><input type="text" placeholder="First Name" id="newCustomerFirstName"/><input type="text" placeholder="Last Name" id="newCustomerLastName"/><br /><input type="email" placeholder="Email" id="newCustomerEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newCustomerTelephone"/><br /><textarea id="newCustomerAddress" cols="50">Address</textarea> <br class="clear" /><select id="newCustomerLocationSelect">';
                                     app.data.locations.forEach(function(element, index, array) {
                                         HTMLFrag += '<option value="';
@@ -729,10 +699,12 @@ function onDeviceReady() {
                                     HTMLFrag += '</select><input type="text" placeholder="New Location" id="newCustomerAddLocationText"/><input type="button" id="newCustomerAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><input type="button" class="confirm" value="Confirm" onclick="app.newCustomer()" /><input type="button" class="cancel" value="Cancel"></article>';
                             parent.children[2].innerHTML = HTMLFrag;
                             break;
-                        case "Items" :
+                        case "Items":
+                        alert('running');
                             parent.children[2].innerHTML = '<article id="newItem"><input type="text" id="newItemName" placeholder="Item Name"/><input type="text" id="newItemCode" placeholder="Item Code"/><input type="text" id="newItemPrice" placeholder="R0.00"/><br /><input type="button" class="confirm"value="Confirm" onclick="app.newItem()" /><input type="button" class="cancel" value="Cancel"></article>';
                             break;
-                        case "Slaughters" :
+                        case "Slaughters":
+                        alert('running');
                             parent.children[2].innerHTML = '<article id="newSlaughter"><span>New Slaughter Date:</span><br /><input type="text" id="newSlaughterDate" placeholder="Fri Jan 01 2016"/><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSlaughter()" /><input type="button" class="cancel" value="Cancel"></article>';
                             var slaughterDate = new Pikaday({ 
                                 field: document.getElementById('newSlaughterDate'),

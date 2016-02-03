@@ -126,7 +126,7 @@ function onDeviceReady() {
                             HTMLFrag+='</figcaption></figure>';
                             HTMLFrag += element.name.givenName;
                             HTMLFrag+='&nbsp;';
-                            HTMLFrag += element.name.FamilyName;
+                            HTMLFrag += element.name.familyName;
                             HTMLFrag += '<br class="clear"><table class="purchase-table">';
 
                             element.purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
@@ -196,7 +196,7 @@ function onDeviceReady() {
                                 HTMLFrag += '<input type="text" placeholder="';
                                 HTMLFrag += element.name.givenName;
                                 HTMLFrag += '"/><input type="text" placeholder="';
-                                HTMLFrag += element.name.FamilyName;
+                                HTMLFrag += element.name.familyName;
                                 HTMLFrag += '"/>';
                                 element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<input type="text" placeholder="';
@@ -239,7 +239,7 @@ function onDeviceReady() {
                                 HTMLFrag += '<input type="text" placeholder="';
                                 HTMLFrag += element.name.givenName;
                                 HTMLFrag += '" /><input type="text" placeholder="';
-                                HTMLFrag += element.name.FamilyName;
+                                HTMLFrag += element.name.familyName;
                                 HTMLFrag += '" />';
                                 element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<input type="text" placeholder="';
@@ -278,7 +278,7 @@ function onDeviceReady() {
                                 HTMLFrag += '<input type="text" placeholder="';
                                 HTMLFrag += element.name.givenName;
                                 HTMLFrag += '"/><input type="text" placeholder="';
-                                HTMLFrag += element.name.FamilyName;
+                                HTMLFrag += element.name.familyName;
                                 HTMLFrag += '"/>';
                                 element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<input type="email" placeholder="';
@@ -410,7 +410,7 @@ function onDeviceReady() {
                         };
                     };
                 },
-                FamilyName : function() {
+                familyName : function() {
                     var temp = document.getElementsByTagName('input');
                     for (var i = temp.length - 1; i >= 0; i--) {
                         if (temp[i].id == "newSaleLastName") {
@@ -463,7 +463,7 @@ function onDeviceReady() {
                         };
                     };
                 },
-                FamilyName:  function() {
+                familyName:  function() {
                     var temp = document.getElementsByTagName('input');
                     for (var i = temp.length - 1; i >= 0; i--) {
                         if (temp[i].id == "newCustomerLastName") {
@@ -571,8 +571,10 @@ function onDeviceReady() {
             // Update mapped structure
             var newSale = {
                 slaughterDate: this.forms.newSale.slaughterDate(),
-                givenName: this.forms.newSale.givenName(),
-                FamilyName: this.forms.newSale.FamilyName(),
+                name : {
+                    givenName: this.forms.newSale.givenName(),
+                    familyName: this.forms.newSale.familyName()
+                },
                 purchaseTable: this.forms.newSale.purchaseTable,
                 location: this.forms.newSale.location().innerHTML,
                 total: 0,
@@ -582,7 +584,7 @@ function onDeviceReady() {
                 "displayName": "Test User",
                 "name" : { 
                     givenName : this.forms.newCustomer.givenName(),
-                    FamilyName : this.forms.newCustomer.FamilyName()
+                    familyName : this.forms.newCustomer.familyName()
                 },
                 "note" : this.forms.newCustomer.location(),
                 "emails" : [this.forms.newCustomer.email()],
@@ -611,7 +613,7 @@ function onDeviceReady() {
                 "displayName": "Test User",
                 "name" : { 
                     givenName : this.forms.newCustomer.givenName(),
-                    FamilyName : this.forms.newCustomer.FamilyName()
+                    familyName : this.forms.newCustomer.familyName()
                 },
                 "note" : this.forms.newCustomer.location(),
                 "emails" : [this.forms.newCustomer.email()],
@@ -756,7 +758,7 @@ function onDeviceReady() {
                         HTMLFrag += '</figcaption></figure>';
                         HTMLFrag += element.name.givenName;
                         HTMLFrag += '&nbsp;';
-                        HTMLFrag += element.name.FamilyName;
+                        HTMLFrag += element.name.familyName;
                         HTMLFrag += '<br class="clear"><table class="purchase-table">';
 
                         element.purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
@@ -830,7 +832,7 @@ function onDeviceReady() {
                                         HTMLFrag += '<input type="text" placeholder="';
                                         HTMLFrag += element.name.givenName;
                                         HTMLFrag += '"/><input type="text" placeholder="';
-                                        HTMLFrag += element.name.FamilyName;
+                                        HTMLFrag += element.name.familyName;
                                         HTMLFrag += '"/>';
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="text" placeholder="';
@@ -873,7 +875,7 @@ function onDeviceReady() {
                                         HTMLFrag += '<input type="text" placeholder="';
                                         HTMLFrag += element.name.givenName;
                                         HTMLFrag += '" /><input type="text" placeholder="';
-                                        HTMLFrag += element.name.FamilyName;
+                                        HTMLFrag += element.name.familyName;
                                         HTMLFrag += '" />';
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="text" placeholder="';
@@ -912,7 +914,7 @@ function onDeviceReady() {
                                         HTMLFrag += '<input type="text" placeholder="';
                                         HTMLFrag += element.name.givenName;
                                         HTMLFrag += '"/><input type="text" placeholder="';
-                                        HTMLFrag += element.name.FamilyName;
+                                        HTMLFrag += element.name.familyName;
                                         HTMLFrag += '"/>';
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="email" placeholder="';
@@ -1083,7 +1085,7 @@ function onDeviceReady() {
                 document.getElementById('newSalePurchaseTable').children[0].appendChild(input);
             };
         },
-        customerSearch : function(givenName, FamilyName) {
+        customerSearch : function(givenName, familyName) {
             app.forms.newSale.location().innerHTML = '';
             if(classie.hasClass(document.getElementById('newSale'), 'acc-open')){
                 classie.removeClass(document.getElementById('newSale'), 'acc-open');
@@ -1094,7 +1096,7 @@ function onDeviceReady() {
                             if (app.forms.newSale.firstNameMatch != givenName) {
                                 app.forms.newSale.firstNameMatch = givenName;
                             };
-                            if (app.forms.newSale.firstNameMatch == element.name.givenName && app.forms.newSale.lastNameMatch == element.name.FamilyName) {
+                            if (app.forms.newSale.firstNameMatch == element.name.givenName && app.forms.newSale.lastNameMatch == element.name.familyName) {
                                 app.forms.newSale.location().innerHTML = element.location;
                                 classie.addClass(document.getElementById('newSale'), 'acc-open');
                             };
@@ -1102,11 +1104,11 @@ function onDeviceReady() {
                     });
                 }else{
                     app.data.customers.forEach(function(element, index, array) {
-                        if (element.name.FamilyName === FamilyName) {
-                            if (app.forms.newSale.lastNameMatch != FamilyName) {
-                                app.forms.newSale.lastNameMatch = FamilyName;
+                        if (element.name.familyName === familyName) {
+                            if (app.forms.newSale.lastNameMatch != familyName) {
+                                app.forms.newSale.lastNameMatch = familyName;
                             };
-                            if (app.forms.newSale.firstNameMatch == element.name.givenName && app.forms.newSale.lastNameMatch == element.name.FamilyName) {
+                            if (app.forms.newSale.firstNameMatch == element.name.givenName && app.forms.newSale.lastNameMatch == element.name.familyName) {
                                 app.forms.newSale.location().innerHTML = element.location;
                                 classie.addClass(document.getElementById('newSale'), 'acc-open');
                             };

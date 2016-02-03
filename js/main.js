@@ -679,15 +679,42 @@ function onDeviceReady() {
             to :  function(value, parent) {
                 this.prevTab = this.currentTab;
                 this.currentTab = value;
-                alert(value);
                 if (value == "New") {
                     switch(this.prevTab){
                         case "Sales":
-                        alert('running');
-                            
+                            var HTMLFrag = '<article id="newSale"><span class="header">Slaughter Date:</span><br /><select id="newSaleSlaughterDate">';
+                            app.data.slaughters.forEach(function(element, index, array) {
+                                HTMLFrag += '<option value="';
+                                HTMLFrag += element.slaughterDate;
+                                HTMLFrag += '">';
+                                HTMLFrag += element.slaughterDate;
+                                HTMLFrag += '</option>';
+                            });
+                            HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location"><figcaption id="newSaleLocation"></figcaption></figure><input type="text" placeholder="Last Name" oninput="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" oninput="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
+                                app.data.locations.forEach(function(element, index, array) {
+                                    HTMLFrag += '<option value="';
+                                    HTMLFrag += element.location;
+                                    HTMLFrag += '">';
+                                    HTMLFrag += element.location;
+                                    HTMLFrag += '</option>';
+                                }); 
+                                HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><tr><td>';
+                                HTMLFrag += '<select class="tableInput" onclick="app.purchaseTableAdd(this)" >';
+                                app.data.items.forEach(function(innerElement, innerIndex, innerArray) {
+                                    HTMLFrag += '<option value="';
+                                    HTMLFrag += innerElement.itemCode;
+                                    HTMLFrag += '" data-price="';
+                                    HTMLFrag += innerElement.itemPrice;
+                                    HTMLFrag += '" >';
+                                    HTMLFrag += innerElement.itemName;
+                                    HTMLFrag += '</option>';
+                                });
+                                HTMLFrag += '</select>';
+                                HTMLFrag += '</td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
+                                HTMLFrag += '</table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>';
+                                parent.children[2].innerHTML = HTMLFrag;
                             break;
                         case "Customers":
-                        alert('running');
                                 var HTMLFrag = '<article id="newCustomer"><span>New Customer Details:</span><br class="clear"/><input type="text" placeholder="First Name" id="newCustomerFirstName"/><input type="text" placeholder="Last Name" id="newCustomerLastName"/><br /><input type="email" placeholder="Email" id="newCustomerEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newCustomerTelephone"/><br /><textarea id="newCustomerAddress" cols="50">Address</textarea> <br class="clear" /><select id="newCustomerLocationSelect">';
                                     app.data.locations.forEach(function(element, index, array) {
                                         HTMLFrag += '<option value="';
@@ -700,11 +727,9 @@ function onDeviceReady() {
                             parent.children[2].innerHTML = HTMLFrag;
                             break;
                         case "Items":
-                        alert('running');
                             parent.children[2].innerHTML = '<article id="newItem"><input type="text" id="newItemName" placeholder="Item Name"/><input type="text" id="newItemCode" placeholder="Item Code"/><input type="text" id="newItemPrice" placeholder="R0.00"/><br /><input type="button" class="confirm"value="Confirm" onclick="app.newItem()" /><input type="button" class="cancel" value="Cancel"></article>';
                             break;
                         case "Slaughters":
-                        alert('running');
                             parent.children[2].innerHTML = '<article id="newSlaughter"><span>New Slaughter Date:</span><br /><input type="text" id="newSlaughterDate" placeholder="Fri Jan 01 2016"/><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSlaughter()" /><input type="button" class="cancel" value="Cancel"></article>';
                             var slaughterDate = new Pikaday({ 
                                 field: document.getElementById('newSlaughterDate'),
@@ -718,322 +743,7 @@ function onDeviceReady() {
             }
         },
         binding : function (){
-            Object.observe(app.data.sales, function(changes) {
-                changes.forEach(function(element, index, array) {
-                    var HTMLFrag = '',
-                        total = 0;
-                    //refresh with this data;
-                    app.data.sales.forEach(function(element, index, array) {
-                        HTMLFrag +='<fieldset alt="';
-                        HTMLFrag += index;
-                        HTMLFrag += '"><legend>&nbsp;';
-                        HTMLFrag += element.slaughterDate;
-                        HTMLFrag += '&nbsp;</legend><figure class="location"><figcaption>';
-                        HTMLFrag += element.location;
-                        HTMLFrag += '</figcaption></figure>';
-                        HTMLFrag += element.name.givenName;
-                        HTMLFrag += '&nbsp;';
-                        HTMLFrag += element.name.familyName;
-                        HTMLFrag += '<br class="clear"><table class="purchase-table">';
 
-                        element.purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
-                            innerElement = JSON.parse(innerElement);
-                            HTMLFrag += '<tr><td>';
-                                HTMLFrag += '<select class="itemCode" onChange="this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.children[0].innerHTML = \'R \' + this.selectedOptions[0].dataset.price; app.update.sale(this)" alt="';
-                            HTMLFrag += innerIndex;
-                            HTMLFrag += '" oninput="app.update.sale(this)" >';
-
-                            app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
-                                HTMLFrag += '<option value="';
-                                HTMLFrag += iiElement.itemCode;
-                                HTMLFrag += '" '; 
-                                if (iiElement.itemCode == innerElement.itemCode) {
-                                    HTMLFrag += 'selected'; 
-                                };
-                                HTMLFrag += ' alt="';
-                                HTMLFrag += iiElement.itemPrice;
-                                HTMLFrag += '" >';
-                                HTMLFrag += iiElement.itemName;
-                                HTMLFrag += '</option>';
-                            });
-                            HTMLFrag += '</select>';
-                            HTMLFrag += '</td><td class="headerLarge">X</td><td class="small"><input type="text" class="quantity" alt="';
-                            HTMLFrag += innerIndex;
-                            HTMLFrag += '" oninput="app.update.sale(this)" placeholder="';
-                            HTMLFrag += innerElement.quantity;
-                            HTMLFrag += '"/></td><td class="small"><td class="headerLarge">@</td><td><span class="priceKG">';
-                            HTMLFrag += 'R ' + innerElement.itemPrice;
-                            HTMLFrag += '</span></td><td><span id="priceTag">R ';
-                                HTMLFrag += innerElement.quantity * innerElement.itemPrice;
-                                total += innerElement.quantity * innerElement.itemPrice;
-                                HTMLFrag += '</span></td></tr>';
-                            });
-                            HTMLFrag += '</table><br />Total: R ';
-                            HTMLFrag += '<span>';
-                            HTMLFrag += total;
-                            total = 0;
-                            HTMLFrag += '</span><br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" alt="';
-                            HTMLFrag += index;
-                        HTMLFrag += '" oninput="app.update.sale(this)" > '; 
-                        HTMLFrag += element.notes;
-                        HTMLFrag += '</textarea>';
-                        HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.alt)" class="cancel" alt="';
-                        HTMLFrag += index;
-                        HTMLFrag += '"/></fieldset>';
-                    });
-                    app.DOM.sales.innerHTML = HTMLFrag;
-                });
-            });
-            Object.observe(app.data.customers, function(changes) {
-                changes.forEach(function(element, index, array) {
-                        var arr = element.object,
-                            HTMLFrag = '',
-                            newChar,
-                            compareChar = '9',
-                            numbersStarted = false;
-                    //refresh with this data;
-                        arr.sort(function(a, b) {
-                            return a.name.givenName.localeCompare(b.name.givenName);
-                        });
-                        arr.forEach(function(element, index, array) {
-                                    newChar = element.name.givenName.charAt(0);
-                                    if (newChar < compareChar) {
-                                        if (element == array[0]) {
-                                            HTMLFrag += '<fieldset><legend>#</legend>';
-                                        };
-                                        HTMLFrag += '<fieldset><legend><input type="button" value="';
-                                        HTMLFrag += element.displayName;
-                                        HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
-                                        HTMLFrag += '<input type="text" placeholder="';
-                                        HTMLFrag += element.name.givenName;
-                                        HTMLFrag += '"/><input type="text" placeholder="';
-                                        HTMLFrag += element.name.familyName;
-                                        HTMLFrag += '"/>';
-                                        element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="text" placeholder="';
-                                            HTMLFrag += innerElement.value;
-                                            HTMLFrag += '" />';
-                                        });
-                                        element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="text" placeholder="';
-                                            HTMLFrag += innerElement.value;
-                                            HTMLFrag += '" />';
-                                        });
-                                        HTMLFrag += '<br /><article>';
-                                        HTMLFrag += '<figure class="location" ><figcaption>';
-                                        HTMLFrag += '<select>';
-                                        app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<option value="';
-                                            HTMLFrag += innerElement.location;
-                                            HTMLFrag += '" >';
-                                            HTMLFrag += innerElement.location;
-                                            HTMLFrag += '</option>';
-                                        });
-                                        HTMLFrag += '</select></figcaption></figure></article>';
-                                        element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<textarea>';
-                                            HTMLFrag += innerElement.value;
-                                            HTMLFrag += '</textarea>';
-                                        });
-                                        HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
-                                        HTMLFrag += index;
-                                        HTMLFrag += '"/></fieldset>';
-                                    };
-                                    if (newChar > compareChar){
-                                        HTMLFrag += '</fieldset><fieldset><legend>';                              
-                                        HTMLFrag += newChar;
-                                        HTMLFrag += '</legend>';  
-                                        compareChar = newChar;
-                                        HTMLFrag += '<fieldset><legend><input type="button" value="';
-                                        HTMLFrag += element.displayName;
-                                        HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
-                                        HTMLFrag += '<input type="text" placeholder="';
-                                        HTMLFrag += element.name.givenName;
-                                        HTMLFrag += '" /><input type="text" placeholder="';
-                                        HTMLFrag += element.name.familyName;
-                                        HTMLFrag += '" />';
-                                        element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="text" placeholder="';
-                                            HTMLFrag += innerElement.value;
-                                            HTMLFrag += '" />';
-                                        });
-                                        element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="text" placeholder="';
-                                            HTMLFrag += innerElement.value;
-                                            HTMLFrag += '" />';
-                                        });
-                                        HTMLFrag += '<br /><article>';
-                                        HTMLFrag += '<figure class="location" ><figcaption>';
-                                        HTMLFrag += '<select>';
-                                        app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<option value="';
-                                            HTMLFrag += innerElement.location;
-                                            HTMLFrag += '" >';
-                                            HTMLFrag += innerElement.location;
-                                            HTMLFrag += '</option>';
-                                        });
-                                        HTMLFrag += '</select></figcaption></figure></article>';
-                                        element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<textarea>';
-                                            HTMLFrag += innerElement.value;
-                                            HTMLFrag += '</textarea>';
-                                        });
-                                        HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
-                                        HTMLFrag += index;
-                                        HTMLFrag += '"/>';                              
-                                        HTMLFrag += '</fieldset>';
-                                    }else if(newChar == compareChar){
-                                        HTMLFrag += '<fieldset><legend><input type="button" value="';
-                                        HTMLFrag += element.displayName;
-                                        HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
-                                        HTMLFrag += '<input type="text" placeholder="';
-                                        HTMLFrag += element.name.givenName;
-                                        HTMLFrag += '"/><input type="text" placeholder="';
-                                        HTMLFrag += element.name.familyName;
-                                        HTMLFrag += '"/>';
-                                        element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="email" placeholder="';
-                                            HTMLFrag += innerElement.value;
-                                            HTMLFrag += '" />';
-                                        });
-                                        element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="text" placeholder="';
-                                            HTMLFrag += innerElement.value;
-                                            HTMLFrag += '" />';
-                                        });
-                                        HTMLFrag += '<br /><article>';
-                                        HTMLFrag += '<figure class="location" ><figcaption>';
-                                        HTMLFrag += '<select>';
-                                        app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<option value="';
-                                            HTMLFrag += innerElement.location;
-                                            HTMLFrag += '" >';
-                                            HTMLFrag += innerElement.location;
-                                            HTMLFrag += '</option>';
-                                        });
-                                        HTMLFrag += '</select></figcaption></figure></article>';
-                                        element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<textarea>';
-                                            HTMLFrag += innerElement.value;
-                                            HTMLFrag += '</textarea>';
-                                        });
-                                        HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
-                                        HTMLFrag += index;
-                                        HTMLFrag += '"/>';                              
-                                        HTMLFrag += '</fieldset>';
-                                    };
-                                app.DOM.customers.innerHTML = HTMLFrag;
-                });
-            });
-            Object.observe(app.data.items, function(changes) {      
-                changes.forEach(function(element, index, array) {
-                    var arr = element.object,
-                        HTMLFrag = '', 
-                        newChar,
-                        compareChar = '9',
-                        numbersStarted = false;
-                    //refresh with this data;
-                    arr.sort(function(a, b) {
-                        return a.itemName.localeCompare(b.itemName);
-                    });
-                    arr.forEach(function(innerElement, innerIndex, innerArray) {
-                        newChar = innerElement.itemName.charAt(0);
-                            if (newChar < compareChar) {
-                                if (innerElement == innerArray[0]) {
-                                    HTMLFrag += '<fieldset><legend>#</legend>';
-                                };
-                                HTMLFrag += '<article><input type="button" class="itemName" value="';
-                                HTMLFrag += innerElement.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" class="cancel" onclick="app.delete.item(this.alt)" alt="';
-                                HTMLFrag += innerIndex;
-                                HTMLFrag += '" />';
-                                HTMLFrag+='<input type="text" class="itemCode" placeholder="';
-                                HTMLFrag += innerElement.itemCode;
-                                HTMLFrag += '" />';
-                                HTMLFrag += '<input type="text" class="itemPrice" placeholder="';
-                                HTMLFrag += innerElement.itemPrice;
-                                HTMLFrag += '" />';
-                                HTMLFrag +='</article>';
-                            };
-                            if (newChar > compareChar){
-                                HTMLFrag += '</fieldset><fieldset><legend>';                              
-                                HTMLFrag += newChar;
-                                HTMLFrag += '</legend>';  
-                                compareChar = newChar;
-                                HTMLFrag += '<article><input type="button" class="itemName" value="';
-                                HTMLFrag += innerElement.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" class="cancel" onclick="app.delete.item(this.alt)" alt="';
-                                HTMLFrag += innerIndex;
-                                HTMLFrag += '"/>';
-                                HTMLFrag+='<input type="text" class="itemCode" placeholder="';
-                                HTMLFrag += innerElement.itemCode;
-                                HTMLFrag += '" />';
-                                HTMLFrag += '<input type="text" class="itemPrice" placeholder="';
-                                HTMLFrag += innerElement.itemPrice;
-                                HTMLFrag += '" />';
-                                HTMLFrag +='</article>';
-                            }else if(newChar == compareChar){
-                                HTMLFrag += '<article><input type="button" class="itemName" value="';
-                                HTMLFrag += innerElement.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" class="cancel" onclick="app.delete.item(this.alt)" alt="';
-                                HTMLFrag += innerIndex;
-                                HTMLFrag += '" />';
-                                HTMLFrag+='<input type="text" class="itemCode" placeholder="';
-                                HTMLFrag += innerElement.itemCode;
-                                HTMLFrag += '" />';
-                                HTMLFrag += '<input type="text" class="itemPrice" placeholder="';
-                                HTMLFrag += innerElement.itemPrice;
-                                HTMLFrag += '" />';
-                                HTMLFrag +='</article>';
-                            };
-                        
-                    });
-                    app.DOM.items.innerHTML = HTMLFrag;
-                });
-            });
-            Object.observe(app.data.slaughters, function(changes) {
-                changes.forEach(function(element, index, array) {
-                        HTMLFrag = '';
-                        var newChar,
-                            compareChar = '9',
-                            numbersStarted = false;
-                        //refresh with this data;
-                        element.object.forEach(function(innerElement, innerIndex, innerArray) {
-                            HTMLFrag += '<article><span class="slaughterDate">';
-                            HTMLFrag += innerElement.slaughterDate;
-                            HTMLFrag += '</span><b>-</b><span>Total: </span><input type="text" value="R';
-                            HTMLFrag += innerElement.total;
-                            HTMLFrag += '"/><input type="image" src="img/delete.png" onclick="app.delete.slaughter(this.alt)" class="cancel" alt="';
-                            HTMLFrag += innerIndex;
-                            HTMLFrag += '" /></article>';
-                        });
-                        app.DOM.slaughters.innerHTML = HTMLFrag;
-                });
-            });
-            Object.observe(app.data.locations, function(changes) {
-                changes.forEach(function(element, index, array) {
-                    if (element.type === "add") {
-                        //refresh with this data;
-                        HTMLFrag = '';
-                        HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location"><figcaption id="newSaleLocation"></figcaption></figure><input type="text" placeholder="Last Name" oninput="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" oninput="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
-                        app.data.locations.forEach(function(element, index, array) {
-                            HTMLFrag += '<option value="';
-                            HTMLFrag += element.location;
-                            HTMLFrag += '">';
-                            HTMLFrag += element.location;
-                            HTMLFrag += '</option>';
-                        });
-                        var temp = document.getElementsByTagName('select');
-                        for (var i = temp.length - 1; i >= 0; i--) {
-                            if (temp[i].id == "newSaleLocationSelect") {
-                                temp[i].innerHTML = HTMLFrag;
-                            } else if (temp[i].id == "newCustomerLocationSelect") {
-                                temp[i].innerHTML = HTMLFrag;
-                            };
-                        };
-                    };
-                });
-            });
         },
         accordion : function(target) {
             classie.toggleClass(target, 'acc-open');

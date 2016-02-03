@@ -697,7 +697,6 @@ function onDeviceReady() {
                         case "Customers" :
                         alert('value');
                                 var HTMLFrag = '<article id="newCustomer"><span>New Customer Details:</span><br class="clear"/><input type="text" placeholder="First Name" id="newCustomerFirstName"/><input type="text" placeholder="Last Name" id="newCustomerLastName"/><br /><input type="email" placeholder="Email" id="newCustomerEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newCustomerTelephone"/><br /><textarea id="newCustomerAddress" cols="50">Address</textarea> <br class="clear" /><select id="newCustomerLocationSelect">';
-                                alert("value2");
                                     app.data.locations.forEach(function(element, index, array) {
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += element.location;
@@ -707,7 +706,6 @@ function onDeviceReady() {
                                     });
                                     HTMLFrag += '</select><input type="text" placeholder="New Location" id="newCustomerAddLocationText"/><input type="button" id="newCustomerAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><input type="button" class="confirm" value="Confirm" onclick="app.newCustomer()" /><input type="button" class="cancel" value="Cancel"></article>';
                             //parent.children[2].innerHTML = HTMLFrag;
-                            alert('HTMLFrag');
                             break;
                         case "Items" :
                             parent.children[2].innerHTML = '<article id="newItem"><input type="text" id="newItemName" placeholder="Item Name"/><input type="text" id="newItemCode" placeholder="Item Code"/><input type="text" id="newItemPrice" placeholder="R0.00"/><br /><input type="button" class="confirm"value="Confirm" onclick="app.newItem()" /><input type="button" class="cancel" value="Cancel"></article>';

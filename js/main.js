@@ -124,9 +124,9 @@ function onDeviceReady() {
                             HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
                             HTMLFrag += element.location;
                             HTMLFrag+='</figcaption></figure>';
-                            HTMLFrag += element.givenName;
+                            HTMLFrag += element.name.givenName;
                             HTMLFrag+='&nbsp;';
-                            HTMLFrag += element.FamilyName;
+                            HTMLFrag += element.name.FamilyName;
                             HTMLFrag += '<br class="clear"><table class="purchase-table">';
 
                             element.purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
@@ -185,7 +185,7 @@ function onDeviceReady() {
                     return a.name.givenName.localeCompare(b.name.givenName);
                 });
                 this.data.customers.forEach(function(element, index, array) {
-                            newChar = element.givenName.charAt(0);
+                            newChar = element.name.givenName.charAt(0);
                             if (newChar < compareChar) {
                                 if (element == array[0]) {
                                     HTMLFrag += '<fieldset><legend>#</legend>';
@@ -754,9 +754,9 @@ function onDeviceReady() {
                         HTMLFrag += '&nbsp;</legend><figure class="location"><figcaption>';
                         HTMLFrag += element.location;
                         HTMLFrag += '</figcaption></figure>';
-                        HTMLFrag += element.givenName;
+                        HTMLFrag += element.name.givenName;
                         HTMLFrag += '&nbsp;';
-                        HTMLFrag += element.FamilyName;
+                        HTMLFrag += element.name.FamilyName;
                         HTMLFrag += '<br class="clear"><table class="purchase-table">';
 
                         element.purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
@@ -819,7 +819,7 @@ function onDeviceReady() {
                             return a.name.givenName.localeCompare(b.name.givenName);
                         });
                         arr.forEach(function(element, index, array) {
-                                    newChar = element.givenName.charAt(0);
+                                    newChar = element.name.givenName.charAt(0);
                                     if (newChar < compareChar) {
                                         if (element == array[0]) {
                                             HTMLFrag += '<fieldset><legend>#</legend>';

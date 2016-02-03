@@ -679,10 +679,10 @@ function onDeviceReady() {
             to :  function(value, parent) {
                 this.prevTab = this.currentTab;
                 this.currentTab = value;
-                alert('running');
                 if (value == "New") {
                     switch(this.prevTab){
                         case "Sales" :
+                            alert('running');
                             var HTMLFrag = '<article id="newSale"><span class="header">Slaughter Date:</span><br /><select id="newSaleSlaughterDate">';
                             app.data.slaughters.forEach(function(element, index, array) {
                                 HTMLFrag += '<option value="';
@@ -714,6 +714,8 @@ function onDeviceReady() {
                                 HTMLFrag += '</td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                                 HTMLFrag += '</table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>';
                                 parent.children[2].innerHTML = HTMLFrag;
+                                alert('end');
+
                             break;
                         case "Customers" :
                                 var HTMLFrag = '<article id="newCustomer"><span>New Customer Details:</span><br class="clear"/><input type="text" placeholder="First Name" id="newCustomerFirstName"/><input type="text" placeholder="Last Name" id="newCustomerLastName"/><br /><input type="email" placeholder="Email" id="newCustomerEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newCustomerTelephone"/><br /><textarea id="newCustomerAddress" cols="50">Address</textarea> <br class="clear" /><select id="newCustomerLocationSelect">';

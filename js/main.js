@@ -679,6 +679,7 @@ function onDeviceReady() {
             to :  function(value, parent) {
                 this.prevTab = this.currentTab;
                 this.currentTab = value;
+                alert('running');
                 if (value == "New") {
                     switch(this.prevTab){
                         case "Sales" :

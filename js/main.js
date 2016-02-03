@@ -1398,7 +1398,7 @@ var app;
                             msg,
                             function(buttonIndex) {
                                 if (buttonIndex) {
-                                    alert(JSON.parse(syncArr));
+                                    alert(syncArr[0]);
                                     syncArr.forEach(function(element, index, array) {
                                         app.data.customers.push(element);
                                     });

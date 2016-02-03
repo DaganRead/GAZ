@@ -1187,7 +1187,7 @@ function onDeviceReady() {
                         });
                     msg += (tempNumber - 1) + ' contacts successfully retrieved; ' + (syncNumber-1) + ' contacts are not in the customer listing:\n\n' + temp;                
                     navigator.notification.confirm(
-                            contacts,
+                            msg,
                             function(buttonIndex) {
                                 if (buttonIndex) {
                                     syncArr.forEach(function(element, index, array) {

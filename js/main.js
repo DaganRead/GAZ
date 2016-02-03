@@ -1402,7 +1402,7 @@ var app;
                                         app.data.customers.push(element);
                                     });
                                     app.data.customers.sort(function(a, b) {
-                                        return a.givenName.localeCompare(b.givenName);
+                                        return a.name.givenName.localeCompare(b.name.givenName);
                                     });
                                     app.store('customer');
                                 };

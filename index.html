@@ -32,14 +32,14 @@
 	       </div>
 	        
 	       <div class="tab">
-	           <input type="radio" value="Customers" onclick="alert('running');app.nav.to(this.value)" id="tab-2" name="PrimaryNav">
+	           <input type="radio" value="Customers" onclick="app.nav.to(this.value)" id="tab-2" name="PrimaryNav">
 	           <label for="tab-2"><img src="img/customers.png" /></label>
 	           
 	           <div class="content">
 	               	<article class="search" >
 	               		<input type="image" src="img/sync.png" class="sync-button" onclick="app.sync.customers()">
 	               		<input type="text" class="search-bar" />
-	               		<input type="image" src="img/search.png" class="search-button" onclick="alert('search filter!')">
+	               		<input type="image" src="img/search.png" class="search-button" onclick="app.search.customer(this.previousSibling.value)" >
 	               	</article>
 	               	<form id="customers">
 	               	</form>
@@ -53,7 +53,7 @@
 	           	<div class="content">
 	               	<article class="search" >
 	               		<input type="text" class="search-bar" />
-	               		<input type="image" src="img/search.png" class="search-button" onclick="alert('Do search filter!')">
+	               		<input type="image" src="img/search.png" class="search-button" onclick="app.search.item(this.previousSibling.value)" >
 	               	</article>
 	               	<form id="items">
 	               	</form>

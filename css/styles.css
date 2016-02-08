@@ -279,19 +279,19 @@ article#newSale input{
     border: 2px solid white;
 }
 article#newSale input#newSaleFirstName, article#newSale input#newSaleLastName{
-    margin: 10px 1% 15px 1%;
+    margin: 19px 1% 15px;
     width: calc(40% - 20px);
     float: right;
     padding: 3px;
 }
 article#newSale figure.location {
     float: left;
-    margin: 7px 1% 15px 0;
+    margin: 10px 1% 15px 5px;
     background-color: #0DB6B9;
     border-radius: 50%;
     border: 2px solid white;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     text-align: center;
     display: table;
 }
@@ -359,10 +359,12 @@ article#newSale table#newSalePurchaseTable{
 }
 article#newSale table#newSalePurchaseTable td{
     padding: 2px;
+    width: 40%;
 }
 article#newSale table#newSalePurchaseTable td.headerLarge{
     padding: 10px;
     text-align: center;
+    width: initial!important;
 }
 article#newSale table#newSalePurchaseTable input{
     width: calc(100% - 10px)!important;

@@ -33,6 +33,9 @@ var app;
                     case "SELECT" :
                         touches[i].target.onchange.call(touches[i].target);
                         break;
+                    /*case "FIGURE" :
+                        touches[i].target.onchange.call(touches[i].target);
+                        break;*/
                 };      
             };
         },
@@ -88,7 +91,7 @@ var app;
                     HTMLFrag += element.slaughterDate;
                     HTMLFrag += '</option>';
                 });
-                HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location"><figcaption id="newSaleLocation"></figcaption></figure><input type="text" placeholder="Last Name" oninput="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" oninput="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
+                HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location" onclick="app.pickContact()" ><figcaption id="newSaleLocation">Pick</figcaption></figure><input type="text" placeholder="Last Name" oninput="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" oninput="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
                     this.data.locations.forEach(function(element, index, array) {
                         HTMLFrag += '<option value="';
                         HTMLFrag += element.location;
@@ -594,6 +597,7 @@ var app;
             if (this.data.sales.indexOf(JSON.stringify(newSale)) == -1) {
                 //add to loaded dataset
                 this.data.sales.push(newSale);
+
                 //update dataset
                 this.store('sale');
             };
@@ -608,7 +612,7 @@ var app;
         },
         newCustomer : function() {
             var newCustomer = navigator.contacts.create({
-                "displayName": "Test User",
+                "displayName": this.forms.newCustomer.givenName() + ' ' + this.forms.newCustomer.familyName(),
                 "name" : { 
                     givenName : this.forms.newCustomer.givenName(),
                     familyName : this.forms.newCustomer.familyName()
@@ -1087,6 +1091,13 @@ var app;
                 document.getElementById('newSalePurchaseTable').children[0].appendChild(input);
             };
         },
+        pickContact : function() {
+            navigator.contacts.pickContact(function(contact){
+                console.log('The following contact has been selected:' + JSON.stringify(contact));
+            },function(err){
+                console.log('Error: ' + err);
+            });
+        },
         customerSearch : function(givenName, familyName) {
             app.forms.newSale.location().innerHTML = '';
             if(classie.hasClass(document.getElementById('newSale'), 'acc-open')){
@@ -1150,20 +1161,56 @@ var app;
         },
         delete : {
             sale : function(index) {
-                app.data.sales.splice(index, 1);
-                app.store('sale');
+                navigator.notification.confirm(
+                    "Are you sure you would like to delete the sale?",
+                    function(buttonIndex) {
+                        if (buttonIndex) {
+                            app.data.sales.splice(index, 1);
+                            app.store('sale');
+                        };
+                    },
+                    'Confirm Removal',
+                    ['Delete','Cancel']
+                );
             },
             customer : function(index) {
-                app.data.customers.splice(index, 1);
-                app.store('customer');
+                navigator.notification.confirm(
+                    "Are you sure you would like to delete the customer?",
+                    function(buttonIndex) {
+                        if (buttonIndex) {
+                            app.data.customers.splice(index, 1);
+                            app.store('customer');
+                        };
+                    },
+                    'Confirm Removal',
+                    ['Delete','Cancel']
+                );
             },
             item : function(index) {
-                app.data.items.splice(index, 1);
-                app.store('item');
+                    navigator.notification.confirm(
+                    "Are you sure you would like to delete the item?",
+                    function(buttonIndex) {
+                        if (buttonIndex) {
+                            app.data.items.splice(index, 1);
+                            app.store('item');
+                        };
+                    },
+                    'Confirm Removal',
+                    ['Delete','Cancel']
+                );
             },
             slaughter : function(index) {
-                app.data.slaughters.splice(index, 1);
-                app.store('slaughter');
+                    navigator.notification.confirm(
+                    "Are you sure you would like to delete the date?",
+                    function(buttonIndex) {
+                        if (buttonIndex) {
+                            app.data.slaughters.splice(index, 1);
+                            app.store('slaughter');
+                        };
+                    },
+                    'Confirm Removal',
+                    ['Delete','Cancel']
+                );
             }
         },
         search : {

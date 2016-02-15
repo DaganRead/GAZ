@@ -1,5 +1,6 @@
 var app;
     app = {
+        picked : false,
         DOM : {
             newSale: document.getElementById('newSale'),
             sales: document.getElementById('sales'),
@@ -34,6 +35,10 @@ var app;
                         touches[i].target.onchange.call(touches[i].target);
                         break;
                     /*case "FIGURE" :
+                        touches[i].target.onchange.call(touches[i].target);
+                        break;*/
+                    /*case "FIELDSET" :
+                        alert(touches[i].target);
                         touches[i].target.onchange.call(touches[i].target);
                         break;*/
                 };      
@@ -84,6 +89,7 @@ var app;
                 app.binding();
                 /*New Sales*/
                 var HTMLFrag = '<article id="newSale"><span class="header">Slaughter Date:</span><br /><select id="newSaleSlaughterDate">';
+                HTMLFrag += '<option disabled selected value=""></option>';
                 this.data.slaughters.forEach(function(element, index, array) {
                     HTMLFrag += '<option value="';
                     HTMLFrag += element.slaughterDate;
@@ -91,7 +97,8 @@ var app;
                     HTMLFrag += element.slaughterDate;
                     HTMLFrag += '</option>';
                 });
-                HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location" onclick="app.pickContact()" ><figcaption id="newSaleLocation">Pick</figcaption></figure><input type="text" placeholder="Last Name" oninput="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" oninput="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
+                HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location" onclick="app.pickContact()" ><figcaption id="newSaleLocation">Pick</figcaption></figure><input type="text" placeholder="Last Name" onblur="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" onblur="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
+                    HTMLFrag += '<option disabled selected value=""></option>';
                     this.data.locations.forEach(function(element, index, array) {
                         HTMLFrag += '<option value="';
                         HTMLFrag += element.location;
@@ -99,8 +106,9 @@ var app;
                         HTMLFrag += element.location;
                         HTMLFrag += '</option>';
                     });
-                    HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><tr><td>';
+                    HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><thead><tr><th>Item</th><th>Qnt</th><th>Mass</th></tr></thead><tbody><tr><td>';
                     HTMLFrag += '<select class="tableInput" onclick="app.purchaseTableAdd(this)" >';
+                    HTMLFrag += '<option disabled selected value=""></option>';
                     this.data.items.forEach(function(innerElement, innerIndex, innerArray) {
                         HTMLFrag += '<option value="';
                         HTMLFrag += innerElement.itemCode;
@@ -111,14 +119,14 @@ var app;
                         HTMLFrag += '</option>';
                     });
                     HTMLFrag += '</select>';
-                    HTMLFrag += '</td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
-                    HTMLFrag += '</table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel" /></article>';
+                    HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
+                    HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel" /></article>';
                 app.DOM.newSale.innerHTML = HTMLFrag;
                 /* Sales */
                 var HTMLFrag = '',
                     total = 0;
                 this.data.sales.forEach(function(element, index, array) {
-                            HTMLFrag +='<fieldset alt="';
+                            HTMLFrag +='<fieldset data-index="';
                             HTMLFrag += index;
                             HTMLFrag += '"><legend>&nbsp;';
                             HTMLFrag += element.slaughterDate;
@@ -128,15 +136,18 @@ var app;
                             HTMLFrag += element.name.givenName;
                             HTMLFrag+='&nbsp;';
                             HTMLFrag += element.name.familyName;
-                            HTMLFrag += '<br class="clear"><table class="purchase-table">';
-
+                            if (index == 0) {
+                                HTMLFrag += '<br class="clear"><table class="purchase-table"><thead><tr><th>Item</th><th></th><th>Qnt</th><th colspan="2"></th><th>Mass</th><th>@</th><th>Total</th></tr></thead><tbody>';
+                            }else{
+                                HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
+                            };
                             element.purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                                 innerElement = JSON.parse(innerElement);
-                                HTMLFrag += '<tr><td>';
-                                HTMLFrag += '<select class="itemCode" onChange="this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.children[0].innerHTML = \'R \' + this.selectedOptions[0].dataset.price; app.update.sale(this)" alt="';
+                                HTMLFrag += '<tr><td colspan="2">';
+                                HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
                                 HTMLFrag += innerIndex;
-                                HTMLFrag += '" oninput="app.update.sale(this)" >';
-
+                                HTMLFrag += '" >';
+                                HTMLFrag += '<option disabled selected value=""></option>';
                                 app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
                                     HTMLFrag += '<option value="';
                                     HTMLFrag += iiElement.itemCode;
@@ -151,28 +162,47 @@ var app;
                                     HTMLFrag += '</option>';
                                 });
                                 HTMLFrag += '</select>';
-                                HTMLFrag += '</td><td class="headerLarge">X</td><td class="small"><input type="text" class="quantity" alt="';
+                                HTMLFrag += '</td><td colspan="2" class="small"><input type="text" class="quantity" data-index="';
                                 HTMLFrag += innerIndex;         
-                                HTMLFrag += '" oninput="app.update.sale(this)" placeholder="';
+                                HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';
                                 HTMLFrag += innerElement.quantity;
-                                HTMLFrag += '"/></td><td class="small"><td class="headerLarge">@</td><td><span class="priceKG">';
+                                HTMLFrag += '"/></td><td colspan="2" class="small"><input type="text" class="weight" data-index="';
+                                HTMLFrag += innerIndex;     
+                                HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';         
+                                HTMLFrag += innerElement.totalWeight + 'kg';
+                                HTMLFrag += '"/></td>';
+                                HTMLFrag += '<td class="priceKG">';
                                 HTMLFrag += 'R ' + innerElement.itemPrice;
-                                //alert(JSON.stringify(innerElement));
-                                HTMLFrag += '</span></td><td><span id="priceTag">R ';
-                                HTMLFrag += innerElement.quantity * innerElement.itemPrice;
-                                total += innerElement.quantity * innerElement.itemPrice;
-                                HTMLFrag += '</span></td></tr>';
+                                HTMLFrag += '</td><td class="priceTag">';
+                                HTMLFrag += 'R ' + innerElement.totalWeight * innerElement.itemPrice;
+                                total    += innerElement.totalWeight * innerElement.itemPrice;
+                                HTMLFrag += '</td></tr>';
+                                /* if (innerElement.weights.length > 1) {
+                                    innerElement.weights.forEach(function(iiElement, iiIndex, iiArray) {
+                                        total += iiElement * innerElement.itemPrice;
+                                        HTMLFrag += '<tr><td colspan="4"></td>';
+                                        HTMLFrag += '<td colspan="2" class="small"><input type="text" class="weight" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';         
+                                        HTMLFrag += iiElement + 'kg';
+                                        HTMLFrag += '"/></td><td class="priceKG">';
+                                        HTMLFrag += 'R ' + innerElement.itemPrice;
+                                        HTMLFrag += '</td><td class="priceTag">';
+                                        HTMLFrag += 'R ' + total;
+                                        HTMLFrag += '</td></tr>';
+                                    });
+                                };*/
                             });
-                            HTMLFrag += '</table><br />Total: R ';
-                            HTMLFrag += '<span>';
-                            HTMLFrag += total;
+                            HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
+                            HTMLFrag += 'R' + total;
+                            HTMLFrag += '</td></tr></tfoot></table>';
                             total = 0;
-                            HTMLFrag += '</span><br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" alt="';
+                            HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" data-index="';
                             HTMLFrag += index;
-                            HTMLFrag += '" oninput="app.update.sale(this)" > '; 
+                            HTMLFrag += '" onblur="app.update.sale(this)" > '; 
                             HTMLFrag += element.notes;
                             HTMLFrag += '</textarea>';
-                            HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.alt)" class="cancel" alt="';
+                            HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.alt)" class="cancel" data-index="';
                             HTMLFrag += index;
                             HTMLFrag += '"/></fieldset>';
                         });
@@ -193,25 +223,33 @@ var app;
                                 };
                                 HTMLFrag += '<fieldset><legend><input type="button" value="';
                                 HTMLFrag += element.displayName;
-                                HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
-                                HTMLFrag += '<input type="text" placeholder="';
+                                        HTMLFrag += '" onclick="app.accordion(this)" ';
+                                        HTMLFrag += ' data-index="';
+                                        HTMLFrag += index;
+                                        HTMLFrag += '"/></legend>';
+                                        HTMLFrag += '<input type="text" placeholder="';
                                 HTMLFrag += element.name.givenName;
                                 HTMLFrag += '"/><input type="text" placeholder="';
                                 HTMLFrag += element.name.familyName;
                                 HTMLFrag += '"/>';
                                 element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<input type="text" placeholder="';
+                                    HTMLFrag += '<input type="email" placeholder="';
                                     HTMLFrag += innerElement.value;
-                                    HTMLFrag += '" />';
+                                    HTMLFrag += '" data-index="';
+                                    HTMLFrag += innerIndex;
+                                    HTMLFrag += '"/>';
                                 });
                                 element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<input type="text" placeholder="';
                                     HTMLFrag += innerElement.value;
-                                    HTMLFrag += '" />';
+                                    HTMLFrag += '" data-index="';
+                                    HTMLFrag += innerIndex;
+                                    HTMLFrag += '"/>';
                                 });
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
                                 HTMLFrag += '<select>';
+                                HTMLFrag += '<option disabled selected value=""></option>';
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
                                     HTMLFrag += innerElement.location;
@@ -236,25 +274,33 @@ var app;
                                 compareChar = newChar;
                                 HTMLFrag += '<fieldset><legend><input type="button" value="';
                                 HTMLFrag += element.displayName;
-                                HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
-                                HTMLFrag += '<input type="text" placeholder="';
+                                        HTMLFrag += '" onclick="app.accordion(this)" ';
+                                        HTMLFrag += ' data-index="';
+                                        HTMLFrag += index;
+                                        HTMLFrag += '"/></legend>';
+                                        HTMLFrag += '<input type="text" placeholder="';
                                 HTMLFrag += element.name.givenName;
                                 HTMLFrag += '" /><input type="text" placeholder="';
                                 HTMLFrag += element.name.familyName;
                                 HTMLFrag += '" />';
                                 element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<input type="text" placeholder="';
+                                    HTMLFrag += '<input type="email" placeholder="';
                                     HTMLFrag += innerElement.value;
-                                    HTMLFrag += '" />';
+                                    HTMLFrag += '" data-index="';
+                                    HTMLFrag += innerIndex;
+                                    HTMLFrag += '"/>';
                                 });
                                 element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<input type="text" placeholder="';
                                     HTMLFrag += innerElement.value;
-                                    HTMLFrag += '" />';
+                                    HTMLFrag += '" data-index="';
+                                    HTMLFrag += innerIndex;
+                                    HTMLFrag += '"/>';
                                 });
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
                                 HTMLFrag += '<select>';
+                                HTMLFrag += '<option disabled selected value=""></option>';
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
                                     HTMLFrag += innerElement.location;
@@ -275,8 +321,11 @@ var app;
                             }else if(newChar == compareChar){
                                 HTMLFrag += '<fieldset><legend><input type="button" value="';
                                 HTMLFrag += element.displayName;
-                                HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
-                                HTMLFrag += '<input type="text" placeholder="';
+                                        HTMLFrag += '" onclick="app.accordion(this)" ';
+                                        HTMLFrag += ' data-index="';
+                                        HTMLFrag += index;
+                                        HTMLFrag += '"/></legend>';
+                                        HTMLFrag += '<input type="text" placeholder="';
                                 HTMLFrag += element.name.givenName;
                                 HTMLFrag += '"/><input type="text" placeholder="';
                                 HTMLFrag += element.name.familyName;
@@ -284,16 +333,21 @@ var app;
                                 element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<input type="email" placeholder="';
                                     HTMLFrag += innerElement.value;
-                                    HTMLFrag += '" />';
+                                    HTMLFrag += '" data-index="';
+                                    HTMLFrag += innerIndex;
+                                    HTMLFrag += '"/>';
                                 });
                                 element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<input type="text" placeholder="';
                                     HTMLFrag += innerElement.value;
-                                    HTMLFrag += '" />';
+                                    HTMLFrag += '" data-index="';
+                                    HTMLFrag += innerIndex;
+                                    HTMLFrag += '"/>';
                                 });
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
                                 HTMLFrag += '<select>';
+                                HTMLFrag += '<option disabled selected value=""></option>';
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
                                     HTMLFrag += innerElement.location;
@@ -549,28 +603,16 @@ var app;
             }
         },
         newSale : function() {
+            // Update mapped structure
             var purchaseTableSelects = document.getElementsByTagName('select'),
-                alternate = true,
                 foo = {
                     itemCode: '',
                     quantity: 0,
-                    weight:0,
+                    weights:[],
+                    totalWeight:0,
                     itemPrice:0
-                };
-            //console.log(purchaseTableSelects);
-            for (var i = 0; i < purchaseTableSelects.length; i++) {
-                if (classie.hasClass(purchaseTableSelects[i], 'tableInput')) {
-                        foo.itemCode = purchaseTableSelects[i].value;
-                        foo.itemPrice = purchaseTableSelects[i].selectedOptions[0].dataset.price;
-                        foo.quantity = purchaseTableSelects[i].parentNode.nextSibling.nextSibling.children[0].value;
-                        if (foo.quantity != 0) {
-                            this.forms.newSale.purchaseTable.push(JSON.stringify(foo));
-
-                        };
-                };
-            };
-            // Update mapped structure
-            var newSale = {
+                },
+                newSale = {
                 slaughterDate: this.forms.newSale.slaughterDate(),
                 name : {
                     givenName: this.forms.newSale.givenName(),
@@ -580,34 +622,55 @@ var app;
                 location: this.forms.newSale.location().innerHTML,
                 total: 0,
                 notes : ''
-            },
-            newCustomer = navigator.contacts.create({
-                "displayName": "Test User",
-                "name" : { 
-                    givenName : this.forms.newCustomer.givenName(),
-                    familyName : this.forms.newCustomer.familyName()
-                },
-                "note" : this.forms.newCustomer.location(),
-                "emails" : [this.forms.newCustomer.email()],
-                "phoneNumbers" : [this.forms.newCustomer.telephone()],
-                "addresses" : [this.forms.newCustomer.address()]
-            });
-
-
-            if (this.data.sales.indexOf(JSON.stringify(newSale)) == -1) {
-                //add to loaded dataset
-                this.data.sales.push(newSale);
-
-                //update dataset
-                this.store('sale');
             };
-            if (this.forms.newSale.firstNameMatch == '' && this.forms.newSale.lastNameMatch == '') {
+            for (var i = 0; i < purchaseTableSelects.length; i++) {
+                if (classie.hasClass(purchaseTableSelects[i], 'touched')) {
+                        foo.itemCode = purchaseTableSelects[i].value;
+                        foo.itemPrice = purchaseTableSelects[i].selectedOptions[0].dataset.price;
+                        foo.quantity = purchaseTableSelects[i].parentNode.nextSibling.children[0].value;
+                        foo.totalWeight = purchaseTableSelects[i].parentNode.nextSibling.nextSibling.children[0].value;
+                        for (var ii = foo.quantity - 1; ii >= 0; ii--) {
+                            foo.weights.push(foo.totalWeight/foo.quantity);
+                        };
+                        newSale.total += foo.totalWeight * foo.itemPrice;
+                        if (foo.quantity != 0) {
+                            this.forms.newSale.purchaseTable.push(JSON.stringify(foo));
+                            foo.weights = [];
+                        };
+                };
+            };
+            
+            if (this.picked) {
+                var newCustomer = navigator.contacts.create({
+                    "displayName": this.forms.newCustomer.givenName() + ' ' + this.forms.newCustomer.familyName(),
+                    "name" : { 
+                        givenName : this.forms.newCustomer.givenName(),
+                        familyName : this.forms.newCustomer.familyName()
+                    },
+                    "note" : this.forms.newCustomer.location(),
+                    "emails" : [this.forms.newCustomer.email()],
+                    "phoneNumbers" : [this.forms.newCustomer.telephone()],
+                    "addresses" : [this.forms.newCustomer.address()]
+                });
+
                 if (this.data.customers.indexOf(JSON.stringify(newCustomer)) == -1) {
                     //add to loaded dataset
                     this.data.customers.push(newCustomer);
                     //update dataset
                     this.store('customer');
                 };
+            };
+
+
+            if (this.data.sales.indexOf(JSON.stringify(newSale)) == -1) {
+                //add to loaded dataset
+                this.data.slaughters.forEach(function(element, index, array) {
+                    if (element.slaughterDate == newSale.slaughterDate) {
+                        element.total += newSale.total;
+                    };
+                });
+                this.data.sales.push(newSale);
+                this.store('sale');
             };
         },
         newCustomer : function() {
@@ -621,9 +684,21 @@ var app;
                 "emails" : [this.forms.newCustomer.email()],
                 "phoneNumbers" : [this.forms.newCustomer.telephone()],
                 "addresses" : [this.forms.newCustomer.address()]
-            });
+            }),
+            match = false;
             //add to loaded dataset
-            if (this.data.customers.indexOf(newCustomer) == -1) {
+            this.data.customers.forEach(function(element, index, array) {
+                if (newCustomer.displayName == element.displayName) {
+                    match = true;
+                };
+                this.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
+                    if(this.forms.newCustomer.location() == innerElement.location){
+                        innerElement.count ++;
+                        this.store('location');
+                    }
+                });
+            });
+            if (!match) {
                 this.data.customers.push(newCustomer);
                 //update dataset
                 this.store('customer');
@@ -658,7 +733,8 @@ var app;
         newLocation : function() {
             //add to loaded dataset
             var newLocation = {
-                location : this.forms.newLocation.location()
+                location : this.forms.newLocation.location(),
+                count : 1
             };
             if (this.data.locations.indexOf(JSON.stringify(newLocation)) == -1) {
                 this.data.locations.push(newLocation);
@@ -685,6 +761,7 @@ var app;
                     switch(this.prevTab){
                         case "Sales":
                             var HTMLFrag = '<article id="newSale"><span class="header">Slaughter Date:</span><br /><select id="newSaleSlaughterDate">';
+                            HTMLFrag += '<option disabled selected value=""></option>';
                             app.data.slaughters.forEach(function(element, index, array) {
                                 HTMLFrag += '<option value="';
                                 HTMLFrag += element.slaughterDate;
@@ -692,7 +769,8 @@ var app;
                                 HTMLFrag += element.slaughterDate;
                                 HTMLFrag += '</option>';
                             });
-                            HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location"><figcaption id="newSaleLocation"></figcaption></figure><input type="text" placeholder="Last Name" oninput="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" oninput="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
+                            HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location" onclick="app.pickContact()" ><figcaption id="newSaleLocation">Pick</figcaption></figure><input type="text" placeholder="Last Name" onblur="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" onblur="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
+                                HTMLFrag += '<option disabled selected value=""></option>';
                                 app.data.locations.forEach(function(element, index, array) {
                                     HTMLFrag += '<option value="';
                                     HTMLFrag += element.location;
@@ -700,8 +778,9 @@ var app;
                                     HTMLFrag += element.location;
                                     HTMLFrag += '</option>';
                                 }); 
-                                HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><tr><td>';
+                                HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><thead><tr><th>Item</th><th>Qnt</th><th>Mass</th></tr></thead><tbody><tr><td>';
                                 HTMLFrag += '<select class="tableInput" onclick="app.purchaseTableAdd(this)" >';
+                                HTMLFrag += '<option disabled selected value=""></option>';
                                 app.data.items.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
                                     HTMLFrag += innerElement.itemCode;
@@ -712,12 +791,13 @@ var app;
                                     HTMLFrag += '</option>';
                                 });
                                 HTMLFrag += '</select>';
-                                HTMLFrag += '</td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
-                                HTMLFrag += '</table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>';
+                                HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
+                                HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>';
                                 parent.children[2].innerHTML = HTMLFrag;
                             break;
                         case "Customers":
                                 var HTMLFrag = '<article id="newCustomer"><span>New Customer Details:</span><br class="clear"/><input type="text" placeholder="First Name" id="newCustomerFirstName"/><input type="text" placeholder="Last Name" id="newCustomerLastName"/><br /><input type="email" placeholder="Email" id="newCustomerEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newCustomerTelephone"/><br /><textarea id="newCustomerAddress" cols="50">Address</textarea> <br class="clear" /><select id="newCustomerLocationSelect">';
+                                    HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.locations.forEach(function(element, index, array) {
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += element.location;
@@ -748,66 +828,73 @@ var app;
             Object.observe(app.data.sales, function(changes) {
                 changes.forEach(function(element, index, array) {
                     var HTMLFrag = '',
-                        total = 0;
-                    //refresh with this data;
-                    app.data.sales.forEach(function(element, index, array) {
-                        HTMLFrag +='<fieldset alt="';
-                        HTMLFrag += index;
-                        HTMLFrag += '"><legend>&nbsp;';
-                        HTMLFrag += element.slaughterDate;
-                        HTMLFrag += '&nbsp;</legend><figure class="location"><figcaption>';
-                        HTMLFrag += element.location;
-                        HTMLFrag += '</figcaption></figure>';
-                        HTMLFrag += element.name.givenName;
-                        HTMLFrag += '&nbsp;';
-                        HTMLFrag += element.name.familyName;
-                        HTMLFrag += '<br class="clear"><table class="purchase-table">';
-
-                        element.purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
-                            innerElement = JSON.parse(innerElement);
-                            HTMLFrag += '<tr><td>';
-                                HTMLFrag += '<select class="itemCode" onChange="this.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.children[0].innerHTML = \'R \' + this.selectedOptions[0].dataset.price; app.update.sale(this)" alt="';
-                            HTMLFrag += innerIndex;
-                            HTMLFrag += '" oninput="app.update.sale(this)" >';
-
-                            app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
-                                HTMLFrag += '<option value="';
-                                HTMLFrag += iiElement.itemCode;
-                                HTMLFrag += '" '; 
-                                if (iiElement.itemCode == innerElement.itemCode) {
-                                    HTMLFrag += 'selected'; 
+                    total = 0;
+                    app.data.sales.forEach(function(innerElement, innerIndex, innerArray) {
+                                HTMLFrag +='<fieldset data-index="';
+                                HTMLFrag += innerIndex;
+                                HTMLFrag += '"><legend>&nbsp;';
+                                HTMLFrag += innerElement.slaughterDate;
+                                HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
+                                HTMLFrag += innerElement.location;
+                                HTMLFrag+='</figcaption></figure>';
+                                HTMLFrag += innerElement.name.givenName;
+                                HTMLFrag+='&nbsp;';
+                                HTMLFrag += innerElement.name.familyName;
+                                if (innerIndex == 0) {
+                                    HTMLFrag += '<br class="clear"><table class="purchase-table"><thead><tr><th>Item</th><th></th><th>Qnt</th><th colspan="2"></th><th>Mass</th><th>@</th><th>Total</th></tr></thead><tbody>';
+                                }else{
+                                    HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
                                 };
-                                HTMLFrag += ' alt="';
-                                HTMLFrag += iiElement.itemPrice;
-                                HTMLFrag += '" >';
-                                HTMLFrag += iiElement.itemName;
-                                HTMLFrag += '</option>';
+                                innerElement.purchaseTable.forEach(function(iiiElement, iiiIndex, iiiArray) {
+                                    iiiElement = JSON.parse(iiiElement);
+                                    HTMLFrag += '<tr><td colspan="2">';
+                                    HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
+                                    HTMLFrag += iiiIndex;
+                                    HTMLFrag += '" >';
+                                    HTMLFrag += '<option disabled selected value=""></option>';
+                                    app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
+                                        HTMLFrag += '<option value="';
+                                        HTMLFrag += iiElement.itemCode;
+                                        HTMLFrag += '" '; 
+                                        if (iiElement.itemCode == iiiElement.itemCode) {
+                                            HTMLFrag += 'selected'; 
+                                        };
+                                        HTMLFrag += ' data-price="';
+                                        HTMLFrag += iiElement.itemPrice;
+                                        HTMLFrag += '" >';
+                                        HTMLFrag += iiElement.itemName;
+                                        HTMLFrag += '</option>';
+                                    });
+                                    HTMLFrag += '</select>';
+                                    HTMLFrag += '</td><td colspan="2" class="small"><input type="text" class="quantity" data-index="';
+                                    HTMLFrag += iiiIndex;         
+                                    HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';
+                                    HTMLFrag += iiiElement.quantity;
+                                    HTMLFrag += '"/></td><td colspan="2" class="small"><input type="text" class="weight" data-index="';
+                                    HTMLFrag += iiiIndex;  
+                                    HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';         
+                                    HTMLFrag += iiiElement.totalWeight + 'kg';
+                                    HTMLFrag += '"/></td>';
+                                    HTMLFrag += '<td class="priceKG">';
+                                    HTMLFrag += 'R ' + iiiElement.itemPrice;
+                                    HTMLFrag += '</td><td class="priceTag">';
+                                    HTMLFrag += 'R ' + iiiElement.totalWeight * iiiElement.itemPrice;
+                                    total    += iiiElement.totalWeight * iiiElement.itemPrice;
+                                    HTMLFrag += '</td></tr>';
+                                });
+                                HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
+                                HTMLFrag += 'R' + total;
+                                HTMLFrag += '</td></tr></tfoot></table>';
+                                total = 0;
+                                HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" data-index="';
+                                HTMLFrag += innerIndex;
+                                HTMLFrag += '" onblur="app.update.sale(this)" > '; 
+                                HTMLFrag += element.notes;
+                                HTMLFrag += '</textarea>';
+                                HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.alt)" class="cancel" data-index="';
+                                HTMLFrag += innerIndex;
+                                HTMLFrag += '"/></fieldset>';
                             });
-                            HTMLFrag += '</select>';
-                            HTMLFrag += '</td><td class="headerLarge">X</td><td class="small"><input type="text" class="quantity" alt="';
-                            HTMLFrag += innerIndex;
-                            HTMLFrag += '" oninput="app.update.sale(this)" placeholder="';
-                            HTMLFrag += innerElement.quantity;
-                            HTMLFrag += '"/></td><td class="small"><td class="headerLarge">@</td><td><span class="priceKG">';
-                            HTMLFrag += 'R ' + innerElement.itemPrice;
-                            HTMLFrag += '</span></td><td><span id="priceTag">R ';
-                                HTMLFrag += innerElement.quantity * innerElement.itemPrice;
-                                total += innerElement.quantity * innerElement.itemPrice;
-                                HTMLFrag += '</span></td></tr>';
-                            });
-                            HTMLFrag += '</table><br />Total: R ';
-                            HTMLFrag += '<span>';
-                            HTMLFrag += total;
-                            total = 0;
-                            HTMLFrag += '</span><br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" alt="';
-                            HTMLFrag += index;
-                        HTMLFrag += '" oninput="app.update.sale(this)" > '; 
-                        HTMLFrag += element.notes;
-                        HTMLFrag += '</textarea>';
-                        HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.alt)" class="cancel" alt="';
-                        HTMLFrag += index;
-                        HTMLFrag += '"/></fieldset>';
-                    });
                     app.DOM.sales.innerHTML = HTMLFrag;
                 });
             });
@@ -831,25 +918,33 @@ var app;
                                         };
                                         HTMLFrag += '<fieldset><legend><input type="button" value="';
                                         HTMLFrag += element.displayName;
-                                        HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
+                                        HTMLFrag += '" onclick="app.accordion(this)" ';
+                                        HTMLFrag += ' data-index="';
+                                        HTMLFrag += index;
+                                        HTMLFrag += '"/></legend>';
                                         HTMLFrag += '<input type="text" placeholder="';
                                         HTMLFrag += element.name.givenName;
                                         HTMLFrag += '"/><input type="text" placeholder="';
                                         HTMLFrag += element.name.familyName;
                                         HTMLFrag += '"/>';
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="text" placeholder="';
+                                            HTMLFrag += '<input type="email" placeholder="';
                                             HTMLFrag += innerElement.value;
-                                            HTMLFrag += '" />';
+                                            HTMLFrag += '" data-index="';
+                                            HTMLFrag += innerIndex;
+                                            HTMLFrag += '"/>';
                                         });
                                         element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="text" placeholder="';
                                             HTMLFrag += innerElement.value;
-                                            HTMLFrag += '" />';
+                                            HTMLFrag += '" data-index="';
+                                            HTMLFrag += innerIndex;
+                                            HTMLFrag += '"/>';
                                         });
                                         HTMLFrag += '<br /><article>';
                                         HTMLFrag += '<figure class="location" ><figcaption>';
                                         HTMLFrag += '<select>';
+                                        HTMLFrag += '<option disabled selected value=""></option>';
                                         app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<option value="';
                                             HTMLFrag += innerElement.location;
@@ -874,25 +969,33 @@ var app;
                                         compareChar = newChar;
                                         HTMLFrag += '<fieldset><legend><input type="button" value="';
                                         HTMLFrag += element.displayName;
-                                        HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
+                                        HTMLFrag += '" onclick="app.accordion(this)" ';
+                                        HTMLFrag += ' data-index="';
+                                        HTMLFrag += index;
+                                        HTMLFrag += '"/></legend>';
                                         HTMLFrag += '<input type="text" placeholder="';
                                         HTMLFrag += element.name.givenName;
                                         HTMLFrag += '" /><input type="text" placeholder="';
                                         HTMLFrag += element.name.familyName;
                                         HTMLFrag += '" />';
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="text" placeholder="';
+                                            HTMLFrag += '<input type="email" placeholder="';
                                             HTMLFrag += innerElement.value;
-                                            HTMLFrag += '" />';
+                                            HTMLFrag += '" data-index="';
+                                            HTMLFrag += innerIndex;
+                                            HTMLFrag += '"/>';
                                         });
                                         element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="text" placeholder="';
                                             HTMLFrag += innerElement.value;
-                                            HTMLFrag += '" />';
+                                            HTMLFrag += '" data-index="';
+                                            HTMLFrag += innerIndex;
+                                            HTMLFrag += '"/>';
                                         });
                                         HTMLFrag += '<br /><article>';
                                         HTMLFrag += '<figure class="location" ><figcaption>';
                                         HTMLFrag += '<select>';
+                                        HTMLFrag += '<option disabled selected value=""></option>';
                                         app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<option value="';
                                             HTMLFrag += innerElement.location;
@@ -913,7 +1016,10 @@ var app;
                                     }else if(newChar == compareChar){
                                         HTMLFrag += '<fieldset><legend><input type="button" value="';
                                         HTMLFrag += element.displayName;
-                                        HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
+                                        HTMLFrag += '" onclick="app.accordion(this)" ';
+                                        HTMLFrag += ' data-index="';
+                                        HTMLFrag += index;
+                                        HTMLFrag += '"/></legend>';
                                         HTMLFrag += '<input type="text" placeholder="';
                                         HTMLFrag += element.name.givenName;
                                         HTMLFrag += '"/><input type="text" placeholder="';
@@ -922,16 +1028,21 @@ var app;
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="email" placeholder="';
                                             HTMLFrag += innerElement.value;
-                                            HTMLFrag += '" />';
+                                            HTMLFrag += '" data-index="';
+                                            HTMLFrag += innerIndex;
+                                            HTMLFrag += '"/>';
                                         });
                                         element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="text" placeholder="';
                                             HTMLFrag += innerElement.value;
-                                            HTMLFrag += '" />';
+                                            HTMLFrag += '" data-index="';
+                                            HTMLFrag += innerIndex;
+                                            HTMLFrag += '"/>';
                                         });
                                         HTMLFrag += '<br /><article>';
                                         HTMLFrag += '<figure class="location" ><figcaption>';
                                         HTMLFrag += '<select>';
+                                        HTMLFrag += '<option disabled selected value=""></option>';
                                         app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<option value="';
                                             HTMLFrag += innerElement.location;
@@ -1046,7 +1157,8 @@ var app;
                     if (element.type === "add") {
                         //refresh with this data;
                         HTMLFrag = '';
-                        HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location"><figcaption id="newSaleLocation"></figcaption></figure><input type="text" placeholder="Last Name" oninput="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" oninput="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
+                        HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location"><figcaption id="newSaleLocation"></figcaption></figure><input type="text" placeholder="Last Name" onblur="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" onblur="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
+                        HTMLFrag += '<option disabled selected value=""></option>';
                         app.data.locations.forEach(function(element, index, array) {
                             HTMLFrag += '<option value="';
                             HTMLFrag += element.location;
@@ -1067,7 +1179,17 @@ var app;
             });
         },
         accordion : function(target) {
-            classie.toggleClass(target, 'acc-open');
+            var container = target.parentNode.parentNode;
+            if(classie.hasClass(container, 'acc-open')){
+                var inputs = target.getElementsByTagName('input'),
+                textareas = target.getElementsByTagName('textarea');
+
+                var data = {};
+                app.update.customer(data);
+            }else{
+
+            };
+            classie.toggleClass(container, 'acc-open');
         },
         purchaseTableAdd : function(target) {
             if(!classie.hasClass(target, 'touched')){
@@ -1076,6 +1198,7 @@ var app;
                     temp ='';
 
                     temp += '<td><select class="tableInput" onclick="app.purchaseTableAdd(this)" >';
+                    temp += '<option disabled selected value=""></option>';
                     app.data.items.forEach(function(innerElement, innerIndex, innerArray) {
                         temp += '<option value="';
                         temp += innerElement.itemCode;
@@ -1086,9 +1209,9 @@ var app;
                         temp += '</option>';
                     });
                     temp += '</select>';
-                temp += '</td><td class="headerLarge">x</td><td><input type="text" class="tableInput" placeholder="0" /></td>';
+                temp += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td>';
                 input.innerHTML = temp;
-                document.getElementById('newSalePurchaseTable').children[0].appendChild(input);
+                document.getElementById('newSalePurchaseTable').children[1].appendChild(input);
             };
         },
         pickContact : function() {
@@ -1131,32 +1254,103 @@ var app;
         },
         update : {
             sale : function(target) {
-                var saleAlt = target.parentNode.parentNode.parentNode.parentNode.parentNode.attributes[0].value,
-                    sale = app.data.sales[saleAlt];
-                    sale.purchaseTable.forEach(function(element, index, array) {
-                        sale.purchaseTable[index] = JSON.parse(element)
-                    });
+                var idx = target.dataset.index,
+                    saleIdx = target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
+                    sale = JSON.parse(JSON.stringify(app.data.sales[saleIdx])),
+                    pageY = window.pageYOffset;
+
                 var data = function() {
-                    var children = target.parentNode.parentNode.children;
-                            sale.purchaseTable[target.alt||target.attributes[1]] = {
-                                itemCode : children[0].children[0].selectedOptions[0].value || children[0].children[0].placeholder,
-                                quantity: children[2].children[0].value || children[2].children[0].placeholder,
-                                itemPrice: children[5].children[0].innerHTML.slice(2)
+                    var tables = app.DOM.sales.getElementsByTagName('TABLE'),
+                        children
+                        HTMLFrag='',
+                        total = 0;
+                    saleIdx==0 ? children = tables[saleIdx].children[1].children : children = tables[saleIdx].children[0].children;
+                    app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify({
+                        itemCode : children[idx].children[0].children[0].selectedOptions[0].value,
+                        quantity: Number.parseFloat(children[idx].children[1].children[0].value||children[idx].children[1].children[0].placeholder, 10),
+                        weights: sale.purchaseTable[idx].weights,
+                        totalWeight:Number.parseFloat(children[idx].children[2].children[0].value||Number.parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2)), 10),
+                        itemPrice: Number.parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price, 10)
+                    });
+                    app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
+                        innerElement = JSON.parse(innerElement);
+                        HTMLFrag += '<tr><td colspan="2">';
+                        HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
+                        HTMLFrag += innerIndex;
+                        HTMLFrag += '" >';
+                        HTMLFrag += '<option disabled selected value=""></option>';
+                        app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
+                            HTMLFrag += '<option value="';
+                            HTMLFrag += iiElement.itemCode;
+                            HTMLFrag += '" '; 
+                            if (iiElement.itemCode == innerElement.itemCode) {
+                                HTMLFrag += 'selected'; 
                             };
-                            children[children.length-1].innerHTML = 'R ' + sale.purchaseTable[saleAlt].itemPrice * sale.purchaseTable[saleAlt].quantity;
-                        return sale;
+                            HTMLFrag += ' data-price="';
+                            HTMLFrag += iiElement.itemPrice;
+                            HTMLFrag += '" >';
+                            HTMLFrag += iiElement.itemName;
+                            HTMLFrag += '</option>';
+                        });
+                        HTMLFrag += '</select>';
+                        HTMLFrag += '</td><td colspan="2" class="small"><input type="text" class="quantity" data-index="';
+                        HTMLFrag += innerIndex;         
+                        HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';
+                        HTMLFrag += innerElement.quantity;
+                        HTMLFrag += '"/></td><td colspan="2" class="small"><input type="text" class="weight" data-index="';
+                        HTMLFrag += innerIndex;     
+                        HTMLFrag += '" onblur="app.update.sale(this)" value="';         
+                        HTMLFrag += innerElement.totalWeight + 'kg';
+                        HTMLFrag += '"/></td>';
+                        HTMLFrag += '<td class="priceKG">';
+                        HTMLFrag += 'R ' + innerElement.itemPrice;
+                        HTMLFrag += '</td><td class="priceTag">';
+                        HTMLFrag += 'R ' + innerElement.totalWeight * innerElement.itemPrice;
+                        total    += innerElement.totalWeight * innerElement.itemPrice;
+                        HTMLFrag += '</td></tr>';
+                    });
+                    app.data.sales[saleIdx].total = total;
+                    saleIdx==0 ? tables[saleIdx].children[1].innerHTML = HTMLFrag : tables[saleIdx].children[0].innerHTML = HTMLFrag;
+                    saleIdx==0 ? tables[saleIdx].children[2].children[0].children[1].innerHTML = 'R' + total : tables[saleIdx].children[1].children[0].children[1].innerHTML = 'R' + total;
+                    app.data.slaughters.forEach(function(element, index, array) {
+                        if (element.slaughterDate == sale.slaughterDate) {
+                            element.total -= sale.total;
+                            element.total += total;
+                        };
+                    });
+                    app.store('sale');
+                    app.store('slaughter');
+                    //window.scroll(0, pageY);
+                }();
+
+            },
+            customer: function(data) {
+                app.data.customers[data.index].displayName = data.displayName;
+                app.data.customers[data.index].name.givenName = data.name.givenName;
+                app.data.customers[data.index].name.familyName = data.name.familyName;
+                app.data.customers[data.index].note = data.location;
+                app.data.customers[data.index].emails = data.emails;
+                app.data.customers[data.index].phoneNumbers = data.phoneNumbers;
+                app.data.customers[data.index].addresses = data.addresses;
+
+                if (app.data.customers[data.index].location != data.location) {
+                    var oldLocationIndex = app.data.locations.indexOf(app.data.customers[data.index].location),
+                        newLocationIndex = app.data.locations.indexOf(data.location),
+                        locationCount = app.locations[newLocationIndex].count;
+                    
+                    if (locationCount == 0) {
+                        app.data.locations.splice(newLocationIndex, 1);
+                    };
+
+                    app.data.locations.forEach(function(element, index, array) {
+                        if(data.location == element.location){
+                            element.count ++;
+                            app.store('location');
+                        }
+                    });
+
                 };
-                var totalDOM = target.parentNode.parentNode.parentNode.parentNode.parentNode.children;
-                data();
-                var total=0;
-                sale.purchaseTable.forEach(function(element, index, array) {
-                    total += Number.parseInt(element.quantity) * Number.parseInt(element.itemPrice);
-                    sale.purchaseTable[index] = JSON.stringify(element);
-                });
-                totalDOM[5].innerHTML = total;
-                sale.total = total;
-                app.data.sales[saleAlt] = sale;
-                app.store('sale');
+                app.store('customer');
             }
         },
         delete : {
@@ -1165,6 +1359,12 @@ var app;
                     "Are you sure you would like to delete the sale?",
                     function(buttonIndex) {
                         if (buttonIndex) {
+                            app.data.slaughters.forEach(function(element, index, array) {
+                                if (element.slaughterDate == app.data.sales[index].slaughterDate) {
+                                    element.total -= app.data.sales[index].total;
+                                };
+                            });
+                            app.store('slaughter');
                             app.data.sales.splice(index, 1);
                             app.store('sale');
                         };
@@ -1238,25 +1438,33 @@ var app;
                                     };
                                     HTMLFrag += '<fieldset><legend><input type="button" value="';
                                     HTMLFrag += element.displayName;
-                                    HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
-                                    HTMLFrag += '<input type="text" placeholder="';
+                                        HTMLFrag += '" onclick="app.accordion(this)" ';
+                                        HTMLFrag += ' data-index="';
+                                        HTMLFrag += index;
+                                        HTMLFrag += '"/></legend>';
+                                        HTMLFrag += '<input type="text" placeholder="';
                                     HTMLFrag += element.name.givenName;
                                     HTMLFrag += '"/><input type="text" placeholder="';
                                     HTMLFrag += element.name.familyName;
                                     HTMLFrag += '"/>';
                                     element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                        HTMLFrag += '<input type="text" placeholder="';
+                                        HTMLFrag += '<input type="email" placeholder="';
                                         HTMLFrag += innerElement.value;
-                                        HTMLFrag += '" />';
+                                        HTMLFrag += '" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/>';
                                     });
                                     element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="text" placeholder="';
                                         HTMLFrag += innerElement.value;
-                                        HTMLFrag += '" />';
+                                        HTMLFrag += '" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/>';
                                     });
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
                                     HTMLFrag += '<select>';
+                                    HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += innerElement.location;
@@ -1281,25 +1489,33 @@ var app;
                                     compareChar = newChar;
                                     HTMLFrag += '<fieldset><legend><input type="button" value="';
                                     HTMLFrag += element.displayName;
-                                    HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
-                                    HTMLFrag += '<input type="text" placeholder="';
+                                        HTMLFrag += '" onclick="app.accordion(this)" ';
+                                        HTMLFrag += ' data-index="';
+                                        HTMLFrag += index;
+                                        HTMLFrag += '"/></legend>';
+                                        HTMLFrag += '<input type="text" placeholder="';
                                     HTMLFrag += element.name.givenName;
                                     HTMLFrag += '" /><input type="text" placeholder="';
                                     HTMLFrag += element.name.familyName;
                                     HTMLFrag += '" />';
                                     element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                        HTMLFrag += '<input type="text" placeholder="';
+                                        HTMLFrag += '<input type="email" placeholder="';
                                         HTMLFrag += innerElement.value;
-                                        HTMLFrag += '" />';
+                                        HTMLFrag += '" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/>';
                                     });
                                     element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="text" placeholder="';
                                         HTMLFrag += innerElement.value;
-                                        HTMLFrag += '" />';
+                                        HTMLFrag += '" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/>';
                                     });
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
                                     HTMLFrag += '<select>';
+                                    HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += innerElement.location;
@@ -1320,8 +1536,11 @@ var app;
                                 }else if(newChar == compareChar){
                                     HTMLFrag += '<fieldset><legend><input type="button" value="';
                                     HTMLFrag += element.displayName;
-                                    HTMLFrag += '" onclick="app.accordion(this.parentNode.parentNode)"/></legend>';
-                                    HTMLFrag += '<input type="text" placeholder="';
+                                        HTMLFrag += '" onclick="app.accordion(this)" ';
+                                        HTMLFrag += ' data-index="';
+                                        HTMLFrag += index;
+                                        HTMLFrag += '"/></legend>';
+                                        HTMLFrag += '<input type="text" placeholder="';
                                     HTMLFrag += element.name.givenName;
                                     HTMLFrag += '"/><input type="text" placeholder="';
                                     HTMLFrag += element.name.familyName;
@@ -1329,16 +1548,21 @@ var app;
                                     element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="email" placeholder="';
                                         HTMLFrag += innerElement.value;
-                                        HTMLFrag += '" />';
+                                        HTMLFrag += '" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/>';
                                     });
                                     element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="text" placeholder="';
                                         HTMLFrag += innerElement.value;
-                                        HTMLFrag += '" />';
+                                        HTMLFrag += '" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/>';
                                     });
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
                                     HTMLFrag += '<select>';
+                                    HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += innerElement.location;
@@ -1445,9 +1669,29 @@ var app;
                             msg,
                             function(buttonIndex) {
                                 if (buttonIndex) {
-                                    alert(syncArr[0]);
                                     syncArr.forEach(function(element, index, array) {
-                                        app.data.customers.push(element);
+                                        alert(element);
+                                        var newCustomer = navigator.contacts.create({
+                                            "displayName": element.name.givenName + ' ' + element.name.familyName,
+                                            "name" : { 
+                                                givenName : element.name.givenName,
+                                                familyName : element.name.familyName
+                                            },
+                                            "note" : element.note,
+                                            "emails" : [],
+                                            "phoneNumbers" : [],
+                                            "addresses" : []
+                                        });
+                                        element.emails.forEach(function(innerElement, innerIndex, innerArray) {
+                                            newCustomer.emails.push(innerElement.value);
+                                        });
+                                        element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
+                                            newCustomer.phoneNumbers.push(innerElement.value);
+                                        });
+                                        element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
+                                            newCustomer.addresses.push(innerElement.value);
+                                        });
+                                        app.data.customers.push(newCustomer);
                                     });
                                     app.data.customers.sort(function(a, b) {
                                         return a.name.givenName.localeCompare(b.name.givenName);

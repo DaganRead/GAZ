@@ -359,6 +359,10 @@ article#newSale table#newSalePurchaseTable{
 }
 article#newSale table#newSalePurchaseTable td{
     padding: 2px;
+    width: 20%;
+}
+article#newSale table#newSalePurchaseTable td:first-child{
+    padding: 2px;
     width: 40%;
 }
 article#newSale table#newSalePurchaseTable td.headerLarge{
@@ -385,8 +389,8 @@ article#newSale table#newSalePurchaseTable select{
     -moz-appearance: none;
     outline: none;
 }
-article#newSale table#newSalePurchaseTable td:nth-child(3) input{
-    width: calc(25% - 10px)!important;
+article#newSale table#newSalePurchaseTable td:nth-child(3) input, article#newSale table#newSalePurchaseTable td:nth-child(5) input{
+    /*width: calc(25% - 10px)!important;*/
     margin: 0!important;
     padding: 5px;
 }

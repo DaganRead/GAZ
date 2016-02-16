@@ -1670,6 +1670,7 @@ var app;
                             function(buttonIndex) {
                                 if (buttonIndex) {
                                     syncArr.forEach(function(element, index, array) {
+                                        alert(JSON.stringify(element));
                                         var newCustomer = navigator.contacts.create({
                                             "displayName": element.name.givenName + ' ' + element.name.familyName,
                                             "name" : { 
@@ -1681,6 +1682,7 @@ var app;
                                             "phoneNumbers" : [],
                                             "addresses" : []
                                         });
+                                        alert(JSON.stringify(newCustomer));
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                             newCustomer.emails.push(innerElement.value);
                                         });

@@ -1671,7 +1671,7 @@ var app;
                                 if (buttonIndex) {
                                     syncArr.forEach(function(element, index, array) {
                                         var newCustomer = navigator.contacts.create({
-                                            "displayName": element.name.givenName + ' ' + element.name.familyName,
+                                            "displayName": element.name.formatted,
                                             "name" : { 
                                                 givenName : element.name.givenName,
                                                 familyName : element.name.familyName
@@ -1686,11 +1686,13 @@ var app;
                                                 newCustomer.phoneNumbers.push(innerElement.value);
                                             });
                                         };
+                                        alert(JSON.stringify(newCustomer));
                                         if (element.emails.length > 0) {
                                             element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                                 newCustomer.emails.push(innerElement.value);
                                             });
                                         };
+                                        alert(JSON.stringify(newCustomer));
                                         if (element.addresses.length > 0) {
                                             element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                                 newCustomer.addresses.push(innerElement.value);

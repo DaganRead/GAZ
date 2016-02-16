@@ -1681,13 +1681,13 @@ var app;
                                             "phoneNumbers" : [],
                                             "addresses" : []
                                         });
-                                        alert(JSON.stringify(element.phoneNumbers[0].value));
-                                        element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                            newCustomer.emails.push(innerElement.value);
-                                        });
-                                        alert(JSON.stringify(newCustomer));
                                         element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                             newCustomer.phoneNumbers.push(innerElement.value);
+                                        });
+                                        alert(JSON.stringify(newCustomer));
+                                        alert(JSON.stringify(element.phoneNumbers.length));
+                                        element.emails.forEach(function(innerElement, innerIndex, innerArray) {
+                                            newCustomer.emails.push(innerElement.value);
                                         });
                                         element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                             newCustomer.addresses.push(innerElement.value);

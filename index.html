@@ -25,7 +25,7 @@
 	           <label for="tab-1"><img src="img/sales.png" /></label>
 	           
 	           <div class="content">
-	           	 <form id="sales">
+	           	 <form id="sales" onsubmit="app.prevent(evt)">
 
 				</form> 
 	           </div> 
@@ -41,7 +41,7 @@
 	               		<input type="text" class="search-bar" />
 	               		<input type="image" src="img/search.png" class="search-button" onclick="app.search.customer(this.previousSibling.value)" >
 	               	</article>
-	               	<form id="customers">
+	               	<form id="customers" onsubmit="app.prevent(evt)">
 	               	</form>
 	           </div> 
 	       </div>
@@ -55,7 +55,7 @@
 	               		<input type="text" class="search-bar" />
 	               		<input type="image" src="img/search.png" class="search-button" onclick="app.search.item(this.previousSibling.value)" >
 	               	</article>
-	               	<form id="items" onsubmit="function(e) {alert(e); e.preventDefault();}">
+	               	<form id="items" onsubmit="app.prevent(evt)">
 	               	</form>
 	            </div> 
 	       </div>

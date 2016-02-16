@@ -18,6 +18,10 @@ var app;
             slaughters:[],
             locations:[]
         },
+        prevent : function(evt) {
+          evt.preventDefault();
+          return false;
+        },
         simulate : function(evt) {
           var el = document.body;
           var touches = evt.changedTouches;
@@ -234,14 +238,14 @@ var app;
                                 HTMLFrag += '"/>';
                                 element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<input type="email" placeholder="';
-                                    HTMLFrag += innerElement.value;
+                                    HTMLFrag += innerElement;
                                     HTMLFrag += '" data-index="';
                                     HTMLFrag += innerIndex;
                                     HTMLFrag += '"/>';
                                 });
                                 element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<input type="text" placeholder="';
-                                    HTMLFrag += innerElement.value;
+                                    HTMLFrag += innerElement;
                                     HTMLFrag += '" data-index="';
                                     HTMLFrag += innerIndex;
                                     HTMLFrag += '"/>';
@@ -260,7 +264,7 @@ var app;
                                 HTMLFrag += '</select></figcaption></figure></article>';
                                 element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<textarea>';
-                                    HTMLFrag += innerElement.value;
+                                    HTMLFrag += innerElement;
                                     HTMLFrag += '</textarea>';
                                 });
                                 HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
@@ -285,14 +289,14 @@ var app;
                                 HTMLFrag += '" />';
                                 element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<input type="email" placeholder="';
-                                    HTMLFrag += innerElement.value;
+                                    HTMLFrag += innerElement;
                                     HTMLFrag += '" data-index="';
                                     HTMLFrag += innerIndex;
                                     HTMLFrag += '"/>';
                                 });
                                 element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<input type="text" placeholder="';
-                                    HTMLFrag += innerElement.value;
+                                    HTMLFrag += innerElement;
                                     HTMLFrag += '" data-index="';
                                     HTMLFrag += innerIndex;
                                     HTMLFrag += '"/>';
@@ -311,7 +315,7 @@ var app;
                                 HTMLFrag += '</select></figcaption></figure></article>';
                                 element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<textarea>';
-                                    HTMLFrag += innerElement.value;
+                                    HTMLFrag += innerElement;
                                     HTMLFrag += '</textarea>';
                                 });
                                 HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
@@ -332,14 +336,14 @@ var app;
                                 HTMLFrag += '"/>';
                                 element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<input type="email" placeholder="';
-                                    HTMLFrag += innerElement.value;
+                                    HTMLFrag += innerElement;
                                     HTMLFrag += '" data-index="';
                                     HTMLFrag += innerIndex;
                                     HTMLFrag += '"/>';
                                 });
                                 element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<input type="text" placeholder="';
-                                    HTMLFrag += innerElement.value;
+                                    HTMLFrag += innerElement;
                                     HTMLFrag += '" data-index="';
                                     HTMLFrag += innerIndex;
                                     HTMLFrag += '"/>';
@@ -358,7 +362,7 @@ var app;
                                 HTMLFrag += '</select></figcaption></figure></article>';
                                 element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<textarea>';
-                                    HTMLFrag += innerElement.value;
+                                    HTMLFrag += innerElement;
                                     HTMLFrag += '</textarea>';
                                 });
                                 HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';

@@ -20,6 +20,7 @@ var app;
         },
         prevent : function(evt) {
           evt.preventDefault();
+          alert();
           return false;
         },
         simulate : function(evt) {

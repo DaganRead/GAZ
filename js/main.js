@@ -1378,6 +1378,7 @@ var app;
                     "Are you sure you would like to delete the customer?",
                     function(buttonIndex) {
                         if (buttonIndex) {
+                            alert(index);
                             app.data.customers.splice(index, 1);
                             app.store('customer');
                         };
@@ -1391,6 +1392,7 @@ var app;
                     "Are you sure you would like to delete the item?",
                     function(buttonIndex) {
                         if (buttonIndex) {
+                            alert(index);
                             app.data.items.splice(index, 1);
                             app.store('item');
                         };
@@ -1404,6 +1406,7 @@ var app;
                     "Are you sure you would like to delete the date?",
                     function(buttonIndex) {
                         if (buttonIndex) {
+                            alert(index);
                             app.data.slaughters.splice(index, 1);
                             app.store('slaughter');
                         };

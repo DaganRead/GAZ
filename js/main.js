@@ -1681,17 +1681,21 @@ var app;
                                             "phoneNumbers" : [],
                                             "addresses" : []
                                         });
-                                        element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                            newCustomer.phoneNumbers.push(innerElement.value);
-                                        });
-                                        alert(JSON.stringify(newCustomer));
-                                        alert(JSON.stringify(element.phoneNumbers.length));
-                                        element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                            newCustomer.emails.push(innerElement.value);
-                                        });
-                                        element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                            newCustomer.addresses.push(innerElement.value);
-                                        });
+                                        if (element.phoneNumbers.length > 0) {
+                                            element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
+                                                newCustomer.phoneNumbers.push(innerElement.value);
+                                            });
+                                        };
+                                        if (element.emails.length > 0) {
+                                            element.emails.forEach(function(innerElement, innerIndex, innerArray) {
+                                                newCustomer.emails.push(innerElement.value);
+                                            });
+                                        };
+                                        if (element.addresses.length > 0) {
+                                            element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
+                                                newCustomer.addresses.push(innerElement.value);
+                                            });
+                                        };
                                         alert(JSON.stringify(newCustomer));
                                         app.data.customers.push(newCustomer);
                                     });

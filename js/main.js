@@ -1214,12 +1214,8 @@ var app;
                 document.getElementById('newSalePurchaseTable').children[1].appendChild(input);
             };
         },
-        pickContact : function() {
-            navigator.contacts.pickContact(function(contact){
-                console.log('The following contact has been selected:' + JSON.stringify(contact));
-            },function(err){
-                console.log('Error: ' + err);
-            });
+        pickContact : function(contact) {
+            alert('The following contact has been selected:' + JSON.stringify(contact));
         },
         customerSearch : function(givenName, familyName) {
             app.forms.newSale.location().innerHTML = '';
@@ -1741,4 +1737,14 @@ var app;
     el.addEventListener("touchend", app.simulate, false);
     //el.addEventListener("touchcancel", app.simulate, false);
     //el.addEventListener("touchmove", app.simulate, false);
+    function onResume(resumeEvent) {
+        if(resumeEvent.pendingResult) {
+            if(resumeEvent.pendingResult.pluginStatus === "OK") {
+                var contact = navigator.contacts.create(resumeEvent.pendingResult.result);
+                app.pickContact(contact);
+            } else {
+                alert('eish');
+            }
+        }
+    };
     app.initialize();

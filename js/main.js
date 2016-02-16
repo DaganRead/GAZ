@@ -1214,8 +1214,12 @@ var app;
                 document.getElementById('newSalePurchaseTable').children[1].appendChild(input);
             };
         },
-        pickContact : function(contact) {
-            alert('The following contact has been selected:' + JSON.stringify(contact));
+        pickContact : function() {
+            navigator.contacts.pickContact(function(contact){
+                console.log('The following contact has been selected:' + JSON.stringify(contact));
+            },function(err){
+                console.log('Error: ' + err);
+            });
         },
         customerSearch : function(givenName, familyName) {
             app.forms.newSale.location().innerHTML = '';
@@ -1666,7 +1670,6 @@ var app;
                             function(buttonIndex) {
                                 if (buttonIndex) {
                                     syncArr.forEach(function(element, index, array) {
-                                        alert(element);
                                         var newCustomer = navigator.contacts.create({
                                             "displayName": element.name.givenName + ' ' + element.name.familyName,
                                             "name" : { 
@@ -1687,6 +1690,7 @@ var app;
                                         element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                             newCustomer.addresses.push(innerElement.value);
                                         });
+                                        alert(JSON.stringify(newCustomer));
                                         app.data.customers.push(newCustomer);
                                     });
                                     app.data.customers.sort(function(a, b) {
@@ -1741,9 +1745,9 @@ var app;
         if(resumeEvent.pendingResult) {
             if(resumeEvent.pendingResult.pluginStatus === "OK") {
                 var contact = navigator.contacts.create(resumeEvent.pendingResult.result);
-                app.pickContact(contact);
+                alert(JSON.stringify(contact));
             } else {
-                alert('eish');
+                failCallback(resumeEvent.pendingResult.result);
             }
         }
     };

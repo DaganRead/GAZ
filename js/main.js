@@ -1681,21 +1681,18 @@ var app;
                                             "phoneNumbers" : [],
                                             "addresses" : []
                                         });
-                                        if (element.phoneNumbers.length > 0) {
+                                        if (element.phoneNumbers!=null) {
                                             element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                                 newCustomer.phoneNumbers.push(innerElement.value);
                                             });
                                         };
-                                        alert(JSON.stringify(newCustomer));
-                                        alert(JSON.stringify(element.emails));
-                                        alert(JSON.stringify(element.emails.length));
-                                        if (element.emails.length > 0) {
+                                        if (element.emails!=null) {
                                             element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                                 newCustomer.emails.push(innerElement.value);
                                             });
                                         };
                                         alert(JSON.stringify(newCustomer));
-                                        if (element.addresses.length > 0) {
+                                        if (element.addresses!=null) {
                                             element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                                 newCustomer.addresses.push(innerElement.value);
                                             });

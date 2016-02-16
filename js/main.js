@@ -1681,8 +1681,7 @@ var app;
                                             "phoneNumbers" : [],
                                             "addresses" : []
                                         });
-                                        alert(JSON.stringify(element));
-                                        alert(JSON.stringify(element.phoneNumbers));
+                                        alert(JSON.stringify(element.phoneNumbers[0].value));
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                             newCustomer.emails.push(innerElement.value);
                                         });

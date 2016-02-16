@@ -1354,14 +1354,14 @@ var app;
             }
         },
         delete : {
-            sale : function(index) {
+            sale : function(idx) {
                 navigator.notification.confirm(
                     "Are you sure you would like to delete the sale?",
                     function(buttonIndex) {
                         if (buttonIndex) {
                             app.data.slaughters.forEach(function(element, index, array) {
-                                if (element.slaughterDate == app.data.sales[index].slaughterDate) {
-                                    element.total -= app.data.sales[index].total;
+                                if (element.slaughterDate == app.data.sales[idx].slaughterDate) {
+                                    element.total -= app.data.sales[idx].total;
                                 };
                             });
                             app.store('slaughter');
@@ -1691,13 +1691,11 @@ var app;
                                                 newCustomer.emails.push(innerElement.value);
                                             });
                                         };
-                                        alert(JSON.stringify(newCustomer));
                                         if (element.addresses!=null) {
                                             element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                                 newCustomer.addresses.push(innerElement.value);
                                             });
                                         };
-                                        alert(JSON.stringify(newCustomer));
                                         app.data.customers.push(newCustomer);
                                     });
                                     app.data.customers.sort(function(a, b) {

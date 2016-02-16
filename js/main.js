@@ -1687,6 +1687,8 @@ var app;
                                             });
                                         };
                                         alert(JSON.stringify(newCustomer));
+                                        alert(JSON.stringify(element.emails));
+                                        alert(JSON.stringify(element.emails.length));
                                         if (element.emails.length > 0) {
                                             element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                                 newCustomer.emails.push(innerElement.value);

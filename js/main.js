@@ -664,6 +664,7 @@ var app;
                 });
                 this.data.sales.push(newSale);
                 this.store('sale');
+                this.store('slaughter');
             };
         },
         newCustomer : function() {
@@ -1227,9 +1228,8 @@ var app;
                                 if (contact.addresses!=null) {
                                     document.getElementById('newSaleAddress').value = contact.addresses[0].value;
                                 }else{
-                                    document.getElementById('newSaleAddress').value = '';
+                                    document.getElementById('newSaleAddress').value = 'Address';
                                 };
-                                
                             if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
                                 found = true;
                                 if(!classie.hasClass(document.getElementById('newSale'), 'acc-open')){
@@ -1392,7 +1392,7 @@ var app;
                                 };
                             });
                             app.store('slaughter');
-                            app.data.sales.splice(index, 1);
+                            app.data.sales.splice(idx, 1);
                             app.store('sale');
                         };
                     },
@@ -1400,13 +1400,12 @@ var app;
                     ['Delete','Cancel']
                 );
             },
-            customer : function(index) {
+            customer : function(idx) {
                 navigator.notification.confirm(
                     "Are you sure you would like to delete the customer?",
                     function(buttonIndex) {
                         if (buttonIndex) {
-                            alert(index);
-                            app.data.customers.splice(index, 1);
+                            app.data.customers.splice(idx, 1);
                             app.store('customer');
                         };
                     },
@@ -1414,13 +1413,12 @@ var app;
                     ['Delete','Cancel']
                 );
             },
-            item : function(index) {
+            item : function(idx) {
                     navigator.notification.confirm(
                     "Are you sure you would like to delete the item?",
                     function(buttonIndex) {
                         if (buttonIndex) {
-                            alert(index);
-                            app.data.items.splice(index, 1);
+                            app.data.items.splice(idx, 1);
                             app.store('item');
                         };
                     },
@@ -1428,13 +1426,12 @@ var app;
                     ['Delete','Cancel']
                 );
             },
-            slaughter : function(index) {
+            slaughter : function(idx) {
                     navigator.notification.confirm(
                     "Are you sure you would like to delete the date?",
                     function(buttonIndex) {
                         if (buttonIndex) {
-                            alert(index);
-                            app.data.slaughters.splice(index, 1);
+                            app.data.slaughters.splice(idx, 1);
                             app.store('slaughter');
                         };
                     },

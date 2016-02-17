@@ -1230,6 +1230,15 @@ var app;
                                 }else{
                                     document.getElementById('newSaleAddress').value = 'Address';
                                 };
+                                if (element.location.location!='') {
+                                    for (var i = 0; i < document.getElementById('newSaleLocationSelect').options.length; i++) {
+                                        if (document.getElementById('newSaleLocationSelect').options[i].value == element.location.location) {
+                                            document.getElementById('newSaleLocationSelect').options[i].selected = true;
+                                        }else{
+                                            document.getElementById('newSaleLocationSelect').options[i].selected = false;
+                                        };
+                                    };
+                                };
                             if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
                                 found = true;
                                 if(!classie.hasClass(document.getElementById('newSale'), 'acc-open')){
@@ -1389,6 +1398,7 @@ var app;
                             app.data.slaughters.forEach(function(element, index, array) {
                                 if (element.slaughterDate == app.data.sales[idx].slaughterDate) {
                                     element.total -= app.data.sales[idx].total;
+                                    alert('he');
                                 };
                             });
                             app.store('slaughter');

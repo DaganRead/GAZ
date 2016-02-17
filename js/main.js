@@ -1209,20 +1209,33 @@ var app;
         },
         pickContact : function() {
             navigator.contacts.pickContact(function(contact){
-                if (contact.name.givenName != null && contact.name.familyName != null) {
-                    document.getElementById('newSaleFirstName').value = contact.name.givenName;
-                    document.getElementById('newSaleLastName').value = contact.name.familyName;
-                    if (contact.phoneNumbers!=null) {
-                        document.getElementById('newSaleTelephone').value = contact.phoneNumbers[0].value;
-                    };
-                    if (contact.emails!=null) {
-                        document.getElementById('newSaleEmail').value = contact.emails[0].value;
-                    };
-                    if (contact.addresses!=null) {
-                        document.getElementById('newSaleAddress').value = contact.addresses[0].value;
-                    };
+                var found = false;
+                    app.data.customers.forEach(function(element, index, array) {
+                        found = true;
+                        if (contact.name.givenName != null && contact.name.familyName != null) {
+                            document.getElementById('newSaleFirstName').value = contact.name.givenName;
+                            document.getElementById('newSaleLastName').value = contact.name.familyName;
+                            if (app.forms.newSale.firstNameMatch == contact.name.givenName && app.forms.newSale.lastNameMatch == contact.name.familyName) {
+                                if (contact.phoneNumbers!=null) {
+                                    document.getElementById('newSaleTelephone').value = contact.phoneNumbers[0].value;
+                                };
+                                if (contact.emails!=null) {
+                                    document.getElementById('newSaleEmail').value = contact.emails[0].value;
+                                };
+                                if (contact.addresses!=null) {
+                                    document.getElementById('newSaleAddress').value = contact.addresses[0].value;
+                                };
+                                if(!classie.hasClass(document.getElementById('newSale'), 'acc-open')){
+                                    classie.addClass(document.getElementById('newSale'), 'acc-open');
+                                };
+                            };
+                        };
+                    });
 
-                    alert(JSON.stringify(contact));
+                if(!found){
+                    if(classie.hasClass(document.getElementById('newSale'), 'acc-open')){
+                        classie.removeClass(document.getElementById('newSale'), 'acc-open');
+                    };
                 };
             },function(err){
                 alert('Error: ' + err);

@@ -340,7 +340,7 @@ article.acc-open input#newSaleTelephone{
 article.acc-open textarea#newSaleAddress{
     display: none;
 }
-article.acc-open select#newSaleLocationSelect{
+/*article.acc-open select#newSaleLocationSelect{
     display: none;
 }
 article.acc-open input#newSaleAddLocationText{
@@ -351,7 +351,7 @@ article.acc-open input#newSaleAddLocationBtn{
 }
 article.acc-open br.clear{
     display: none;
-}
+}*/
 article#newSale table#newSalePurchaseTable{
     width: 80%;
     margin: 10px auto 0 auto;

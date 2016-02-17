@@ -1209,7 +1209,21 @@ var app;
         },
         pickContact : function() {
             navigator.contacts.pickContact(function(contact){
-                alert(JSON.stringify(contact));
+                if (contact.name.givenName != null && contact.name.familyName != null) {
+                    document.getElementById('newSaleFirstName').value = contact.name.givenName;
+                    document.getElementById('newSaleLastName').value = contact.name.familyName;
+                    if (contact.phoneNumbers!=null) {
+                        document.getElementById('newSaleTelephone').value = contact.phoneNumbers[0];
+                    };
+                    if (contact.emails!=null) {
+                        document.getElementById('newSaleEmail').value = contact.emails[0];
+                    };
+                    if (contact.addresses!=null) {
+                        document.getElementById('newSaleAddress').value = contact.addresses[0];
+                    };
+
+                    alert(JSON.stringify(contact));
+                };
             },function(err){
                 alert('Error: ' + err);
             });
@@ -1742,14 +1756,4 @@ var app;
     el.addEventListener("touchend", app.simulate, false);
     //el.addEventListener("touchcancel", app.simulate, false);
     //el.addEventListener("touchmove", app.simulate, false);
-    function onResume(resumeEvent) {
-        if(resumeEvent.pendingResult) {
-            if(resumeEvent.pendingResult.pluginStatus === "OK") {
-                var contact = navigator.contacts.create(resumeEvent.pendingResult.result);
-                alert(JSON.stringify(contact));
-            } else {
-                failCallback(resumeEvent.pendingResult.result);
-            }
-        }
-    };
     app.initialize();

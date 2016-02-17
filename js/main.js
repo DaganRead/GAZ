@@ -1214,8 +1214,6 @@ var app;
                         if (contact.name.givenName != null && contact.name.familyName != null) {
                             document.getElementById('newSaleFirstName').value = contact.name.givenName;
                             document.getElementById('newSaleLastName').value = contact.name.familyName;
-                            if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
-                                found = true;
                                 if (contact.phoneNumbers!=null) {
                                     document.getElementById('newSaleTelephone').value = contact.phoneNumbers[0].value;
                                 }else{
@@ -1231,6 +1229,9 @@ var app;
                                 }else{
                                     document.getElementById('newSaleAddress').value = '';
                                 };
+                                
+                            if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
+                                found = true;
                                 if(!classie.hasClass(document.getElementById('newSale'), 'acc-open')){
                                     classie.addClass(document.getElementById('newSale'), 'acc-open');
                                 };

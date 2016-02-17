@@ -1218,12 +1218,18 @@ var app;
                                 found = true;
                                 if (contact.phoneNumbers!=null) {
                                     document.getElementById('newSaleTelephone').value = contact.phoneNumbers[0].value;
+                                }else{
+                                    document.getElementById('newSaleTelephone').value = '';
                                 };
                                 if (contact.emails!=null) {
                                     document.getElementById('newSaleEmail').value = contact.emails[0].value;
+                                }else{
+                                    document.getElementById('newSaleEmail').value = '';
                                 };
                                 if (contact.addresses!=null) {
                                     document.getElementById('newSaleAddress').value = contact.addresses[0].value;
+                                }else{
+                                    document.getElementById('newSaleAddress').value = '';
                                 };
                                 if(!classie.hasClass(document.getElementById('newSale'), 'acc-open')){
                                     classie.addClass(document.getElementById('newSale'), 'acc-open');

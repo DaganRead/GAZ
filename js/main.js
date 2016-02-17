@@ -1211,11 +1211,11 @@ var app;
             navigator.contacts.pickContact(function(contact){
                 var found = false;
                     app.data.customers.forEach(function(element, index, array) {
-                        found = true;
                         if (contact.name.givenName != null && contact.name.familyName != null) {
                             document.getElementById('newSaleFirstName').value = contact.name.givenName;
                             document.getElementById('newSaleLastName').value = contact.name.familyName;
-                            if (app.forms.newSale.firstNameMatch == contact.name.givenName && app.forms.newSale.lastNameMatch == contact.name.familyName) {
+                            if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
+                                found = true;
                                 if (contact.phoneNumbers!=null) {
                                     document.getElementById('newSaleTelephone').value = contact.phoneNumbers[0].value;
                                 };

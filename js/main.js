@@ -18,11 +18,6 @@ var app;
             slaughters:[],
             locations:[]
         },
-        prevent : function(evt) {
-          evt.preventDefault();
-          alert();
-          return false;
-        },
         simulate : function(evt) {
           var el = document.body;
           var touches = evt.changedTouches;
@@ -39,13 +34,6 @@ var app;
                     case "SELECT" :
                         touches[i].target.onchange.call(touches[i].target);
                         break;
-                    /*case "FIGURE" :
-                        touches[i].target.onchange.call(touches[i].target);
-                        break;*/
-                    /*case "FIELDSET" :
-                        alert(touches[i].target);
-                        touches[i].target.onchange.call(touches[i].target);
-                        break;*/
                 };      
             };
         },
@@ -1221,9 +1209,9 @@ var app;
         },
         pickContact : function() {
             navigator.contacts.pickContact(function(contact){
-                console.log('The following contact has been selected:' + JSON.stringify(contact));
+                alert(JSON.stringify(contact));
             },function(err){
-                console.log('Error: ' + err);
+                alert('Error: ' + err);
             });
         },
         customerSearch : function(givenName, familyName) {

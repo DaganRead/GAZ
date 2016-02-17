@@ -348,10 +348,13 @@ article.acc-open input#newSaleAddLocationText{
 }
 article.acc-open input#newSaleAddLocationBtn{
     display: none;
-}
+}*/
 article.acc-open br.clear{
     display: none;
-}*/
+}
+article.acc-open br.clear:first-child{
+    display: inline;
+}
 article#newSale table#newSalePurchaseTable{
     width: 80%;
     margin: 10px auto 0 auto;

@@ -1213,13 +1213,13 @@ var app;
                     document.getElementById('newSaleFirstName').value = contact.name.givenName;
                     document.getElementById('newSaleLastName').value = contact.name.familyName;
                     if (contact.phoneNumbers!=null) {
-                        document.getElementById('newSaleTelephone').value = contact.phoneNumbers[0];
+                        document.getElementById('newSaleTelephone').value = contact.phoneNumbers[0].value;
                     };
                     if (contact.emails!=null) {
-                        document.getElementById('newSaleEmail').value = contact.emails[0];
+                        document.getElementById('newSaleEmail').value = contact.emails[0].value;
                     };
                     if (contact.addresses!=null) {
-                        document.getElementById('newSaleAddress').value = contact.addresses[0];
+                        document.getElementById('newSaleAddress').value = contact.addresses[0].value;
                     };
 
                     alert(JSON.stringify(contact));
@@ -1737,7 +1737,7 @@ var app;
                 onPrompt,                  // callback to invoke
                 'Contact Sync',            // title
                 ['Search','Cancel'],             // buttonLabels
-                'batamgula'                 // defaultText
+                'Chicken Customer'                 // defaultText
             );
             },
             items : function() {

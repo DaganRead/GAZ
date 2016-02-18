@@ -1400,7 +1400,11 @@ var app;
                                     element.total -= app.data.sales[idx].total;
                                 };
                             });
-                            app.store('slaughter');
+                            var foo = JSON.stringify(app.data.slaughters.shift());
+                            window.setTimeout(function() {
+                                app.data.slaughters.shift(JSON.parse(foo));
+                                app.store('slaughter');
+                            }, 100);
                             app.data.sales.splice(idx, 1);
                             app.store('sale');
                         };

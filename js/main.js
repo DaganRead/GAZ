@@ -1252,15 +1252,15 @@ var app;
                                 }else{
                                     document.getElementById('newSaleAddress').value = 'Address';
                                 };
-                                if (element.location!='') {
+                                if (element.location!=undefined) {
                                     document.getElementById('newSaleLocation').innerHTML = element.location;
-                                    for (var i = 0; i < document.getElementById('newSaleLocationSelect').options.length; i++) {
+/*                                    for (var i = 0; i < document.getElementById('newSaleLocationSelect').options.length; i++) {
                                         if (document.getElementById('newSaleLocationSelect').options[i].value == element.location) {
                                             document.getElementById('newSaleLocationSelect').options[i].selected = true;
                                         }else{
                                             document.getElementById('newSaleLocationSelect').options[i].selected = false;
                                         };
-                                    };
+                                    };*/
                                 };
                             if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
                                 found = true;

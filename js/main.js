@@ -225,7 +225,7 @@ var app;
                                 HTMLFrag += '"/><input type="text" placeholder="';
                                 HTMLFrag += element.name.familyName;
                                 HTMLFrag += '"/>';
-                                if (contact.emails!=null) {
+                                if (element.emails!=null) {
                                     element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="email" placeholder="';
                                         HTMLFrag += innerElement;
@@ -234,7 +234,7 @@ var app;
                                         HTMLFrag += '"/>';
                                     });
                                 };
-                                if (contact.phoneNumbers!=null) {
+                                if (element.phoneNumbers!=null) {
                                     element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="text" placeholder="';
                                         HTMLFrag += innerElement;
@@ -255,7 +255,7 @@ var app;
                                     HTMLFrag += '</option>';
                                 });
                                 HTMLFrag += '</select></figcaption></figure></article>';
-                                if (contact.addresses!=null) {
+                                if (element.addresses!=null) {
                                     element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<textarea>';
                                         HTMLFrag += innerElement;
@@ -282,7 +282,7 @@ var app;
                                 HTMLFrag += '" /><input type="text" placeholder="';
                                 HTMLFrag += element.name.familyName;
                                 HTMLFrag += '" />';
-                                if (contact.emails!=null) {
+                                if (element.emails!=null) {
                                     element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="email" placeholder="';
                                         HTMLFrag += innerElement;
@@ -291,7 +291,7 @@ var app;
                                         HTMLFrag += '"/>';
                                     });
                                 };
-                                if (contact.phoneNumbers!=null) {
+                                if (element.phoneNumbers!=null) {
                                     element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="text" placeholder="';
                                         HTMLFrag += innerElement;
@@ -312,7 +312,7 @@ var app;
                                     HTMLFrag += '</option>';
                                 });
                                 HTMLFrag += '</select></figcaption></figure></article>';
-                                if (contact.addresses!=null) {
+                                if (element.addresses!=null) {
                                     element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<textarea>';
                                         HTMLFrag += innerElement;
@@ -335,7 +335,7 @@ var app;
                                 HTMLFrag += '"/><input type="text" placeholder="';
                                 HTMLFrag += element.name.familyName;
                                 HTMLFrag += '"/>';
-                                if (contact.emails!=null) {
+                                if (element.emails!=null) {
                                     element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="email" placeholder="';
                                         HTMLFrag += innerElement;
@@ -344,7 +344,7 @@ var app;
                                         HTMLFrag += '"/>';
                                     });
                                 };
-                                if (contact.phoneNumbers!=null) {
+                                if (element.phoneNumbers!=null) {
                                     element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="text" placeholder="';
                                         HTMLFrag += innerElement;
@@ -365,7 +365,7 @@ var app;
                                     HTMLFrag += '</option>';
                                 });
                                 HTMLFrag += '</select></figcaption></figure></article>';
-                                if (contact.addresses!=null) {
+                                if (element.addresses!=null) {
                                     element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<textarea>';
                                         HTMLFrag += innerElement;

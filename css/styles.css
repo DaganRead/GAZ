@@ -436,7 +436,7 @@ form#customers fieldset textarea{
     border: none;
     border-bottom: 1px solid white;
     margin-bottom: 13px;
-    width: calc(99% - 120px);
+    width: calc(97% - 120px);
     display: inline-block;
     height: 75px;
     resize:none;

@@ -225,20 +225,24 @@ var app;
                                 HTMLFrag += '"/><input type="text" placeholder="';
                                 HTMLFrag += element.name.familyName;
                                 HTMLFrag += '"/>';
-                                element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<input type="email" placeholder="';
-                                    HTMLFrag += innerElement;
-                                    HTMLFrag += '" data-index="';
-                                    HTMLFrag += innerIndex;
-                                    HTMLFrag += '"/>';
-                                });
-                                element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<input type="text" placeholder="';
-                                    HTMLFrag += innerElement;
-                                    HTMLFrag += '" data-index="';
-                                    HTMLFrag += innerIndex;
-                                    HTMLFrag += '"/>';
-                                });
+                                if (contact.emails!=null) {
+                                    element.emails.forEach(function(innerElement, innerIndex, innerArray) {
+                                        HTMLFrag += '<input type="email" placeholder="';
+                                        HTMLFrag += innerElement;
+                                        HTMLFrag += '" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/>';
+                                    });
+                                };
+                                if (contact.phoneNumbers!=null) {
+                                    element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
+                                        HTMLFrag += '<input type="text" placeholder="';
+                                        HTMLFrag += innerElement;
+                                        HTMLFrag += '" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/>';
+                                    });
+                                };
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
                                 HTMLFrag += '<select>';
@@ -251,11 +255,13 @@ var app;
                                     HTMLFrag += '</option>';
                                 });
                                 HTMLFrag += '</select></figcaption></figure></article>';
-                                element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<textarea>';
-                                    HTMLFrag += innerElement;
-                                    HTMLFrag += '</textarea>';
-                                });
+                                if (contact.addresses!=null) {
+                                    element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
+                                        HTMLFrag += '<textarea>';
+                                        HTMLFrag += innerElement;
+                                        HTMLFrag += '</textarea>';
+                                    });
+                                };
                                 HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.dataset.index)" class="cancel" data-index="';
                                 HTMLFrag += index;
                                 HTMLFrag += '"/></fieldset>';
@@ -276,20 +282,24 @@ var app;
                                 HTMLFrag += '" /><input type="text" placeholder="';
                                 HTMLFrag += element.name.familyName;
                                 HTMLFrag += '" />';
-                                element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<input type="email" placeholder="';
-                                    HTMLFrag += innerElement;
-                                    HTMLFrag += '" data-index="';
-                                    HTMLFrag += innerIndex;
-                                    HTMLFrag += '"/>';
-                                });
-                                element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<input type="text" placeholder="';
-                                    HTMLFrag += innerElement;
-                                    HTMLFrag += '" data-index="';
-                                    HTMLFrag += innerIndex;
-                                    HTMLFrag += '"/>';
-                                });
+                                if (contact.emails!=null) {
+                                    element.emails.forEach(function(innerElement, innerIndex, innerArray) {
+                                        HTMLFrag += '<input type="email" placeholder="';
+                                        HTMLFrag += innerElement;
+                                        HTMLFrag += '" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/>';
+                                    });
+                                };
+                                if (contact.phoneNumbers!=null) {
+                                    element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
+                                        HTMLFrag += '<input type="text" placeholder="';
+                                        HTMLFrag += innerElement;
+                                        HTMLFrag += '" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/>';
+                                    });
+                                };
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
                                 HTMLFrag += '<select>';
@@ -302,11 +312,13 @@ var app;
                                     HTMLFrag += '</option>';
                                 });
                                 HTMLFrag += '</select></figcaption></figure></article>';
-                                element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<textarea>';
-                                    HTMLFrag += innerElement;
-                                    HTMLFrag += '</textarea>';
-                                });
+                                if (contact.addresses!=null) {
+                                    element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
+                                        HTMLFrag += '<textarea>';
+                                        HTMLFrag += innerElement;
+                                        HTMLFrag += '</textarea>';
+                                    });
+                                };
                                 HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.dataset.index)" class="cancel" data-index="';
                                 HTMLFrag += index;
                                 HTMLFrag += '"/>';                              
@@ -323,20 +335,24 @@ var app;
                                 HTMLFrag += '"/><input type="text" placeholder="';
                                 HTMLFrag += element.name.familyName;
                                 HTMLFrag += '"/>';
-                                element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<input type="email" placeholder="';
-                                    HTMLFrag += innerElement;
-                                    HTMLFrag += '" data-index="';
-                                    HTMLFrag += innerIndex;
-                                    HTMLFrag += '"/>';
-                                });
-                                element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<input type="text" placeholder="';
-                                    HTMLFrag += innerElement;
-                                    HTMLFrag += '" data-index="';
-                                    HTMLFrag += innerIndex;
-                                    HTMLFrag += '"/>';
-                                });
+                                if (contact.emails!=null) {
+                                    element.emails.forEach(function(innerElement, innerIndex, innerArray) {
+                                        HTMLFrag += '<input type="email" placeholder="';
+                                        HTMLFrag += innerElement;
+                                        HTMLFrag += '" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/>';
+                                    });
+                                };
+                                if (contact.phoneNumbers!=null) {
+                                    element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
+                                        HTMLFrag += '<input type="text" placeholder="';
+                                        HTMLFrag += innerElement;
+                                        HTMLFrag += '" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '"/>';
+                                    });
+                                };
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
                                 HTMLFrag += '<select>';
@@ -349,11 +365,13 @@ var app;
                                     HTMLFrag += '</option>';
                                 });
                                 HTMLFrag += '</select></figcaption></figure></article>';
-                                element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                    HTMLFrag += '<textarea>';
-                                    HTMLFrag += innerElement;
-                                    HTMLFrag += '</textarea>';
-                                });
+                                if (contact.addresses!=null) {
+                                    element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
+                                        HTMLFrag += '<textarea>';
+                                        HTMLFrag += innerElement;
+                                        HTMLFrag += '</textarea>';
+                                    });
+                                };
                                 HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.dataset.index)" class="cancel" data-index="';
                                 HTMLFrag += index;
                                 HTMLFrag += '"/>';                              
@@ -1235,6 +1253,7 @@ var app;
                                     document.getElementById('newSaleAddress').value = 'Address';
                                 };
                                 if (element.location!='') {
+                                    document.getElementById('newSaleLocation').innerHTML = element.location;
                                     for (var i = 0; i < document.getElementById('newSaleLocationSelect').options.length; i++) {
                                         if (document.getElementById('newSaleLocationSelect').options[i].value == element.location) {
                                             document.getElementById('newSaleLocationSelect').options[i].selected = true;

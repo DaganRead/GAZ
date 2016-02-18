@@ -664,10 +664,10 @@ var app;
                 });
                 this.data.sales.push(newSale);
                 this.store('sale');
-                            var bars = JSON.stringify(this.data.slaughters.shift());
+                            var bar = JSON.stringify(app.data.slaughters.shift());
                             window.setTimeout(function() {
-                                this.data.slaughters.shift(JSON.parse(bars));
-                                this.store('slaughter');
+                                app.data.slaughters.unshift(JSON.parse(bar));
+                                app.store('slaughter');
                             }, 100);
             };
         },
@@ -1361,7 +1361,7 @@ var app;
                     app.store('sale');
                             var foo = JSON.stringify(app.data.slaughters.shift());
                             window.setTimeout(function() {
-                                app.data.slaughters.shift(JSON.parse(foo));
+                                app.data.slaughters.unshift(JSON.parse(foo));
                                 app.store('slaughter');
                             }, 100);
                     //window.scroll(0, pageY);
@@ -1410,7 +1410,7 @@ var app;
                             });
                             var foo = JSON.stringify(app.data.slaughters.shift());
                             window.setTimeout(function() {
-                                app.data.slaughters.shift(JSON.parse(foo));
+                                app.data.slaughters.unshift(JSON.parse(foo));
                                 app.store('slaughter');
                             }, 100);
                             app.data.sales.splice(idx, 1);

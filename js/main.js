@@ -923,6 +923,7 @@ var app;
                         newChar,
                         compareChar = '9',
                         numbersStarted = false;
+
                     arr.sort(function(a, b) {
                         return a.name.givenName.localeCompare(b.name.givenName);
                     });
@@ -1214,15 +1215,6 @@ var app;
         },
         accordion : function(target) {
             var container = target.parentNode.parentNode;
-            if(classie.hasClass(container, 'acc-open')){
-                var inputs = target.getElementsByTagName('input'),
-                textareas = target.getElementsByTagName('textarea');
-
-                var data = {};
-                app.update.customer(data);
-            }else{
-
-            };
             classie.toggleClass(container, 'acc-open');
         },
         purchaseTableAdd : function(target) {

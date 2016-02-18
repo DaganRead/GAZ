@@ -664,7 +664,11 @@ var app;
                 });
                 this.data.sales.push(newSale);
                 this.store('sale');
-                this.store('slaughter');
+                            var bars = JSON.stringify(this.data.slaughters.shift());
+                            window.setTimeout(function() {
+                                this.data.slaughters.shift(JSON.parse(bars));
+                                this.store('slaughter');
+                            }, 100);
             };
         },
         newCustomer : function() {
@@ -1355,7 +1359,11 @@ var app;
                         };
                     });
                     app.store('sale');
-                    app.store('slaughter');
+                            var foo = JSON.stringify(app.data.slaughters.shift());
+                            window.setTimeout(function() {
+                                app.data.slaughters.shift(JSON.parse(foo));
+                                app.store('slaughter');
+                            }, 100);
                     //window.scroll(0, pageY);
                 }();
 

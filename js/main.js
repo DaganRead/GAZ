@@ -614,6 +614,7 @@ var app;
             }
         },
         newSale : function() {
+            this.forms.newSale.purchaseTable = [];
             // Update mapped structure
             var purchaseTableSelects = document.getElementsByTagName('select'),
                 foo = {
@@ -651,7 +652,7 @@ var app;
                 };
             };
             
-            if (this.picked) {
+            if (!this.picked) {
                 var newCustomer = navigator.contacts.create({
                     "displayName": this.forms.newCustomer.givenName() + ' ' + this.forms.newCustomer.familyName(),
                     "name" : { 
@@ -1232,7 +1233,7 @@ var app;
         },
         pickContact : function() {
             navigator.contacts.pickContact(function(contact){
-                var found = false;
+                app.picked= false;
                     app.data.customers.forEach(function(element, index, array) {
                         if (contact.name.givenName != null && contact.name.familyName != null) {
                             document.getElementById('newSaleFirstName').value = contact.name.givenName;
@@ -1263,7 +1264,7 @@ var app;
                                     };*/
                                 };
                             if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
-                                found = true;
+                                app.picked = true;
                                 if(!classie.hasClass(document.getElementById('newSale'), 'acc-open')){
                                     classie.addClass(document.getElementById('newSale'), 'acc-open');
                                 };
@@ -1271,7 +1272,7 @@ var app;
                         };
                     });
 
-                if(!found){
+                if(!app.picked){
                     if(classie.hasClass(document.getElementById('newSale'), 'acc-open')){
                         classie.removeClass(document.getElementById('newSale'), 'acc-open');
                     };

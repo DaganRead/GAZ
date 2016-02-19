@@ -1405,7 +1405,7 @@ var app;
 
             },
             customer: function(target) {
-                alert('hello');
+                alert(target.parentNode);
             }
         },
         delete : {

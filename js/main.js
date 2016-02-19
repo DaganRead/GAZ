@@ -245,7 +245,7 @@ var app;
                                 };
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += '<select onchange="app.update.customer(this)">';
+                                HTMLFrag += '<select onchange="app.update.customer(this.parentNode)">';
                                 HTMLFrag += '<option disabled selected value=""></option>';
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
@@ -302,7 +302,7 @@ var app;
                                 };
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += '<select onchange="app.update.customer(this)">';
+                                HTMLFrag += '<select onchange="app.update.customer(this.parentNode)">';
                                 HTMLFrag += '<option disabled selected value=""></option>';
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
@@ -355,7 +355,7 @@ var app;
                                 };
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += '<select onchange="app.update.customer(this)">';
+                                HTMLFrag += '<select onchange="app.update.customer(this.parentNode)">';
                                 HTMLFrag += '<option disabled selected value=""></option>';
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
@@ -968,7 +968,7 @@ var app;
                                     };
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
-                                    HTMLFrag += '<select onchange="app.update.customer(this)">';
+                                    HTMLFrag += '<select onchange="app.update.customer(this.parentNode)">';
                                     HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
@@ -1027,7 +1027,7 @@ var app;
                                     };
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
-                                    HTMLFrag += '<select onchange="app.update.customer(this)">';
+                                    HTMLFrag += '<select onchange="app.update.customer(this.parentNode)">';
                                     HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
@@ -1082,7 +1082,7 @@ var app;
                                     };
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
-                                    HTMLFrag += '<select onchange="app.update.customer(this)">';
+                                    HTMLFrag += '<select onchange="app.update.customer(this.parentNode)">';
                                     HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
@@ -1405,7 +1405,24 @@ var app;
 
             },
             customer: function(target) {
-                alert(target.parentNode);
+                var data = {
+                    givenName : target.parentNode.children[0].value||target.parentNode.children[0].placeholder,
+                    familyName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
+                    emails:[],
+                    phoneNumbers:[],
+                    addresses:'',
+                    location:''
+                };
+                for (var i = 2; i < target.parentNode.children.length; i++) {
+                    if (target.parentNode.children[i].type == 'email') {
+                        data.emails.push(target.parentNode.children[i].value||target.parentNode.children[i].placeholder);
+                    }else if(target.parentNode.children[i].type == 'textarea'){                        
+                        data.address = target.parentNode.children[i].value;
+                    }else{                        
+                        data.phoneNumbers.push(target.parentNode.children[i].value||target.parentNode.children[i].placeholder);
+                    };
+                };
+                alert(data);
             }
         },
         delete : {

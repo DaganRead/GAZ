@@ -1406,8 +1406,8 @@ var app;
             },
             customer: function(target) {
                 var data = {
-                    givenName : target.parentNode.children[0].value||target.parentNode.children[0].placeholder,
-                    familyName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
+                    givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
+                    familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
                     emails:[],
                     phoneNumbers:[],
                     addresses:'',
@@ -1415,10 +1415,11 @@ var app;
                 };
                 alert(JSON.stringify(target));
                 alert(JSON.stringify(data));
-                for (var i = 1; i < target.parentNode.children.length; i++) {
+                for (var i = 3; i < target.parentNode.children.length; i++) {
+                        alert(JSON.stringify(target.parentNode.children[i]));                   
                     if (target.parentNode.children[i].type == 'email') {
                         data.emails.push(target.parentNode.children[i].value||target.parentNode.children[i].placeholder);
-                    }else if(target.parentNode.children[i].type == 'textarea'){                        
+                    }else if(target.parentNode.children[i].type == 'textarea'){     
                         data.address = target.parentNode.children[i].children[0].value;
                     }else{                        
                         data.phoneNumbers.push(target.parentNode.children[i].value||target.parentNode.children[i].placeholder);

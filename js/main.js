@@ -1414,27 +1414,26 @@ var app;
                         addresses:'',
                         location:''
                     };
-                    alert(JSON.stringify(target));
-                    alert(JSON.stringify(data));
+                    //alert(JSON.stringify(target));
                     for (var i = 3; i < target.parentNode.children.length; i++) {
                             alert(target.parentNode.children[i]);                   
                         if (target.parentNode.children[i].type == 'email') {
                             if (target.parentNode.children[i].value != '') {
-                                data.emails.push(target.parentNode.children[i].value);
+                                temp.emails.push(target.parentNode.children[i].value);
                             }else{
-                                data.emails.push(target.parentNode.children[i].placeholder);
+                                temp.emails.push(target.parentNode.children[i].placeholder);
                             };
                         }else if(target.parentNode.children[i].type == 'textarea'){     
-                            data.address = target.parentNode.children[i].innerHTML;
+                            temp.address = target.parentNode.children[i].innerHTML;
                         }else{
                             if (target.parentNode.children[i].value != '') {
-                                data.phoneNumbers.push(target.parentNode.children[i].value);
-                            }else{
-                                data.phoneNumbers.push(target.parentNode.children[i].placeholder);
+                                temp.phoneNumbers.push(target.parentNode.children[i].value);
+                            }else if (target.parentNode.children[i].value != undefined) {
+                                temp.phoneNumbers.push(target.parentNode.children[i].placeholder);
                             };                        
                         };
                     };
-                    return JSON.stringify(data());
+                    return JSON.stringify(temp);
                 };
                 alert(JSON.stringify(data(target)));
         },

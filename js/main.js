@@ -1413,7 +1413,9 @@ var app;
                     addresses:'',
                     location:''
                 };
-                for (var i = 2; i < target.parentNode.children.length; i++) {
+                alert(JSON.stringify(target));
+                alert(JSON.stringify(data));
+                for (var i = 1; i < target.parentNode.children.length; i++) {
                     if (target.parentNode.children[i].type == 'email') {
                         data.emails.push(target.parentNode.children[i].value||target.parentNode.children[i].placeholder);
                     }else if(target.parentNode.children[i].type == 'textarea'){                        
@@ -1422,7 +1424,7 @@ var app;
                         data.phoneNumbers.push(target.parentNode.children[i].value||target.parentNode.children[i].placeholder);
                     };
                 };
-                alert(data);
+                alert(JSON.stringify(data));
             }
         },
         delete : {

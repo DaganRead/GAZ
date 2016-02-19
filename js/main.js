@@ -1423,11 +1423,11 @@ var app;
                                 temp.emails.push(target.parentNode.children[i].placeholder);
                             };
                         }else if(target.parentNode.children[i].type == 'textarea'){     
-                            temp.address = target.parentNode.children[i].innerHTML;
+                                temp.addresses.push(target.parentNode.children[i].innerHTML);
                         }else{
-                            if (target.parentNode.children[i].value != '') {
+                            if (target.parentNode.children[i].value != '' || target.parentNode.children[i].value != null) {
                                 temp.phoneNumbers.push(target.parentNode.children[i].value);
-                            }else if (target.parentNode.children[i].value != undefined) {
+                            }else if (target.parentNode.children[i].placeholder != '' || target.parentNode.children[i].value != placeholder) {
                                 temp.phoneNumbers.push(target.parentNode.children[i].placeholder);
                             };                        
                         };

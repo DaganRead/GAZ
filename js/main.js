@@ -220,7 +220,7 @@ var app;
                                         HTMLFrag += ' data-index="';
                                         HTMLFrag += index;
                                         HTMLFrag += '"/></legend>';
-                                        HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                        HTMLFrag += '<input type="text" onblur="alert(this)" placeholder="';
                                 HTMLFrag += element.name.givenName;
                                 HTMLFrag += '"/><input type="text" onblur="app.update.customer(this)" placeholder="';
                                 HTMLFrag += element.name.familyName;

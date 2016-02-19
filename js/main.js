@@ -1405,36 +1405,38 @@ var app;
 
             },
             customer: function(target) {
-                var data = {
-                    givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
-                    familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
-                    emails:[],
-                    phoneNumbers:[],
-                    addresses:'',
-                    location:''
-                };
-                alert(JSON.stringify(target));
-                alert(JSON.stringify(data));
-                for (var i = 3; i < target.parentNode.children.length; i++) {
-                        alert(target.parentNode.children[i]);                   
-                    if (target.parentNode.children[i].type == 'email') {
-                        if (target.parentNode.children[i].value != '') {
-                            data.emails.push(target.parentNode.children[i].value);
-                        }else{
-                            data.emails.push(target.parentNode.children[i].placeholder);
-                        };
-                    }else if(target.parentNode.children[i].type == 'textarea'){     
-                        data.address = target.parentNode.children[i].children[0].value;
-                    }else{
-                        if (target.parentNode.children[i].value != '') {
-                            data.phoneNumbers.push(target.parentNode.children[i].value);
-                        }else{
-                            data.phoneNumbers.push(target.parentNode.children[i].placeholder);
-                        };                        
+                var data = function (target) {
+                    var temp = { 
+                        givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
+                        familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
+                        emails:[],
+                        phoneNumbers:[],
+                        addresses:'',
+                        location:''
                     };
+                    alert(JSON.stringify(target));
+                    alert(JSON.stringify(data));
+                    for (var i = 3; i < target.parentNode.children.length; i++) {
+                            alert(target.parentNode.children[i]);                   
+                        if (target.parentNode.children[i].type == 'email') {
+                            if (target.parentNode.children[i].value != '') {
+                                data.emails.push(target.parentNode.children[i].value);
+                            }else{
+                                data.emails.push(target.parentNode.children[i].placeholder);
+                            };
+                        }else if(target.parentNode.children[i].type == 'textarea'){     
+                            data.address = target.parentNode.children[i].innerHTML;
+                        }else{
+                            if (target.parentNode.children[i].value != '') {
+                                data.phoneNumbers.push(target.parentNode.children[i].value);
+                            }else{
+                                data.phoneNumbers.push(target.parentNode.children[i].placeholder);
+                            };                        
+                        };
+                    };
+                    return JSON.stringify(data());
                 };
-                alert(JSON.stringify(data));
-            }
+                alert(JSON.stringify(data(target)));
         },
         delete : {
             sale : function(idx) {

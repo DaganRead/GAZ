@@ -1397,33 +1397,8 @@ var app;
                 }();
 
             },
-            customer: function(data) {
-                app.data.customers[data.index].displayName = data.displayName;
-                app.data.customers[data.index].name.givenName = data.name.givenName;
-                app.data.customers[data.index].name.familyName = data.name.familyName;
-                app.data.customers[data.index].note = data.location;
-                app.data.customers[data.index].emails = data.emails;
-                app.data.customers[data.index].phoneNumbers = data.phoneNumbers;
-                app.data.customers[data.index].addresses = data.addresses;
-
-                if (app.data.customers[data.index].location != data.location) {
-                    var oldLocationIndex = app.data.locations.indexOf(app.data.customers[data.index].location),
-                        newLocationIndex = app.data.locations.indexOf(data.location),
-                        locationCount = app.locations[newLocationIndex].count;
-                    
-                    if (locationCount == 0) {
-                        app.data.locations.splice(newLocationIndex, 1);
-                    };
-
-                    app.data.locations.forEach(function(element, index, array) {
-                        if(data.location == element.location){
-                            element.count ++;
-                            app.store('location');
-                        }
-                    });
-
-                };
-                app.store('customer');
+            customer: function(target) {
+                alert(JSON.parse(target));
             }
         },
         delete : {

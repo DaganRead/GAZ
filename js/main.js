@@ -1416,13 +1416,21 @@ var app;
                 alert(JSON.stringify(target));
                 alert(JSON.stringify(data));
                 for (var i = 3; i < target.parentNode.children.length; i++) {
-                        alert(JSON.stringify(target.parentNode.children[i]));                   
+                        alert(target.parentNode.children[i]);                   
                     if (target.parentNode.children[i].type == 'email') {
-                        data.emails.push(target.parentNode.children[i].value||target.parentNode.children[i].placeholder);
+                        if (target.parentNode.children[i].value != '') {
+                            data.emails.push(target.parentNode.children[i].value);
+                        }else{
+                            data.emails.push(target.parentNode.children[i].placeholder);
+                        };
                     }else if(target.parentNode.children[i].type == 'textarea'){     
                         data.address = target.parentNode.children[i].children[0].value;
-                    }else{                        
-                        data.phoneNumbers.push(target.parentNode.children[i].value||target.parentNode.children[i].placeholder);
+                    }else{
+                        if (target.parentNode.children[i].value != '') {
+                            data.phoneNumbers.push(target.parentNode.children[i].value);
+                        }else{
+                            data.phoneNumbers.push(target.parentNode.children[i].placeholder);
+                        };                        
                     };
                 };
                 alert(JSON.stringify(data));

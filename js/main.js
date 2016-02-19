@@ -1405,7 +1405,7 @@ var app;
 
             },
             customer: function(target) {
-                alert(JSON.parse(target));
+                alert('hello');
             }
         },
         delete : {

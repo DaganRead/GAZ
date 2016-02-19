@@ -1436,6 +1436,7 @@ var app;
                     return JSON.stringify(temp);
                 };
                 alert(JSON.stringify(data(target)));
+            }
         },
         delete : {
             sale : function(idx) {

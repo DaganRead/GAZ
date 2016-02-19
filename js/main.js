@@ -1417,7 +1417,7 @@ var app;
                     if (target.parentNode.children[i].type == 'email') {
                         data.emails.push(target.parentNode.children[i].value||target.parentNode.children[i].placeholder);
                     }else if(target.parentNode.children[i].type == 'textarea'){                        
-                        data.address = target.parentNode.children[i].value;
+                        data.address = target.parentNode.children[i].children[0].value;
                     }else{                        
                         data.phoneNumbers.push(target.parentNode.children[i].value||target.parentNode.children[i].placeholder);
                     };

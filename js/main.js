@@ -1422,6 +1422,8 @@ var app;
                             }else{
                                 temp.emails.push(target.parentNode.children[i].placeholder);
                             };
+                        }else if(target.parentNode.children[i].tagName == 'ARTICLE'){
+                            temp.location = target.parentNode.children[i].children[0].selectedOptions[0].value;
                         }else if(target.parentNode.children[i].type == 'textarea'){     
                                 temp.addresses.push(target.parentNode.children[i].innerHTML);
                         }else{

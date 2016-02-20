@@ -1428,10 +1428,10 @@ var app;
                             };                        
                         };
                     };
-                    app.data.customers[target.parentNode.dataset.index] = JSON.stringify(temp);
-                    app.store('customer');
+                    alert(JSON.stringify(temp));
+                    //app.store('customer');
                 }();
-                alert(app.data.customers[target.parentNode.dataset.index]);
+                //alert(app.data.customers[target.parentNode.dataset.index]);
             }
         },
         delete : {

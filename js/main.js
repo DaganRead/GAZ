@@ -1428,7 +1428,7 @@ var app;
                             };                        
                         };
                     };
-                    alert(JSON.stringify(temp));
+                    alert(temp);
                     //app.store('customer');
                 }();
                 //alert(app.data.customers[target.parentNode.dataset.index]);

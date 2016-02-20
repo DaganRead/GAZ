@@ -1405,7 +1405,7 @@ var app;
 
             },
             customer: function(target) {
-                alert(target.parentNode.dataset);
+                alert(JSON.stringify(target.parentNode.dataset));
                 var data = function (target) {
                     var temp = { 
                         givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,

@@ -1412,20 +1412,20 @@ var app;
                     alert('0');
                     for (var i = 3; i < target.parentNode.children.length; i++) {
                         if (target.parentNode.children[i].type == 'email') {
-                            alert('1');
+                            alert(temp);
                             if (target.parentNode.children[i].value != '') {
                                 temp.emails.push(target.parentNode.children[i].value);
                             }else{
                                 temp.emails.push(target.parentNode.children[i].placeholder);
                             };
                         }else if(target.parentNode.children[i].tagName == 'ARTICLE'){
-                            alert('2');
+                            alert(temp);
                             temp.location = target.parentNode.children[i].children[0].selectedOptions[0].value;
                         }else if(target.parentNode.children[i].type == 'textarea'){     
-                                alert('3');
+                                alert(temp);
                                 temp.addresses.push(target.parentNode.children[i].innerHTML);
                         }else{
-                            alert('4');
+                            alert(temp);
                             if (target.parentNode.children[i].value != '' || target.parentNode.children[i].value != null) {
                                 temp.phoneNumbers.push(target.parentNode.children[i].value);
                             }else if (target.parentNode.children[i].placeholder != '' || target.parentNode.children[i].value != placeholder) {

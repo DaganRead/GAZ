@@ -1400,7 +1400,6 @@ var app;
 
             },
             customer: function(target) {
-                alert(target.parentNode.dataset.index);
                 var data = function (target) {
                     var temp = { 
                         givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
@@ -1432,7 +1431,7 @@ var app;
                     return JSON.stringify(temp);
                 };
                 app.data.customers[target.parentNode.dataset.index] = data(target);
-                alert(app.data.customers[target.parentNode.dataset.index]);
+                alert(JSON.stringify(app.data.customers[target.parentNode.dataset.index]));
             }
         },
         delete : {

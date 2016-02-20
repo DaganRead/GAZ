@@ -1428,10 +1428,10 @@ var app;
                             };                        
                         };
                     };
-                    return JSON.stringify(temp);
-                };
-                app.data.customers[target.parentNode.dataset.index] = data(target);
-                alert(JSON.stringify(app.data.customers[target.parentNode.dataset.index]));
+                    app.data.customers[target.parentNode.dataset.index] = JSON.stringify(temp);
+                    app.store('customer');
+                }();
+                alert(app.data.customers[target.parentNode.dataset.index]);
             }
         },
         delete : {

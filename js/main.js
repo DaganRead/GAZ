@@ -1428,9 +1428,9 @@ var app;
                             };                        
                         };
                     };
-                    alert(temp);
+                    alert(JSON.stringify(temp));
                     //app.store('customer');
-                }();
+                }(target);
                 //alert(app.data.customers[target.parentNode.dataset.index]);
             }
         },

@@ -214,12 +214,11 @@ var app;
                                 if (element == array[0]) {
                                     HTMLFrag += '<fieldset><legend>#</legend>';
                                 };
-                                HTMLFrag += '<fieldset><legend><input type="button" value="';
+                                HTMLFrag += '<fieldset data-index="';
+                                HTMLFrag += index;
+                                HTMLFrag += '"><legend><input type="button" value="';
                                 HTMLFrag += element.displayName;
-                                        HTMLFrag += '" onclick="app.accordion(this)" ';
-                                        HTMLFrag += ' data-index="';
-                                        HTMLFrag += index;
-                                        HTMLFrag += '"/></legend>';
+                                        HTMLFrag += '" onclick="app.accordion(this)" /></legend>';
                                         HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
                                 HTMLFrag += element.name.givenName;
                                 HTMLFrag += '"/><input type="text" onblur="app.update.customer(this)" placeholder="';
@@ -271,7 +270,9 @@ var app;
                                 HTMLFrag += newChar;
                                 HTMLFrag += '</legend>';  
                                 compareChar = newChar;
-                                HTMLFrag += '<fieldset><legend><input type="button" value="';
+                                HTMLFrag += '<fieldset data-index="';
+                                HTMLFrag += index;
+                                HTMLFrag += '"><legend><input type="button" value="';
                                 HTMLFrag += element.displayName;
                                         HTMLFrag += '" onclick="app.accordion(this)" ';
                                         HTMLFrag += ' data-index="';
@@ -324,12 +325,11 @@ var app;
                                 HTMLFrag += '"/>';                              
                                 HTMLFrag += '</fieldset>';
                             }else if(newChar == compareChar){
-                                HTMLFrag += '<fieldset><legend><input type="button" value="';
+                                HTMLFrag += '<fieldset data-index="';
+                                HTMLFrag += index;
+                                HTMLFrag += '"><legend><input type="button" value="';
                                 HTMLFrag += element.displayName;
-                                        HTMLFrag += '" onclick="app.accordion(this)" ';
-                                        HTMLFrag += ' data-index="';
-                                        HTMLFrag += index;
-                                        HTMLFrag += '"/></legend>';
+                                        HTMLFrag += '" onclick="app.accordion(this)" /></legend>';
                                         HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
                                 HTMLFrag += element.name.givenName;
                                 HTMLFrag += '"/><input type="text" onblur="app.update.customer(this)" placeholder="';
@@ -917,8 +917,8 @@ var app;
             });
 
             Object.observe(app.data.customers, function(changes) {
-                changes.forEach(function(element, index, array) {
-                    var arr = element.object,    
+                changes.forEach(function(elementi, indexi, arrayi) {
+                    var arr = elementi.object,    
                         HTMLFrag = '',
                         newChar,
                         compareChar = '9',
@@ -931,19 +931,14 @@ var app;
                                 newChar = element.name.givenName.charAt(0);
                                 if (newChar < compareChar) {
                                     if (element == array[0]) {
-                                        HTMLFrag += '<fieldset data-index="';
-                                        HTMLFrag += index;
-                                        HTMLFrag += '"><legend>#</legend>';
+                                        HTMLFrag += '<fieldset><legend>#</legend>';
                                     };
                                     HTMLFrag += '<fieldset data-index="';
                                     HTMLFrag += index;
                                     HTMLFrag += '"><legend><input type="button" value="';
                                     HTMLFrag += element.displayName;
-                                            HTMLFrag += '" onclick="app.accordion(this)" ';
-                                            HTMLFrag += ' data-index="';
-                                            HTMLFrag += index;
-                                            HTMLFrag += '"/></legend>';
-                                            HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                    HTMLFrag += '" onclick="app.accordion(this)" /></legend>';
+                                    HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
                                     HTMLFrag += element.name.givenName;
                                     HTMLFrag += '"/><input type="text" onblur="app.update.customer(this)" placeholder="';
                                     HTMLFrag += element.name.familyName;
@@ -1405,7 +1400,7 @@ var app;
 
             },
             customer: function(target) {
-                alert(JSON.stringify(target.parentNode.dataset));
+                alert(target.parentNode.dataset.index);
                 var data = function (target) {
                     var temp = { 
                         givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,

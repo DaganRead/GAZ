@@ -1411,7 +1411,7 @@ var app;
                     };
                     for (var i = 3; i < target.parentNode.children.length; i++) {
                         if (target.parentNode.children[i].type == 'email') {
-                            //alert(JSON.stringify(temp));
+                            alert(JSON.stringify(temp));
                             if (target.parentNode.children[i].value != '') {
                                 temp.emails.push(target.parentNode.children[i].value);
                             }else{
@@ -1421,7 +1421,6 @@ var app;
                             //alert(JSON.stringify(temp));
                             temp.location = target.parentNode.children[i].children[0].selectedOptions[0].value;
                         }else if(target.parentNode.children[i].type == 'textarea'){     
-                                alert(temp);
                                 temp.addresses.push(target.parentNode.children[i].innerHTML);
                         }else{
                             if (target.parentNode.children[i].value != '' || target.parentNode.children[i].value != null) {
@@ -1431,11 +1430,12 @@ var app;
                             };                        
                         };
                     };
-                                                alert(JSON.stringify(temp));
-
+                        return temp;
                     //alert(temp);
                     //app.store('customer');
-                }(target);
+                };
+                alert(data(target));
+
                 //alert(app.data.customers[target.parentNode.dataset.index]);
             }
         },

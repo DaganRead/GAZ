@@ -1434,9 +1434,9 @@ var app;
                         return temp;
                     //alert('temp');
                     //app.store('customer');
-                };
-                var contactTemp = data();
-                alert(JSON.stringify(contactTemp));
+                }();
+                //var contactTemp = data();
+                //alert(JSON.stringify(contactTemp));
 
                 //alert(app.data.customers[target.parentNode.dataset.index]);
             }

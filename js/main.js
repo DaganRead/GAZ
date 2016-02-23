@@ -1400,7 +1400,7 @@ var app;
 
             },
             customer: function(target) {
-                var data = function (target) {
+                var data = function () {
                     var temp = { 
                         givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
                         familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
@@ -1431,7 +1431,7 @@ var app;
                     return temp;
                     //app.store('customer');
                 };
-                var contact = data(target);
+                var contact = data();
                 alert(JSON.stringify(contact));
                 //alert(app.data.customers[target.parentNode.dataset.index]);
         },

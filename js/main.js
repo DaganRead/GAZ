@@ -1417,7 +1417,6 @@ var app;
                                 temp.emails.push(target.parentNode.children[i].placeholder);
                             };
                         }else if(target.parentNode.children[i].tagName == 'ARTICLE'){
-                            //alert(JSON.stringify(temp));
                             temp.location = target.parentNode.children[i].children[0].selectedOptions[0].value;
                         }else if(target.parentNode.children[i].type == 'textarea'){     
                                 temp.addresses.push(target.parentNode.children[i].innerHTML);
@@ -1429,13 +1428,12 @@ var app;
                             };                        
                         };
                     };
-                        return temp;
+                    return temp;
                     //app.store('customer');
                 };
                 var contact = data(target);
                 alert(JSON.stringify(contact));
                 //alert(app.data.customers[target.parentNode.dataset.index]);
-            };
         },
         delete : {
             sale : function(idx) {

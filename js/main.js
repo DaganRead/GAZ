@@ -1431,7 +1431,7 @@ var app;
                                     };
                                 };
                             };
-                        customerIdx = element.dataset.index;
+                            customerIdx = element.dataset.index;
                         } else{
                             var element = target.parentNode,
                                 temp = { 
@@ -1465,13 +1465,11 @@ var app;
                         };
                         alert(customerIdx);
                         return temp;
-                        //app.store('customer');
                     };
                     //var contactTemp = data();
-                    alert(JSON.stringify(data(target)));
-
-                    //alert(app.data.customers[target.parentNode.dataset.index]);
-                };
+                    app.data.customers[customerIdx] = JSON.stringify(data(target));
+                    alert(app.data.customers[customerIdx]);
+                    //app.store('customer');
         },
         delete : {
             sale : function(idx) {

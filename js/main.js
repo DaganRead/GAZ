@@ -1433,7 +1433,8 @@ var app;
                     //alert('temp');
                     //app.store('customer');
                 };
-                alert(data());
+                var contactTemp = data();
+                alert(contactTemp);
 
                 //alert(app.data.customers[target.parentNode.dataset.index]);
             }

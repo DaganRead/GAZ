@@ -1402,19 +1402,21 @@ var app;
             customer: function(target) {
                 alert('start');
                 var data = function (target) {
-                    var temp = { 
-                        givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
-                        familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
-                        emails:[],
-                        phoneNumbers:[],
-                        addresses:[],
-                        location:''
-                    };
                     alert(target.tagName);
                     if (target.tagName == 'select') {
                         alert(target.parentNode.tagName);
                         alert(target.parentNode.parentNode.tagName);
                         alert(target.parentNode.parentNode.parentNode.tagName);
+                        
+                        var temp = { 
+                            givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
+                            familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
+                            emails:[],
+                            phoneNumbers:[],
+                            addresses:[],
+                            location:''
+                        };
+
                         for (var i = 3; i < target.parentNode.parentNode.parentNode.parentNode.children.length; i++) {
                             if (target.parentNode.parentNode.parentNode.parentNode.children[i].type == 'email') {
                                 if (target.parentNode.parentNode.parentNode.parentNode.children[i].value != '') {

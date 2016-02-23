@@ -1461,15 +1461,11 @@ var app;
                         };
                     };
                     return temp;
-                    //alert('temp');
-                    //app.store('customer');
                 };
                 var indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
-                alert(indx);
-                //var contactTemp = data();
-                alert(JSON.stringify(data(target)));
-
-                //alert(app.data.customers[]);
+                app.data.customers[indx] = data(target);
+                alert(JSON.stringify(app.data.customers[indx]));
+                //app.store('customer');
             }
         },
         delete : {

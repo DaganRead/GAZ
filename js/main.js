@@ -1401,7 +1401,8 @@ var app;
             },
             customer: function(target) {
                 var data = function (target) {
-                    var temp = { 
+                    var temp = new ContactName();
+                    temp = { 
                         givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
                         familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
                         emails:[],
@@ -1409,6 +1410,7 @@ var app;
                         addresses:'',
                         location:''
                     };
+
                     for (var i = 3; i < target.parentNode.children.length; i++) {
                         if (target.parentNode.children[i].type == 'email') {
                             if (target.parentNode.children[i].value != '') {
@@ -1432,9 +1434,20 @@ var app;
                         return temp;
                     //app.store('customer');
                 };
-                alert(JSON.stringify(data(target)));
+                var contact = data(target);
+                alert(JSON.stringify(contact));
                 //alert(app.data.customers[target.parentNode.dataset.index]);
-            }
+            };
+
+            /*Save*/
+            // create a new contact object
+            //var contact = navigator.contacts.create();
+            contact.displayName = temp.givenName + ' ' + temp.familyName;
+
+            // populate some fields
+            contact.name = temp;
+            // save to device
+            contact.save(onSuccess,onError);    
         },
         delete : {
             sale : function(idx) {
@@ -1831,6 +1844,14 @@ var app;
     var el = document.body;
     //el.addEventListener("touchstart", app.simulate, false);
     el.addEventListener("touchend", app.simulate, false);
+    function onSuccess(contact) {
+        alert("Save Success");
+    };
+
+    function onError(contactError) {
+        alert("Error = " + contactError.code);
+    };
+
     //el.addEventListener("touchcancel", app.simulate, false);
     //el.addEventListener("touchmove", app.simulate, false);
     app.initialize();

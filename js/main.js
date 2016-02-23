@@ -1402,7 +1402,6 @@ var app;
             customer: function(target) {
                 alert('start');
                 var data = function (target) {
-                    alert(target.tagName);
                     if (target.tagName == 'FIGCAPTION') {
 
                         var temp = { 
@@ -1413,7 +1412,7 @@ var app;
                             addresses:[],
                             location:''
                         };
-                        alert(JSON.stringify(temp));
+                        alert(target.parentNode.parentNode.parentNode.tagName);
                         for (var i = 3; i < target.parentNode.parentNode.parentNode.children.length; i++) {
                             if (target.parentNode.parentNode.parentNode.children[i].type == 'email') {
                                 if (target.parentNode.parentNode.parentNode.parentNode.children[i].value != '') {

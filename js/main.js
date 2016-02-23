@@ -1400,6 +1400,7 @@ var app;
 
             },
             customer: function(target) {
+                var data = function (target) {
                     var temp = { 
                         givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
                         familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
@@ -1428,9 +1429,12 @@ var app;
                             };                        
                         };
                     };
-                    alert(JSON.stringify(temp));
+                        return temp;
                     //app.store('customer');
+                };
+                alert(JSON.stringify(data(target)));
                 //alert(app.data.customers[target.parentNode.dataset.index]);
+            }
         },
         delete : {
             sale : function(idx) {

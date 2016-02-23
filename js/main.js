@@ -1403,12 +1403,11 @@ var app;
                 alert('start');
                 var data = function (target) {
                     alert(target.tagName);
-                    if (target.tagName == 'select') {
+                    if (target.tagName == 'FIGCAPTION') {
                         alert(target.parentNode.tagName);
                         alert(target.parentNode.parentNode.tagName);
-                        alert(target.parentNode.parentNode.parentNode.tagName);
-                        
-                        var temp = { 
+
+/*                        var temp = { 
                             givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
                             familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
                             emails:[],
@@ -1417,29 +1416,37 @@ var app;
                             location:''
                         };
 
-                        for (var i = 3; i < target.parentNode.parentNode.parentNode.parentNode.children.length; i++) {
-                            if (target.parentNode.parentNode.parentNode.parentNode.children[i].type == 'email') {
+                        for (var i = 3; i < target.parentNode.parentNode.parentNode.children.length; i++) {
+                            if (target.parentNode.parentNode.parentNode.children[i].type == 'email') {
                                 if (target.parentNode.parentNode.parentNode.parentNode.children[i].value != '') {
-                                    temp.emails.push(target.parentNode.parentNode.parentNode.parentNode.children[i].value);
+                                    temp.emails.push(target.parentNode.parentNode.parentNode.children[i].value);
                                 }else{
-                                    temp.emails.push(target.parentNode.parentNode.parentNode.parentNode.children[i].placeholder);
+                                    temp.emails.push(target.parentNode.parentNode.parentNode.children[i].placeholder);
                                 };
-                            }else if(target.parentNode.parentNode.parentNode.parentNode.children[i].tagName == 'ARTICLE'){
-                                temp.location = target.parentNode.parentNode.parentNode.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
-                            }else if(target.parentNode.parentNode.parentNode.parentNode.children[i].type == 'textarea'){     
+                            }else if(target.parentNode.parentNode.parentNode.children[i].tagName == 'ARTICLE'){
+                                temp.location = target.parentNode.parentNode.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
+                            }else if(target.parentNode.parentNode.parentNode.children[i].type == 'textarea'){     
                                 alert('address');
-                                temp.addresses.push(target.parentNode.parentNode.parentNode.parentNode.children[i].value);
+                                temp.addresses.push(target.parentNode.parentNode.parentNode.children[i].value);
                                 alert(JSON.stringify(temp));     
                             }else{
-                                if (target.parentNode.parentNode.parentNode.parentNode.children[i].value != '' && target.parentNode.parentNode.parentNode.parentNode.children[i].value != undefined) {
-                                    temp.phoneNumbers.push(target.parentNode.parentNode.parentNode.parentNode.children[i].value);
-                                }else if (target.parentNode.parentNode.parentNode.parentNode.children[i].placeholder != '' && target.parentNode.parentNode.parentNode.parentNode.children[i].placeholder != undefined) {
-                                    temp.phoneNumbers.push(target.parentNode.parentNode.parentNode.parentNode.children[i].placeholder);
+                                if (target.parentNode.parentNode.parentNode.children[i].value != '' && target.parentNode.parentNode.parentNode.children[i].value != undefined) {
+                                    temp.phoneNumbers.push(target.parentNode.parentNode.parentNode.children[i].value);
+                                }else if (target.parentNode.parentNode.parentNode.children[i].placeholder != '' && target.parentNode.parentNode.parentNode.children[i].placeholder != undefined) {
+                                    temp.phoneNumbers.push(target.parentNode.parentNode.parentNode.children[i].placeholder);
                                 };
                                 alert(JSON.stringify(temp));                        
                             };
-                        };
+                        };*/
                     } else{
+                        var temp = { 
+                            givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
+                            familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
+                            emails:[],
+                            phoneNumbers:[],
+                            addresses:[],
+                            location:''
+                        };
                         for (var i = 3; i < target.parentNode.children.length; i++) {
                             if (target.parentNode.children[i].type == 'email') {
                                 if (target.parentNode.children[i].value != '') {

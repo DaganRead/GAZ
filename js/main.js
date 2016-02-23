@@ -1425,8 +1425,8 @@ var app;
                         }else if(target.parentNode.children[i].tagName == 'ARTICLE'){
                             alert('location');
                             alert(target.parentNode.children[i].tagName);
-                            alert(target.parentNode.children[i].children[0].tagName);
-                            temp.location = target.parentNode.children[i].children[0].selectedOptions[0].value;
+                            alert(target.parentNode.children[i].children[0].children[0].children[0].tagName);
+                            temp.location = target.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
                             alert(JSON.stringify(temp));
                         }else if(target.parentNode.children[i].type == 'textarea'){     
                             alert('address');

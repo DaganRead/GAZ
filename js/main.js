@@ -1400,7 +1400,9 @@ var app;
 
             },
             customer: function(target) {
+                alert('start');
                 var data = function (target) {
+                    alert('func');
                     var temp = { 
                         givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
                         familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
@@ -1409,7 +1411,7 @@ var app;
                         addresses:'',
                         location:''
                     };
-                    alert('temp');
+                    alert('decl');
                     for (var i = 3; i < target.parentNode.children.length; i++) {
                         if (target.parentNode.children[i].type == 'email') {
                             if (target.parentNode.children[i].value != '') {
@@ -1430,8 +1432,8 @@ var app;
                             };                        
                         };
                     };
-                    alert('temp');
-                        return temp;
+                    alert('end');
+                        //return temp;
                     //alert('temp');
                     //app.store('customer');
                 }();

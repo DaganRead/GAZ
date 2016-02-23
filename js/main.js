@@ -1400,7 +1400,6 @@ var app;
 
             },
             customer: function(target) {
-                var contactTemp;
                 var data = function (target) {
                     var temp = { 
                         givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
@@ -1410,6 +1409,7 @@ var app;
                         addresses:'',
                         location:''
                     };
+                    alert('temp');
                     for (var i = 3; i < target.parentNode.children.length; i++) {
                         if (target.parentNode.children[i].type == 'email') {
                             if (target.parentNode.children[i].value != '') {
@@ -1430,12 +1430,13 @@ var app;
                             };                        
                         };
                     };
-                        contactTemp = temp;
+                    alert('temp');
+                        return temp;
                     //alert('temp');
                     //app.store('customer');
-                }();
-
-                alert(contactTemp);
+                };
+                var contactTemp = data();
+                alert(JSON.stringify(contactTemp));
 
                 //alert(app.data.customers[target.parentNode.dataset.index]);
             }

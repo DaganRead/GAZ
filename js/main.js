@@ -1413,7 +1413,7 @@ var app;
                             location:''
                         };
                         for (var i = 3; i < target.parentNode.parentNode.parentNode.children.length; i++) {
-                            alert(target.parentNode.parentNode.parentNode.children.length);
+                            alert(target.parentNode.parentNode.parentNode.children[1].value);
                             if (target.parentNode.parentNode.parentNode.children[i].type == 'email') {
                                 if (target.parentNode.parentNode.parentNode.parentNode.children[i].value != '') {
                                     temp.emails.push(target.parentNode.parentNode.parentNode.children[i].value);

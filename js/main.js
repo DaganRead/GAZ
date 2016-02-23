@@ -244,7 +244,7 @@ var app;
                                 };
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += '<select onchange="app.update.customer(this.parentNode)">';
+                                HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
                                 HTMLFrag += '<option disabled selected value=""></option>';
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
@@ -303,7 +303,7 @@ var app;
                                 };
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += '<select onchange="app.update.customer(this.parentNode)">';
+                                HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
                                 HTMLFrag += '<option disabled selected value=""></option>';
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
@@ -355,7 +355,7 @@ var app;
                                 };
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += '<select onchange="app.update.customer(this.parentNode)">';
+                                HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
                                 HTMLFrag += '<option disabled selected value=""></option>';
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
@@ -963,7 +963,7 @@ var app;
                                     };
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
-                                    HTMLFrag += '<select onchange="app.update.customer(this.parentNode)">';
+                                    HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
                                     HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
@@ -1022,7 +1022,7 @@ var app;
                                     };
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
-                                    HTMLFrag += '<select onchange="app.update.customer(this.parentNode)">';
+                                    HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
                                     HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
@@ -1077,7 +1077,7 @@ var app;
                                     };
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
-                                    HTMLFrag += '<select onchange="app.update.customer(this.parentNode)">';
+                                    HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
                                     HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';

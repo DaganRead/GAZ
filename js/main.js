@@ -1411,6 +1411,9 @@ var app;
                         location:''
                     };
                     if (target.tagName == 'select') {
+                        alert(target.parentNode.tagName);
+                        alert(target.parentNode.parentNode.tagName);
+                        alert(target.parentNode.parentNode.parentNode.tagName);
                         for (var i = 3; i < target.parentNode.parentNode.parentNode.parentNode.children.length; i++) {
                             if (target.parentNode.parentNode.parentNode.parentNode.children[i].type == 'email') {
                                 if (target.parentNode.parentNode.parentNode.parentNode.children[i].value != '') {

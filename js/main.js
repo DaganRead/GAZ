@@ -1400,45 +1400,45 @@ var app;
 
             },
             customer: function(target) {
-                var data = function (target) {
-                    if (target.tagName == 'FIGCAPTION') {
-                        var element = target.parentNode.parentNode.parentNode;
-                    }else{
-                        var element = target.parentNode;
-                    };
-                            var temp = { 
-                                givenName : element.children[1].value||element.children[1].placeholder,
-                                familyName : element.children[2].value||element.children[2].placeholder,
-                                emails:[],
-                                phoneNumbers:[],
-                                addresses:[],
-                                location:''
-                            };
+                var contact = navigator.contacts.create(),
+                    data = function (target) {
+                        if (target.tagName == 'FIGCAPTION') {
+                            var element = target.parentNode.parentNode.parentNode;
+                        }else{
+                            var element = target.parentNode;
+                        };
+                        contact = { 
+                            givenName : element.children[1].value||element.children[1].placeholder,
+                            familyName : element.children[2].value||element.children[2].placeholder,
+                            emails:[],
+                            phoneNumbers:[],
+                            addresses:[],
+                            location:''
+                        };
                         for (var i = 3; i < element.children.length; i++) {
                             if (element.children[i].type == 'email') {
                                 if (element.children[i].value != '') {
-                                    temp.emails.push(element.children[i].value);
+                                    contact.emails.push(element.children[i].value);
                                 }else{
-                                    temp.emails.push(element.children[i].placeholder);
+                                    contact.emails.push(element.children[i].placeholder);
                                 };
                             }else if(element.children[i].tagName == 'ARTICLE'){
-                                temp.location = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
+                                contact.location = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
                             }else if(element.children[i].type == 'textarea'){     
-                                temp.addresses.push(element.children[i].value);
+                                contact.addresses.push(element.children[i].value);
                             }else{
                                 if (element.children[i].value != '' && element.children[i].value != undefined) {
-                                    temp.phoneNumbers.push(element.children[i].value);
+                                    contact.phoneNumbers.push(element.children[i].value);
                                 }else if (element.children[i].placeholder != '' && element.children[i].placeholder != undefined) {
-                                    temp.phoneNumbers.push(element.children[i].placeholder);
+                                    contact.phoneNumbers.push(element.children[i].placeholder);
                                 };
                             };
                         };
-                    return temp;
-                };
+                        return contact;
+                    };
                 var indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
                 app.data.customers[indx] = data(target);
-                alert(JSON.stringify(app.data.customers[indx]));
-                //app.store('customer');
+                app.store('customer');
             }
         },
         delete : {

@@ -1400,76 +1400,78 @@ var app;
 
             },
             customer: function(target) {
-                alert('start');
-                var data = function (target) {
-                    if (target.tagName == 'FIGCAPTION') {
-                        var element = target.parentNode.parentNode.parentNode,
-                            temp = { 
-                                givenName : element.children[1].value||element.children[1].placeholder,
-                                familyName : element.children[2].value||element.children[2].placeholder,
-                                emails:[],
-                                phoneNumbers:[],
-                                addresses:[],
-                                location:''
-                            };
-                        for (var i = 3; i < element.children.length; i++) {
-                            if (element.children[i].type == 'email') {
-                                if (element.children[i].value != '') {
-                                    temp.emails.push(element.children[i].value);
+                var customerIdx,
+                    data = function (target) {
+                        if (target.tagName == 'FIGCAPTION') {
+                            var element = target.parentNode.parentNode.parentNode,
+                                temp = { 
+                                    givenName : element.children[1].value||element.children[1].placeholder,
+                                    familyName : element.children[2].value||element.children[2].placeholder,
+                                    emails:[],
+                                    phoneNumbers:[],
+                                    addresses:[],
+                                    location:''
+                                };
+                            for (var i = 3; i < element.children.length; i++) {
+                                if (element.children[i].type == 'email') {
+                                    if (element.children[i].value != '') {
+                                        temp.emails.push(element.children[i].value);
+                                    }else{
+                                        temp.emails.push(element.children[i].placeholder);
+                                    };
+                                }else if(element.children[i].tagName == 'ARTICLE'){
+                                    temp.location = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
+                                }else if(element.children[i].type == 'textarea'){     
+                                    temp.addresses.push(element.children[i].value);
                                 }else{
-                                    temp.emails.push(element.children[i].placeholder);
-                                };
-                            }else if(element.children[i].tagName == 'ARTICLE'){
-                                temp.location = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
-                            }else if(element.children[i].type == 'textarea'){     
-                                temp.addresses.push(element.children[i].value);
-                            }else{
-                                if (element.children[i].value != '' && element.children[i].value != undefined) {
-                                    temp.phoneNumbers.push(element.children[i].value);
-                                }else if (element.children[i].placeholder != '' && element.children[i].placeholder != undefined) {
-                                    temp.phoneNumbers.push(element.children[i].placeholder);
+                                    if (element.children[i].value != '' && element.children[i].value != undefined) {
+                                        temp.phoneNumbers.push(element.children[i].value);
+                                    }else if (element.children[i].placeholder != '' && element.children[i].placeholder != undefined) {
+                                        temp.phoneNumbers.push(element.children[i].placeholder);
+                                    };
                                 };
                             };
-                        };
-                    } else{
-                        var element = target.parentNode,
-                            temp = { 
-                                givenName : element.children[1].value||element.children[1].placeholder,
-                                familyName : element.children[2].value||element.children[2].placeholder,
-                                emails:[],
-                                phoneNumbers:[],
-                                addresses:[],
-                                location:''
-                            };
-                        for (var i = 3; i < target.parentNode.children.length; i++) {
-                            if (target.parentNode.children[i].type == 'email') {
-                                if (target.parentNode.children[i].value != '') {
-                                    temp.emails.push(target.parentNode.children[i].value);
+                        customerIdx = element.dataset.index;
+                        } else{
+                            var element = target.parentNode,
+                                temp = { 
+                                    givenName : element.children[1].value||element.children[1].placeholder,
+                                    familyName : element.children[2].value||element.children[2].placeholder,
+                                    emails:[],
+                                    phoneNumbers:[],
+                                    addresses:[],
+                                    location:''
+                                };
+                            for (var i = 3; i < target.parentNode.children.length; i++) {
+                                if (target.parentNode.children[i].type == 'email') {
+                                    if (target.parentNode.children[i].value != '') {
+                                        temp.emails.push(target.parentNode.children[i].value);
+                                    }else{
+                                        temp.emails.push(target.parentNode.children[i].placeholder);
+                                    };
+                                }else if(target.parentNode.children[i].tagName == 'ARTICLE'){
+                                    temp.location = target.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
+                                }else if(target.parentNode.children[i].type == 'textarea'){     
+                                    temp.addresses.push(target.parentNode.children[i].value);
                                 }else{
-                                    temp.emails.push(target.parentNode.children[i].placeholder);
-                                };
-                            }else if(target.parentNode.children[i].tagName == 'ARTICLE'){
-                                temp.location = target.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
-                            }else if(target.parentNode.children[i].type == 'textarea'){     
-                                temp.addresses.push(target.parentNode.children[i].value);
-                            }else{
-                                if (target.parentNode.children[i].value != '' && target.parentNode.children[i].value != undefined) {
-                                    temp.phoneNumbers.push(target.parentNode.children[i].value);
-                                }else if (target.parentNode.children[i].placeholder != '' && target.parentNode.children[i].placeholder != undefined) {
-                                    temp.phoneNumbers.push(target.parentNode.children[i].placeholder);
+                                    if (target.parentNode.children[i].value != '' && target.parentNode.children[i].value != undefined) {
+                                        temp.phoneNumbers.push(target.parentNode.children[i].value);
+                                    }else if (target.parentNode.children[i].placeholder != '' && target.parentNode.children[i].placeholder != undefined) {
+                                        temp.phoneNumbers.push(target.parentNode.children[i].placeholder);
+                                    };
                                 };
                             };
+                            customerIdx = element.dataset.index;
                         };
+                        alert(customerIdx);
+                        return temp;
+                        //app.store('customer');
                     };
-                    return temp;
-                    //alert('temp');
-                    //app.store('customer');
-                };
-                //var contactTemp = data();
-                alert(JSON.stringify(data(target)));
+                    //var contactTemp = data();
+                    alert(JSON.stringify(data(target)));
 
-                //alert(app.data.customers[target.parentNode.dataset.index]);
-            }
+                    //alert(app.data.customers[target.parentNode.dataset.index]);
+                };
         },
         delete : {
             sale : function(idx) {

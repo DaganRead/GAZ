@@ -1402,8 +1402,11 @@ var app;
             customer: function(target) {
                 var data = function (target) {
                     if (target.tagName == 'FIGCAPTION') {
-                        var element = target.parentNode.parentNode.parentNode,
-                            temp = { 
+                        var element = target.parentNode.parentNode.parentNode;
+                    }else{
+                        var element = target.parentNode;
+                    };
+                            var temp = { 
                                 givenName : element.children[1].value||element.children[1].placeholder,
                                 familyName : element.children[2].value||element.children[2].placeholder,
                                 emails:[],
@@ -1430,36 +1433,6 @@ var app;
                                 };
                             };
                         };
-                    } else{
-                        var element = target.parentNode,
-                            temp = { 
-                                givenName : element.children[1].value||element.children[1].placeholder,
-                                familyName : element.children[2].value||element.children[2].placeholder,
-                                emails:[],
-                                phoneNumbers:[],
-                                addresses:[],
-                                location:''
-                            };
-                        for (var i = 3; i < target.parentNode.children.length; i++) {
-                            if (target.parentNode.children[i].type == 'email') {
-                                if (target.parentNode.children[i].value != '') {
-                                    temp.emails.push(target.parentNode.children[i].value);
-                                }else{
-                                    temp.emails.push(target.parentNode.children[i].placeholder);
-                                };
-                            }else if(target.parentNode.children[i].tagName == 'ARTICLE'){
-                                temp.location = target.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
-                            }else if(target.parentNode.children[i].type == 'textarea'){     
-                                temp.addresses.push(target.parentNode.children[i].value);
-                            }else{
-                                if (target.parentNode.children[i].value != '' && target.parentNode.children[i].value != undefined) {
-                                    temp.phoneNumbers.push(target.parentNode.children[i].value);
-                                }else if (target.parentNode.children[i].placeholder != '' && target.parentNode.children[i].placeholder != undefined) {
-                                    temp.phoneNumbers.push(target.parentNode.children[i].placeholder);
-                                };
-                            };
-                        };
-                    };
                     return temp;
                 };
                 var indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;

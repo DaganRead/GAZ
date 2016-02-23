@@ -1410,27 +1410,53 @@ var app;
                         addresses:[],
                         location:''
                     };
-                    for (var i = 3; i < target.parentNode.children.length; i++) {
-                        if (target.parentNode.children[i].type == 'email') {
-                            if (target.parentNode.children[i].value != '') {
-                                temp.emails.push(target.parentNode.children[i].value);
+                    if (target.tagName == 'select') {
+                        for (var i = 3; i < target.parentNode.parentNode.parentNode.children.length; i++) {
+                            if (target.parentNode.parentNode.parentNode.children[i].type == 'email') {
+                                if (target.parentNode.parentNode.parentNode.children[i].value != '') {
+                                    temp.emails.push(target.parentNode.parentNode.parentNode.children[i].value);
+                                }else{
+                                    temp.emails.push(target.parentNode.parentNode.parentNode.children[i].placeholder);
+                                };
+                            }else if(target.parentNode.parentNode.parentNode.children[i].tagName == 'ARTICLE'){
+                                temp.location = target.parentNode.parentNode.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
+                            }else if(target.parentNode.parentNode.parentNode.children[i].type == 'textarea'){     
+                                alert('address');
+                                temp.addresses.push(target.parentNode.parentNode.parentNode.children[i].value);
+                                alert(JSON.stringify(temp));     
                             }else{
-                                temp.emails.push(target.parentNode.children[i].placeholder);
+                                alert('phoneNumbers');
+                                if (target.parentNode.parentNode.parentNode.children[i].value != '' && target.parentNode.parentNode.parentNode.children[i].value != undefined) {
+                                    temp.phoneNumbers.push(target.parentNode.parentNode.parentNode.children[i].value);
+                                }else if (target.parentNode.parentNode.parentNode.children[i].placeholder != '' && target.parentNode.parentNode.parentNode.children[i].placeholder != undefined) {
+                                    temp.phoneNumbers.push(target.parentNode.parentNode.parentNode.children[i].placeholder);
+                                };
+                                alert(JSON.stringify(temp));                        
                             };
-                        }else if(target.parentNode.children[i].tagName == 'ARTICLE'){
-                            temp.location = target.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
-                        }else if(target.parentNode.children[i].type == 'textarea'){     
-                            alert('address');
-                            temp.addresses.push(target.parentNode.children[i].value);
-                            alert(JSON.stringify(temp));     
-                        }else{
-                            alert('phoneNumbers');
-                            if (target.parentNode.children[i].value != '' && target.parentNode.children[i].value != undefined) {
-                                temp.phoneNumbers.push(target.parentNode.children[i].value);
-                            }else if (target.parentNode.children[i].placeholder != '' && target.parentNode.children[i].placeholder != undefined) {
-                                temp.phoneNumbers.push(target.parentNode.children[i].placeholder);
+                        };
+                    } else{
+                        for (var i = 3; i < target.parentNode.children.length; i++) {
+                            if (target.parentNode.children[i].type == 'email') {
+                                if (target.parentNode.children[i].value != '') {
+                                    temp.emails.push(target.parentNode.children[i].value);
+                                }else{
+                                    temp.emails.push(target.parentNode.children[i].placeholder);
+                                };
+                            }else if(target.parentNode.children[i].tagName == 'ARTICLE'){
+                                temp.location = target.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
+                            }else if(target.parentNode.children[i].type == 'textarea'){     
+                                alert('address');
+                                temp.addresses.push(target.parentNode.children[i].value);
+                                alert(JSON.stringify(temp));     
+                            }else{
+                                alert('phoneNumbers');
+                                if (target.parentNode.children[i].value != '' && target.parentNode.children[i].value != undefined) {
+                                    temp.phoneNumbers.push(target.parentNode.children[i].value);
+                                }else if (target.parentNode.children[i].placeholder != '' && target.parentNode.children[i].placeholder != undefined) {
+                                    temp.phoneNumbers.push(target.parentNode.children[i].placeholder);
+                                };
+                                alert(JSON.stringify(temp));                        
                             };
-                            alert(JSON.stringify(temp));                        
                         };
                     };
                     alert('end');

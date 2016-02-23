@@ -1430,10 +1430,10 @@ var app;
                         };
                     };
                         return temp;
-                    alert('temp');
+                    //alert('temp');
                     //app.store('customer');
                 };
-                alert('data()');
+                alert(data());
 
                 //alert(app.data.customers[target.parentNode.dataset.index]);
             }

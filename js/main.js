@@ -1400,7 +1400,7 @@ var app;
 
             },
             customer: function(target) {
-                var data = function () {
+                var data = function (target) {
                     var temp = { 
                         givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
                         familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
@@ -1417,6 +1417,7 @@ var app;
                                 temp.emails.push(target.parentNode.children[i].placeholder);
                             };
                         }else if(target.parentNode.children[i].tagName == 'ARTICLE'){
+                            //alert(JSON.stringify(temp));
                             temp.location = target.parentNode.children[i].children[0].selectedOptions[0].value;
                         }else if(target.parentNode.children[i].type == 'textarea'){     
                                 temp.addresses.push(target.parentNode.children[i].innerHTML);
@@ -1428,12 +1429,14 @@ var app;
                             };                        
                         };
                     };
-                    return temp;
+                        return temp;
+                    alert('temp');
                     //app.store('customer');
                 };
-                var contact = data();
-                alert(JSON.stringify(contact));
+                alert('data()');
+
                 //alert(app.data.customers[target.parentNode.dataset.index]);
+            }
         },
         delete : {
             sale : function(idx) {

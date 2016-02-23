@@ -1423,12 +1423,12 @@ var app;
                         }else if(target.parentNode.children[i].type == 'textarea'){     
                                 temp.addresses.push(target.parentNode.children[i].innerHTML);
                         }else{
-                            alert(target.parentNode.children[i].value);
-                            alert(target.parentNode.children[i].placeholder);
-                            
-                            if (target.parentNode.children[i].value != '' || target.parentNode.children[i].value != null) {
+                            alert('Here');
+                            if (target.parentNode.children[i].value != '' || target.parentNode.children[i].value != undefined) {
+                                alert(target.parentNode.children[i].value);
                                 temp.phoneNumbers.push(target.parentNode.children[i].value);
-                            }else if (target.parentNode.children[i].placeholder != '' || target.parentNode.children[i].placeholder != null) {
+                            }else if (target.parentNode.children[i].placeholder != '' || target.parentNode.children[i].placeholder != undefined) {
+                                alert(target.parentNode.children[i].placeholder);                                
                                 temp.phoneNumbers.push(target.parentNode.children[i].placeholder);
                             };                        
                         };

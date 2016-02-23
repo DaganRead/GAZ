@@ -1411,27 +1411,23 @@ var app;
                         location:''
                     };
                     if (target.tagName == 'select') {
-                        for (var i = 3; i < target.parentNode.parentNode.parentNode.children.length; i++) {
-                            if (target.parentNode.parentNode.parentNode.children[i].type == 'email') {
-                                if (target.parentNode.parentNode.parentNode.children[i].value != '') {
-                                    temp.emails.push(target.parentNode.parentNode.parentNode.children[i].value);
+                        for (var i = 3; i < target.parentNode.parentNode.parentNode.parentNode.children.length; i++) {
+                            if (target.parentNode.parentNode.parentNode.parentNode.children[i].type == 'email') {
+                                if (target.parentNode.parentNode.parentNode.parentNode.children[i].value != '') {
+                                    temp.emails.push(target.parentNode.parentNode.parentNode.parentNode.children[i].value);
                                 }else{
-                                    temp.emails.push(target.parentNode.parentNode.parentNode.children[i].placeholder);
+                                    temp.emails.push(target.parentNode.parentNode.parentNode.parentNode.children[i].placeholder);
                                 };
-                            }else if(target.parentNode.parentNode.parentNode.children[i].tagName == 'ARTICLE'){
-                                temp.location = target.parentNode.parentNode.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
-                            }else if(target.parentNode.parentNode.parentNode.children[i].type == 'textarea'){     
-                                alert('address');
-                                temp.addresses.push(target.parentNode.parentNode.parentNode.children[i].value);
-                                alert(JSON.stringify(temp));     
+                            }else if(target.parentNode.parentNode.parentNode.parentNode.children[i].tagName == 'ARTICLE'){
+                                temp.location = target.parentNode.parentNode.parentNode.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
+                            }else if(target.parentNode.parentNode.parentNode.parentNode.children[i].type == 'textarea'){     
+                                temp.addresses.push(target.parentNode.parentNode.parentNode.parentNode.children[i].value);
                             }else{
-                                alert('phoneNumbers');
-                                if (target.parentNode.parentNode.parentNode.children[i].value != '' && target.parentNode.parentNode.parentNode.children[i].value != undefined) {
-                                    temp.phoneNumbers.push(target.parentNode.parentNode.parentNode.children[i].value);
-                                }else if (target.parentNode.parentNode.parentNode.children[i].placeholder != '' && target.parentNode.parentNode.parentNode.children[i].placeholder != undefined) {
-                                    temp.phoneNumbers.push(target.parentNode.parentNode.parentNode.children[i].placeholder);
+                                if (target.parentNode.parentNode.parentNode.parentNode.children[i].value != '' && target.parentNode.parentNode.parentNode.parentNode.children[i].value != undefined) {
+                                    temp.phoneNumbers.push(target.parentNode.parentNode.parentNode.parentNode.children[i].value);
+                                }else if (target.parentNode.parentNode.parentNode.parentNode.children[i].placeholder != '' && target.parentNode.parentNode.parentNode.parentNode.children[i].placeholder != undefined) {
+                                    temp.phoneNumbers.push(target.parentNode.parentNode.parentNode.parentNode.children[i].placeholder);
                                 };
-                                alert(JSON.stringify(temp));                        
                             };
                         };
                     } else{

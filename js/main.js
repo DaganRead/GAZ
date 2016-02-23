@@ -1410,6 +1410,7 @@ var app;
                         addresses:[],
                         location:''
                     };
+                    alert(target.tagName);
                     if (target.tagName == 'select') {
                         alert(target.parentNode.tagName);
                         alert(target.parentNode.parentNode.tagName);

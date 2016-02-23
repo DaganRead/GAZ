@@ -1400,6 +1400,7 @@ var app;
 
             },
             customer: function(target) {
+                var contactTemp;
                 var data = function (target) {
                     var temp = { 
                         givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
@@ -1429,11 +1430,11 @@ var app;
                             };                        
                         };
                     };
-                        return temp;
+                        contactTemp = temp;
                     //alert('temp');
                     //app.store('customer');
-                };
-                var contactTemp = data();
+                }();
+
                 alert(contactTemp);
 
                 //alert(app.data.customers[target.parentNode.dataset.index]);

@@ -1411,7 +1411,6 @@ var app;
                     };
                     for (var i = 3; i < target.parentNode.children.length; i++) {
                         if (target.parentNode.children[i].type == 'email') {
-                            alert(JSON.stringify(temp));
                             if (target.parentNode.children[i].value != '') {
                                 temp.emails.push(target.parentNode.children[i].value);
                             }else{
@@ -1424,10 +1423,10 @@ var app;
                                 temp.addresses.push(target.parentNode.children[i].innerHTML);
                         }else{
                             alert('Here');
-                            if (target.parentNode.children[i].value != '' || target.parentNode.children[i].value != undefined) {
+                            if (target.parentNode.children[i].value != '' && target.parentNode.children[i].value != undefined) {
                                 alert(target.parentNode.children[i].value);
                                 temp.phoneNumbers.push(target.parentNode.children[i].value);
-                            }else if (target.parentNode.children[i].placeholder != '' || target.parentNode.children[i].placeholder != undefined) {
+                            }else if (target.parentNode.children[i].placeholder != '' && target.parentNode.children[i].placeholder != undefined) {
                                 alert(target.parentNode.children[i].placeholder);                                
                                 temp.phoneNumbers.push(target.parentNode.children[i].placeholder);
                             };                        

@@ -1412,8 +1412,8 @@ var app;
                             addresses:[],
                             location:''
                         };
-                        alert(target.parentNode.parentNode.parentNode.tagName);
                         for (var i = 3; i < target.parentNode.parentNode.parentNode.children.length; i++) {
+                            alert('i start');
                             if (target.parentNode.parentNode.parentNode.children[i].type == 'email') {
                                 if (target.parentNode.parentNode.parentNode.parentNode.children[i].value != '') {
                                     temp.emails.push(target.parentNode.parentNode.parentNode.children[i].value);
@@ -1421,6 +1421,7 @@ var app;
                                     temp.emails.push(target.parentNode.parentNode.parentNode.children[i].placeholder);
                                 };
                             }else if(target.parentNode.parentNode.parentNode.children[i].tagName == 'ARTICLE'){
+                                alert(JSON.stringify(temp));
                                 temp.location = target.parentNode.parentNode.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
                             }else if(target.parentNode.parentNode.parentNode.children[i].type == 'textarea'){     
                                 alert('address');

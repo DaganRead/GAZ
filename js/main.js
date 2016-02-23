@@ -1436,7 +1436,7 @@ var app;
                         //return temp;
                     //alert('temp');
                     //app.store('customer');
-                }();
+                }(target);
                 //var contactTemp = data();
                 //alert(JSON.stringify(contactTemp));
 

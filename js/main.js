@@ -1413,11 +1413,11 @@ var app;
                                 addresses:[],
                                 location:''
                             };
-                            alert(element.parentNode.children[1].tagName);
-                            alert(element.parentNode.children[1].value);
+                            alert(element.children[1].placeholder);
                         for (var i = 3; i < element.children.length; i++) {
-                            alert(element.children[1].value);
+                            alert(element.children[1].tagName);
                             if (target.parentNode.parentNode.parentNode.children[i].type == 'email') {
+                                alert('email');
                                 if (target.parentNode.parentNode.parentNode.parentNode.children[i].value != '') {
                                     temp.emails.push(target.parentNode.parentNode.parentNode.children[i].value);
                                 }else{

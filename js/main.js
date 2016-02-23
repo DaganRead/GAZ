@@ -1406,14 +1406,14 @@ var app;
                     if (target.tagName == 'FIGCAPTION') {
 
                         var temp = { 
-                            givenName : target.parentNode.parentNode.parentNode.children[1].value||target.parentNode.children[1].placeholder,
-                            familyName : target.parentNode.parentNode.parentNode.children[2].value||target.parentNode.children[2].placeholder,
+                            givenName : target.parentNode.parentNode.parentNode.children[1].value||target.parentNode.parentNode.parentNode.children[1].placeholder,
+                            familyName : target.parentNode.parentNode.parentNode.children[2].value||target.parentNode.parentNode.parentNode.children[2].placeholder,
                             emails:[],
                             phoneNumbers:[],
                             addresses:[],
                             location:''
                         };
-
+                        alert(JSON.stringify(temp));
                         for (var i = 3; i < target.parentNode.parentNode.parentNode.children.length; i++) {
                             if (target.parentNode.parentNode.parentNode.children[i].type == 'email') {
                                 if (target.parentNode.parentNode.parentNode.parentNode.children[i].value != '') {

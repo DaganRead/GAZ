@@ -1413,23 +1413,30 @@ var app;
                     };
                     alert('decl');
                     for (var i = 3; i < target.parentNode.children.length; i++) {
+                        alert('i Start');
                         if (target.parentNode.children[i].type == 'email') {
+                            alert('email')
                             if (target.parentNode.children[i].value != '') {
                                 temp.emails.push(target.parentNode.children[i].value);
                             }else{
                                 temp.emails.push(target.parentNode.children[i].placeholder);
                             };
+                            alert(JSON.stringify(temp));
                         }else if(target.parentNode.children[i].tagName == 'ARTICLE'){
-                            //alert(JSON.stringify(temp));
+                            alert('location');
                             temp.location = target.parentNode.children[i].children[0].selectedOptions[0].value;
+                            alert(JSON.stringify(temp));
                         }else if(target.parentNode.children[i].type == 'textarea'){     
-                                temp.addresses.push(target.parentNode.children[i].innerHTML);
+                            alert('address');
+                            temp.addresses.push(target.parentNode.children[i].innerHTML);
                         }else{
+                            alert('phoneNumbers');
                             if (target.parentNode.children[i].value != '' && target.parentNode.children[i].value != undefined) {
                                 temp.phoneNumbers.push(target.parentNode.children[i].value);
                             }else if (target.parentNode.children[i].placeholder != '' && target.parentNode.children[i].placeholder != undefined) {
                                 temp.phoneNumbers.push(target.parentNode.children[i].placeholder);
-                            };                        
+                            };
+                            alert(JSON.stringify(temp));                        
                         };
                     };
                     alert('end');

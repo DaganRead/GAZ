@@ -1428,7 +1428,8 @@ var app;
                             alert(JSON.stringify(temp));
                         }else if(target.parentNode.children[i].type == 'textarea'){     
                             alert('address');
-                            temp.addresses.push(target.parentNode.children[i].innerHTML);
+                            temp.addresses.push(target.parentNode.children[i].children[0].value);
+                            alert(JSON.stringify(temp));     
                         }else{
                             alert('phoneNumbers');
                             if (target.parentNode.children[i].value != '' && target.parentNode.children[i].value != undefined) {

@@ -1403,7 +1403,6 @@ var app;
                 alert('start');
                 var data = function (target) {
                     if (target.tagName == 'FIGCAPTION') {
-
                         var element = target.parentNode.parentNode.parentNode,
                             temp = { 
                                 givenName : element.children[1].value||element.children[1].placeholder,
@@ -1413,7 +1412,6 @@ var app;
                                 addresses:[],
                                 location:''
                             };
-                            alert(JSON.stringify(temp));
                         for (var i = 3; i < element.children.length; i++) {
                             if (element.children[i].type == 'email') {
                                 if (element.children[i].value != '') {
@@ -1424,19 +1422,25 @@ var app;
                             }else if(element.children[i].tagName == 'ARTICLE'){
                                 temp.location = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
                             }else if(element.children[i].type == 'textarea'){     
-                                alert('address');
                                 temp.addresses.push(element.children[i].value);
-                                alert(JSON.stringify(temp));     
                             }else{
                                 if (element.children[i].value != '' && element.children[i].value != undefined) {
                                     temp.phoneNumbers.push(element.children[i].value);
                                 }else if (element.children[i].placeholder != '' && element.children[i].placeholder != undefined) {
                                     temp.phoneNumbers.push(element.children[i].placeholder);
                                 };
-                                alert(JSON.stringify(temp));                        
                             };
                         };
                     } else{
+                        var element = target.parentNode,
+                            temp = { 
+                                givenName : element.children[1].value||element.children[1].placeholder,
+                                familyName : element.children[2].value||element.children[2].placeholder,
+                                emails:[],
+                                phoneNumbers:[],
+                                addresses:[],
+                                location:''
+                            };
                         for (var i = 3; i < target.parentNode.children.length; i++) {
                             if (target.parentNode.children[i].type == 'email') {
                                 if (target.parentNode.children[i].value != '') {
@@ -1447,27 +1451,22 @@ var app;
                             }else if(target.parentNode.children[i].tagName == 'ARTICLE'){
                                 temp.location = target.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
                             }else if(target.parentNode.children[i].type == 'textarea'){     
-                                alert('address');
                                 temp.addresses.push(target.parentNode.children[i].value);
-                                alert(JSON.stringify(temp));     
                             }else{
-                                alert('phoneNumbers');
                                 if (target.parentNode.children[i].value != '' && target.parentNode.children[i].value != undefined) {
                                     temp.phoneNumbers.push(target.parentNode.children[i].value);
                                 }else if (target.parentNode.children[i].placeholder != '' && target.parentNode.children[i].placeholder != undefined) {
                                     temp.phoneNumbers.push(target.parentNode.children[i].placeholder);
                                 };
-                                alert(JSON.stringify(temp));                        
                             };
                         };
                     };
-                    alert('end');
-                        //return temp;
+                    return temp;
                     //alert('temp');
                     //app.store('customer');
-                }(target);
+                };
                 //var contactTemp = data();
-                //alert(JSON.stringify(contactTemp));
+                alert(JSON.stringify(data(target)));
 
                 //alert(app.data.customers[target.parentNode.dataset.index]);
             }

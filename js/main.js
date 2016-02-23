@@ -1404,12 +1404,10 @@ var app;
                 var data = function (target) {
                     alert(target.tagName);
                     if (target.tagName == 'FIGCAPTION') {
-                        alert(target.parentNode.tagName);
-                        alert(target.parentNode.parentNode.tagName);
 
-/*                        var temp = { 
-                            givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
-                            familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
+                        var temp = { 
+                            givenName : target.parentNode.parentNode.parentNode.children[1].value||target.parentNode.children[1].placeholder,
+                            familyName : target.parentNode.parentNode.parentNode.children[2].value||target.parentNode.children[2].placeholder,
                             emails:[],
                             phoneNumbers:[],
                             addresses:[],
@@ -1437,16 +1435,8 @@ var app;
                                 };
                                 alert(JSON.stringify(temp));                        
                             };
-                        };*/
-                    } else{
-                        var temp = { 
-                            givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
-                            familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
-                            emails:[],
-                            phoneNumbers:[],
-                            addresses:[],
-                            location:''
                         };
+                    } else{
                         for (var i = 3; i < target.parentNode.children.length; i++) {
                             if (target.parentNode.children[i].type == 'email') {
                                 if (target.parentNode.children[i].value != '') {

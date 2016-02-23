@@ -1423,6 +1423,9 @@ var app;
                         }else if(target.parentNode.children[i].type == 'textarea'){     
                                 temp.addresses.push(target.parentNode.children[i].innerHTML);
                         }else{
+                            alert(target.parentNode.children[i].value);
+                            alert(target.parentNode.children[i].placeholder);
+                            
                             if (target.parentNode.children[i].value != '' || target.parentNode.children[i].value != null) {
                                 temp.phoneNumbers.push(target.parentNode.children[i].value);
                             }else if (target.parentNode.children[i].placeholder != '' || target.parentNode.children[i].placeholder != null) {

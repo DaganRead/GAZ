@@ -1402,32 +1402,23 @@ var app;
             customer: function(target) {
                 alert('start');
                 var data = function (target) {
-                    alert('func');
                     var temp = { 
                         givenName : target.parentNode.children[1].value||target.parentNode.children[1].placeholder,
                         familyName : target.parentNode.children[2].value||target.parentNode.children[2].placeholder,
                         emails:[],
                         phoneNumbers:[],
-                        addresses:'',
+                        addresses:[],
                         location:''
                     };
-                    alert('decl');
                     for (var i = 3; i < target.parentNode.children.length; i++) {
-                        alert('i Start');
                         if (target.parentNode.children[i].type == 'email') {
-                            alert('email')
                             if (target.parentNode.children[i].value != '') {
                                 temp.emails.push(target.parentNode.children[i].value);
                             }else{
                                 temp.emails.push(target.parentNode.children[i].placeholder);
                             };
-                            alert(JSON.stringify(temp));
                         }else if(target.parentNode.children[i].tagName == 'ARTICLE'){
-                            alert('location');
-                            alert(target.parentNode.children[i].tagName);
-                            alert(target.parentNode.children[i].children[0].children[0].children[0].tagName);
                             temp.location = target.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
-                            alert(JSON.stringify(temp));
                         }else if(target.parentNode.children[i].type == 'textarea'){     
                             alert('address');
                             temp.addresses.push(target.parentNode.children[i].value);

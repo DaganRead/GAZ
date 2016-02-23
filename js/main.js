@@ -1428,8 +1428,8 @@ var app;
                             alert(JSON.stringify(temp));
                         }else if(target.parentNode.children[i].type == 'textarea'){     
                             alert('address');
-                            alert(target.parentNode.children[i]);
-                            alert(target.parentNode.children[i].children[0]);
+                            alert(target.parentNode.children[i].tagName);
+                            alert(target.parentNode.children[i].children[0].tagName);
                             temp.addresses.push(target.parentNode.children[i].children[0].value);
                             alert(JSON.stringify(temp));     
                         }else{

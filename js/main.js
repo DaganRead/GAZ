@@ -1404,16 +1404,19 @@ var app;
                 var data = function (target) {
                     if (target.tagName == 'FIGCAPTION') {
 
-                        var temp = { 
-                            givenName : target.parentNode.parentNode.parentNode.children[1].value||target.parentNode.parentNode.parentNode.children[1].placeholder,
-                            familyName : target.parentNode.parentNode.parentNode.children[2].value||target.parentNode.parentNode.parentNode.children[2].placeholder,
-                            emails:[],
-                            phoneNumbers:[],
-                            addresses:[],
-                            location:''
-                        };
-                        for (var i = 3; i < target.parentNode.parentNode.parentNode.children.length; i++) {
-                            alert(target.parentNode.parentNode.parentNode.children[1].value);
+                        var element = target.parentNode.parentNode.parentNode,
+                            temp = { 
+                                givenName : target.parentNode.parentNode.parentNode.children[1].value||target.parentNode.parentNode.parentNode.children[1].placeholder,
+                                familyName : target.parentNode.parentNode.parentNode.children[2].value||target.parentNode.parentNode.parentNode.children[2].placeholder,
+                                emails:[],
+                                phoneNumbers:[],
+                                addresses:[],
+                                location:''
+                            };
+                            alert(element.parentNode.children[1].tagName);
+                            alert(element.parentNode.children[1].value);
+                        for (var i = 3; i < element.children.length; i++) {
+                            alert(element.children[1].value);
                             if (target.parentNode.parentNode.parentNode.children[i].type == 'email') {
                                 if (target.parentNode.parentNode.parentNode.parentNode.children[i].value != '') {
                                     temp.emails.push(target.parentNode.parentNode.parentNode.children[i].value);

@@ -1430,12 +1430,12 @@ var app;
                         };
                     };
                         return temp;
-                    alert(JSON.stringify(temp));
                     //app.store('customer');
                 };
-                alert(data(target));
+                var contact = data(target);
+                alert(JSON.stringify(contact));
                 //alert(app.data.customers[target.parentNode.dataset.index]);
-            }
+            };
         },
         delete : {
             sale : function(idx) {

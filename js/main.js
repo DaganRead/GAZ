@@ -1406,35 +1406,32 @@ var app;
 
                         var element = target.parentNode.parentNode.parentNode,
                             temp = { 
-                                givenName : target.parentNode.parentNode.parentNode.children[1].value||target.parentNode.parentNode.parentNode.children[1].placeholder,
-                                familyName : target.parentNode.parentNode.parentNode.children[2].value||target.parentNode.parentNode.parentNode.children[2].placeholder,
+                                givenName : element.children[1].value||element.children[1].placeholder,
+                                familyName : element.children[2].value||element.children[2].placeholder,
                                 emails:[],
                                 phoneNumbers:[],
                                 addresses:[],
                                 location:''
                             };
-                            alert(element.children[1].placeholder);
+                            alert(JSON.stringify(temp));
                         for (var i = 3; i < element.children.length; i++) {
-                            alert(element.children[1].tagName);
-                            if (target.parentNode.parentNode.parentNode.children[i].type == 'email') {
-                                alert('email');
-                                if (target.parentNode.parentNode.parentNode.parentNode.children[i].value != '') {
-                                    temp.emails.push(target.parentNode.parentNode.parentNode.children[i].value);
+                            if (element.children[i].type == 'email') {
+                                if (element.children[i].value != '') {
+                                    temp.emails.push(element.children[i].value);
                                 }else{
-                                    temp.emails.push(target.parentNode.parentNode.parentNode.children[i].placeholder);
+                                    temp.emails.push(element.children[i].placeholder);
                                 };
-                            }else if(target.parentNode.parentNode.parentNode.children[i].tagName == 'ARTICLE'){
-                                alert(JSON.stringify(temp));
-                                temp.location = target.parentNode.parentNode.parentNode.children[i].children[0].children[0].children[0].selectedOptions[0].value;
-                            }else if(target.parentNode.parentNode.parentNode.children[i].type == 'textarea'){     
+                            }else if(element.children[i].tagName == 'ARTICLE'){
+                                temp.location = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
+                            }else if(element.children[i].type == 'textarea'){     
                                 alert('address');
-                                temp.addresses.push(target.parentNode.parentNode.parentNode.children[i].value);
+                                temp.addresses.push(element.children[i].value);
                                 alert(JSON.stringify(temp));     
                             }else{
-                                if (target.parentNode.parentNode.parentNode.children[i].value != '' && target.parentNode.parentNode.parentNode.children[i].value != undefined) {
-                                    temp.phoneNumbers.push(target.parentNode.parentNode.parentNode.children[i].value);
-                                }else if (target.parentNode.parentNode.parentNode.children[i].placeholder != '' && target.parentNode.parentNode.parentNode.children[i].placeholder != undefined) {
-                                    temp.phoneNumbers.push(target.parentNode.parentNode.parentNode.children[i].placeholder);
+                                if (element.children[i].value != '' && element.children[i].value != undefined) {
+                                    temp.phoneNumbers.push(element.children[i].value);
+                                }else if (element.children[i].placeholder != '' && element.children[i].placeholder != undefined) {
+                                    temp.phoneNumbers.push(element.children[i].placeholder);
                                 };
                                 alert(JSON.stringify(temp));                        
                             };

@@ -1471,7 +1471,7 @@ var app;
 
                 newContact.displayName = contact.displayName;
                 newContact.id = contact.id;
-                newContact.rawId = contact.rawId;
+                //newContact.rawId = contact.rawId;
                 newContact.name = new ContactName();
                 newContact.name.givenName = contact.name.givenName;
                 newContact.name.givenName = contact.name.id;

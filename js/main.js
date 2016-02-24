@@ -1416,7 +1416,7 @@ var app;
                         if (app.data.customers[indx].synced) {
                             // find all contacts with 'Bob' in any name field
                             var options      = new ContactFindOptions();
-                            options.filter   = temp.name.givenName;
+                            options.filter   = temp.name.givenName +' '+temp.name.familyName;
                             options.multiple = false;
                             var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
                             navigator.contacts.find(fields, function(contact) {

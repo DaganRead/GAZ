@@ -1436,9 +1436,11 @@ var app;
                         };
                         return contact;
                     };
+                alert(data(target));
                 var indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
                 app.data.customers[indx] = data(target);
                 app.store('customer');
+                contact.save(onSuccess,onError);
             }
         },
         delete : {
@@ -1833,9 +1835,19 @@ var app;
         }
     };
     //eventlistener
-    var el = document.body;
-    //el.addEventListener("touchstart", app.simulate, false);
-    el.addEventListener("touchend", app.simulate, false);
-    //el.addEventListener("touchcancel", app.simulate, false);
-    //el.addEventListener("touchmove", app.simulate, false);
+    document.body;.addEventListener("touchend", app.simulate, false);
+    function onContactSuccess(contact) {
+        alert("Save Success");
+    };
+
+    function onContactError(contactError) {
+        alert("Error = " + contactError.code);
+    };
+    function onSyncSuccess(contacts) {
+        alert("Save Success");
+    };
+
+    function onSyncError(contactError) {
+        alert("Error = " + contactError.code);
+    };
     app.initialize();

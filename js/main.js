@@ -1461,7 +1461,11 @@ var app;
                 });
                 //alert(JSON.stringify(contact));
                 app.data.customers[indx] = contact;
-                contact.save(onContactSuccess,onContactError);
+                contact.save(function(data) {
+                    alert(JSON.stringify(data));
+                },function(err) {
+                    alert(err);
+                });
                 contact.location = {
                     count : 0,
                     location : contact.note

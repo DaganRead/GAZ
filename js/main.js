@@ -1830,7 +1830,7 @@ var app;
         }
     };
     //eventlistener
-    document.body;.addEventListener("touchend", app.simulate, false);
+    document.body.addEventListener("touchend", app.simulate, false);
     function onContactSuccess(contact) {
         alert("Save Success");
     };

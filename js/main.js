@@ -1402,6 +1402,7 @@ var app;
             customer: function(target) {
                 var contact = navigator.contacts.create(),
                     element;
+                    alert(JSON.stringify(contact));
                         if (target.tagName == 'FIGCAPTION') {
                             element = target.parentNode.parentNode.parentNode;
                         }else{
@@ -1428,13 +1429,13 @@ var app;
                                 };
                             };
                         };
-                alert(contact);
+                alert(JSON.stringify(contact));
                 var indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
                 app.data.customers[indx] = contact;
                 //contact.save(onContactSuccess,onContactError);
                 contact.location = contact.note;
                 delete contact.note;
-                alert(contact);
+                alert(JSON.stringify(contact));
                 //app.store('customer');
             }
         },

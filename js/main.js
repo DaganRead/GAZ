@@ -1407,14 +1407,8 @@ var app;
                         }else{
                             var element = target.parentNode;
                         };
-                        contact = { 
-                            givenName : element.children[1].value||element.children[1].placeholder,
-                            familyName : element.children[2].value||element.children[2].placeholder,
-                            emails:[],
-                            phoneNumbers:[],
-                            addresses:[],
-                            location:''
-                        };
+                        contact.givenName = element.children[1].value||element.children[1].placeholder;
+                        contact.familyName = element.children[2].value||element.children[2].placeholder;
                         for (var i = 3; i < element.children.length; i++) {
                             if (element.children[i].type == 'email') {
                                 if (element.children[i].value != '') {
@@ -1423,7 +1417,7 @@ var app;
                                     contact.emails.push(element.children[i].placeholder);
                                 };
                             }else if(element.children[i].tagName == 'ARTICLE'){
-                                contact.location = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
+                                contact.note = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
                             }else if(element.children[i].type == 'textarea'){     
                                 contact.addresses.push(element.children[i].value);
                             }else{
@@ -1439,8 +1433,11 @@ var app;
                 alert(data(target));
                 var indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
                 app.data.customers[indx] = data(target);
-                app.store('customer');
-                contact.save(onSuccess,onError);
+                //contact.save(onContactSuccess,onContactError);
+                contact.location = contact.note;
+                delete contact.note;
+                alert(contact);
+                //app.store('customer');
             }
         },
         delete : {

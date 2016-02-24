@@ -1422,15 +1422,14 @@ var app;
                                 alert('found:');
                                 alert(JSON.stringify(obj));
 
-                                obj.save(function(data) {
-                                    alert('saved:');
-                                    alert(JSON.stringify(data));
+                                obj.remove(function() {
+                                    alert('deleted');
                                 },function(err) {
                                     alert('err:');
                                     alert(err);
                                 });
-                                
-                                if (obj.honorificPrefix != undefined) {
+
+                               /* if (obj.honorificPrefix != undefined) {
                                     obj.displayName = obj.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                                     obj.name.formatted = obj.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                                 }else{
@@ -1463,7 +1462,7 @@ var app;
                                 obj.location = {
                                     count : 0,
                                     location : obj.note
-                                };
+                                };*/
                                 //app.store('customer');
                             }, function(contactError) {
                                 alert('onError!');

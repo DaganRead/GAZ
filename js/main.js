@@ -1403,6 +1403,7 @@ var app;
             },
             customer: function(target) {
                 var element,
+                    newContact = navigator.contacts.create(),
                     temp = { 
                         name,
                         emails:[],
@@ -1411,65 +1412,6 @@ var app;
                     }
                     indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
                     contact = app.data.customers[indx];
-
-                        if (app.data.customers[indx].synced) {
-                            // find all contacts with 'Bob' in any name field
-                            var options      = new ContactFindOptions();
-                            options.filter   = contact.id;
-                            options.multiple = false;
-                            var fields       = [navigator.contacts.fieldType.id];
-                            navigator.contacts.find(fields, function(obj) {
-                                //alert('found:');
-                                //alert(JSON.stringify(obj));
-                                obj.name.familyName = 'changed';
-                                obj.save(function(data) {
-                                    alert('updated');
-                                    alert(JSON.stringify(data));
-                                },function(err) {
-                                    alert('err:');
-                                    alert(err);
-                                });
-                                alert('end');
-                               /* if (obj.honorificPrefix != undefined) {
-                                    obj.displayName = obj.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
-                                    obj.name.formatted = obj.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
-                                }else{
-                                    obj.displayName = temp.name.givenName +' '+ temp.name.familyName;
-                                    obj.name.formatted = temp.name.givenName +' '+ temp.name.familyName;
-                                };
-
-                                obj.name.givenName = temp.name.givenName;
-                                obj.name.familyName = temp.name.familyName;
-                                obj.note = temp.note;
-
-                                obj.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                    var tempId = innerElement.id;
-                                    innerElement = temp.emails[innerIndex];
-                                    innerElement.id = tempId;
-                                });
-
-                                obj.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                    var tempId = innerElement.id;
-                                    innerElement = temp.phoneNumbers[innerIndex];
-                                    innerElement.id = tempId;
-                                    alert(innerElement.id);
-                                });
-
-                                obj.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                    innerElement.formatted = temp.addresses[innerIndex];
-                                });
-                                app.data.customers[indx] = obj;
-
-                                obj.location = {
-                                    count : 0,
-                                    location : obj.note
-                                };*/
-                                //app.store('customer');
-                            }, function(contactError) {
-                                alert('onError!');
-                            }, options);
-                        };
-
 
                 if (target.tagName == 'FIGCAPTION') {
                     element = target.parentNode.parentNode.parentNode;
@@ -1500,6 +1442,57 @@ var app;
                         };
                     };
                 };
+                alert(JSON.stringify(contact));
+                if (contact.honorificPrefix != undefined) {
+                    contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
+                    contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
+                }else{
+                    contact.displayName = temp.name.givenName +' '+ temp.name.familyName;
+                    contact.name.formatted = temp.name.givenName +' '+ temp.name.familyName;
+                };
+                contact.name.givenName = temp.name.givenName;
+                contact.name.familyName = temp.name.familyName;
+                contact.note = temp.note;
+                contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
+                    var tempId = innerElement.id;
+                    innerElement = temp.emails[innerIndex];
+                    innerElement.id = tempId;
+                });
+                contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
+                    var tempId = innerElement.id;
+                    innerElement = temp.phoneNumbers[innerIndex];
+                    innerElement.id = tempId;
+                    alert(innerElement.id);
+                });
+                contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
+                    innerElement.formatted = temp.addresses[innerIndex];
+                });
+                app.data.customers[indx] = contact;
+
+                newContact.displayName = contact.displayName;
+                newContact.id = contact.id;
+                newContact.rawId = contact.rawId;
+                newContact.name = new ContactName();
+                newContact.name.givenName = contact.name.givenName;
+                newContact.name.givenName = contact.name.id;
+                newContact.name.familyName = contact.name.familyName;
+                newContact.name.formatted = contact.name.formatted;
+                newContact.emails = contact.emails;
+                newContact.phoneNumbers = contact.phoneNumbers;
+                newContact.note = contact.note;
+                alert(JSON.stringify(newContact));
+                newContact.save(function(data) {
+                    alert('saved:');
+                    alert(JSON.stringify(data));
+                },function(err) {
+                    alert('err:');
+                    alert(err);
+                });
+                contact.location = {
+                    count : 0,
+                    location : contact.note
+                };
+                //app.store('customer');
             }
         },
         delete : {

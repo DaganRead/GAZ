@@ -1,6 +1,7 @@
 var app;
     app = {
         picked : false,
+        contactCached : null,
         DOM : {
             newSale: document.getElementById('newSale'),
             sales: document.getElementById('sales'),
@@ -924,7 +925,7 @@ var app;
                         newChar,
                         compareChar = '9',
                         numbersStarted = false;
-                    alert(oldArr);
+                    //alert(oldArr);
                     arr.sort(function(a, b) {
                         return a.name.givenName.localeCompare(b.name.givenName);
                     });
@@ -1408,9 +1409,25 @@ var app;
                         }else{
                             element = target.parentNode;
                         };
+                var name = {
+                    givenName : element.children[1].value||element.children[1].placeholder,
+                    familyName : element.children[2].value||element.children[2].placeholder
+                };
+                        if (true) {
+                            // find all contacts with 'Bob' in any name field
+                            var options      = new ContactFindOptions();
+                            options.filter   = name.givenName + ' ' + name.familyName;
+                            options.multiple = false;
+                            var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+                            navigator.contacts.find(fields, function(contactVar) {
+                                alert(contactVar);
+                            }, function(contactError) {
+                                alert('onError!');
+                            }, options);
+                        };
                         contact.name = new ContactName();
-                        contact.name.givenName = element.children[1].value||element.children[1].placeholder;
-                        contact.name.familyName = element.children[2].value||element.children[2].placeholder;
+                        contact.name.givenName = name.givenName;
+                        contact.name.familyName = name.familyName;
                         contact.displayName = contact.name.givenName + ' ' + contact.name.familyName;
                         contact.emails = [];
                         contact.addresses = [];
@@ -1438,12 +1455,12 @@ var app;
                 alert(JSON.stringify(contact));
                 var indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
                 app.data.customers[indx] = contact;
-                contact.save(onContactSuccess,onContactError);
+                //contact.save(onContactSuccess,onContactError);
                 contact.location = {
                     count : 0,
                     location : contact.note
                 };
-                app.store('customer');
+                //app.store('customer');
             }
         },
         delete : {

@@ -1407,8 +1407,10 @@ var app;
                         }else{
                             element = target.parentNode;
                         };
-                        contact.givenName = element.children[1].value||element.children[1].placeholder;
-                        contact.familyName = element.children[2].value||element.children[2].placeholder;
+                        contact.name = new ContactName();
+                        contact.name.givenName = element.children[1].value||element.children[1].placeholder;
+                        contact.name.familyName = element.children[2].value||element.children[2].placeholder;
+                        contact.displayName = name.givenName + ' ' + name.familyName;
                         contact.emails = [];
                         contact.addresses = [];
                         contact.phoneNumbers = [];
@@ -1437,7 +1439,6 @@ var app;
                 app.data.customers[indx] = contact;
                 //contact.save(onContactSuccess,onContactError);
                 contact.location = contact.note;
-                delete contact.note;
                 alert(JSON.stringify(contact));
                 //app.store('customer');
             }

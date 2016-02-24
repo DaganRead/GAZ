@@ -258,7 +258,7 @@ var app;
                                 if (element.addresses!=null) {
                                     element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<textarea onblur="app.update.customer(this)">';
-                                        HTMLFrag += innerElement.value;
+                                        HTMLFrag += innerElement.formatted;
                                         HTMLFrag += '</textarea>';
                                     });
                                 };
@@ -317,7 +317,7 @@ var app;
                                 if (element.addresses!=null) {
                                     element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<textarea onblur="app.update.customer(this)">';
-                                        HTMLFrag += innerElement.value;
+                                        HTMLFrag += innerElement.formatted;
                                         HTMLFrag += '</textarea>';
                                     });
                                 };
@@ -369,7 +369,7 @@ var app;
                                 if (element.addresses!=null) {
                                     element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<textarea onblur="app.update.customer(this)">';
-                                        HTMLFrag += innerElement.value;
+                                        HTMLFrag += innerElement.formatted;
                                         HTMLFrag += '</textarea>';
                                     });
                                 };
@@ -978,7 +978,7 @@ var app;
                                     if (element.addresses!=null) {
                                         element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<textarea onblur="app.update.customer(this)">';
-                                            HTMLFrag += innerElement.value;
+                                            HTMLFrag += innerElement.formatted;
                                             HTMLFrag += '</textarea>';
                                         });
                                     };
@@ -1037,7 +1037,7 @@ var app;
                                     if (element.addresses!=null) {
                                         element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<textarea onblur="app.update.customer(this)">';
-                                            HTMLFrag += innerElement.value;
+                                            HTMLFrag += innerElement.formatted;
                                             HTMLFrag += '</textarea>';
                                         });
                                     };
@@ -1092,7 +1092,7 @@ var app;
                                     if (element.addresses!=null) {
                                         element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<textarea onblur="app.update.customer(this)">';
-                                            HTMLFrag += innerElement.value;
+                                            HTMLFrag += innerElement.formatted;
                                             HTMLFrag += '</textarea>';
                                         });
                                     };

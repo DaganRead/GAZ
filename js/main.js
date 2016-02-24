@@ -228,7 +228,7 @@ var app;
                                 if (element.emails!=null) {
                                     element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="email" onblur="app.update.customer(this)" placeholder="';
-                                        HTMLFrag += innerElement;
+                                        HTMLFrag += innerElement.value;
                                         HTMLFrag += '" data-index="';
                                         HTMLFrag += innerIndex;
                                         HTMLFrag += '"/>';
@@ -237,7 +237,7 @@ var app;
                                 if (element.phoneNumbers!=null) {
                                     element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
-                                        HTMLFrag += innerElement;
+                                        HTMLFrag += innerElement.value;
                                         HTMLFrag += '" data-index="';
                                         HTMLFrag += innerIndex;
                                         HTMLFrag += '"/>';
@@ -258,7 +258,7 @@ var app;
                                 if (element.addresses!=null) {
                                     element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<textarea onblur="app.update.customer(this)">';
-                                        HTMLFrag += innerElement;
+                                        HTMLFrag += innerElement.value;
                                         HTMLFrag += '</textarea>';
                                     });
                                 };
@@ -287,7 +287,7 @@ var app;
                                 if (element.emails!=null) {
                                     element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="email" onblur="app.update.customer(this)" placeholder="';
-                                        HTMLFrag += innerElement;
+                                        HTMLFrag += innerElement.value;
                                         HTMLFrag += '" data-index="';
                                         HTMLFrag += innerIndex;
                                         HTMLFrag += '"/>';
@@ -296,7 +296,7 @@ var app;
                                 if (element.phoneNumbers!=null) {
                                     element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
-                                        HTMLFrag += innerElement;
+                                        HTMLFrag += innerElement.value;
                                         HTMLFrag += '" data-index="';
                                         HTMLFrag += innerIndex;
                                         HTMLFrag += '"/>';
@@ -317,7 +317,7 @@ var app;
                                 if (element.addresses!=null) {
                                     element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<textarea onblur="app.update.customer(this)">';
-                                        HTMLFrag += innerElement;
+                                        HTMLFrag += innerElement.value;
                                         HTMLFrag += '</textarea>';
                                     });
                                 };
@@ -339,7 +339,7 @@ var app;
                                 if (element.emails!=null) {
                                     element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="email" onblur="app.update.customer(this)" placeholder="';
-                                        HTMLFrag += innerElement;
+                                        HTMLFrag += innerElement.value;
                                         HTMLFrag += '" data-index="';
                                         HTMLFrag += innerIndex;
                                         HTMLFrag += '"/>';
@@ -348,7 +348,7 @@ var app;
                                 if (element.phoneNumbers!=null) {
                                     element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
-                                        HTMLFrag += innerElement;
+                                        HTMLFrag += innerElement.value;
                                         HTMLFrag += '" data-index="';
                                         HTMLFrag += innerIndex;
                                         HTMLFrag += '"/>';
@@ -369,7 +369,7 @@ var app;
                                 if (element.addresses!=null) {
                                     element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<textarea onblur="app.update.customer(this)">';
-                                        HTMLFrag += innerElement;
+                                        HTMLFrag += innerElement.value;
                                         HTMLFrag += '</textarea>';
                                     });
                                 };
@@ -948,7 +948,7 @@ var app;
                                     if (element.emails!=null) {
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="email" onblur="app.update.customer(this)" placeholder="';
-                                            HTMLFrag += innerElement;
+                                            HTMLFrag += innerElement.value;
                                             HTMLFrag += '" data-index="';
                                             HTMLFrag += innerIndex;
                                             HTMLFrag += '"/>';
@@ -957,7 +957,7 @@ var app;
                                     if (element.phoneNumbers!=null) {
                                         element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
-                                            HTMLFrag += innerElement;
+                                            HTMLFrag += innerElement.value;
                                             HTMLFrag += '" data-index="';
                                             HTMLFrag += innerIndex;
                                             HTMLFrag += '"/>';
@@ -978,7 +978,7 @@ var app;
                                     if (element.addresses!=null) {
                                         element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<textarea onblur="app.update.customer(this)">';
-                                            HTMLFrag += innerElement;
+                                            HTMLFrag += innerElement.value;
                                             HTMLFrag += '</textarea>';
                                         });
                                     };
@@ -1007,7 +1007,7 @@ var app;
                                     if (element.emails!=null) {
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="email" onblur="app.update.customer(this)" placeholder="';
-                                            HTMLFrag += innerElement;
+                                            HTMLFrag += innerElement.value;
                                             HTMLFrag += '" data-index="';
                                             HTMLFrag += innerIndex;
                                             HTMLFrag += '"/>';
@@ -1016,7 +1016,7 @@ var app;
                                     if (element.phoneNumbers!=null) {
                                         element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
-                                            HTMLFrag += innerElement;
+                                            HTMLFrag += innerElement.value;
                                             HTMLFrag += '" data-index="';
                                             HTMLFrag += innerIndex;
                                             HTMLFrag += '"/>';
@@ -1037,7 +1037,7 @@ var app;
                                     if (element.addresses!=null) {
                                         element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<textarea onblur="app.update.customer(this)">';
-                                            HTMLFrag += innerElement;
+                                            HTMLFrag += innerElement.value;
                                             HTMLFrag += '</textarea>';
                                         });
                                     };
@@ -1062,7 +1062,7 @@ var app;
                                     if (element.emails!=null) {
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="email" onblur="app.update.customer(this)" placeholder="';
-                                            HTMLFrag += innerElement;
+                                            HTMLFrag += innerElement.value;
                                             HTMLFrag += '" data-index="';
                                             HTMLFrag += innerIndex;
                                             HTMLFrag += '"/>';
@@ -1071,7 +1071,7 @@ var app;
                                     if (element.phoneNumbers!=null) {
                                         element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
-                                            HTMLFrag += innerElement;
+                                            HTMLFrag += innerElement.value;
                                             HTMLFrag += '" data-index="';
                                             HTMLFrag += innerIndex;
                                             HTMLFrag += '"/>';
@@ -1092,7 +1092,7 @@ var app;
                                     if (element.addresses!=null) {
                                         element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<textarea onblur="app.update.customer(this)">';
-                                            HTMLFrag += innerElement;
+                                            HTMLFrag += innerElement.value;
                                             HTMLFrag += '</textarea>';
                                         });
                                     };
@@ -1402,57 +1402,68 @@ var app;
 
             },
             customer: function(target) {
-                var contact = navigator.contacts.create(),
-                    element;
-                        if (target.tagName == 'FIGCAPTION') {
-                            element = target.parentNode.parentNode.parentNode;
-                        }else{
-                            element = target.parentNode;
-                        };
-                var name = {
+                var element, temp = { 
+                    name,
+                    emails:[],
+                    phoneNumbers:[],
+                    addresses:[],
+                };
+                if (target.tagName == 'FIGCAPTION') {
+                    element = target.parentNode.parentNode.parentNode;
+                }else{
+                    element = target.parentNode;
+                };
+                temp.name = {
                     givenName : element.children[1].value||element.children[1].placeholder,
                     familyName : element.children[2].value||element.children[2].placeholder
+                };
+
+                for (var i = 3; i < element.children.length; i++) {
+                    if (element.children[i].type == 'email') {
+                        if (element.children[i].value != '') {
+                            temp.emails.push(element.children[i].value);
+                        }else{
+                            temp.emails.push(element.children[i].placeholder);
+                        };
+                    }else if(element.children[i].tagName == 'ARTICLE'){
+                        temp.note = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
+                    }else if(element.children[i].type == 'textarea'){     
+                        temp.addresses.push(element.children[i].value);
+                    }else{
+                        if (element.children[i].value != '' && element.children[i].value != undefined) {
+                            temp.phoneNumbers.push(element.children[i].value);
+                        }else if (element.children[i].placeholder != '' && element.children[i].placeholder != undefined) {
+                            temp.phoneNumbers.push(element.children[i].placeholder);
+                        };
+                    };
                 };
                         if (true) {
                             // find all contacts with 'Bob' in any name field
                             var options      = new ContactFindOptions();
-                            options.filter   = name.givenName + ' ' + name.familyName;
+                            options.filter   = temp.name.givenName + ' ' + temp.name.familyName;
                             options.multiple = false;
                             var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
-                            navigator.contacts.find(fields, function(contactVar) {
-                                alert(JSON.stringify(contactVar));
+                            navigator.contacts.find(fields, function(contact) {
+                                if (contact[0].name.honorificPrefix != null) {
+                                    contact[0].displayName = contact[0].name.honorificPrefix + ' ' + temp.name.givenName +' '+ temp.name.familyName;
+                                }else{
+                                    contact[0].displayName = temp.name.givenName +' '+ temp.name.familyName;                                    
+                                };
+
+                                contact[0].name.givenName = temp.name.givenName;
+                                contact[0].name.familyName = temp.name.givenName;
+
+                                if (contact[0].name.honorificPrefix != null) {
+                                    contact[0].name.formatted = contact[0].name.honorificPrefix + ' ' + temp.name.givenName +' '+ temp.name.familyName;
+                                }else{
+                                    contact[0].name.formatted = temp.name.givenName +' '+ temp.name.familyName;                                    
+                                };
+                                alert(JSON.stringify(contact[0]));
                             }, function(contactError) {
                                 alert('onError!');
                             }, options);
                         };
-                        contact.name = new ContactName();
-                        contact.name.givenName = name.givenName;
-                        contact.name.familyName = name.familyName;
-                        contact.displayName = contact.name.givenName + ' ' + contact.name.familyName;
-                        contact.emails = [];
-                        contact.addresses = [];
-                        contact.phoneNumbers = [];
-                        contact.note ='';
-                        for (var i = 3; i < element.children.length; i++) {
-                            if (element.children[i].type == 'email') {
-                                if (element.children[i].value != '') {
-                                    contact.emails.push(element.children[i].value);
-                                }else{
-                                    contact.emails.push(element.children[i].placeholder);
-                                };
-                            }else if(element.children[i].tagName == 'ARTICLE'){
-                                contact.note = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
-                            }else if(element.children[i].type == 'textarea'){     
-                                contact.addresses.push(element.children[i].value);
-                            }else{
-                                if (element.children[i].value != '' && element.children[i].value != undefined) {
-                                    contact.phoneNumbers.push(element.children[i].value);
-                                }else if (element.children[i].placeholder != '' && element.children[i].placeholder != undefined) {
-                                    contact.phoneNumbers.push(element.children[i].placeholder);
-                                };
-                            };
-                        };
-                alert(JSON.stringify(contact));
+                alert(JSON.stringify(temp));
                 var indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
                 app.data.customers[indx] = contact;
                 //contact.save(onContactSuccess,onContactError);
@@ -1769,6 +1780,7 @@ var app;
                             tempNumber = 1,
                             syncNumber = 1;
                         contacts.forEach(function(element, index, array) {
+                            alert(JSON.stringify(element));
                             if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
                             tempNumber ++;
                                 if (app.data.customers.indexOf(element) == -1) {
@@ -1784,38 +1796,13 @@ var app;
                             function(buttonIndex) {
                                 if (buttonIndex) {
                                     syncArr.forEach(function(element, index, array) {
-                                        var newCustomer = navigator.contacts.create({
-                                            "displayName": element.name.formatted,
-                                            "name" : { 
-                                                givenName : element.name.givenName,
-                                                familyName : element.name.familyName
-                                            },
-                                            "note" : element.note,
-                                            "emails" : [],
-                                            "phoneNumbers" : [],
-                                            "addresses" : []
-                                        });
-                                        if (element.phoneNumbers!=null) {
-                                            element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                                newCustomer.phoneNumbers.push(innerElement.value);
-                                            });
-                                        };
-                                        if (element.emails!=null) {
-                                            element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                                newCustomer.emails.push(innerElement.value);
-                                            });
-                                        };
-                                        if (element.addresses!=null) {
-                                            element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                                newCustomer.addresses.push(innerElement.value);
-                                            });
-                                        };
+                                        var newCustomer = element;
                                         app.data.customers.push(newCustomer);
                                     });
                                     app.data.customers.sort(function(a, b) {
                                         return a.name.givenName.localeCompare(b.name.givenName);
                                     });
-                                    app.store('customer');
+                                    //app.store('customer');
                                 };
                             },
                             'Confirm Sync',

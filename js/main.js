@@ -1410,7 +1410,7 @@ var app;
                         contact.name = new ContactName();
                         contact.name.givenName = element.children[1].value||element.children[1].placeholder;
                         contact.name.familyName = element.children[2].value||element.children[2].placeholder;
-                        contact.displayName = name.givenName + ' ' + name.familyName;
+                        contact.displayName = contact.name.givenName + ' ' + contact.name.familyName;
                         contact.emails = [];
                         contact.addresses = [];
                         contact.phoneNumbers = [];
@@ -1438,7 +1438,10 @@ var app;
                 var indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
                 app.data.customers[indx] = contact;
                 //contact.save(onContactSuccess,onContactError);
-                contact.location = contact.note;
+                contact.location = {
+                    count : 0,
+                    location : contact.note
+                };
                 alert(JSON.stringify(contact));
                 //app.store('customer');
             }

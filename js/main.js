@@ -918,12 +918,13 @@ var app;
 
             Object.observe(app.data.customers, function(changes) {
                 changes.forEach(function(elementi, indexi, arrayi) {
-                    var arr = elementi.object,    
+                    var arr = elementi.object, 
+                        oldArr = elementi.oldValue,    
                         HTMLFrag = '',
                         newChar,
                         compareChar = '9',
                         numbersStarted = false;
-
+                    alert(oldArr);
                     arr.sort(function(a, b) {
                         return a.name.givenName.localeCompare(b.name.givenName);
                     });
@@ -1437,13 +1438,12 @@ var app;
                 alert(JSON.stringify(contact));
                 var indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
                 app.data.customers[indx] = contact;
-                //contact.save(onContactSuccess,onContactError);
+                contact.save(onContactSuccess,onContactError);
                 contact.location = {
                     count : 0,
                     location : contact.note
                 };
-                alert(JSON.stringify(contact));
-                //app.store('customer');
+                app.store('customer');
             }
         },
         delete : {

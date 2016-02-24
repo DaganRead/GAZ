@@ -1426,9 +1426,9 @@ var app;
                 for (var i = 3; i < element.children.length; i++) {
                     if (element.children[i].type == 'email') {
                         if (element.children[i].value != '') {
-                            temp.emails.push(element.children[i].value);
+                            temp.emails.push(new ContactField('home', element.children[i].value, false));
                         }else{
-                            temp.emails.push(element.children[i].placeholder);
+                            temp.emails.push(new ContactField('home', element.children[i].placeholder, false));
                         };
                     }else if(element.children[i].tagName == 'ARTICLE'){
                         temp.note = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
@@ -1458,7 +1458,7 @@ var app;
                     innerElement.value = temp.emails[innerIndex];
                 });
                 contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                    innerElement.value = temp.phoneNumbers[innerIndex];
+                    innerElement = temp.phoneNumbers[innerIndex];
                 });
                 contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                     innerElement.formatted = temp.addresses[innerIndex];
@@ -1472,7 +1472,7 @@ var app;
                 newContact.name.formatted = contact.name.formatted;
                 newContact.emails = contact.emails;
                 newContact.phoneNumbers = contact.phoneNumbers;
-                contact.save(function(data) {
+                newContact.save(function(data) {
                     alert('saved:');
                     alert(JSON.stringify(data));
                 },function(err) {

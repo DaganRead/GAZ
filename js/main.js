@@ -1442,7 +1442,6 @@ var app;
                         };
                     };
                 };
-                alert(JSON.stringify(temp));
                 alert(JSON.stringify(contact));
                 if (contact.honorificPrefix != undefined) {
                     contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
@@ -1455,25 +1454,33 @@ var app;
                 contact.name.familyName = temp.name.familyName;
                 contact.note = temp.note;
                 contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
+                    var tempId = innerElement.id;
                     innerElement = temp.emails[innerIndex];
+                    innerElement.id = tempId;
                 });
                 contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
+                    var tempId = innerElement.id;
                     innerElement = temp.phoneNumbers[innerIndex];
+                    innerElement.id = tempId;
+                    alert(innerElement.id);
                 });
                 contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                     innerElement.formatted = temp.addresses[innerIndex];
                 });
-                //alert(JSON.stringify(contact));
                 app.data.customers[indx] = contact;
-                newContact.displayName = contact.displayName;
+                /*newContact.displayName = contact.displayName;
+                newContact.id = contact.id;
+                newContact.rawId = contact.rawId;
                 newContact.name = new ContactName();
                 newContact.name.givenName = contact.name.givenName;
+                newContact.name.givenName = contact.name.id;
                 newContact.name.familyName = contact.name.familyName;
                 newContact.name.formatted = contact.name.formatted;
                 newContact.emails = contact.emails;
                 newContact.phoneNumbers = contact.phoneNumbers;
                 newContact.note = contact.note;
-                newContact.save(function(data) {
+                alert(JSON.stringify(newContact));*/
+                contact.save(function(data) {
                     alert('saved:');
                     alert(JSON.stringify(data));
                 },function(err) {

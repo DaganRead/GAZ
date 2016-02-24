@@ -1421,9 +1421,10 @@ var app;
                             navigator.contacts.find(fields, function(obj) {
                                 alert('found:');
                                 alert(JSON.stringify(obj));
-
-                                obj.remove(function() {
-                                    alert('deleted');
+                                obj.name.familyName = 'changed';
+                                obj.save(function(data) {
+                                    alert('updated');
+                                    alert(JSON.stringify(data));
                                 },function(err) {
                                     alert('err:');
                                     alert(err);

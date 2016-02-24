@@ -1464,7 +1464,7 @@ var app;
                                 alert('onError!');
                             }, options);
                         };
-                alert(app.data.customers[indx].synced);
+                alert(JSON.stringify(app.data.customers[indx]));
                 app.data.customers[indx] = contact;
                 //contact.save(onContactSuccess,onContactError);
                 contact.location = {

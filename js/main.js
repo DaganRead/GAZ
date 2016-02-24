@@ -1420,7 +1420,7 @@ var app;
                             options.multiple = false;
                             var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
                             navigator.contacts.find(fields, function(contactVar) {
-                                alert(contactVar);
+                                alert(JSON.stringify(contactVar));
                             }, function(contactError) {
                                 alert('onError!');
                             }, options);

@@ -1421,7 +1421,56 @@ var app;
                             var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
                             navigator.contacts.find(fields, function(contact) {
                                 alert('found:');
-                                alert(contact);
+                alert(JSON.stringify(contact));
+                if (contact.honorificPrefix != undefined) {
+                    contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
+                    contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
+                }else{
+                    contact.displayName = temp.name.givenName +' '+ temp.name.familyName;
+                    contact.name.formatted = temp.name.givenName +' '+ temp.name.familyName;
+                };
+                contact.name.givenName = temp.name.givenName;
+                contact.name.familyName = temp.name.familyName;
+                contact.note = temp.note;
+                contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
+                    var tempId = innerElement.id;
+                    innerElement = temp.emails[innerIndex];
+                    innerElement.id = tempId;
+                });
+                contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
+                    var tempId = innerElement.id;
+                    innerElement = temp.phoneNumbers[innerIndex];
+                    innerElement.id = tempId;
+                    alert(innerElement.id);
+                });
+                contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
+                    innerElement.formatted = temp.addresses[innerIndex];
+                });
+                app.data.customers[indx] = contact;
+                /*newContact.displayName = contact.displayName;
+                newContact.id = contact.id;
+                newContact.rawId = contact.rawId;
+                newContact.name = new ContactName();
+                newContact.name.givenName = contact.name.givenName;
+                newContact.name.givenName = contact.name.id;
+                newContact.name.familyName = contact.name.familyName;
+                newContact.name.formatted = contact.name.formatted;
+                newContact.emails = contact.emails;
+                newContact.phoneNumbers = contact.phoneNumbers;
+                newContact.note = contact.note;
+                alert(JSON.stringify(newContact));*/
+                contact.save(function(data) {
+                    alert('saved:');
+                    alert(JSON.stringify(data));
+                },function(err) {
+                    alert('err:');
+                    alert(err);
+                });
+                contact.location = {
+                    count : 0,
+                    location : contact.note
+                };
+                //app.store('customer');
 /*                                if (contact[0].name.honorificPrefix != null) {
                                     contact[0].displayName = contact[0].name.honorificPrefix + ' ' + temp.name.givenName +' '+ temp.name.familyName;
                                 }else{
@@ -1472,57 +1521,6 @@ var app;
                         };
                     };
                 };
-                alert(JSON.stringify(contact));
-                if (contact.honorificPrefix != undefined) {
-                    contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
-                    contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
-                }else{
-                    contact.displayName = temp.name.givenName +' '+ temp.name.familyName;
-                    contact.name.formatted = temp.name.givenName +' '+ temp.name.familyName;
-                };
-                contact.name.givenName = temp.name.givenName;
-                contact.name.familyName = temp.name.familyName;
-                contact.note = temp.note;
-                contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                    var tempId = innerElement.id;
-                    innerElement = temp.emails[innerIndex];
-                    innerElement.id = tempId;
-                });
-                contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                    var tempId = innerElement.id;
-                    innerElement = temp.phoneNumbers[innerIndex];
-                    innerElement.id = tempId;
-                    alert(innerElement.id);
-                });
-                contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                    innerElement.formatted = temp.addresses[innerIndex];
-                });
-                app.data.customers[indx] = contact;
-
-                /*newContact.displayName = contact.displayName;
-                newContact.id = contact.id;
-                newContact.rawId = contact.rawId;
-                newContact.name = new ContactName();
-                newContact.name.givenName = contact.name.givenName;
-                newContact.name.givenName = contact.name.id;
-                newContact.name.familyName = contact.name.familyName;
-                newContact.name.formatted = contact.name.formatted;
-                newContact.emails = contact.emails;
-                newContact.phoneNumbers = contact.phoneNumbers;
-                newContact.note = contact.note;
-                alert(JSON.stringify(newContact));*/
-                contact.save(function(data) {
-                    alert('saved:');
-                    alert(JSON.stringify(data));
-                },function(err) {
-                    alert('err:');
-                    alert(err);
-                });
-                contact.location = {
-                    count : 0,
-                    location : contact.note
-                };
-                //app.store('customer');
             }
         },
         delete : {

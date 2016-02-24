@@ -1419,8 +1419,8 @@ var app;
                             options.multiple = false;
                             var fields       = [navigator.contacts.fieldType.id];
                             navigator.contacts.find(fields, function(obj) {
-                                alert('found:');
-                                alert(JSON.stringify(obj));
+                                //alert('found:');
+                                //alert(JSON.stringify(obj));
                                 obj.name.familyName = 'changed';
                                 obj.save(function(data) {
                                     alert('updated');
@@ -1429,7 +1429,7 @@ var app;
                                     alert('err:');
                                     alert(err);
                                 });
-
+                                alert('end');
                                /* if (obj.honorificPrefix != undefined) {
                                     obj.displayName = obj.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                                     obj.name.formatted = obj.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;

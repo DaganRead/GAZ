@@ -1400,8 +1400,7 @@ var app;
 
             },
             customer: function(target) {
-                var contact = navigator.contacts.create(),
-                    data = function (target) {
+                var contact = navigator.contacts.create();
                         if (target.tagName == 'FIGCAPTION') {
                             var element = target.parentNode.parentNode.parentNode;
                         }else{
@@ -1428,11 +1427,9 @@ var app;
                                 };
                             };
                         };
-                        return contact;
-                    };
-                alert(data(target));
+                alert(contact);
                 var indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
-                app.data.customers[indx] = data(target);
+                app.data.customers[indx] = contact;
                 //contact.save(onContactSuccess,onContactError);
                 contact.location = contact.note;
                 delete contact.note;

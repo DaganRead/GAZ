@@ -1455,7 +1455,7 @@ var app;
                 contact.name.familyName = temp.name.familyName;
                 contact.note = temp.note;
                 contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                    innerElement.value = temp.emails[innerIndex];
+                    innerElement = temp.emails[innerIndex];
                 });
                 contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                     innerElement = temp.phoneNumbers[innerIndex];
@@ -1472,6 +1472,7 @@ var app;
                 newContact.name.formatted = contact.name.formatted;
                 newContact.emails = contact.emails;
                 newContact.phoneNumbers = contact.phoneNumbers;
+                newContact.note = contact.note;
                 newContact.save(function(data) {
                     alert('saved:');
                     alert(JSON.stringify(data));

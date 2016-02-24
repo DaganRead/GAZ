@@ -1440,7 +1440,6 @@ var app;
                         };
                     };
                 };
-                alert(JSON.stringify(contact));
                 if (contact.honorificPrefix != undefined) {
                     contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
@@ -1460,9 +1459,9 @@ var app;
                 contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                     innerElement.formatted = temp.addresses[innerIndex];
                 });
-                alert(JSON.stringify(contact));
+                //alert(JSON.stringify(contact));
                 app.data.customers[indx] = contact;
-                //contact.save(onContactSuccess,onContactError);
+                contact.save(onContactSuccess,onContactError);
                 contact.location = {
                     count : 0,
                     location : contact.note

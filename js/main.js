@@ -1442,7 +1442,7 @@ var app;
                         };
                     };
                 };
-                alert(JSON.stringify(contact));
+                alert('here');
                 if (contact.honorificPrefix != undefined) {
                     contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
@@ -1462,13 +1462,13 @@ var app;
                     var tempId = innerElement.id;
                     innerElement = temp.phoneNumbers[innerIndex];
                     innerElement.id = tempId;
-                    alert(innerElement.id);
                 });
                 contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                     innerElement.formatted = temp.addresses[innerIndex];
                 });
                 app.data.customers[indx] = contact;
-
+                alert(JSON.stringify(contact));
+                alert(JSON.stringify(newContact));
                 newContact.displayName = contact.displayName;
                 newContact.id = contact.id;
                 //newContact.rawId = contact.rawId;

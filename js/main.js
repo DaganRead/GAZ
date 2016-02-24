@@ -1468,6 +1468,35 @@ var app;
                     innerElement.formatted = temp.addresses[innerIndex];
                 });
                 app.data.customers[indx] = contact;
+                        if (app.data.customers[indx].synced) {
+                            // find all contacts with 'Bob' in any name field
+                            var options      = new ContactFindOptions();
+                            options.filter   = temp.name.givenName + ' ' + temp.name.familyName;
+                            options.multiple = false;
+                            var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+                            navigator.contacts.find(fields, function(contact) {
+                                alert('found:');
+                                alert('contact');
+/*                                if (contact[0].name.honorificPrefix != null) {
+                                    contact[0].displayName = contact[0].name.honorificPrefix + ' ' + temp.name.givenName +' '+ temp.name.familyName;
+                                }else{
+                                    contact[0].displayName = temp.name.givenName +' '+ temp.name.familyName;                                    
+                                };
+
+                                contact[0].name.givenName = temp.name.givenName;
+                                contact[0].name.familyName = temp.name.givenName;
+
+                                if (contact[0].name.honorificPrefix != null) {
+                                    contact[0].name.formatted = contact[0].name.honorificPrefix + ' ' + temp.name.givenName +' '+ temp.name.familyName;
+                                }else{
+                                    contact[0].name.formatted = temp.name.givenName +' '+ temp.name.familyName;                                    
+                                };
+                                alert(JSON.stringify(contact[0]));*/
+                            }, function(contactError) {
+                                alert('onError!');
+                            }, options);
+                        };
+                        
                 /*newContact.displayName = contact.displayName;
                 newContact.id = contact.id;
                 newContact.rawId = contact.rawId;

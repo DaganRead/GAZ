@@ -1407,7 +1407,8 @@ var app;
                     emails:[],
                     phoneNumbers:[],
                     addresses:[],
-                };
+                },
+                indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
                 if (target.tagName == 'FIGCAPTION') {
                     element = target.parentNode.parentNode.parentNode;
                 }else{
@@ -1463,8 +1464,7 @@ var app;
                                 alert('onError!');
                             }, options);
                         };
-                alert(JSON.stringify(temp));
-                var indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
+                alert(app.data.customers[indx].synced);
                 app.data.customers[indx] = contact;
                 //contact.save(onContactSuccess,onContactError);
                 contact.location = {
@@ -1797,6 +1797,7 @@ var app;
                                 if (buttonIndex) {
                                     syncArr.forEach(function(element, index, array) {
                                         var newCustomer = element;
+                                        newCustomer.synced = true;
                                         app.data.customers.push(newCustomer);
                                     });
                                     app.data.customers.sort(function(a, b) {

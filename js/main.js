@@ -1406,9 +1406,11 @@ var app;
                     name,
                     emails:[],
                     phoneNumbers:[],
-                    addresses:[],
+                    addresses:[]
                 },
-                indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
+                indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
+                contact = app.data.customers[indx];
+
                 if (target.tagName == 'FIGCAPTION') {
                     element = target.parentNode.parentNode.parentNode;
                 }else{
@@ -1438,33 +1440,27 @@ var app;
                         };
                     };
                 };
-                        if (true) {
-                            // find all contacts with 'Bob' in any name field
-                            var options      = new ContactFindOptions();
-                            options.filter   = temp.name.givenName + ' ' + temp.name.familyName;
-                            options.multiple = false;
-                            var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
-                            navigator.contacts.find(fields, function(contact) {
-                                if (contact[0].name.honorificPrefix != null) {
-                                    contact[0].displayName = contact[0].name.honorificPrefix + ' ' + temp.name.givenName +' '+ temp.name.familyName;
-                                }else{
-                                    contact[0].displayName = temp.name.givenName +' '+ temp.name.familyName;                                    
-                                };
-
-                                contact[0].name.givenName = temp.name.givenName;
-                                contact[0].name.familyName = temp.name.givenName;
-
-                                if (contact[0].name.honorificPrefix != null) {
-                                    contact[0].name.formatted = contact[0].name.honorificPrefix + ' ' + temp.name.givenName +' '+ temp.name.familyName;
-                                }else{
-                                    contact[0].name.formatted = temp.name.givenName +' '+ temp.name.familyName;                                    
-                                };
-                                alert(JSON.stringify(contact[0]));
-                            }, function(contactError) {
-                                alert('onError!');
-                            }, options);
-                        };
-                alert(JSON.stringify(app.data.customers[indx]));
+                alert(JSON.stringify(contact));
+                if (contact.honorificPrefix != undefined) {
+                    contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
+                    contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
+                }else{
+                    contact.displayName = temp.name.givenName +' '+ temp.name.familyName;
+                    contact.name.formatted = temp.name.givenName +' '+ temp.name.familyName;
+                };
+                contact.name.givenName = temp.name.givenName;
+                contact.name.familyName = temp.name.familyName;
+                contact.note = temp.note;
+                contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
+                    innerElement.value = temp.emails[innerIndex];
+                });
+                contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
+                    innerElement.value = temp.phoneNumbers[innerIndex];
+                });
+                contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
+                    innerElement.formatted = temp.addresses[innerIndex];
+                });
+                alert(JSON.stringify(contact));
                 app.data.customers[indx] = contact;
                 //contact.save(onContactSuccess,onContactError);
                 contact.location = {

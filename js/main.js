@@ -1402,7 +1402,6 @@ var app;
             customer: function(target) {
                 var contact = navigator.contacts.create(),
                     element;
-                    alert(JSON.stringify(contact));
                         if (target.tagName == 'FIGCAPTION') {
                             element = target.parentNode.parentNode.parentNode;
                         }else{
@@ -1410,6 +1409,10 @@ var app;
                         };
                         contact.givenName = element.children[1].value||element.children[1].placeholder;
                         contact.familyName = element.children[2].value||element.children[2].placeholder;
+                        contact.emails = [];
+                        contact.addresses = [];
+                        contact.phoneNumbers = [];
+                        contact.note ='';
                         for (var i = 3; i < element.children.length; i++) {
                             if (element.children[i].type == 'email') {
                                 if (element.children[i].value != '') {

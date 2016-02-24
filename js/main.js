@@ -1472,11 +1472,7 @@ var app;
                 newContact.displayName = contact.displayName;
                 newContact.id = contact.id;
                 //newContact.rawId = contact.rawId;
-                newContact.name = new ContactName();
-                newContact.name.givenName = contact.name.givenName;
-                newContact.name.givenName = contact.name.id;
-                newContact.name.familyName = contact.name.familyName;
-                newContact.name.formatted = contact.name.formatted;
+                newContact.name = contact.name;
                 newContact.emails = contact.emails;
                 newContact.phoneNumbers = contact.phoneNumbers;
                 newContact.note = contact.note;
@@ -1488,10 +1484,10 @@ var app;
                     alert('err:');
                     alert(err);
                 });
-                contact.location = {
+                /*contact.location = {
                     count : 0,
                     location : contact.note
-                };
+                };*/
                 //app.store('customer');
             }
         },

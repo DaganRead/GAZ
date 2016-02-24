@@ -1402,14 +1402,16 @@ var app;
 
             },
             customer: function(target) {
-                var element, temp = { 
-                    name,
-                    emails:[],
-                    phoneNumbers:[],
-                    addresses:[]
-                },
-                indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
-                contact = app.data.customers[indx];
+                var element,
+                    newContact = navigator.contacts.create(),
+                    temp = { 
+                        name,
+                        emails:[],
+                        phoneNumbers:[],
+                        addresses:[]
+                    }
+                    indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
+                    contact = app.data.customers[indx];
 
                 if (target.tagName == 'FIGCAPTION') {
                     element = target.parentNode.parentNode.parentNode;
@@ -1434,12 +1436,14 @@ var app;
                         temp.addresses.push(element.children[i].value);
                     }else{
                         if (element.children[i].value != '' && element.children[i].value != undefined) {
-                            temp.phoneNumbers.push(element.children[i].value);
+                            temp.phoneNumbers.push(new ContactField('mobile', element.children[i].value, false));
                         }else if (element.children[i].placeholder != '' && element.children[i].placeholder != undefined) {
-                            temp.phoneNumbers.push(element.children[i].placeholder);
+                            temp.phoneNumbers.push(new ContactField('mobile', element.children[i].placeholder, false));
                         };
                     };
                 };
+                alert(JSON.stringify(temp));
+                alert(JSON.stringify(contact));
                 if (contact.honorificPrefix != undefined) {
                     contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
@@ -1461,9 +1465,18 @@ var app;
                 });
                 //alert(JSON.stringify(contact));
                 app.data.customers[indx] = contact;
+                newContact.displayName = contact.displayName;
+                newContact.name = new ContactName();
+                newContact.name.givenName = contact.name.givenName;
+                newContact.name.familyName = contact.name.familyName;
+                newContact.name.formatted = contact.name.formatted;
+                newContact.emails = contact.emails;
+                newContact.phoneNumbers = contact.phoneNumbers;
                 contact.save(function(data) {
+                    alert('saved:');
                     alert(JSON.stringify(data));
                 },function(err) {
+                    alert('err:');
                     alert(err);
                 });
                 contact.location = {

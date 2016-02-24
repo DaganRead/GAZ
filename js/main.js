@@ -1400,11 +1400,12 @@ var app;
 
             },
             customer: function(target) {
-                var contact = navigator.contacts.create();
+                var contact = navigator.contacts.create(),
+                    element;
                         if (target.tagName == 'FIGCAPTION') {
-                            var element = target.parentNode.parentNode.parentNode;
+                            element = target.parentNode.parentNode.parentNode;
                         }else{
-                            var element = target.parentNode;
+                            element = target.parentNode;
                         };
                         contact.givenName = element.children[1].value||element.children[1].placeholder;
                         contact.familyName = element.children[2].value||element.children[2].placeholder;

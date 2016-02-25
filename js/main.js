@@ -1443,7 +1443,7 @@ var app;
                     };
                 };
                 alert(JSON.stringify(contact));
-                if (contact.honorificPrefix != undefined || contact.honorificPrefix != null) {
+                if (contact.honorificPrefix != undefined && contact.honorificPrefix != null) {
                     contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                     alert('here2');
@@ -1452,28 +1452,29 @@ var app;
                     contact.name.formatted = temp.name.givenName +' '+ temp.name.familyName;
                     alert('here3');
                 };
-                alert('3');
-                //contact.name.givenName = temp.name.givenName;
-                //contact.name.familyName = temp.name.familyName;
+                contact.name.givenName = temp.name.givenName;
+                contact.name.familyName = temp.name.familyName;
                 contact.note = temp.note;
-                alert('4');
                 if (contact.emails != null && contact.emails != undefined) {
+                    alert('3');
                     contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
                         var tempId = innerElement.id;
                         innerElement = temp.emails[innerIndex];
                         innerElement.id = tempId;
                     });
                 };
-                alert('5');
+                
                 if (contact.phoneNumbers != null && contact.phoneNumbers != undefined) {
+                    alert('4');
                     contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                         var tempId = innerElement.id;
                         innerElement = temp.phoneNumbers[innerIndex];
                         innerElement.id = tempId;
                     });
                 };
-                alert('6');
+                
                 if (contact.addresses != null && contact.addresses != undefined) {
+                    alert('5');
                     contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                         innerElement.formatted = temp.addresses[innerIndex];
                     });                    
@@ -1490,6 +1491,7 @@ var app;
                 newContact.emails = contact.emails;
                 newContact.phoneNumbers = contact.phoneNumbers;
                 newContact.note = contact.note;
+                alert('8');
                 alert(JSON.stringify(newContact));
                 newContact.save(function(data) {
                     alert('saved:');

@@ -1443,29 +1443,35 @@ var app;
                     };
                 };
                 alert('here');
-                if (contact.honorificPrefix != undefined) {
+                if (contact.honorificPrefix != undefined || contact.honorificPrefix != null) {
                     contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
+                    alert('here2');
                 }else{
                     contact.displayName = temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = temp.name.givenName +' '+ temp.name.familyName;
+                    alert('here3');
                 };
-                contact.name.givenName = temp.name.givenName;
-                contact.name.familyName = temp.name.familyName;
+                //contact.name.givenName = temp.name.givenName;
+                //contact.name.familyName = temp.name.familyName;
                 contact.note = temp.note;
+                alert('4');
                 contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
                     var tempId = innerElement.id;
                     innerElement = temp.emails[innerIndex];
                     innerElement.id = tempId;
                 });
+                alert('5');
                 contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                     var tempId = innerElement.id;
                     innerElement = temp.phoneNumbers[innerIndex];
                     innerElement.id = tempId;
                 });
+                alert('6');
                 contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                     innerElement.formatted = temp.addresses[innerIndex];
                 });
+                alert('7');
                 app.data.customers[indx] = contact;
                 alert(JSON.stringify(contact));  
                 alert(JSON.stringify(newContact));

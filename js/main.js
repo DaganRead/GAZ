@@ -1491,7 +1491,7 @@ var app;
                     alert(JSON.stringify(data));
                 },function(err) {
                     alert('err:');
-                    alert(err);
+                    alert(JSON.stringify(err));
                 }); 
                 /*contact.location = {
                     count : 0,

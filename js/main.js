@@ -1457,21 +1457,28 @@ var app;
                 //contact.name.familyName = temp.name.familyName;
                 contact.note = temp.note;
                 alert('4');
-                contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                    var tempId = innerElement.id;
-                    innerElement = temp.emails[innerIndex];
-                    innerElement.id = tempId;
-                });
+                if (contact.emails != null && contact.emails != undefined) {
+                    contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
+                        var tempId = innerElement.id;
+                        innerElement = temp.emails[innerIndex];
+                        innerElement.id = tempId;
+                    });
+                };
                 alert('5');
-                contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                    var tempId = innerElement.id;
-                    innerElement = temp.phoneNumbers[innerIndex];
-                    innerElement.id = tempId;
-                });
+                if (contact.phoneNumbers != null && contact.phoneNumbers != undefined) {
+                    contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
+                        var tempId = innerElement.id;
+                        innerElement = temp.phoneNumbers[innerIndex];
+                        innerElement.id = tempId;
+                    });
+                };
                 alert('6');
-                contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                    innerElement.formatted = temp.addresses[innerIndex];
-                });
+                if (contact.addresses != null && contact.addresses != undefined) {
+                    contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
+                        innerElement.formatted = temp.addresses[innerIndex];
+                    });                    
+                };
+
                 alert('7');
                 app.data.customers[indx] = contact;
                 alert(JSON.stringify(contact));  

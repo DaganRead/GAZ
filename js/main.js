@@ -1442,7 +1442,7 @@ var app;
                         };
                     };
                 };
-                alert(contact);
+                alert(JSON.stringify(contact));
                 if (contact.honorificPrefix != undefined || contact.honorificPrefix != null) {
                     contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;

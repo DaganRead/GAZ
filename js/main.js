@@ -1446,17 +1446,14 @@ var app;
                 if (contact.honorificPrefix != undefined && contact.honorificPrefix != null) {
                     contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
-                    alert('here2');
                 }else{
                     contact.displayName = temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = temp.name.givenName +' '+ temp.name.familyName;
-                    alert('here3');
                 };
                 contact.name.givenName = temp.name.givenName;
                 contact.name.familyName = temp.name.familyName;
                 contact.note = temp.note;
                 if (contact.emails != null && contact.emails != undefined) {
-                    alert('3');
                     contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
                         var tempId = innerElement.id;
                         innerElement = temp.emails[innerIndex];
@@ -1465,7 +1462,6 @@ var app;
                 };
                 
                 if (contact.phoneNumbers != null && contact.phoneNumbers != undefined) {
-                    alert('4');
                     contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                         var tempId = innerElement.id;
                         innerElement = temp.phoneNumbers[innerIndex];
@@ -1474,24 +1470,21 @@ var app;
                 };
                 
                 if (contact.addresses != null && contact.addresses != undefined) {
-                    alert('5');
                     contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
                         innerElement.formatted = temp.addresses[innerIndex];
                     });                    
                 };
 
-                alert('7');
                 app.data.customers[indx] = contact;
                 alert(JSON.stringify(contact));  
                 alert(JSON.stringify(newContact));
                 newContact.displayName = contact.displayName;
                 newContact.id = contact.id;
-                //newContact.rawId = contact.rawId;
+                newContact.rawId = contact.rawId;
                 newContact.name = contact.name;
                 newContact.emails = contact.emails;
                 newContact.phoneNumbers = contact.phoneNumbers;
                 newContact.note = contact.note;
-                alert('8');
                 alert(JSON.stringify(newContact));
                 newContact.save(function(data) {
                     alert('saved:');
@@ -1499,7 +1492,7 @@ var app;
                 },function(err) {
                     alert('err:');
                     alert(err);
-                });
+                }); 
                 /*contact.location = {
                     count : 0,
                     location : contact.note

@@ -1442,7 +1442,7 @@ var app;
                         };
                     };
                 };
-                alert('here');
+                alert(contact);
                 if (contact.honorificPrefix != undefined || contact.honorificPrefix != null) {
                     contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
@@ -1452,6 +1452,7 @@ var app;
                     contact.name.formatted = temp.name.givenName +' '+ temp.name.familyName;
                     alert('here3');
                 };
+                alert('3');
                 //contact.name.givenName = temp.name.givenName;
                 //contact.name.familyName = temp.name.familyName;
                 contact.note = temp.note;

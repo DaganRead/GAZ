@@ -1469,8 +1469,6 @@ var app;
                         innerElement.formatted = temp.addresses[innerIndex];
                     });                    
                 };
-                alert(JSON.stringify(contact));
-                alert(JSON.stringify(contact.emails));
                 app.data.customers[indx] = contact;
                 newContact.displayName = contact.displayName;
                 newContact.id = contact.id;

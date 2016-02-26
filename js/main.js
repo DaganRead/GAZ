@@ -1422,7 +1422,7 @@ var app;
                     givenName : element.children[1].value||element.children[1].placeholder,
                     familyName : element.children[2].value||element.children[2].placeholder
                 };
-
+                element.children[0].children[0].value = temp.name.givenName +' '+ temp.name.familyName;
                 for (var i = 3; i < element.children.length; i++) {
                     if (element.children[i].type == 'email') {
                         if (element.children[i].value != '') {
@@ -1488,11 +1488,11 @@ var app;
                     count : 0,
                     location : contact.note
                 };*/
-                var foo = JSON.stringify(app.data.customers.shift());
+                /*var foo = JSON.stringify(app.data.customers.shift());
                 window.setTimeout(function() {
                     app.data.customers.unshift(JSON.parse(foo));
                     app.store('customer');
-                }, 100);
+                }, 100);*/
                 app.store('customer');
             }
         },

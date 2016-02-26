@@ -1426,9 +1426,9 @@ var app;
                 for (var i = 3; i < element.children.length; i++) {
                     if (element.children[i].type == 'email') {
                         if (element.children[i].value != '') {
-                            temp.emails.push(new ContactField('home', element.children[i].value, false));
+                            temp.emails.push(element.children[i].value);
                         }else{
-                            temp.emails.push(new ContactField('home', element.children[i].placeholder, false));
+                            temp.emails.push(element.children[i].placeholder);
                         };
                     }else if(element.children[i].tagName == 'ARTICLE'){
                         temp.note = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
@@ -1436,13 +1436,12 @@ var app;
                         temp.addresses.push(element.children[i].value);
                     }else{
                         if (element.children[i].value != '' && element.children[i].value != undefined) {
-                            temp.phoneNumbers.push(new ContactField('mobile', element.children[i].value, false));
+                            temp.phoneNumbers.push(element.children[i].value);
                         }else if (element.children[i].placeholder != '' && element.children[i].placeholder != undefined) {
-                            temp.phoneNumbers.push(new ContactField('mobile', element.children[i].placeholder, false));
+                            temp.phoneNumbers.push(element.children[i].placeholder);
                         };
                     };
                 };
-                alert(JSON.stringify(temp));
                 if (contact.honorificPrefix != undefined && contact.honorificPrefix != null) {
                     contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
@@ -1461,9 +1460,7 @@ var app;
                 
                 if (contact.phoneNumbers != null) {
                     contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                        var tempId = innerElement.id;
-                        innerElement = temp.phoneNumbers[innerIndex];
-                        innerElement.id = tempId;
+                        contact.phoneNumbers[innerIndex].value = temp.phoneNumbers[innerIndex];
                     });
                 };
                 

@@ -1442,6 +1442,7 @@ var app;
                         };
                     };
                 };
+                alert(JSON.stringify(temp));
                 if (contact.honorificPrefix != undefined && contact.honorificPrefix != null) {
                     contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
@@ -1487,7 +1488,12 @@ var app;
                     count : 0,
                     location : contact.note
                 };*/
-                //app.store('customer');
+                var foo = JSON.stringify(app.data.customers.shift());
+                window.setTimeout(function() {
+                    app.data.customers.unshift(JSON.parse(foo));
+                    app.store('customer');
+                }, 100);
+                app.store('customer');
             }
         },
         delete : {
@@ -1501,13 +1507,12 @@ var app;
                                     element.total -= app.data.sales[idx].total;
                                 };
                             });
-                            var foo = JSON.stringify(app.data.slaughters.shift());
-                            window.setTimeout(function() {
-                                app.data.slaughters.unshift(JSON.parse(foo));
-                                app.store('slaughter');
-                            }, 100);
                             app.data.sales.splice(idx, 1);
-                            app.store('sale');
+                            var foo = JSON.stringify(app.data.sales.shift());
+                            window.setTimeout(function() {
+                                app.data.sales.unshift(JSON.parse(foo));
+                                app.store('sale');
+                            }, 100);
                         };
                     },
                     'Confirm Removal',
@@ -1520,7 +1525,11 @@ var app;
                     function(buttonIndex) {
                         if (buttonIndex) {
                             app.data.customers.splice(idx, 1);
-                            app.store('customer');
+                            var foo = JSON.stringify(app.data.customers.shift());
+                            window.setTimeout(function() {
+                                app.data.customers.unshift(JSON.parse(foo));
+                                app.store('customer');
+                            }, 100);
                         };
                     },
                     'Confirm Removal',
@@ -1796,7 +1805,6 @@ var app;
                             tempNumber = 1,
                             syncNumber = 1;
                         contacts.forEach(function(element, index, array) {
-                            alert(JSON.stringify(element));
                             if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
                             tempNumber ++;
                                 if (app.data.customers.indexOf(element) == -1) {

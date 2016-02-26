@@ -1455,10 +1455,12 @@ var app;
                 contact.note = temp.note;
                 if (contact.emails != null) {
                     contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
+                        alert(innerElement);
                         var tempId = innerElement.id;
                         innerElement = temp.emails[innerIndex];
                         innerElement.id = tempId;
                     });
+                    alert('emails')
                 };
                 
                 if (contact.phoneNumbers != null) {

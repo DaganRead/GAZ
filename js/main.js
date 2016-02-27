@@ -1827,9 +1827,9 @@ var app;
                                     });
                                     alert('alive');
                                     alert(JSON.stringify(app.data.customers));
-                                    app.data.customers.sort(function(a, b) {
+                                    /*app.data.customers.sort(function(a, b) {
                                         return a.name.givenName.toUpperCase().localeCompare(b.name.givenName.toUpperCase());
-                                    });
+                                    });*/
                                     alert('alive');
                                     alert(JSON.stringify(app.data.customers));
                                     //app.store('customer');

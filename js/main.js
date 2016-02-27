@@ -1792,7 +1792,13 @@ var app;
             customers : function() {
                 function onPrompt(results) {
                 //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
-                    function onSuccess(contacts) {
+
+                    // find all contacts with 'Bob' in any name field
+                    var options      = new ContactFindOptions();
+                    options.filter   = results.input1;
+                    options.multiple = true;
+                    var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+                    navigator.contacts.find(fields, function(contacts) {
                         var msg = '',
                             temp = '',
                             syncArr = [],
@@ -1827,19 +1833,10 @@ var app;
                             'Confirm Sync',
                             ['Add','Cancel']
                         );
-                    };
-
-                    function onError(contactError) {
+                    }, function onError(contactError) {
                         //alert(results.input1);
                         navigator.notification.alert('error', function() {}, 'No Contacts Found!', 'Try Again');
-                    };
-
-                    // find all contacts with 'Bob' in any name field
-                    var options      = new ContactFindOptions();
-                    options.filter   = results.input1;
-                    options.multiple = true;
-                    var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
-                    navigator.contacts.find(fields, onSuccess, onError, options);
+                    }, options);
             };
 
             navigator.notification.prompt(

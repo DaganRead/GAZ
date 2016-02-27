@@ -1818,17 +1818,22 @@ var app;
                     navigator.notification.confirm(
                             msg,
                             function(buttonIndex) {
-                                if (buttonIndex) {
+                                alert(buttonIndex);
+                                if (buttonIndex == true) {
                                     syncArr.forEach(function(element, index, array) {
-                                        alert('alive');
                                         var newCustomer = element;
                                         newCustomer.synced = true;
                                         app.data.customers.push(newCustomer);
                                     });
+                                    alert('alive');
+                                    alert(JSON.stringify(app.data.customers));
                                     app.data.customers.sort(function(a, b) {
-                                        return a.name.givenName.localeCompare(b.name.givenName);
+                                        return a.name.givenName.toUpperCase().localeCompare(b.name.givenName.toUpperCase());
                                     });
+                                    alert('alive');
+                                    alert(JSON.stringify(app.data.customers));
                                     app.store('customer');
+                                    alert(end);
                                 };
                             },
                             'Confirm Sync',

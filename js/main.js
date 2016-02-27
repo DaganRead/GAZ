@@ -1797,11 +1797,11 @@ var app;
                     var options      = new ContactFindOptions();
                     options.filter   = results.input1;
                     options.multiple = true;
-                    var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+                    var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name],
+                        syncArr      = [];
                     navigator.contacts.find(fields, function(contacts) {
                         var msg = '',
                             temp = '',
-                            syncArr = [],
                             tempNumber = 1,
                             syncNumber = 1;
                         contacts.forEach(function(element, index, array) {
@@ -1820,6 +1820,7 @@ var app;
                             function(buttonIndex) {
                                 if (buttonIndex) {
                                     syncArr.forEach(function(element, index, array) {
+                                        alert('alive');
                                         var newCustomer = element;
                                         newCustomer.synced = true;
                                         app.data.customers.push(newCustomer);

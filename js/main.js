@@ -1832,7 +1832,7 @@ var app;
                                     });
                                     alert('alive');
                                     alert(JSON.stringify(app.data.customers));
-                                    app.store('customer');
+                                    //app.store('customer');
                                     alert(end);
                                 };
                             },

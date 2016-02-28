@@ -919,6 +919,7 @@ var app;
 
             Object.observe(app.data.customers, function(changes) {
                 changes.forEach(function(elementi, indexi, arrayi) {
+                        alert(indexi);
                     var arr = elementi.object, 
                         oldArr = elementi.oldValue,    
                         HTMLFrag = '',
@@ -930,7 +931,7 @@ var app;
                         return a.name.givenName.localeCompare(b.name.givenName);
                     });
                     arr.forEach(function(element, index, array) {
-                                alert(index);
+                                //alert(index);
                                 newChar = element.name.givenName.charAt(0);
                                 if (newChar < compareChar) {
                                     if (element == array[0]) {

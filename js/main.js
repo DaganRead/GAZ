@@ -1798,7 +1798,8 @@ var app;
                     options.filter   = results.input1;
                     options.multiple = true;
                     var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name],
-                        syncArr      = [];
+                        syncArr      = [],
+                        tempArr      = app.data.customers;
                     navigator.contacts.find(fields, function(contacts) {
                         var msg = '',
                             temp = '',
@@ -1819,15 +1820,16 @@ var app;
                             msg,
                             function(buttonIndex) {
                                 if (buttonIndex == 1) {
+                                    alert(JSON.stringify(app.data.customers));
                                     syncArr.forEach(function(element, index, array) {
                                         var newCustomer = element;
                                         newCustomer.synced = true;
-                                        app.data.customers.push(newCustomer);
+                                        tempArr.push(newCustomer);
                                     });
-                                    /*app.data.customers.sort(function(a, b) {
+                                    app.data.customers = tempArr;
+                                    app.data.customers.sort(function(a, b) {
                                         return a.name.givenName.toUpperCase().localeCompare(b.name.givenName.toUpperCase());
-                                    });*/
-                                    alert('alive');
+                                    });
                                     alert(JSON.stringify(app.data.customers));
                                     //app.store('customer');
                                     alert('end');

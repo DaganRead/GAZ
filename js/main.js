@@ -918,8 +918,6 @@ var app;
             });
 
             Object.observe(app.data.customers, function(changes) {
-                    alert(changes);
-                    alert(JSON.parse(changes));
                     var indexi = changes.length - 1,
                         arr = changes[indexi].object, 
                         oldArr = changes[indexi].oldValue,    
@@ -927,7 +925,7 @@ var app;
                         newChar,
                         compareChar = '9',
                         numbersStarted = false;
-                    alert(JSON.parse(changes));
+                    alert(changes[indexi]);
                     arr.sort(function(a, b) {
                         return a.name.givenName.localeCompare(b.name.givenName);
                     });

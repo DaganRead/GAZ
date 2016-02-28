@@ -918,6 +918,8 @@ var app;
             });
 
             Object.observe(app.data.customers, function(changes) {
+                    alert(changes);
+                    alert(JSON.parse(changes));
                     var indexi = changes.length - 1,
                         arr = changes[indexi].object, 
                         oldArr = changes[indexi].oldValue,    

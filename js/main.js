@@ -918,10 +918,9 @@ var app;
             });
 
             Object.observe(app.data.customers, function(changes) {
-                changes.forEach(function(elementi, indexi, arrayi) {
-                        alert(indexi);
-                    var arr = elementi.object, 
-                        oldArr = elementi.oldValue,    
+                    var indexi = changes.length - 1,
+                        arr = changes[indexi].object, 
+                        oldArr = changes[indexi].oldValue,    
                         HTMLFrag = '',
                         newChar,
                         compareChar = '9',
@@ -1105,7 +1104,6 @@ var app;
                                 };
                             app.DOM.customers.innerHTML = HTMLFrag;
                     });
-                });
             });
 
 

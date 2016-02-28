@@ -925,8 +925,7 @@ var app;
                         newChar,
                         compareChar = '9',
                         numbersStarted = false;
-                    alert(indexi);
-                    alert(JSON.parse(arr));
+                    alert(JSON.parse(changes));
                     arr.sort(function(a, b) {
                         return a.name.givenName.localeCompare(b.name.givenName);
                     });

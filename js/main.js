@@ -1818,8 +1818,7 @@ var app;
                     navigator.notification.confirm(
                             msg,
                             function(buttonIndex) {
-                                alert(buttonIndex);
-                                if (buttonIndex == true) {
+                                if (buttonIndex == 1) {
                                     syncArr.forEach(function(element, index, array) {
                                         var newCustomer = element;
                                         newCustomer.synced = true;
@@ -1831,7 +1830,7 @@ var app;
                                     alert('alive');
                                     alert(JSON.stringify(app.data.customers));
                                     //app.store('customer');
-                                    alert(end);
+                                    alert('end');
                                 };
                             },
                             'Confirm Sync',

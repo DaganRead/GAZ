@@ -842,9 +842,8 @@ var app;
                 };
             }
         },
-        binding : function (){
-            Object.observe(app.data.sales, function(changes) {
-                changes.forEach(function(element, index, array) {
+        binding : {
+            sales : function() {
                     var HTMLFrag = '',
                     total = 0;
                     app.data.sales.forEach(function(innerElement, innerIndex, innerArray) {
@@ -912,24 +911,18 @@ var app;
                                 HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.dataset.index)" class="cancel" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"/></fieldset>';
-                            });
+                    });
                     app.DOM.sales.innerHTML = HTMLFrag;
-                });
-            });
-
-            Object.observe(app.data.customers, function(changes) {
-                    var indexi = changes.length - 1,
-                        arr = changes[indexi].object, 
-                        oldArr = changes[indexi].oldValue,    
-                        HTMLFrag = '',
+            },
+            customers : function() {
+                    var HTMLFrag = '',
                         newChar,
                         compareChar = '9',
                         numbersStarted = false;
-                    alert(changes[indexi]);
-                    arr.sort(function(a, b) {
+                    app.data.customers.sort(function(a, b) {
                         return a.name.givenName.localeCompare(b.name.givenName);
                     });
-                    arr.forEach(function(element, index, array) {
+                    app.data.customers.forEach(function(element, index, array) {
                                 //alert(index);
                                 newChar = element.name.givenName.charAt(0);
                                 if (newChar < compareChar) {
@@ -1104,21 +1097,17 @@ var app;
                                 };
                             app.DOM.customers.innerHTML = HTMLFrag;
                     });
-            });
-
-
-            Object.observe(app.data.items, function(changes) {      
-                changes.forEach(function(element, index, array) {
-                    var arr = element.object,
-                        HTMLFrag = '', 
+            },
+            items : function() {      
+                    var HTMLFrag = '', 
                         newChar,
                         compareChar = '9',
                         numbersStarted = false;
                     //refresh with this data;
-                    arr.sort(function(a, b) {
+                    app.data.items.sort(function(a, b) {
                         return a.itemName.localeCompare(b.itemName);
                     });
-                    arr.forEach(function(innerElement, innerIndex, innerArray) {
+                    app.data.items.forEach(function(innerElement, innerIndex, innerArray) {
                         newChar = innerElement.itemName.charAt(0);
                             if (newChar < compareChar) {
                                 if (innerElement == innerArray[0]) {
@@ -1171,16 +1160,14 @@ var app;
                         
                     });
                     app.DOM.items.innerHTML = HTMLFrag;
-                });
-            });
-            Object.observe(app.data.slaughters, function(changes) {
-                changes.forEach(function(element, index, array) {
+            },
+            slaughters : function(changes) {
                         HTMLFrag = '';
                         var newChar,
                             compareChar = '9',
                             numbersStarted = false;
                         //refresh with this data;
-                        element.object.forEach(function(innerElement, innerIndex, innerArray) {
+                        app.data.slaughters.forEach(function(innerElement, innerIndex, innerArray) {
                             HTMLFrag += '<article><span class="slaughterDate">';
                             HTMLFrag += innerElement.slaughterDate;
                             HTMLFrag += '</span><b>-</b><span>Total: </span><input type="text" value="R';
@@ -1190,12 +1177,8 @@ var app;
                             HTMLFrag += '" /></article>';
                         });
                         app.DOM.slaughters.innerHTML = HTMLFrag;
-                });
-            });
-            Object.observe(app.data.locations, function(changes) {
-                changes.forEach(function(element, index, array) {
-                    if (element.type === "add") {
-                        //refresh with this data;
+            },
+            locations : function(changes) {
                         HTMLFrag = '';
                         HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location"><figcaption id="newSaleLocation"></figcaption></figure><input type="text" placeholder="Last Name" onblur="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" onblur="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
                         HTMLFrag += '<option disabled selected value=""></option>';
@@ -1214,9 +1197,7 @@ var app;
                                 temp[i].innerHTML = HTMLFrag;
                             };
                         };
-                    };
-                });
-            });
+            }
         },
         accordion : function(target) {
             var container = target.parentNode.parentNode;
@@ -1393,11 +1374,7 @@ var app;
                         };
                     });
                     app.store('sale');
-                            var foo = JSON.stringify(app.data.slaughters.shift());
-                            window.setTimeout(function() {
-                                app.data.slaughters.unshift(JSON.parse(foo));
-                                app.store('slaughter');
-                            }, 100);
+                    app.binding.sales();
                 }();
 
             },
@@ -1487,6 +1464,7 @@ var app;
                     app.data.customers.unshift(JSON.parse(foo));
                     app.store('customer');
                 }, 100);*/
+                app.binding.customers();
                 app.store('customer');
             }
         },
@@ -1502,11 +1480,8 @@ var app;
                                 };
                             });
                             app.data.sales.splice(idx, 1);
-                            var foo = JSON.stringify(app.data.sales.shift());
-                            window.setTimeout(function() {
-                                app.data.sales.unshift(JSON.parse(foo));
-                                app.store('sale');
-                            }, 100);
+                            app.binding.sales();
+                            app.store('sale');
                         };
                     },
                     'Confirm Removal',
@@ -1829,7 +1804,8 @@ var app;
                                     /*app.data.customers.sort(function(a, b) {
                                         return a.name.givenName.toUpperCase().localeCompare(b.name.givenName.toUpperCase());
                                     });*/
-                                    //app.store('customer');
+                                    app.binding.customers();
+                                    app.store('customer');
                                 };
                             },
                             'Confirm Sync',

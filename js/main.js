@@ -918,9 +918,7 @@ var app;
             });
 
             Object.observe(app.data.customers, function(changes) {
-                alert('caled');
                 changes.forEach(function(elementi, indexi, arrayi) {
-                    alert(indexi);
                     var arr = elementi.object, 
                         oldArr = elementi.oldValue,    
                         HTMLFrag = '',
@@ -932,7 +930,7 @@ var app;
                         return a.name.givenName.localeCompare(b.name.givenName);
                     });
                     arr.forEach(function(element, index, array) {
-                        alert(index);
+                                alert(index);
                                 newChar = element.name.givenName.charAt(0);
                                 if (newChar < compareChar) {
                                     if (element == array[0]) {
@@ -1801,7 +1799,8 @@ var app;
                     options.filter   = results.input1;
                     options.multiple = true;
                     var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name],
-                        syncArr      = [];
+                        syncArr      = [],
+                        tempArr      = app.data.customers;
                     navigator.contacts.find(fields, function(contacts) {
                         var msg = '',
                             temp = '',
@@ -1825,12 +1824,12 @@ var app;
                                     syncArr.forEach(function(element, index, array) {
                                         var newCustomer = element;
                                         newCustomer.synced = true;
-                                        app.data.customers.push(newCustomer);
+                                        tempArr.push(newCustomer);
                                     });
+                                    app.data.customers = tempArr;
                                     /*app.data.customers.sort(function(a, b) {
                                         return a.name.givenName.toUpperCase().localeCompare(b.name.givenName.toUpperCase());
                                     });*/
-                                    alert(JSON.stringify(app.data.customers));
                                     //app.store('customer');
                                 };
                             },

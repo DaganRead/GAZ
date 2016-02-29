@@ -849,10 +849,11 @@ var app;
         },
         binding : {
             sales : function() {
-                alert('called here');
                     var HTMLFrag = '',
                     total = 0;
+                    alert('0');
                     app.data.sales.forEach(function(innerElement, innerIndex, innerArray) {
+                        alert('1');
                                 HTMLFrag +='<fieldset data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"><legend>&nbsp;';
@@ -912,12 +913,13 @@ var app;
                                 HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '" onblur="app.update.sale(this)" > '; 
-                                HTMLFrag += element.notes;
+                                HTMLFrag += innerElement.notes;
                                 HTMLFrag += '</textarea>';
                                 HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.dataset.index)" class="cancel" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"/></fieldset>';
                     });
+                    alert('2');
                     app.DOM.sales.innerHTML = HTMLFrag;
             },
             customers : function() {
@@ -995,11 +997,11 @@ var app;
                                     HTMLFrag += index;
                                     HTMLFrag += '"><legend><input type="button" value="';
                                     HTMLFrag += element.displayName;
-                                            HTMLFrag += '" onclick="app.accordion(this)" ';
-                                            HTMLFrag += ' data-index="';
-                                            HTMLFrag += index;
-                                            HTMLFrag += '"/></legend>';
-                                            HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                    HTMLFrag += '" onclick="app.accordion(this)" ';
+                                    HTMLFrag += ' data-index="';
+                                    HTMLFrag += index;
+                                    HTMLFrag += '"/></legend>';
+                                    HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
                                     HTMLFrag += element.name.givenName;
                                     HTMLFrag += '" /><input type="text" onblur="app.update.customer(this)" placeholder="';
                                     HTMLFrag += element.name.familyName;
@@ -1167,9 +1169,9 @@ var app;
                     });
                     app.DOM.items.innerHTML = HTMLFrag;
             },
-            slaughters : function(changes) {
-                        HTMLFrag = '';
-                        var newChar,
+            slaughters : function() {
+                        var HTMLFrag = '',
+                            newChar,
                             compareChar = '9',
                             numbersStarted = false;
                         //refresh with this data;
@@ -1184,8 +1186,8 @@ var app;
                         });
                         app.DOM.slaughters.innerHTML = HTMLFrag;
             },
-            locations : function(changes) {
-                        HTMLFrag = '';
+            locations : function() {
+                        var HTMLFrag = '';
                         HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location"><figcaption id="newSaleLocation"></figcaption></figure><input type="text" placeholder="Last Name" onblur="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" onblur="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
                         HTMLFrag += '<option disabled selected value=""></option>';
                         app.data.locations.forEach(function(element, index, array) {

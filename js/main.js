@@ -1047,7 +1047,7 @@ var app;
                 alert('after');
                 this.store('sale');
                 alert(JSON.stringify(this.data.sales));
-                this.binding.slaughters();
+                //this.binding.slaughters();
                 this.store('slaughter');
                 alert('sales store func called');
             };

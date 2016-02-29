@@ -1,4 +1,5 @@
 var app;
+function onDeviceReady() {
     app = {
         picked : false,
         contactCached : null,
@@ -1869,3 +1870,5 @@ var app;
         alert("Error = " + contactError.code);
     };
     app.initialize();
+};
+document.addEventListener("deviceready", onDeviceReady, false);

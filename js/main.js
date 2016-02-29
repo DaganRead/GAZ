@@ -649,7 +649,7 @@ var app;
                         newSale.total += foo.totalWeight * foo.itemPrice;
                         if (foo.quantity != 0) {
                             this.forms.newSale.purchaseTable.push(JSON.stringify(foo));
-                            foo.weights = [];
+                            foo.weights = []; 
                         };
                 };
             };

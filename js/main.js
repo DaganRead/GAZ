@@ -1235,7 +1235,9 @@ var app;
             navigator.contacts.pickContact(function(contact){
                 app.picked= false;
                     app.data.customers.forEach(function(element, index, array) {
+                        alert('element');
                         alert(element);
+                        alert(JSON.parse(element));
                         if (contact.name.givenName != null && contact.name.familyName != null) {
                             document.getElementById('newSaleFirstName').value = contact.name.givenName;
                             document.getElementById('newSaleLastName').value = contact.name.familyName;
@@ -1254,7 +1256,6 @@ var app;
                                 }else{
                                     document.getElementById('newSaleAddress').value = 'Address';
                                 };
-                                alert(JSON.parse(element));
                                 if (element.location!=undefined) {
                                     document.getElementById('newSaleLocation').innerHTML = element.location;
                                     for (var i = 0; i < document.getElementById('newSaleLocationSelect').options.length; i++) {
@@ -1480,7 +1481,7 @@ var app;
                     app.data.customers.unshift(JSON.parse(foo));
                     app.store('customer');
                 }, 100);*/
-                app.binding.customers();
+                //app.binding.customers();
                 app.store('customer');
             }
         },

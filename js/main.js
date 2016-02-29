@@ -615,6 +615,7 @@ var app;
             }
         },
         newSale : function() {
+            alert('here');
             this.forms.newSale.purchaseTable = [];
             // Update mapped structure
             var purchaseTableSelects = document.getElementsByTagName('select'),
@@ -688,6 +689,7 @@ var app;
                 this.store('sale');
                 this.binding.slaughters();
                 app.store('slaughter');
+                alert('sales store func called');
             };
         },
         newCustomer : function() {
@@ -1233,6 +1235,7 @@ var app;
             navigator.contacts.pickContact(function(contact){
                 app.picked= false;
                     app.data.customers.forEach(function(element, index, array) {
+                        alert(element);
                         if (contact.name.givenName != null && contact.name.familyName != null) {
                             document.getElementById('newSaleFirstName').value = contact.name.givenName;
                             document.getElementById('newSaleLastName').value = contact.name.familyName;

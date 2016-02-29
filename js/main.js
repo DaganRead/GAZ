@@ -1271,7 +1271,9 @@ var app;
                                     
                                 };
                             if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
+                                alert('here2');
                                 app.picked = true;
+                                app.forms.newSale.location().innerHTML = document.getElementById('newSaleLocationSelect').selectedOptions[0].value;
                                 /*element.location = {
                                     count : 0,
                                     location : document.getElementById('newSaleLocationSelect').selectedOptions[0].value

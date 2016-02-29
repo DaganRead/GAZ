@@ -1041,14 +1041,14 @@ var app;
                         element.total += newSale.total;
                     };
                 });
-                alert(JSON.stringify(newSale));
-                alert(JSON.stringify(this.data.sales));
                 this.data.sales.push(newSale);
+                alert('before');
                 this.binding.sales();
+                alert('after');
                 this.store('sale');
                 alert(JSON.stringify(this.data.sales));
                 this.binding.slaughters();
-                app.store('slaughter');
+                this.store('slaughter');
                 alert('sales store func called');
             };
         },
@@ -1238,7 +1238,6 @@ var app;
             navigator.contacts.pickContact(function(contact){
                 app.picked= false;
                     app.data.customers.forEach(function(element, index, array) {
-                        alert(element.location.location);
                         if (contact.name.givenName != null && contact.name.familyName != null) {
                             document.getElementById('newSaleFirstName').value = contact.name.givenName;
                             document.getElementById('newSaleLastName').value = contact.name.familyName;

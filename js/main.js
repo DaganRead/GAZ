@@ -670,6 +670,7 @@ var app;
                     //add to loaded dataset
                     this.data.customers.push(newCustomer);
                     //update dataset
+                    this.binding.customers();
                     this.store('customer');
                 };
             };
@@ -683,12 +684,10 @@ var app;
                     };
                 });
                 this.data.sales.push(newSale);
+                this.binding.sales();
                 this.store('sale');
-                            var bar = JSON.stringify(app.data.slaughters.shift());
-                            window.setTimeout(function() {
-                                app.data.slaughters.unshift(JSON.parse(bar));
-                                app.store('slaughter');
-                            }, 100);
+                this.binding.slaughters();
+                app.store('slaughter');
             };
         },
         newCustomer : function() {
@@ -719,6 +718,7 @@ var app;
             if (!match) {
                 this.data.customers.push(newCustomer);
                 //update dataset
+                this.binding.customers();
                 this.store('customer');
             };
         },
@@ -733,6 +733,7 @@ var app;
                 //alert(JSON.stringify(newItem.itemPrice));
                 this.data.items.push(newItem);
                 //update dataset
+                this.binding.items();
                 this.store('item');         
             };
         },
@@ -745,6 +746,7 @@ var app;
             if (this.data.slaughters.indexOf(newSlaughter) == -1) {
                 this.data.slaughters.push(newSlaughter);
                 //update dataset
+                this.binding.slaughters();
                 this.store('slaughter');    
             };  
         },
@@ -757,6 +759,7 @@ var app;
             if (this.data.locations.indexOf(JSON.stringify(newLocation)) == -1) {
                 this.data.locations.push(newLocation);
                 //update dataset
+                this.binding.locations();
                 this.store('location'); 
             };
             var temp = document.getElementsByTagName('input');

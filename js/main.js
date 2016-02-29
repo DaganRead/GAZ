@@ -1264,10 +1264,11 @@ var app;
                                             document.getElementById('newSaleLocationSelect').options[i].selected = false;
                                         };
                                     };
-                                }else{
                                     if(!classie.hasClass(document.getElementById('newSale'), 'acc-open-loc')){
                                         classie.addClass(document.getElementById('newSale'), 'acc-open-loc');
                                     };
+                                }else{
+                                    
                                 };
                             if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
                                 app.picked = true;

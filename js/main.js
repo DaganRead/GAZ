@@ -1251,10 +1251,11 @@ var app;
                                 }else{
                                     document.getElementById('newSaleAddress').value = 'Address';
                                 };
+                                alert(JSON.parse(element));
                                 if (element.location!=undefined) {
                                     document.getElementById('newSaleLocation').innerHTML = element.location;
                                     for (var i = 0; i < document.getElementById('newSaleLocationSelect').options.length; i++) {
-                                        if (document.getElementById('newSaleLocationSelect').options[i].value == element.location) {
+                                        if (document.getElementById('newSaleLocationSelect').options[i].value == element.location.location) {
                                             document.getElementById('newSaleLocationSelect').options[i].selected = true;
                                         }else{
                                             document.getElementById('newSaleLocationSelect').options[i].selected = false;
@@ -1267,10 +1268,10 @@ var app;
                                 };
                             if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
                                 app.picked = true;
-                                element.location = {
+                                /*element.location = {
                                     count : 0,
                                     location : document.getElementById('newSaleLocationSelect').selectedOptions[0].value
-                                };
+                                };*/
                                 app.store('customer');
                                 if(!classie.hasClass(document.getElementById('newSale'), 'acc-open')){
                                     classie.addClass(document.getElementById('newSale'), 'acc-open');

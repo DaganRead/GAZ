@@ -688,7 +688,7 @@ var app;
                 this.binding.sales();
                 this.store('sale');
                 this.binding.slaughters();
-                app.store('slaughter');
+                this.store('slaughter');
                 alert('sales store func called');
             };
         },
@@ -849,6 +849,7 @@ var app;
         },
         binding : {
             sales : function() {
+                alert('called here');
                     var HTMLFrag = '',
                     total = 0;
                     app.data.sales.forEach(function(innerElement, innerIndex, innerArray) {

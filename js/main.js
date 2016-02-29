@@ -1236,8 +1236,7 @@ var app;
                 app.picked= false;
                     app.data.customers.forEach(function(element, index, array) {
                         alert('element');
-                        alert(element);
-                        alert(JSON.parse(element));
+                        alert(element.location);
                         if (contact.name.givenName != null && contact.name.familyName != null) {
                             document.getElementById('newSaleFirstName').value = contact.name.givenName;
                             document.getElementById('newSaleLastName').value = contact.name.familyName;

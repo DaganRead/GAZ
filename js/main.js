@@ -1043,7 +1043,7 @@ var app;
                 });
                 this.data.sales.push(newSale);
                 alert('before');
-                this.binding.sales();
+                //this.binding.sales();
                 alert('after');
                 this.store('sale');
                 alert(JSON.stringify(this.data.sales));

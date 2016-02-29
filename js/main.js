@@ -615,7 +615,7 @@ var app;
             }
         },
         newSale : function() {
-            alert('here');
+            app.forms.newSale.location().innerHTML = document.getElementById('newSaleLocationSelect').selectedOptions[0].value;
             this.forms.newSale.purchaseTable = [];
             // Update mapped structure
             var purchaseTableSelects = document.getElementsByTagName('select'),
@@ -684,6 +684,7 @@ var app;
                         element.total += newSale.total;
                     };
                 });
+                alert('here3');
                 this.data.sales.push(newSale);
                 this.binding.sales();
                 this.store('sale');
@@ -1271,9 +1272,7 @@ var app;
                                     
                                 };
                             if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
-                                alert('here2');
                                 app.picked = true;
-                                app.forms.newSale.location().innerHTML = document.getElementById('newSaleLocationSelect').selectedOptions[0].value;
                                 /*element.location = {
                                     count : 0,
                                     location : document.getElementById('newSaleLocationSelect').selectedOptions[0].value

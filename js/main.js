@@ -677,7 +677,7 @@ var app;
             };
 
 
-            if (this.data.sales.indexOf(JSON.stringify(newSale)) == -1) {
+            if (this.data.sales.indexOf(newSale) == -1) {
                 //add to loaded dataset
                 this.data.slaughters.forEach(function(element, index, array) {
                     if (element.slaughterDate == newSale.slaughterDate) {
@@ -1238,8 +1238,6 @@ var app;
             navigator.contacts.pickContact(function(contact){
                 app.picked= false;
                     app.data.customers.forEach(function(element, index, array) {
-                        alert('element');
-                        alert(element.location.location);
                         if (contact.name.givenName != null && contact.name.familyName != null) {
                             document.getElementById('newSaleFirstName').value = contact.name.givenName;
                             document.getElementById('newSaleLastName').value = contact.name.familyName;
@@ -1280,6 +1278,7 @@ var app;
                                     location : document.getElementById('newSaleLocationSelect').selectedOptions[0].value
                                 };*/
                                 app.store('customer');
+                                app.binding.customers();
                                 if(!classie.hasClass(document.getElementById('newSale'), 'acc-open')){
                                     classie.addClass(document.getElementById('newSale'), 'acc-open');
                                 };

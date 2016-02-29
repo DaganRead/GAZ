@@ -1236,7 +1236,7 @@ var app;
                 app.picked= false;
                     app.data.customers.forEach(function(element, index, array) {
                         alert('element');
-                        alert(element.location);
+                        alert(element.location.location);
                         if (contact.name.givenName != null && contact.name.familyName != null) {
                             document.getElementById('newSaleFirstName').value = contact.name.givenName;
                             document.getElementById('newSaleLastName').value = contact.name.familyName;
@@ -1255,7 +1255,7 @@ var app;
                                 }else{
                                     document.getElementById('newSaleAddress').value = 'Address';
                                 };
-                                if (element.location!=undefined) {
+                                if (element.location.location != '' && element.location.location != undefined) {
                                     document.getElementById('newSaleLocation').innerHTML = element.location;
                                     for (var i = 0; i < document.getElementById('newSaleLocationSelect').options.length; i++) {
                                         if (document.getElementById('newSaleLocationSelect').options[i].value == element.location.location) {

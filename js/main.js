@@ -68,6 +68,9 @@ var app;
             }
         },
         initialize: function() {
+                var public = io.connect('http://gaz-huntingapp.rhcloud.com:8000/public'),
+                    restricted = io.connect('http://gaz-huntingapp.rhcloud.com:8000/restricted');
+
             if (!window.localStorage['installed']) {
                 window.localStorage['installed'] = true;
                 window.localStorage['data'] = JSON.stringify({

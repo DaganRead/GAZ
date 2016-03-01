@@ -3,7 +3,7 @@
     id          = "GAZ"
     versionCode = "10"
     version     = "1.0.0" >
-
+    <access origin="http://gaz-huntingapp.rhcloud.com:8000"/> 
     <!-- versionCode is optional and Android only -->
 
     <name>Farm Manager</name>

@@ -623,7 +623,9 @@ var app;
             }
         },
         newSale : function() {
+            alert('try');
             app.bindings.customer();
+            alert('alive');
             app.forms.newSale.location().innerHTML = document.getElementById('newSaleLocationSelect').selectedOptions[0].value;
             this.forms.newSale.purchaseTable = [];
             // Update mapped structure

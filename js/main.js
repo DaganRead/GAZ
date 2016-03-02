@@ -1870,5 +1870,3 @@ var app;
         alert("Error = " + contactError.code);
     };
     app.initialize();
-var public = io.connect('http://gaz-huntingapp.rhcloud.com:8000/public'),
-restricted = io.connect('http://gaz-huntingapp.rhcloud.com:8000/restricted');

@@ -623,6 +623,7 @@ var app;
             }
         },
         newSale : function() {
+            app.bindings.customer();
             app.forms.newSale.location().innerHTML = document.getElementById('newSaleLocationSelect').selectedOptions[0].value;
             this.forms.newSale.purchaseTable = [];
             // Update mapped structure
@@ -729,7 +730,6 @@ var app;
                 this.data.customers.push(newCustomer);
                 //update dataset
                 this.binding.customers();
-                app.bindings.customer();
                 this.store('customer');
             };
         },

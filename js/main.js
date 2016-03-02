@@ -624,7 +624,8 @@ var app;
         },
         newSale : function() {
             alert('try');
-            app.bindings.customer();
+            alert(JSON.stringify(this.bindings));
+            this.bindings.customer();
             alert('alive');
             
         },

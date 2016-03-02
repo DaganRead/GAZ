@@ -38,6 +38,11 @@ var app;
                 };      
             };
         },
+        bindings : {
+            customers : function() {
+                alert('called');
+            }
+        },
         store : function(type) {
             switch(type){
                         case "sale" :
@@ -724,6 +729,7 @@ var app;
                 this.data.customers.push(newCustomer);
                 //update dataset
                 this.binding.customers();
+                app.bindings.customer();
                 this.store('customer');
             };
         },

@@ -68,6 +68,9 @@ var app;
             }
         },
         initialize: function() {
+/*                var public = io.connect('http://gaz-huntingapp.rhcloud.com:8000/public'),
+                    restricted = io.connect('http://gaz-huntingapp.rhcloud.com:8000/restricted');*/
+
             if (!window.localStorage['installed']) {
                 window.localStorage['installed'] = true;
                 window.localStorage['data'] = JSON.stringify({
@@ -671,7 +674,7 @@ var app;
                     //add to loaded dataset
                     this.data.customers.push(newCustomer);
                     //update dataset
-                    this.binding.customers();
+                    //this.binding.customers();
                     this.store('customer');
                 };
             };
@@ -685,9 +688,9 @@ var app;
                     };
                 });
                 this.data.sales.push(newSale);
-                this.binding.sales();
+                //this.binding.sales();
                 this.store('sale');
-                this.binding.slaughters();
+                //this.binding.slaughters();
                 this.store('slaughter');
                 alert('sales store func called');
             };
@@ -1278,7 +1281,7 @@ var app;
                                     location : document.getElementById('newSaleLocationSelect').selectedOptions[0].value
                                 };*/
                                 app.store('customer');
-                                app.binding.customers();
+                                //app.binding.customers();
                                 if(!classie.hasClass(document.getElementById('newSale'), 'acc-open')){
                                     classie.addClass(document.getElementById('newSale'), 'acc-open');
                                 };

@@ -718,13 +718,15 @@ function onDeviceReady() {
                                 alert('2');
                                 innerElement.purchaseTable.forEach(function(iiiElement, iiiIndex, iiiArray) {
                                     iiiElement = JSON.parse(iiiElement);
-                                    alert('3');
+                                    
                                     HTMLFrag += '<tr><td colspan="2">';
                                     HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
                                     HTMLFrag += iiiIndex;
                                     HTMLFrag += '" >';
                                     HTMLFrag += '<option disabled selected value=""></option>';
+                                    alert('3');
                                     this.data.items.forEach(function(iiElement, iiIndex, iiArray) {
+                                        alert('3a');
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += iiElement.itemCode;
                                         HTMLFrag += '" '; 

@@ -931,7 +931,7 @@ function onDeviceReady() {
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"/></fieldset>';
                     });
-                    this.DOM.sales.innerHTML = HTMLFrag;
+                    app.DOM.sales.innerHTML = HTMLFrag;
             },
             customers : function() {
                     var HTMLFrag = '',

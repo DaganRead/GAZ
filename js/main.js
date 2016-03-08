@@ -697,7 +697,9 @@ function onDeviceReady() {
                 //this.binding.sales();
                 var HTMLFrag = '',
                     total = 0;
+                    alert('0');
                     this.data.sales.forEach(function(innerElement, innerIndex, innerArray) {
+                        alert('1');
                                 HTMLFrag +='<fieldset data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"><legend>&nbsp;';
@@ -713,7 +715,9 @@ function onDeviceReady() {
                                 }else{
                                     HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
                                 };
+                                alert('2');
                                 innerElement.purchaseTable.forEach(function(iiiElement, iiiIndex, iiiArray) {
+                                    alert('3');
                                     iiiElement = JSON.parse(iiiElement);
                                     HTMLFrag += '<tr><td colspan="2">';
                                     HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
@@ -750,6 +754,7 @@ function onDeviceReady() {
                                     total    += iiiElement.totalWeight * iiiElement.itemPrice;
                                     HTMLFrag += '</td></tr>';
                                 });
+                                alert('4');
                                 HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
                                 HTMLFrag += 'R' + total;
                                 HTMLFrag += '</td></tr></tfoot></table>';
@@ -770,91 +775,7 @@ function onDeviceReady() {
                 this.store('slaughter');
                 alert('sales store func called');
             };
-            /************************************************/
-            var HTMLFrag = '',
-                    total = 0;
-                this.data.sales.forEach(function(element, index, array) {
-                            HTMLFrag +='<fieldset data-index="';
-                            HTMLFrag += index;
-                            HTMLFrag += '"><legend>&nbsp;';
-                            HTMLFrag += element.slaughterDate;
-                            HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
-                            HTMLFrag += element.location;
-                            HTMLFrag+='</figcaption></figure>';
-                            HTMLFrag += element.name.givenName;
-                            HTMLFrag+='&nbsp;';
-                            HTMLFrag += element.name.familyName;
-                            if (index == 0) {
-                                HTMLFrag += '<br class="clear"><table class="purchase-table"><thead><tr><th>Item</th><th></th><th>Qnt</th><th colspan="2"></th><th>Mass</th><th>@</th><th>Total</th></tr></thead><tbody>';
-                            }else{
-                                HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
-                            };
-                            element.purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
-                                innerElement = JSON.parse(innerElement);
-                                HTMLFrag += '<tr><td colspan="2">';
-                                HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
-                                HTMLFrag += innerIndex;
-                                HTMLFrag += '" >';
-                                HTMLFrag += '<option disabled selected value=""></option>';
-                                app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
-                                    HTMLFrag += '<option value="';
-                                    HTMLFrag += iiElement.itemCode;
-                                    HTMLFrag += '" '; 
-                                    if (iiElement.itemCode == innerElement.itemCode) {
-                                        HTMLFrag += 'selected'; 
-                                    };
-                                    HTMLFrag += ' data-price="';
-                                    HTMLFrag += iiElement.itemPrice;
-                                    HTMLFrag += '" >';
-                                    HTMLFrag += iiElement.itemName;
-                                    HTMLFrag += '</option>';
-                                });
-                                HTMLFrag += '</select>';
-                                HTMLFrag += '</td><td colspan="2" class="small"><input type="text" class="quantity" data-index="';
-                                HTMLFrag += innerIndex;         
-                                HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';
-                                HTMLFrag += innerElement.quantity;
-                                HTMLFrag += '"/></td><td colspan="2" class="small"><input type="text" class="weight" data-index="';
-                                HTMLFrag += innerIndex;     
-                                HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';         
-                                HTMLFrag += innerElement.totalWeight + 'kg';
-                                HTMLFrag += '"/></td>';
-                                HTMLFrag += '<td class="priceKG">';
-                                HTMLFrag += 'R ' + innerElement.itemPrice;
-                                HTMLFrag += '</td><td class="priceTag">';
-                                HTMLFrag += 'R ' + innerElement.totalWeight * innerElement.itemPrice;
-                                total    += innerElement.totalWeight * innerElement.itemPrice;
-                                HTMLFrag += '</td></tr>';
-                                /* if (innerElement.weights.length > 1) {
-                                    innerElement.weights.forEach(function(iiElement, iiIndex, iiArray) {
-                                        total += iiElement * innerElement.itemPrice;
-                                        HTMLFrag += '<tr><td colspan="4"></td>';
-                                        HTMLFrag += '<td colspan="2" class="small"><input type="text" class="weight" data-index="';
-                                        HTMLFrag += innerIndex;
-                                        HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';         
-                                        HTMLFrag += iiElement + 'kg';
-                                        HTMLFrag += '"/></td><td class="priceKG">';
-                                        HTMLFrag += 'R ' + innerElement.itemPrice;
-                                        HTMLFrag += '</td><td class="priceTag">';
-                                        HTMLFrag += 'R ' + total;
-                                        HTMLFrag += '</td></tr>';
-                                    });
-                                };*/
-                            });
-                            HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
-                            HTMLFrag += 'R' + total;
-                            HTMLFrag += '</td></tr></tfoot></table>';
-                            total = 0;
-                            HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" data-index="';
-                            HTMLFrag += index;
-                            HTMLFrag += '" onblur="app.update.sale(this)" > '; 
-                            HTMLFrag += element.notes;
-                            HTMLFrag += '</textarea>';
-                            HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.dataset.index)" class="cancel" data-index="';
-                            HTMLFrag += index;
-                            HTMLFrag += '"/></fieldset>';
-                        });
-                app.DOM.sales.innerHTML = HTMLFrag;
+            
             
         },
         newCustomer : function() {

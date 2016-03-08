@@ -699,7 +699,6 @@ function onDeviceReady() {
                     total = 0;
                     alert('0');
                     this.data.sales.forEach(function(innerElement, innerIndex, innerArray) {
-                        alert('1');
                                 HTMLFrag +='<fieldset data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"><legend>&nbsp;';
@@ -715,7 +714,6 @@ function onDeviceReady() {
                                 }else{
                                     HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
                                 };
-                                alert('2');
                                 innerElement.purchaseTable.forEach(function(iiiElement, iiiIndex, iiiArray) {
                                     iiiElement = JSON.parse(iiiElement);
                                     
@@ -724,10 +722,7 @@ function onDeviceReady() {
                                     HTMLFrag += iiiIndex;
                                     HTMLFrag += '" >';
                                     HTMLFrag += '<option disabled selected value=""></option>';
-                                    alert('3');
-                                    alert(app.data.items);
                                     app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
-                                        alert('3a');
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += iiElement.itemCode;
                                         HTMLFrag += '" '; 
@@ -740,7 +735,6 @@ function onDeviceReady() {
                                         HTMLFrag += iiElement.itemName;
                                         HTMLFrag += '</option>';
                                     });
-                                    alert('4');
                                     HTMLFrag += '</select>';
                                     HTMLFrag += '</td><td colspan="2" class="small"><input type="text" class="quantity" data-index="';
                                     HTMLFrag += iiiIndex;         
@@ -758,7 +752,6 @@ function onDeviceReady() {
                                     total    += iiiElement.totalWeight * iiiElement.itemPrice;
                                     HTMLFrag += '</td></tr>';
                                 });
-                                alert('6');
                                 HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
                                 HTMLFrag += 'R' + total;
                                 HTMLFrag += '</td></tr></tfoot></table>';

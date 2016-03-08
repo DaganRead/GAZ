@@ -694,78 +694,7 @@ function onDeviceReady() {
                     };
                 });
                 this.data.sales.push(newSale);
-                //this.binding.sales();
-                var HTMLFrag = '',
-                    total = 0;
-                    alert('0');
-                    this.data.sales.forEach(function(innerElement, innerIndex, innerArray) {
-                                HTMLFrag +='<fieldset data-index="';
-                                HTMLFrag += innerIndex;
-                                HTMLFrag += '"><legend>&nbsp;';
-                                HTMLFrag += innerElement.slaughterDate;
-                                HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
-                                HTMLFrag += innerElement.location;
-                                HTMLFrag+='</figcaption></figure>';
-                                HTMLFrag += innerElement.name.givenName;
-                                HTMLFrag+='&nbsp;';
-                                HTMLFrag += innerElement.name.familyName;
-                                if (innerIndex == 0) {
-                                    HTMLFrag += '<br class="clear"><table class="purchase-table"><thead><tr><th>Item</th><th></th><th>Qnt</th><th colspan="2"></th><th>Mass</th><th>@</th><th>Total</th></tr></thead><tbody>';
-                                }else{
-                                    HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
-                                };
-                                innerElement.purchaseTable.forEach(function(iiiElement, iiiIndex, iiiArray) {
-                                    iiiElement = JSON.parse(iiiElement);
-                                    
-                                    HTMLFrag += '<tr><td colspan="2">';
-                                    HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
-                                    HTMLFrag += iiiIndex;
-                                    HTMLFrag += '" >';
-                                    HTMLFrag += '<option disabled selected value=""></option>';
-                                    app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
-                                        HTMLFrag += '<option value="';
-                                        HTMLFrag += iiElement.itemCode;
-                                        HTMLFrag += '" '; 
-                                        if (iiElement.itemCode == iiiElement.itemCode) {
-                                            HTMLFrag += 'selected'; 
-                                        };
-                                        HTMLFrag += ' data-price="';
-                                        HTMLFrag += iiElement.itemPrice;
-                                        HTMLFrag += '" >';
-                                        HTMLFrag += iiElement.itemName;
-                                        HTMLFrag += '</option>';
-                                    });
-                                    HTMLFrag += '</select>';
-                                    HTMLFrag += '</td><td colspan="2" class="small"><input type="text" class="quantity" data-index="';
-                                    HTMLFrag += iiiIndex;         
-                                    HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';
-                                    HTMLFrag += iiiElement.quantity;
-                                    HTMLFrag += '"/></td><td colspan="2" class="small"><input type="text" class="weight" data-index="';
-                                    HTMLFrag += iiiIndex;  
-                                    HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';         
-                                    HTMLFrag += iiiElement.totalWeight + 'kg';
-                                    HTMLFrag += '"/></td>';
-                                    HTMLFrag += '<td class="priceKG">';
-                                    HTMLFrag += 'R ' + iiiElement.itemPrice;
-                                    HTMLFrag += '</td><td class="priceTag">';
-                                    HTMLFrag += 'R ' + iiiElement.totalWeight * iiiElement.itemPrice;
-                                    total    += iiiElement.totalWeight * iiiElement.itemPrice;
-                                    HTMLFrag += '</td></tr>';
-                                });
-                                HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
-                                HTMLFrag += 'R' + total;
-                                HTMLFrag += '</td></tr></tfoot></table>';
-                                total = 0;
-                                HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" data-index="';
-                                HTMLFrag += innerIndex;
-                                HTMLFrag += '" onblur="app.update.sale(this)" > '; 
-                                HTMLFrag += innerElement.notes;
-                                HTMLFrag += '</textarea>';
-                                HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.dataset.index)" class="cancel" data-index="';
-                                HTMLFrag += innerIndex;
-                                HTMLFrag += '"/></fieldset>';
-                    });
-                    this.DOM.sales.innerHTML = HTMLFrag;
+                this.binding.sales();
                 /*************************/
                 this.store('sale');
                 //this.binding.slaughters();
@@ -932,10 +861,10 @@ function onDeviceReady() {
         },
         binding : {
             sales : function() {
-                    var HTMLFrag = '',
+                var HTMLFrag = '',
                     total = 0;
-                    app.data.sales.forEach(function(innerElement, innerIndex, innerArray) {
-                        alert('1');
+                    alert('0');
+                    this.data.sales.forEach(function(innerElement, innerIndex, innerArray) {
                                 HTMLFrag +='<fieldset data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"><legend>&nbsp;';
@@ -953,6 +882,7 @@ function onDeviceReady() {
                                 };
                                 innerElement.purchaseTable.forEach(function(iiiElement, iiiIndex, iiiArray) {
                                     iiiElement = JSON.parse(iiiElement);
+                                    
                                     HTMLFrag += '<tr><td colspan="2">';
                                     HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
                                     HTMLFrag += iiiIndex;
@@ -1001,7 +931,7 @@ function onDeviceReady() {
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"/></fieldset>';
                     });
-                    app.DOM.sales.innerHTML = HTMLFrag;
+                    this.DOM.sales.innerHTML = HTMLFrag;
             },
             customers : function() {
                     var HTMLFrag = '',

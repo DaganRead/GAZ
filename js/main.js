@@ -623,10 +623,167 @@ var app;
             }
         },
         newSale : function() {
-            alert('try');
-            alert(JSON.stringify(this.bindings));
-            this.bindings.customer();
-            alert('alive');
+            app.forms.newSale.location().innerHTML = document.getElementById('newSaleLocationSelect').selectedOptions[0].value;
+            this.forms.newSale.purchaseTable = [];
+            // Update mapped structure
+            var purchaseTableSelects = document.getElementsByTagName('select'),
+                foo = {
+                    itemCode: '',
+                    quantity: 0,
+                    weights:[],
+                    totalWeight:0,
+                    itemPrice:0
+                },
+                newSale = {
+                slaughterDate: this.forms.newSale.slaughterDate(),
+                name : {
+                    givenName: this.forms.newSale.givenName(),
+                    familyName: this.forms.newSale.familyName()
+                },
+                purchaseTable: this.forms.newSale.purchaseTable,
+                location: this.forms.newSale.location().innerHTML,
+                total: 0,
+                notes : ''
+            };
+            for (var i = 0; i < purchaseTableSelects.length; i++) {
+                if (classie.hasClass(purchaseTableSelects[i], 'touched')) {
+                        foo.itemCode = purchaseTableSelects[i].value;
+                        foo.itemPrice = purchaseTableSelects[i].selectedOptions[0].dataset.price;
+                        foo.quantity = purchaseTableSelects[i].parentNode.nextSibling.children[0].value;
+                        foo.totalWeight = purchaseTableSelects[i].parentNode.nextSibling.nextSibling.children[0].value;
+                        for (var ii = foo.quantity - 1; ii >= 0; ii--) {
+                            foo.weights.push(foo.totalWeight/foo.quantity);
+                        };
+                        newSale.total += foo.totalWeight * foo.itemPrice;
+                        if (foo.quantity != 0) {
+                            this.forms.newSale.purchaseTable.push(JSON.stringify(foo));
+                            foo.weights = [];
+                        };
+                };
+            };
+            
+            if (!this.picked) {
+                var newCustomer = navigator.contacts.create({
+                    "displayName": this.forms.newCustomer.givenName() + ' ' + this.forms.newCustomer.familyName(),
+                    "name" : { 
+                        givenName : this.forms.newCustomer.givenName(),
+                        familyName : this.forms.newCustomer.familyName()
+                    },
+                    "note" : this.forms.newCustomer.location(),
+                    "emails" : [this.forms.newCustomer.email()],
+                    "phoneNumbers" : [this.forms.newCustomer.telephone()],
+                    "addresses" : [this.forms.newCustomer.address()]
+                });
+
+                if (this.data.customers.indexOf(JSON.stringify(newCustomer)) == -1) {
+                    //add to loaded dataset
+                    this.data.customers.push(newCustomer);
+                    //update dataset
+                    //this.binding.customers();
+                    this.store('customer');
+                };
+            };
+
+
+            if (this.data.sales.indexOf(newSale) == -1) {
+                //add to loaded dataset
+                this.data.slaughters.forEach(function(element, index, array) {
+                    if (element.slaughterDate == newSale.slaughterDate) {
+                        element.total += newSale.total;
+                    };
+                });
+                this.data.sales.push(newSale);
+                //this.binding.sales();
+                this.store('sale');
+                //this.binding.slaughters();
+                this.store('slaughter');
+                alert('sales store func called');
+            };
+            /************************************************/
+            var HTMLFrag = '',
+                    total = 0;
+                this.data.sales.forEach(function(element, index, array) {
+                            HTMLFrag +='<fieldset data-index="';
+                            HTMLFrag += index;
+                            HTMLFrag += '"><legend>&nbsp;';
+                            HTMLFrag += element.slaughterDate;
+                            HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
+                            HTMLFrag += element.location;
+                            HTMLFrag+='</figcaption></figure>';
+                            HTMLFrag += element.name.givenName;
+                            HTMLFrag+='&nbsp;';
+                            HTMLFrag += element.name.familyName;
+                            if (index == 0) {
+                                HTMLFrag += '<br class="clear"><table class="purchase-table"><thead><tr><th>Item</th><th></th><th>Qnt</th><th colspan="2"></th><th>Mass</th><th>@</th><th>Total</th></tr></thead><tbody>';
+                            }else{
+                                HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
+                            };
+                            element.purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
+                                innerElement = JSON.parse(innerElement);
+                                HTMLFrag += '<tr><td colspan="2">';
+                                HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
+                                HTMLFrag += innerIndex;
+                                HTMLFrag += '" >';
+                                HTMLFrag += '<option disabled selected value=""></option>';
+                                app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
+                                    HTMLFrag += '<option value="';
+                                    HTMLFrag += iiElement.itemCode;
+                                    HTMLFrag += '" '; 
+                                    if (iiElement.itemCode == innerElement.itemCode) {
+                                        HTMLFrag += 'selected'; 
+                                    };
+                                    HTMLFrag += ' data-price="';
+                                    HTMLFrag += iiElement.itemPrice;
+                                    HTMLFrag += '" >';
+                                    HTMLFrag += iiElement.itemName;
+                                    HTMLFrag += '</option>';
+                                });
+                                HTMLFrag += '</select>';
+                                HTMLFrag += '</td><td colspan="2" class="small"><input type="text" class="quantity" data-index="';
+                                HTMLFrag += innerIndex;         
+                                HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';
+                                HTMLFrag += innerElement.quantity;
+                                HTMLFrag += '"/></td><td colspan="2" class="small"><input type="text" class="weight" data-index="';
+                                HTMLFrag += innerIndex;     
+                                HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';         
+                                HTMLFrag += innerElement.totalWeight + 'kg';
+                                HTMLFrag += '"/></td>';
+                                HTMLFrag += '<td class="priceKG">';
+                                HTMLFrag += 'R ' + innerElement.itemPrice;
+                                HTMLFrag += '</td><td class="priceTag">';
+                                HTMLFrag += 'R ' + innerElement.totalWeight * innerElement.itemPrice;
+                                total    += innerElement.totalWeight * innerElement.itemPrice;
+                                HTMLFrag += '</td></tr>';
+                                /* if (innerElement.weights.length > 1) {
+                                    innerElement.weights.forEach(function(iiElement, iiIndex, iiArray) {
+                                        total += iiElement * innerElement.itemPrice;
+                                        HTMLFrag += '<tr><td colspan="4"></td>';
+                                        HTMLFrag += '<td colspan="2" class="small"><input type="text" class="weight" data-index="';
+                                        HTMLFrag += innerIndex;
+                                        HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';         
+                                        HTMLFrag += iiElement + 'kg';
+                                        HTMLFrag += '"/></td><td class="priceKG">';
+                                        HTMLFrag += 'R ' + innerElement.itemPrice;
+                                        HTMLFrag += '</td><td class="priceTag">';
+                                        HTMLFrag += 'R ' + total;
+                                        HTMLFrag += '</td></tr>';
+                                    });
+                                };*/
+                            });
+                            HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
+                            HTMLFrag += 'R' + total;
+                            HTMLFrag += '</td></tr></tfoot></table>';
+                            total = 0;
+                            HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" data-index="';
+                            HTMLFrag += index;
+                            HTMLFrag += '" onblur="app.update.sale(this)" > '; 
+                            HTMLFrag += element.notes;
+                            HTMLFrag += '</textarea>';
+                            HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.dataset.index)" class="cancel" data-index="';
+                            HTMLFrag += index;
+                            HTMLFrag += '"/></fieldset>';
+                        });
+                app.DOM.sales.innerHTML = HTMLFrag;
             
         },
         newCustomer : function() {

@@ -725,8 +725,8 @@ function onDeviceReady() {
                                     HTMLFrag += '" >';
                                     HTMLFrag += '<option disabled selected value=""></option>';
                                     alert('3');
-                                    alert(JSON.parse(this.data.items));
-                                    this.data.items.forEach(function(iiElement, iiIndex, iiArray) {
+                                    alert(JSON.parse(app.data.items));
+                                    app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
                                         alert('3a');
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += iiElement.itemCode;

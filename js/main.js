@@ -1,4 +1,5 @@
 var app;
+alert('main');
 function onDeviceReady() {
     app = {
         picked : false,

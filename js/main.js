@@ -1446,7 +1446,7 @@ function onDeviceReady() {
                         totalWeight:Number.parseFloat(children[idx].children[2].children[0].value||Number.parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2)), 10),
                         itemPrice: Number.parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price, 10)
                     });
-                    alert(tables[saleIdx].children[4].innerHTML); 
+                    alert(JSON.stringify(tables[saleIdx].children[3].innerHTML)); 
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                         innerElement = JSON.parse(innerElement);
                         HTMLFrag += '<tr><td colspan="2">';

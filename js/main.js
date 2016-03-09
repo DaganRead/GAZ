@@ -202,7 +202,7 @@ function onDeviceReady() {
                             total = 0;
                             HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" data-index="';
                             HTMLFrag += index;
-                            HTMLFrag += '" onblur="app.update.sale(this)" > '; 
+                            HTMLFrag += '" onblur="alert(\'fine\')" > '; 
                             HTMLFrag += element.notes;
                             HTMLFrag += '</textarea>';
                             HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.dataset.index)" class="cancel" data-index="';

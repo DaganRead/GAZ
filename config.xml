@@ -18,7 +18,7 @@
     <platform name="android" >
         <preference name="android-minSdkVersion" value="21" />
         <preference name="android-targetSdkVersion" value="21" />
-    </platform>
+    </platform> 
 
     <!-- We'll include the contacts plugin as an example -->
     <plugin name="cordova-plugin-dialogs" spec="1.1.1" source="pgb" />

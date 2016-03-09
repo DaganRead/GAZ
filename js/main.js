@@ -1446,6 +1446,7 @@ function onDeviceReady() {
                         totalWeight:Number.parseFloat(children[idx].children[2].children[0].value||Number.parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2)), 10),
                         itemPrice: Number.parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price, 10)
                     });
+                    alert(JSON.stringify(children[idx]));
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                         innerElement = JSON.parse(innerElement);
                         HTMLFrag += '<tr><td colspan="2">';
@@ -1484,6 +1485,7 @@ function onDeviceReady() {
                         HTMLFrag += '</td></tr>';
                     });
                     app.data.sales[saleIdx].total = total;
+                    //app.data.sales[saleIdx].notes = total;
                     saleIdx==0 ? tables[saleIdx].children[1].innerHTML = HTMLFrag : tables[saleIdx].children[0].innerHTML = HTMLFrag;
                     saleIdx==0 ? tables[saleIdx].children[2].children[0].children[1].innerHTML = 'R' + total : tables[saleIdx].children[1].children[0].children[1].innerHTML = 'R' + total;
                     app.data.slaughters.forEach(function(element, index, array) {
@@ -1492,8 +1494,10 @@ function onDeviceReady() {
                             element.total += total;
                         };
                     });
-                    app.store('sale');
+                    
                     app.binding.sales();
+                    alert('no err');
+                    app.store('sale');
                 }();
 
             },

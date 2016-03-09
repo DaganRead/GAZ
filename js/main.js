@@ -202,7 +202,7 @@ function onDeviceReady() {
                             total = 0;
                             HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" data-index="';
                             HTMLFrag += index;
-                            HTMLFrag += '" onblur="alert(\'fine\')" > '; 
+                            HTMLFrag += '" onblur="app.update.sale(this)" > '; 
                             HTMLFrag += element.notes;
                             HTMLFrag += '</textarea>';
                             HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.dataset.index)" class="cancel" data-index="';
@@ -1446,7 +1446,7 @@ function onDeviceReady() {
                         totalWeight:Number.parseFloat(children[idx].children[2].children[0].value||Number.parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2)), 10),
                         itemPrice: Number.parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price, 10)
                     });
-                    alert(JSON.stringify(children[idx]));
+                    alert(JSON.stringify(children[idx].children[4]));
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                         innerElement = JSON.parse(innerElement);
                         HTMLFrag += '<tr><td colspan="2">';

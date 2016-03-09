@@ -18,6 +18,7 @@
     <platform name="android" >
         <preference name="android-minSdkVersion" value="21" />
         <preference name="android-targetSdkVersion" value="21" />
+        <preference name="phonegap-version" value="cli-3.7.1" /> 
     </platform> 
 
     <!-- We'll include the contacts plugin as an example -->

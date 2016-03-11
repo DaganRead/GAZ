@@ -3,16 +3,90 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
-  <title>The HTML5 Herald</title>
-  <meta name="description" content="Gaz">
-  <meta name="author" content="Farm Manager App">
-
-  <link rel="stylesheet" href="styles.css">
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'"> -->
+  <title>Gaz</title>
+  <meta name="description" content="app">
+  <meta name="author" content="Dagan Read">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pikaday.css">
+  <script src="js/pikaday.js"></script>
+  <script src="js/polly.js"></script>
+  <script src="js/object-observe-lite.min.js"></script>
+  <script src="js/classie.js"></script>
 </head>
-
 <body>
-	<input type="button" onclick="func(this)">
-	<script src="scripts.js"></script>
+	<section id="page-wrap">
+	    <div class="tabs">
+	        
+	       <div class="tab">
+	           <input type="radio" value="Sales" onclick="app.nav.to(this.value)" id="tab-1" name="PrimaryNav" checked>
+	           <label for="tab-1"><img src="img/sales.png" /></label>
+	           
+	           <div class="content">
+	           	 <form id="sales" onsubmit="return false">
+
+				</form> 
+	           </div> 
+	       </div>
+	        
+	       <div class="tab">
+	           <input type="radio" value="Customers" onclick="app.nav.to(this.value)" id="tab-2" name="PrimaryNav">
+	           <label for="tab-2"><img src="img/customers.png" /></label>
+	           
+	           <div class="content">
+	               	<article class="search" >
+	               		<input type="image" src="img/sync.png" class="sync-button" onclick="app.sync.customers()">
+	               		<input type="text" class="search-bar" />
+	               		<input type="image" src="img/search.png" class="search-button" onclick="app.search.customer(this.previousSibling.value)" >
+	               	</article>
+	               	<form id="customers" onsubmit="return false">
+	               	</form>
+	           </div> 
+	       </div>
+	        
+	        <div class="tab">
+	           <input type="radio" value="Items" onclick="app.nav.to(this.value)" id="tab-3" name="PrimaryNav">
+	           <label for="tab-3"><img src="img/items.png" /></label>
+	         
+	           	<div class="content">
+	               	<article class="search" >
+	               		<input type="text" class="search-bar" />
+	               		<input type="image" src="img/search.png" class="search-button" onclick="app.search.item(this.previousSibling.value)" >
+	               	</article>
+	               	<form id="items" onsubmit="return false">
+	               	</form>
+	            </div> 
+	       </div>
+
+	       <div class="tab">
+	           <input type="radio" value="Slaughters" onclick="app.nav.to(this.value)" id="tab-4" name="PrimaryNav">
+	           <label for="tab-4"><img src="img/slaughters.png" /></label>
+	         
+	           	<div class="content">
+		               	<article id="slaughters">
+		               	</article>
+	        	</div> 
+	       </div>
+
+	       <div class="tab" id="new-tab">
+	           <input type="radio" value="New" onclick="app.nav.to(this.value, this.parentNode)" id="tab-5" name="PrimaryNav" />
+	           <label for="tab-5"><img src="img/new.png" /></label>
+	         
+	           <div class="content">
+	               <article id="newSale" ></article>
+	           </div> 
+	       </div>
+	    </div>
+	</section>
+<script src="cordova.js"></script>
+<script src="js/socket.io.js"></script>
+<script src="dialogs.js"></script>
+<script src="contacts.js"></script>
+
+<script src="lib/jquery-1.8.2.min.js"></script>
+<script src="js/storage/memory-store.js"></script>
+<script src="js/main.js"></script>
+
 </body>
 </html>

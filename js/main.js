@@ -1,0 +1,2 @@
+var app;
+alert('main');

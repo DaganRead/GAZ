@@ -948,6 +948,125 @@ function onDeviceReady() {
                     }
                 };
             }
+        },
+        accordion : function(target) {
+            var container = target.parentNode.parentNode;
+            classie.toggleClass(container, 'acc-open');
+        },
+        purchaseTableAdd : function(target) {
+            if(!classie.hasClass(target, 'touched')){
+                classie.addClass(target, 'touched');
+                var input = document.createElement('tr'),
+                    temp ='';
+
+                    temp += '<td><select class="tableInput" onclick="app.purchaseTableAdd(this)" >';
+                    temp += '<option disabled selected value=""></option>';
+                    app.data.items.forEach(function(innerElement, innerIndex, innerArray) {
+                        temp += '<option value="';
+                        temp += innerElement.itemCode;
+                        temp += '" data-price="';
+                        temp += innerElement.itemPrice;
+                        temp += '" >';
+                        temp += innerElement.itemName;
+                        temp += '</option>';
+                    });
+                    temp += '</select>';
+                temp += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td>';
+                input.innerHTML = temp;
+                document.getElementById('newSalePurchaseTable').children[1].appendChild(input);
+            };
+        },
+        pickContact : function() {
+            navigator.contacts.pickContact(function(contact){
+                app.picked= false;
+                    app.data.customers.forEach(function(element, index, array) {
+                        if (contact.name.givenName != null && contact.name.familyName != null) {
+                            document.getElementById('newSaleFirstName').value = contact.name.givenName;
+                            document.getElementById('newSaleLastName').value = contact.name.familyName;
+                                if (contact.phoneNumbers!=null) {
+                                    document.getElementById('newSaleTelephone').value = contact.phoneNumbers[0].value;
+                                }else{
+                                    document.getElementById('newSaleTelephone').value = '';
+                                };
+                                if (contact.emails!=null) {
+                                    document.getElementById('newSaleEmail').value = contact.emails[0].value;
+                                }else{
+                                    document.getElementById('newSaleEmail').value = '';
+                                };
+                                if (contact.addresses!=null) {
+                                    document.getElementById('newSaleAddress').value = contact.addresses[0].value;
+                                }else{
+                                    document.getElementById('newSaleAddress').value = 'Address';
+                                };
+                                if (element.location.location != '' && element.location.location != undefined) {
+                                    document.getElementById('newSaleLocation').innerHTML = element.location;
+                                    for (var i = 0; i < document.getElementById('newSaleLocationSelect').options.length; i++) {
+                                        if (document.getElementById('newSaleLocationSelect').options[i].value == element.location.location) {
+                                            document.getElementById('newSaleLocationSelect').options[i].selected = true;
+                                        }else{
+                                            document.getElementById('newSaleLocationSelect').options[i].selected = false;
+                                        };
+                                    };
+                                    if(!classie.hasClass(document.getElementById('newSale'), 'acc-open-loc')){
+                                        classie.addClass(document.getElementById('newSale'), 'acc-open-loc');
+                                    };
+                                }else{
+                                    
+                                };
+                            if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
+                                app.picked = true;
+                                /*element.location = {
+                                    count : 0,
+                                    location : document.getElementById('newSaleLocationSelect').selectedOptions[0].value
+                                };*/
+                                app.store('customer');
+                                //app.binding.customers();
+                                if(!classie.hasClass(document.getElementById('newSale'), 'acc-open')){
+                                    classie.addClass(document.getElementById('newSale'), 'acc-open');
+                                };
+                            };
+                        };
+                    });
+
+                if(!app.picked){
+                    if(classie.hasClass(document.getElementById('newSale'), 'acc-open')){
+                        classie.removeClass(document.getElementById('newSale'), 'acc-open');
+                    };
+                };
+            },function(err){
+                alert('Error: ' + err);
+            });
+        },
+        customerSearch : function(givenName, familyName) {
+            app.forms.newSale.location().innerHTML = '';
+            if(classie.hasClass(document.getElementById('newSale'), 'acc-open')){
+                classie.removeClass(document.getElementById('newSale'), 'acc-open');
+            };
+                if (givenName !== null) {
+                    app.data.customers.forEach(function(element, index, array) {
+                        if (element.name.givenName === givenName) {
+                            if (app.forms.newSale.firstNameMatch != givenName) {
+                                app.forms.newSale.firstNameMatch = givenName;
+                            };
+                            if (app.forms.newSale.firstNameMatch == element.name.givenName && app.forms.newSale.lastNameMatch == element.name.familyName) {
+                                app.forms.newSale.location().innerHTML = element.location;
+                                classie.addClass(document.getElementById('newSale'), 'acc-open');
+                            };
+                        };
+                    });
+                }else{
+                    app.data.customers.forEach(function(element, index, array) {
+                        if (element.name.familyName === familyName) {
+                            if (app.forms.newSale.lastNameMatch != familyName) {
+                                app.forms.newSale.lastNameMatch = familyName;
+                            };
+                            if (app.forms.newSale.firstNameMatch == element.name.givenName && app.forms.newSale.lastNameMatch == element.name.familyName) {
+                                app.forms.newSale.location().innerHTML = element.location;
+                                classie.addClass(document.getElementById('newSale'), 'acc-open');
+                            };
+                        };
+                    });
+                };
         }
     };
 };

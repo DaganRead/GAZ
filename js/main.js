@@ -1,6 +1,5 @@
 var app;
 alert('main');
-function onDeviceReady() {
     app = {
         picked : false,
         contactCached : null,
@@ -664,27 +663,6 @@ function onDeviceReady() {
                 };
             };
             
-            if (!this.picked) {
-                var newCustomer = navigator.contacts.create({
-                    "displayName": this.forms.newCustomer.givenName() + ' ' + this.forms.newCustomer.familyName(),
-                    "name" : { 
-                        givenName : this.forms.newCustomer.givenName(),
-                        familyName : this.forms.newCustomer.familyName()
-                    },
-                    "note" : this.forms.newCustomer.location(),
-                    "emails" : [this.forms.newCustomer.email()],
-                    "phoneNumbers" : [this.forms.newCustomer.telephone()],
-                    "addresses" : [this.forms.newCustomer.address()]
-                });
-
-                if (this.data.customers.indexOf(JSON.stringify(newCustomer)) == -1) {
-                    //add to loaded dataset
-                    this.data.customers.push(newCustomer);
-                    //update dataset
-                    //this.binding.customers();
-                    this.store('customer');
-                };
-            };
 
 
             if (this.data.sales.indexOf(newSale) == -1) {
@@ -795,18 +773,7 @@ function onDeviceReady() {
             
         },
         newCustomer : function() {
-            var newCustomer = navigator.contacts.create({
-                "displayName": this.forms.newCustomer.givenName() + ' ' + this.forms.newCustomer.familyName(),
-                "name" : { 
-                    givenName : this.forms.newCustomer.givenName(),
-                    familyName : this.forms.newCustomer.familyName()
-                },
-                "note" : this.forms.newCustomer.location(),
-                "emails" : [this.forms.newCustomer.email()],
-                "phoneNumbers" : [this.forms.newCustomer.telephone()],
-                "addresses" : [this.forms.newCustomer.address()]
-            }),
-            match = false;
+            var  match = false;
             //add to loaded dataset
             this.data.customers.forEach(function(element, index, array) {
                 if (newCustomer.displayName == element.displayName) {
@@ -1084,7 +1051,6 @@ function onDeviceReady() {
             },
             customer: function(target) {
                 var element,
-                    newContact = navigator.contacts.create(),
                     temp = { 
                         name,
                         emails:[],
@@ -1174,128 +1140,22 @@ function onDeviceReady() {
         },
         delete : {
             sale : function(idx) {
-                navigator.notification.confirm(
-                    "Are you sure you would like to delete the sale?",
-                    function(buttonIndex) {
-                        if (buttonIndex) {
-                            app.data.slaughters.forEach(function(element, index, array) {
-                                if (element.slaughterDate == app.data.sales[idx].slaughterDate) {
-                                    element.total -= app.data.sales[idx].total;
-                                };
-                            });
-                            app.data.sales.splice(idx, 1);
-                            app.binding.sales();
-                            app.store('sale');
-                        };
-                    },
-                    'Confirm Removal',
-                    ['Delete','Cancel']
-                );
+
             },
             customer : function(idx) {
-                navigator.notification.confirm(
-                    "Are you sure you would like to delete the customer?",
-                    function(buttonIndex) {
-                        if (buttonIndex) {
-                            app.data.customers.splice(idx, 1);
-                            app.store('customer');
-                            app.binding.customers();
-                        };
-                    },
-                    'Confirm Removal',
-                    ['Delete','Cancel']
-                );
+
             },
             item : function(idx) {
-                    navigator.notification.confirm(
-                    "Are you sure you would like to delete the item?",
-                    function(buttonIndex) {
-                        if (buttonIndex) {
-                            app.data.items.splice(idx, 1);
-                            app.store('item');
-                            app.binding.items();
-                        };
-                    },
-                    'Confirm Removal',
-                    ['Delete','Cancel']
-                );
+
             },
             slaughter : function(idx) {
-                    navigator.notification.confirm(
-                    "Are you sure you would like to delete the date?",
-                    function(buttonIndex) {
-                        if (buttonIndex) {
-                            app.data.slaughters.splice(idx, 1);
-                            app.store('slaughter');
-                            app.binding.slaughters();
-                        };
-                    },
-                    'Confirm Removal',
-                    ['Delete','Cancel']
-                );
+
             }
         },
         sync : {
             customers : function() {
-                function onPrompt(results) {
-                //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
 
-                    // find all contacts with 'Bob' in any name field
-                    var options      = new ContactFindOptions();
-                    options.filter   = results.input1;
-                    options.multiple = true;
-                    var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name],
-                        syncArr      = [],
-                        tempArr      = app.data.customers;
-                    navigator.contacts.find(fields, function(contacts) {
-                        var msg = '',
-                            temp = '',
-                            tempNumber = 1,
-                            syncNumber = 1;
-                        contacts.forEach(function(element, index, array) {
-                            if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
-                            tempNumber ++;
-                                if (app.data.customers.indexOf(element) == -1) {
-                                    temp += syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
-                                    syncNumber++;
-                                    syncArr.push(element);
-                                };
-                            };
-                        });
-                    msg += (tempNumber - 1) + ' contacts successfully retrieved; ' + (syncNumber-1) + ' contacts are not in the customer listing:\n\n' + temp;                
-                    navigator.notification.confirm(
-                            msg,
-                            function(buttonIndex) {
-                                if (buttonIndex == 1) {
-                                    syncArr.forEach(function(element, index, array) {
-                                        var newCustomer = element;
-                                        newCustomer.synced = true;
-                                        tempArr.push(newCustomer);
-                                    });
-                                    app.data.customers = tempArr;
-                                    /*app.data.customers.sort(function(a, b) {
-                                        return a.name.givenName.toUpperCase().localeCompare(b.name.givenName.toUpperCase());
-                                    });*/
-                                    app.binding.customers();
-                                    app.store('customer');
-                                };
-                            },
-                            'Confirm Sync',
-                            ['Add','Cancel']
-                        );
-                    }, function onError(contactError) {
-                        //alert(results.input1);
-                        navigator.notification.alert('error', function() {}, 'No Contacts Found!', 'Try Again');
-                    }, options);
-            };
 
-            navigator.notification.prompt(
-                'Please enter a search term',  // message
-                onPrompt,                  // callback to invoke
-                'Contact Sync',            // title
-                ['Search','Cancel'],             // buttonLabels
-                'Chicken Customer'                 // defaultText
-            );
             },
             items : function() {
                 //app.data.items = [];
@@ -1325,5 +1185,4 @@ function onDeviceReady() {
     };
     //app.initialize();
 };
-document.addEventListener("deviceready", onDeviceReady, false);
 alert('fine');

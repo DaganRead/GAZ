@@ -1503,27 +1503,72 @@ function onDeviceReady() {
 
             },
             customer: function(target) {
-                var element,
-                    newContact = navigator.contacts.create(),
-                    temp = { 
-                        name,
-                        emails:[],
-                        phoneNumbers:[],
-                        addresses:[]
-                    },
-                    indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
-                    contact = app.data.customers[indx];
-
-                if (target.tagName == 'FIGCAPTION') {
-                    element = target.parentNode.parentNode.parentNode;
+                
+                for (var i = 3; i < element.children.length; i++) {
+                    if (element.children[i].type == 'email') {
+                        if (element.children[i].value != '') {
+                            temp.emails.push(element.children[i].value);
+                        }else{
+                            temp.emails.push(element.children[i].placeholder);
+                        };
+                    }else if(element.children[i].tagName == 'ARTICLE'){
+                        temp.note = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
+                    }else if(element.children[i].type == 'textarea'){     
+                        temp.addresses.push(element.children[i].value);
+                    }else{
+                        if (element.children[i].value != '' && element.children[i].value != undefined) {
+                            temp.phoneNumbers.push(element.children[i].value);
+                        }else if (element.children[i].placeholder != '' && element.children[i].placeholder != undefined) {
+                            temp.phoneNumbers.push(element.children[i].placeholder);
+                        };
+                    };
+                };
+                if (contact.honorificPrefix != undefined && contact.honorificPrefix != null) {
+                    contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
+                    contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                 }else{
-                    element = target.parentNode;
+                    contact.displayName = temp.name.givenName +' '+ temp.name.familyName;
+                    contact.name.formatted = temp.name.givenName +' '+ temp.name.familyName;
                 };
-                temp.name = {
-                    givenName : element.children[1].value||element.children[1].placeholder,
-                    familyName : element.children[2].value||element.children[2].placeholder
+                contact.name.givenName = temp.name.givenName;
+                contact.name.familyName = temp.name.familyName;
+                contact.note = temp.note;
+                if (contact.emails != null) {
+                    contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
+                        contact.emails[innerIndex].value = temp.emails[innerIndex];
+                    });
                 };
-                element.children[0].children[0].value = temp.name.givenName +' '+ temp.name.familyName;
+                
+                if (contact.phoneNumbers != null) {
+                    contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
+                        contact.phoneNumbers[innerIndex].value = temp.phoneNumbers[innerIndex];
+                    });
+                };
+                
+                if (contact.addresses != null) {
+                    contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
+                        innerElement.formatted = temp.addresses[innerIndex];
+                    });                    
+                };
+                app.data.customers[indx] = contact;
+                newContact.displayName = contact.displayName;
+                newContact.id = contact.id;
+                newContact.rawId = contact.rawId;
+                newContact.name = contact.name;
+                newContact.emails = contact.emails;
+                newContact.phoneNumbers = contact.phoneNumbers;
+                newContact.note = contact.note;
+                newContact.save(function(data) {},function(err) {}); 
+                /*contact.location = {
+                    count : 0,
+                    location : contact.note
+                };*/
+                /*var foo = JSON.stringify(app.data.customers.shift());
+                window.setTimeout(function() {
+                    app.data.customers.unshift(JSON.parse(foo));
+                    app.store('customer');
+                }, 100);*/
+                //app.binding.customers();
                 app.store('customer');
             }
         },

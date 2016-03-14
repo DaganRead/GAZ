@@ -1428,94 +1428,79 @@ function onDeviceReady() {
                 };
         },
         update : {
-            customer: function(target) {
-                var element,
-                    newContact = navigator.contacts.create(),
-                    temp = { 
-                        name,
-                        emails:[],
-                        phoneNumbers:[],
-                        addresses:[]
-                    }
-                    indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
-                    contact = app.data.customers[indx];
+            sale : function(target) {
+                var idx = target.dataset.index,
+                    saleIdx = target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
+                    sale = JSON.parse(JSON.stringify(app.data.sales[saleIdx])),
+                    pageY = window.pageYOffset;
 
-                if (target.tagName == 'FIGCAPTION') {
-                    element = target.parentNode.parentNode.parentNode;
-                }else{
-                    element = target.parentNode;
-                };
-                temp.name = {
-                    givenName : element.children[1].value||element.children[1].placeholder,
-                    familyName : element.children[2].value||element.children[2].placeholder
-                };
-                element.children[0].children[0].value = temp.name.givenName +' '+ temp.name.familyName;
-                for (var i = 3; i < element.children.length; i++) {
-                    if (element.children[i].type == 'email') {
-                        if (element.children[i].value != '') {
-                            temp.emails.push(element.children[i].value);
-                        }else{
-                            temp.emails.push(element.children[i].placeholder);
-                        };
-                    }else if(element.children[i].tagName == 'ARTICLE'){
-                        temp.note = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
-                    }else if(element.children[i].type == 'textarea'){     
-                        temp.addresses.push(element.children[i].value);
-                    }else{
-                        if (element.children[i].value != '' && element.children[i].value != undefined) {
-                            temp.phoneNumbers.push(element.children[i].value);
-                        }else if (element.children[i].placeholder != '' && element.children[i].placeholder != undefined) {
-                            temp.phoneNumbers.push(element.children[i].placeholder);
-                        };
-                    };
-                };
-                if (contact.honorificPrefix != undefined && contact.honorificPrefix != null) {
-                    contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
-                    contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
-                }else{
-                    contact.displayName = temp.name.givenName +' '+ temp.name.familyName;
-                    contact.name.formatted = temp.name.givenName +' '+ temp.name.familyName;
-                };
-                contact.name.givenName = temp.name.givenName;
-                contact.name.familyName = temp.name.familyName;
-                contact.note = temp.note;
-                if (contact.emails != null) {
-                    contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                        contact.emails[innerIndex].value = temp.emails[innerIndex];
+                var data = function() {
+                    var tables = app.DOM.sales.getElementsByTagName('TABLE'),
+                        children
+                        HTMLFrag='',
+                        total = 0;
+                    saleIdx==0 ? children = tables[saleIdx].children[1].children : children = tables[saleIdx].children[0].children;
+                    app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify({
+                        itemCode : children[idx].children[0].children[0].selectedOptions[0].value,
+                        quantity: Number.parseFloat(children[idx].children[1].children[0].value||children[idx].children[1].children[0].placeholder, 10),
+                        weights: sale.purchaseTable[idx].weights,
+                        totalWeight:Number.parseFloat(children[idx].children[2].children[0].value||Number.parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2)), 10),
+                        itemPrice: Number.parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price, 10)
                     });
-                };
-                
-                if (contact.phoneNumbers != null) {
-                    contact.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                        contact.phoneNumbers[innerIndex].value = temp.phoneNumbers[innerIndex];
+                    alert(children[idx].parentNode.parentNode.parentNode.children[7].tagName);
+                    app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
+                        innerElement = JSON.parse(innerElement);
+                        HTMLFrag += '<tr><td colspan="2">';
+                        HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
+                        HTMLFrag += innerIndex;
+                        HTMLFrag += '" >';
+                        HTMLFrag += '<option disabled selected value=""></option>';
+                        app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
+                            HTMLFrag += '<option value="';
+                            HTMLFrag += iiElement.itemCode;
+                            HTMLFrag += '" '; 
+                            if (iiElement.itemCode == innerElement.itemCode) {
+                                HTMLFrag += 'selected'; 
+                            };
+                            HTMLFrag += ' data-price="';
+                            HTMLFrag += iiElement.itemPrice;
+                            HTMLFrag += '" >';
+                            HTMLFrag += iiElement.itemName;
+                            HTMLFrag += '</option>';
+                        });
+                        HTMLFrag += '</select>';
+                        HTMLFrag += '</td><td colspan="2" class="small"><input type="text" class="quantity" data-index="';
+                        HTMLFrag += innerIndex;         
+                        HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';
+                        HTMLFrag += innerElement.quantity;
+                        HTMLFrag += '"/></td><td colspan="2" class="small"><input type="text" class="weight" data-index="';
+                        HTMLFrag += innerIndex;     
+                        HTMLFrag += '" onblur="app.update.sale(this)" value="';         
+                        HTMLFrag += innerElement.totalWeight + 'kg';
+                        HTMLFrag += '"/></td>';
+                        HTMLFrag += '<td class="priceKG">';
+                        HTMLFrag += 'R ' + innerElement.itemPrice;
+                        HTMLFrag += '</td><td class="priceTag">';
+                        HTMLFrag += 'R ' + innerElement.totalWeight * innerElement.itemPrice;
+                        total    += innerElement.totalWeight * innerElement.itemPrice;
+                        HTMLFrag += '</td></tr>';
                     });
-                };
-                
-                if (contact.addresses != null) {
-                    contact.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                        innerElement.formatted = temp.addresses[innerIndex];
-                    });                    
-                };
-                app.data.customers[indx] = contact;
-                newContact.displayName = contact.displayName;
-                newContact.id = contact.id;
-                newContact.rawId = contact.rawId;
-                newContact.name = contact.name;
-                newContact.emails = contact.emails;
-                newContact.phoneNumbers = contact.phoneNumbers;
-                newContact.note = contact.note;
-                newContact.save(function(data) {},function(err) {}); 
-                /*contact.location = {
-                    count : 0,
-                    location : contact.note
-                };*/
-                /*var foo = JSON.stringify(app.data.customers.shift());
-                window.setTimeout(function() {
-                    app.data.customers.unshift(JSON.parse(foo));
-                    app.store('customer');
-                }, 100);*/
-                //app.binding.customers();
-                app.store('customer');
+                    app.data.sales[saleIdx].total = total;
+                    //app.data.sales[saleIdx].notes = total;
+                    saleIdx==0 ? tables[saleIdx].children[1].innerHTML = HTMLFrag : tables[saleIdx].children[0].innerHTML = HTMLFrag;
+                    saleIdx==0 ? tables[saleIdx].children[2].children[0].children[1].innerHTML = 'R' + total : tables[saleIdx].children[1].children[0].children[1].innerHTML = 'R' + total;
+                    app.data.slaughters.forEach(function(element, index, array) {
+                        if (element.slaughterDate == sale.slaughterDate) {
+                            element.total -= sale.total;
+                            element.total += total;
+                        };
+                    });
+                    
+                    app.binding.sales();
+                    alert('no err');
+                    app.store('sale');
+                }();
+
             }
         },
         delete : {

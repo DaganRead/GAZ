@@ -1613,6 +1613,6 @@ function onDeviceReady() {
     function onSyncError(contactError) {
         alert("Error = " + contactError.code);
     };
-    app.initialize();
+    //app.initialize();
 };
 document.addEventListener("deviceready", onDeviceReady, false);

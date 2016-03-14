@@ -1503,17 +1503,17 @@ function onDeviceReady() {
 
             },
             customer: function(target) {
-                var element,
-                    newContact = navigator.contacts.create(),
-                    temp = { 
-                        name,
-                        emails:[],
-                        phoneNumbers:[],
-                        addresses:[]
-                    },
-                    indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
-                    contact = app.data.customers[indx];
 
+                if (target.tagName == 'FIGCAPTION') {
+                    element = target.parentNode.parentNode.parentNode;
+                }else{
+                    element = target.parentNode;
+                };
+                temp.name = {
+                    givenName : element.children[1].value||element.children[1].placeholder,
+                    familyName : element.children[2].value||element.children[2].placeholder
+                };
+                element.children[0].children[0].value = temp.name.givenName +' '+ temp.name.familyName;
                 for (var i = 3; i < element.children.length; i++) {
                     if (element.children[i].type == 'email') {
                         if (element.children[i].value != '') {

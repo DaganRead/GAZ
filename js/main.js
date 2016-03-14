@@ -1595,7 +1595,7 @@ function onDeviceReady() {
                 });
                 app.DOM.slaughters.innerHTML = HTMLFrag;
             };
-        }()
+        }
     };
     //eventlistener
     document.body.addEventListener("touchend", app.simulate, false);

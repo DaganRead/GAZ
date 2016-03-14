@@ -1,5 +1,5 @@
 var app;
-function onDeviceReady() {
+//function onDeviceReady() {
     app = {
         picked : false,
         contactCached : null,
@@ -1595,7 +1595,7 @@ function onDeviceReady() {
                 });
                 app.DOM.slaughters.innerHTML = HTMLFrag;
             };
-        }
+        }()
     };
     //eventlistener
     document.body.addEventListener("touchend", app.simulate, false);
@@ -1614,5 +1614,5 @@ function onDeviceReady() {
         alert("Error = " + contactError.code);
     };
     //app.initialize();
-};
-document.addEventListener("deviceready", onDeviceReady, false);
+//};
+//document.addEventListener("deviceready", onDeviceReady, false);

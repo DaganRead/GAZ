@@ -1503,7 +1503,17 @@ function onDeviceReady() {
 
             },
             customer: function(target) {
-                
+                var element,
+                    newContact = navigator.contacts.create(),
+                    temp = { 
+                        name,
+                        emails:[],
+                        phoneNumbers:[],
+                        addresses:[]
+                    },
+                    indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
+                    contact = app.data.customers[indx];
+
                 for (var i = 3; i < element.children.length; i++) {
                     if (element.children[i].type == 'email') {
                         if (element.children[i].value != '') {

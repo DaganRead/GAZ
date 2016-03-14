@@ -1503,15 +1503,16 @@ function onDeviceReady() {
 
             },
             customer: function(target) {
-                var element,
-                    newContact = navigator.contacts.create(),
-                    temp = { 
+                var element;
+                var newContact = navigator.contacts.create();
+                var temp = { 
                         name,
                         emails:[],
                         phoneNumbers:[],
                         addresses:[]
-                    },
-                    indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
+                    };
+                var indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index;
+                var contact = app.data.customers[indx];
 
                 if (target.tagName == 'FIGCAPTION') {
                     element = target.parentNode.parentNode.parentNode;

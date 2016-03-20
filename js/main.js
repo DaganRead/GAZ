@@ -1429,6 +1429,7 @@ function onDeviceReady() {
         },
         update : {
             sale : function(target) {
+                alert('0');
                 var idx = target.dataset.index,
                     saleIdx = target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
                     sale = JSON.parse(JSON.stringify(app.data.sales[saleIdx])),
@@ -1436,7 +1437,7 @@ function onDeviceReady() {
 
                 var data = function() {
                     var tables = app.DOM.sales.getElementsByTagName('TABLE'),
-                        children
+                        children,
                         HTMLFrag='',
                         total = 0;
                     saleIdx==0 ? children = tables[saleIdx].children[1].children : children = tables[saleIdx].children[0].children;

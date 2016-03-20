@@ -1433,13 +1433,14 @@ function onDeviceReady() {
                     saleIdx = target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
                     sale = app.data.sales[saleIdx],
                     pageY = window.pageYOffset;
-                    alert('0');
                 var data = function() {
                     var tables = app.DOM.sales.getElementsByTagName('TABLE'),
                         children,
                         HTMLFrag='',
                         total = 0;
+                    alert(saleIdx);
                     saleIdx==0 ? children = tables[saleIdx].children[1].children : children = tables[saleIdx].children[0].children;
+                    alert('saleIdx');
                     app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify({
                         itemCode : children[idx].children[0].children[0].selectedOptions[0].value,
                         quantity: Number.parseFloat(children[idx].children[1].children[0].value||children[idx].children[1].children[0].placeholder, 10),

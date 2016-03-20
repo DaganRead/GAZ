@@ -1047,7 +1047,7 @@ function onDeviceReady() {
                                     HTMLFrag += element.name.givenName;
                                     HTMLFrag += '"/><input type="text" onblur="app.update.customer(this)" placeholder="';
                                     HTMLFrag += element.name.familyName;
-                                    HTMLFrag += '"/>';
+                                    HTMLFrag += '"/>'; 
                                     if (element.emails!=null) {
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="email" onblur="app.update.customer(this)" placeholder="';

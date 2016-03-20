@@ -1,5 +1,4 @@
 var app;
-alert('main');
 function onDeviceReady() {
     app = {
         picked : false,
@@ -1448,7 +1447,6 @@ function onDeviceReady() {
                     });
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                         innerElement = JSON.parse(innerElement);
-                        alert(innerIndex);
                         HTMLFrag += '<tr><td colspan="2">';
                         HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
                         HTMLFrag += innerIndex;
@@ -1484,7 +1482,6 @@ function onDeviceReady() {
                         total    += innerElement.totalWeight * innerElement.itemPrice;
                         HTMLFrag += '</td></tr>';
                     });
-                    alert(total);
                     app.data.sales[saleIdx].total = total;
                     app.data.sales[saleIdx].notes = children[idx].parentNode.parentNode.parentNode.children[7].value;
                     saleIdx==0 ? tables[saleIdx].children[1].innerHTML = HTMLFrag : tables[saleIdx].children[0].innerHTML = HTMLFrag;
@@ -1495,9 +1492,6 @@ function onDeviceReady() {
                             element.total += total;
                         };
                     });
-                    
-                    //app.binding.sales();
-                    alert('no err');
                     app.store('sale');
                 }();
 

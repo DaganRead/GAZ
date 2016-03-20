@@ -1429,7 +1429,7 @@ function onDeviceReady() {
         },
         update : {
             sale : function(target) {
-                alert('0');
+                alert('0'); 
                 var idx = target.dataset.index,
                     saleIdx = target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
                     sale = JSON.parse(JSON.stringify(app.data.sales[saleIdx])),

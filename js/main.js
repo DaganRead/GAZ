@@ -1439,7 +1439,7 @@ function onDeviceReady() {
                         HTMLFrag='',
                         total = 0;
                     saleIdx==0 ? children = tables[saleIdx].children[1].children : children = tables[saleIdx].children[0].children;
-                    alert(Number.parseFloat(children[idx].children[1].children[0].value, 10)||Number.parseFloat(children[idx].children[1].children[0].placeholder, 10));
+                    alert(Number.parseFloat(children[idx].children[1].children[0].value, 10));
                     var temp = {
                         itemCode : children[idx].children[0].children[0].selectedOptions[0].value,
                         quantity: Number.parseFloat(children[idx].children[1].children[0].value, 10)||Number.parseFloat(children[idx].children[1].children[0].placeholder, 10),

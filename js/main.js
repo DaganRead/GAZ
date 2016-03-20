@@ -1447,8 +1447,8 @@ function onDeviceReady() {
                         itemPrice: parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price)
                     });
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
-                        alert(innerIndex);
                         innerElement = JSON.parse(innerElement);
+                        alert(innerIndex);
                         HTMLFrag += '<tr><td colspan="2">';
                         HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
                         HTMLFrag += innerIndex;

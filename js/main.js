@@ -1439,12 +1439,12 @@ function onDeviceReady() {
                         HTMLFrag='',
                         total = 0;
                     saleIdx==0 ? children = tables[saleIdx].children[1].children : children = tables[saleIdx].children[0].children;
-                    alert(children[idx].children[1].children[0].value);
+                    alert(idx);
                     var temp = {
                         itemCode : children[idx].children[0].children[0].selectedOptions[0].value,
-                        quantity: Number.parseFloat(children[idx].children[1].children[0].value, 10)||Number.parseFloat(children[idx].children[1].children[0].placeholder, 10),
+                        quantity: children[idx].children[1].children[0].value=='' ? Number.parseFloat(children[idx].children[1].children[0].placeholder, 10) : Number.parseFloat(children[idx].children[1].children[0].value, 10),
                         weights: sale.purchaseTable[idx].weights,
-                        totalWeight:Number.parseFloat(children[idx].children[2].children[0].value, 10)||Number.parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2), 10),
+                        totalWeight: children[idx].children[2].children[0].value=='' ? Number.parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2), 10):Number.parseFloat(children[idx].children[2].children[0].value, 10),
                         itemPrice: Number.parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price, 10)
                     };
                     alert(temp);

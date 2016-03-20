@@ -40,11 +40,6 @@ function onDeviceReady() {
                 };      
             };
         },
-        bindings : {
-            customers : function() {
-                alert('called');
-            }
-        },
         store : function(type) {
             switch(type){
                         case "sale" :

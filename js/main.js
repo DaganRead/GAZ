@@ -1493,6 +1493,7 @@ function onDeviceReady() {
                         };
                     });
                     app.store('sale');
+                    app.store('slaughter');
                 }();
 
             },

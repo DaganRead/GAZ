@@ -1444,7 +1444,7 @@ function onDeviceReady() {
                         itemCode : children[idx].children[0].children[0].selectedOptions[0].value,
                         quantity: Number.parseFloat(children[idx].children[1].children[0].value, 10)||Number.parseFloat(children[idx].children[1].children[0].placeholder, 10),
                         weights: sale.purchaseTable[idx].weights,
-                        totalWeight:Number.parseFloat(children[idx].children[2].children[0].value, 10)||Number.parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2)), 10),
+                        totalWeight:Number.parseFloat(children[idx].children[2].children[0].value, 10)||Number.parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2), 10),
                         itemPrice: Number.parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price, 10)
                     };
                     alert(temp);

@@ -40,6 +40,11 @@ function onDeviceReady() {
                 };      
             };
         },
+        bindings : {
+            customers : function() {
+                alert('called');
+            }
+        },
         store : function(type) {
             switch(type){
                         case "sale" :
@@ -1498,16 +1503,6 @@ function onDeviceReady() {
 
             },
             customer: function(target) {
-                var element,
-                    newContact = navigator.contacts.create(),
-                    temp = { 
-                        name,
-                        emails:[],
-                        phoneNumbers:[],
-                        addresses:[]
-                    }
-                    indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
-                    contact = app.data.customers[indx];
 
                 if (target.tagName == 'FIGCAPTION') {
                     element = target.parentNode.parentNode.parentNode;

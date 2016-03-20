@@ -1440,16 +1440,14 @@ function onDeviceReady() {
                         total = 0;
                     saleIdx==0 ? children = tables[saleIdx].children[1].children : children = tables[saleIdx].children[0].children;
                     alert(parseFloat(children[idx].children[1].children[0].placeholder));
-                    var temp = {
+                    app.data.sales[saleIdx].purchaseTable[idx] = {
                         itemCode : children[idx].children[0].children[0].selectedOptions[0].value,
                         quantity: parseFloat(children[idx].children[1].children[0].placeholder)||parseFloat(children[idx].children[1].children[0].value),
                         weights: sale.purchaseTable[idx].weights,
                         totalWeight: parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2))||parseFloat(children[idx].children[2].children[0].value),
                         itemPrice: parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price)
                     };
-                    alert(temp);
-                    app.data.sales[saleIdx].purchaseTable[idx] = temp
-                    alert(children[idx].parentNode.parentNode.parentNode.children[7].tagName);
+                    alert(children[idx].parentNode.parentNode.parentNode.children[7].value);
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                         innerElement = JSON.parse(innerElement);
                         HTMLFrag += '<tr><td colspan="2">';

@@ -768,7 +768,7 @@ function onDeviceReady() {
                 /*************************/
                 this.store('sale');
                 //this.binding.slaughters();
-                /******************************
+                /******************************/
                         var HTMLFrag = '',
                             newChar,
                             compareChar = '9',

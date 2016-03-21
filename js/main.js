@@ -39,11 +39,6 @@ function onDeviceReady() {
                 };      
             };
         },
-        bindings : {
-            customers : function() {
-                alert('called');
-            }
-        },
         store : function(type) {
             switch(type){
                         case "sale" :
@@ -636,16 +631,16 @@ function onDeviceReady() {
                     itemPrice:0
                 },
                 newSale = {
-                slaughterDate: this.forms.newSale.slaughterDate(),
-                name : {
-                    givenName: this.forms.newSale.givenName(),
-                    familyName: this.forms.newSale.familyName()
-                },
-                purchaseTable: this.forms.newSale.purchaseTable,
-                location: this.forms.newSale.location().innerHTML,
-                total: 0,
-                notes : ''
-            };
+                    slaughterDate: this.forms.newSale.slaughterDate(),
+                    name : {
+                        givenName: this.forms.newSale.givenName(),
+                        familyName: this.forms.newSale.familyName()
+                    },
+                    purchaseTable: this.forms.newSale.purchaseTable,
+                    location: this.forms.newSale.location().innerHTML,
+                    total: 0,
+                    notes : ''
+                };
             for (var i = 0; i < purchaseTableSelects.length; i++) {
                 if (classie.hasClass(purchaseTableSelects[i], 'touched')) {
                         foo.itemCode = purchaseTableSelects[i].value;
@@ -663,7 +658,7 @@ function onDeviceReady() {
                 };
             };
             
-            if (!this.picked) {
+            if (this.picked) {
                 var newCustomer = navigator.contacts.create({
                     "displayName": this.forms.newCustomer.givenName() + ' ' + this.forms.newCustomer.familyName(),
                     "name" : { 
@@ -694,7 +689,7 @@ function onDeviceReady() {
                     };
                 });
                 this.data.sales.push(newSale);
-                this.binding.sales();
+                //this.binding.sales();
                 /*************************/
                 var HTMLFrag = '',
                     total = 0;
@@ -770,7 +765,7 @@ function onDeviceReady() {
                 /*************************/
                 this.store('sale');
                 //this.binding.slaughters();
-                /******************************/
+                /******************************
                         var HTMLFrag = '',
                             newChar,
                             compareChar = '9',
@@ -788,7 +783,6 @@ function onDeviceReady() {
                         app.DOM.slaughters.innerHTML = HTMLFrag;
                 /****************************/
                 this.store('slaughter');
-                alert('fin');
             };
             
             
@@ -1336,7 +1330,7 @@ function onDeviceReady() {
         },
         pickContact : function() {
             navigator.contacts.pickContact(function(contact){
-                app.picked= false;
+                app.picked = true;
                     app.data.customers.forEach(function(element, index, array) {
                         if (contact.name.givenName != null && contact.name.familyName != null) {
                             document.getElementById('newSaleFirstName').value = contact.name.givenName;
@@ -1386,7 +1380,7 @@ function onDeviceReady() {
                         };
                     });
 
-                if(!app.picked){
+                if(app.picked){
                     if(classie.hasClass(document.getElementById('newSale'), 'acc-open')){
                         classie.removeClass(document.getElementById('newSale'), 'acc-open');
                     };

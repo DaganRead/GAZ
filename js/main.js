@@ -1435,12 +1435,12 @@ function onDeviceReady() {
                     saleIdx==0 ? children = tables[saleIdx].children[1].children : children = tables[saleIdx].children[0].children;
                     app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify({
                         itemCode : children[idx].children[0].children[0].selectedOptions[0].value,
-                        quantity: parseFloat(children[idx].children[1].children[0].placeholder)||parseFloat(children[idx].children[1].children[0].value),
+                        quantity: children[idx].children[1].children[0].value == '' ? parseFloat(children[idx].children[1].children[0].placeholder):parseFloat(children[idx].children[1].children[0].value),
                         weights: sale.purchaseTable[idx].weights,
-                        totalWeight: parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2))||parseFloat(children[idx].children[2].children[0].value),
+                        totalWeight: children[idx].children[2].children[0].value == '' ? parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2)):parseFloat(children[idx].children[2].children[0].value),
                         itemPrice: parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price)
                     });
-                    var temp = parseFloat(children[idx].children[1].children[0].placeholder)||parseFloat(children[idx].children[1].children[0].value);
+                    var temp = children[idx].children[2].children[0].value == '' ? parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2)):parseFloat(children[idx].children[2].children[0].value);
                     alert(JSON.stringify(temp));
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                         innerElement = JSON.parse(innerElement);
@@ -1487,6 +1487,7 @@ function onDeviceReady() {
                         if (element.slaughterDate == sale.slaughterDate) {
                             element.total -= sale.total;
                             element.total += total;
+                            alert('slaughter mod');
                         };
                     });
                     app.store('sale'); 

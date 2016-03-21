@@ -1425,7 +1425,7 @@ function onDeviceReady() {
                     var saleIdx = target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index;
                 };
                 var idx = target.dataset.index,
-                    sale = app.data.sales[saleIdx];
+                    sale = JSON.stringify(app.data.sales[saleIdx]);
 
                 var data = function() {
                     var tables = app.DOM.sales.getElementsByTagName('TABLE'),

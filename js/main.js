@@ -659,7 +659,7 @@ function onDeviceReady() {
                 };
             };
             
-            if (this.picked) {
+            if (!this.picked) {
                 alert('newCustomer');
                 var newCustomer = navigator.contacts.create({
                     "displayName": this.forms.newCustomer.givenName() + ' ' + this.forms.newCustomer.familyName(),

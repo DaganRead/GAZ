@@ -195,9 +195,9 @@ function onDeviceReady() {
                             HTMLFrag += 'R' + total;
                             HTMLFrag += '</td></tr></tfoot></table>';
                             total = 0;
-                            HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" data-index="';
+                            HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" onblur="app.update.sale(this);alert();" data-index="';
                             HTMLFrag += index;
-                            HTMLFrag += '" onblur="app.update.sale(this)" > '; 
+                            HTMLFrag += '" >'; 
                             HTMLFrag += element.notes;
                             HTMLFrag += '</textarea>';
                             HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.dataset.index)" class="cancel" data-index="';
@@ -619,7 +619,6 @@ function onDeviceReady() {
             }
         },
         newSale : function() {
-            alert(JSON.stringify(this.data.items));
             app.forms.newSale.location().innerHTML = document.getElementById('newSaleLocationSelect').selectedOptions[0].value;
             this.forms.newSale.purchaseTable = [];
             // Update mapped structure
@@ -660,7 +659,6 @@ function onDeviceReady() {
             };
             
             if (!this.picked) {
-                alert('newCustomer');
                 var newCustomer = navigator.contacts.create({
                     "displayName": this.forms.newCustomer.givenName() + ' ' + this.forms.newCustomer.familyName(),
                     "name" : { 
@@ -685,7 +683,6 @@ function onDeviceReady() {
 
             if (this.data.sales.indexOf(newSale) == -1) {
                 //add to loaded dataset
-                alert(JSON.stringify(this.data.slaughters));
                 this.data.slaughters.forEach(function(element, index, array) {
                     if (element.slaughterDate == newSale.slaughterDate) {
                         element.total += newSale.total;
@@ -786,11 +783,7 @@ function onDeviceReady() {
                         app.DOM.slaughters.innerHTML = HTMLFrag;
                 /****************************/
                 this.store('slaughter'); 
-                alert(JSON.stringify(this.data.slaughters));
-                alert(JSON.stringify(this.data.items));
             };
-            
-            
         },
         newCustomer : function() {
             var newCustomer = navigator.contacts.create({
@@ -951,7 +944,6 @@ function onDeviceReady() {
             sales : function() {
                 var HTMLFrag = '',
                     total = 0;
-                    alert('0');
                     app.data.sales.forEach(function(innerElement, innerIndex, innerArray) {
                                 HTMLFrag +='<fieldset data-index="';
                                 HTMLFrag += innerIndex;
@@ -1010,9 +1002,9 @@ function onDeviceReady() {
                                 HTMLFrag += 'R' + total;
                                 HTMLFrag += '</td></tr></tfoot></table>';
                                 total = 0;
-                                HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" data-index="';
+                                HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" onblur="app.update.sale(this);alert();" data-index="';
                                 HTMLFrag += innerIndex;
-                                HTMLFrag += '" onblur="app.update.sale(this)" > '; 
+                                HTMLFrag += '"  > '; 
                                 HTMLFrag += innerElement.notes;
                                 HTMLFrag += '</textarea>';
                                 HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.dataset.index)" class="cancel" data-index="';
@@ -1427,6 +1419,7 @@ function onDeviceReady() {
         },
         update : {
             sale : function(target) {
+                alert('Called');
                 var idx = target.dataset.index,
                     saleIdx = target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
                     sale = app.data.sales[saleIdx],

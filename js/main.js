@@ -1492,7 +1492,7 @@ function onDeviceReady() {
                             element.total += total;
                         };
                     });
-                    app.store('sale');
+                    app.store('sale'); 
                     app.store('slaughter');
                 }();
 

@@ -1420,6 +1420,10 @@ function onDeviceReady() {
         update : {
             sale : function(target) {
                 alert('Called');
+                alert(target.tagName);
+                if (target.tagName == 'textarea') {
+                    alert('true');
+                };
                 var idx = target.dataset.index,
                     saleIdx = target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
                     sale = app.data.sales[saleIdx],

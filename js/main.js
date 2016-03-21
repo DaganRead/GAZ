@@ -1419,15 +1419,15 @@ function onDeviceReady() {
         },
         update : {
             sale : function(target) {
-                alert('Called');
-                alert(target.tagName);
-                if (target.tagName == 'textarea') {
+                if (target.tagName == 'TEXTAREA') {
                     alert('true');
+                    var saleIdx = target.parentNode.dataset.index;
+                }else{
+                    var saleIdx = target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index;
                 };
                 var idx = target.dataset.index,
-                    saleIdx = target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
-                    sale = app.data.sales[saleIdx],
-                    pageY = window.pageYOffset;
+                    sale = app.data.sales[saleIdx];
+                    
                 var data = function() {
                     var tables = app.DOM.sales.getElementsByTagName('TABLE'),
                         children,

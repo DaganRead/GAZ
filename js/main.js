@@ -1483,14 +1483,17 @@ function onDeviceReady() {
                     app.data.sales[saleIdx].notes = children[idx].parentNode.parentNode.parentNode.children[7].value;
                     saleIdx==0 ? tables[saleIdx].children[1].innerHTML = HTMLFrag : tables[saleIdx].children[0].innerHTML = HTMLFrag;
                     saleIdx==0 ? tables[saleIdx].children[2].children[0].children[1].innerHTML = 'R' + total : tables[saleIdx].children[1].children[0].children[1].innerHTML = 'R' + total;
+                    alert(JSON.stringify(app.data.slaughters));
                     app.data.slaughters.forEach(function(element, index, array) {
                         if (element.slaughterDate == sale.slaughterDate) {
                             app.data.slaughters[index].total -= sale.total;
                             app.data.slaughters[index].total += total;
+                            alert(JSON.stringify(app.data.slaughters));
+                            app.store('slaughter');
+                            alert('saved');
                         };
                     });
                     app.store('sale'); 
-                    app.store('slaughter');
                 }();
 
             },

@@ -785,7 +785,7 @@ function onDeviceReady() {
                         });
                         app.DOM.slaughters.innerHTML = HTMLFrag;
                 /****************************/
-                //this.store('slaughter');
+                this.store('slaughter');
                 alert(JSON.stringify(this.data.slaughters));
                 alert(JSON.stringify(this.data.items));
             };

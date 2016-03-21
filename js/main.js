@@ -195,7 +195,7 @@ function onDeviceReady() {
                             HTMLFrag += 'R' + total;
                             HTMLFrag += '</td></tr></tfoot></table>';
                             total = 0;
-                            HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" onblur="app.update.sale(this);alert();" data-index="';
+                            HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" onblur="app.update.sale(this);" data-index="';
                             HTMLFrag += index;
                             HTMLFrag += '" >'; 
                             HTMLFrag += element.notes;
@@ -1002,7 +1002,7 @@ function onDeviceReady() {
                                 HTMLFrag += 'R' + total;
                                 HTMLFrag += '</td></tr></tfoot></table>';
                                 total = 0;
-                                HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" onblur="app.update.sale(this);alert();" data-index="';
+                                HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" onblur="app.update.sale(this)" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"  > '; 
                                 HTMLFrag += innerElement.notes;

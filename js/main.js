@@ -1440,7 +1440,8 @@ function onDeviceReady() {
                         totalWeight: parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2))||parseFloat(children[idx].children[2].children[0].value),
                         itemPrice: parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price)
                     });
-                    alert('0');
+                    var temp = parseFloat(children[idx].children[1].children[0].placeholder)||parseFloat(children[idx].children[1].children[0].value);
+                    alert(JSON.stringify(temp));
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                         innerElement = JSON.parse(innerElement);
                         HTMLFrag += '<tr><td colspan="2">';
@@ -1461,7 +1462,6 @@ function onDeviceReady() {
                             HTMLFrag += iiElement.itemName;
                             HTMLFrag += '</option>';
                         });
-                        alert('1');
                         HTMLFrag += '</select>';
                         HTMLFrag += '</td><td colspan="2" class="small"><input type="text" class="quantity" data-index="';
                         HTMLFrag += innerIndex;         
@@ -1479,12 +1479,10 @@ function onDeviceReady() {
                         total    += innerElement.totalWeight * innerElement.itemPrice;
                         HTMLFrag += '</td></tr>';
                     });
-                    alert('2');
                     app.data.sales[saleIdx].total = total;
                     app.data.sales[saleIdx].notes = children[idx].parentNode.parentNode.parentNode.children[7].value;
                     saleIdx==0 ? tables[saleIdx].children[1].innerHTML = HTMLFrag : tables[saleIdx].children[0].innerHTML = HTMLFrag;
                     saleIdx==0 ? tables[saleIdx].children[2].children[0].children[1].innerHTML = 'R' + total : tables[saleIdx].children[1].children[0].children[1].innerHTML = 'R' + total;
-                    alert('3');
                     app.data.slaughters.forEach(function(element, index, array) {
                         if (element.slaughterDate == sale.slaughterDate) {
                             element.total -= sale.total;
@@ -1493,7 +1491,6 @@ function onDeviceReady() {
                     });
                     app.store('sale'); 
                     app.store('slaughter');
-                    alert('4');
                 }();
 
             },

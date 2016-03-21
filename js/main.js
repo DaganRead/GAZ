@@ -619,6 +619,7 @@ function onDeviceReady() {
             }
         },
         newSale : function() {
+            alert(JSON.stringify(this.data.items));
             app.forms.newSale.location().innerHTML = document.getElementById('newSaleLocationSelect').selectedOptions[0].value;
             this.forms.newSale.purchaseTable = [];
             // Update mapped structure
@@ -659,6 +660,7 @@ function onDeviceReady() {
             };
             
             if (this.picked) {
+                alert('newCustomer');
                 var newCustomer = navigator.contacts.create({
                     "displayName": this.forms.newCustomer.givenName() + ' ' + this.forms.newCustomer.familyName(),
                     "name" : { 
@@ -683,6 +685,7 @@ function onDeviceReady() {
 
             if (this.data.sales.indexOf(newSale) == -1) {
                 //add to loaded dataset
+                alert(JSON.stringify(this.data.slaughters));
                 this.data.slaughters.forEach(function(element, index, array) {
                     if (element.slaughterDate == newSale.slaughterDate) {
                         element.total += newSale.total;
@@ -782,7 +785,9 @@ function onDeviceReady() {
                         });
                         app.DOM.slaughters.innerHTML = HTMLFrag;
                 /****************************/
-                this.store('slaughter');
+                //this.store('slaughter');
+                alert(JSON.stringify(this.data.slaughters));
+                alert(JSON.stringify(this.data.items));
             };
             
             
@@ -1366,16 +1371,16 @@ function onDeviceReady() {
                                     
                                 };
                             if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
-                                app.picked = true;
+                                //app.picked = true;
                                 /*element.location = {
                                     count : 0,
                                     location : document.getElementById('newSaleLocationSelect').selectedOptions[0].value
                                 };*/
-                                app.store('customer');
+                                //app.store('customer');
                                 //app.binding.customers();
-                                if(!classie.hasClass(document.getElementById('newSale'), 'acc-open')){
+                                /*if(!classie.hasClass(document.getElementById('newSale'), 'acc-open')){
                                     classie.addClass(document.getElementById('newSale'), 'acc-open');
-                                };
+                                };*/
                             };
                         };
                     });

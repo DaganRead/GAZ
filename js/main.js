@@ -1581,7 +1581,9 @@ function onDeviceReady() {
                         if (buttonIndex) {
                             app.data.slaughters.forEach(function(element, index, array) {
                                 if (element.slaughterDate == app.data.sales[idx].slaughterDate) {
-                                    element.total -= app.data.sales[idx].total;
+                                    app.data.slaughters[index].total -= app.data.sales[idx].total;
+                                    app.binding.slaughters();
+                                    app.store('slaughters');
                                 };
                             });
                             app.data.sales.splice(idx, 1);

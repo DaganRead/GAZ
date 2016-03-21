@@ -1426,7 +1426,7 @@ function onDeviceReady() {
                 };
                 var idx = target.dataset.index,
                     sale = JSON.stringify(app.data.sales[saleIdx]);
-
+                    alert(sale);
                 var data = function() {
                     var tables = app.DOM.sales.getElementsByTagName('TABLE'),
                         children,
@@ -1484,7 +1484,8 @@ function onDeviceReady() {
                     alert(JSON.stringify(app.data.slaughters));
                     app.data.slaughters.forEach(function(element, index, array) {
                         if (element.slaughterDate == sale.slaughterDate) {
-                            alert(sale.total);
+                            var temp = JSON.parse(sale.total);
+                            alert(temp);
                             alert(total);
                             app.data.slaughters[index].total -= sale.total;
                             app.data.slaughters[index].total += total;

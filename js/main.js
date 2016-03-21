@@ -1440,8 +1440,6 @@ function onDeviceReady() {
                         totalWeight: children[idx].children[2].children[0].value == '' ? parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2)):parseFloat(children[idx].children[2].children[0].value),
                         itemPrice: parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price)
                     });
-                    var temp = children[idx].children[2].children[0].value == '' ? parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2)):parseFloat(children[idx].children[2].children[0].value);
-                    alert(JSON.stringify(temp));
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                         innerElement = JSON.parse(innerElement);
                         HTMLFrag += '<tr><td colspan="2">';
@@ -1486,9 +1484,11 @@ function onDeviceReady() {
                     alert(JSON.stringify(app.data.slaughters));
                     app.data.slaughters.forEach(function(element, index, array) {
                         if (element.slaughterDate == sale.slaughterDate) {
+                            alert(sale.total);
+                            alert(total);
                             app.data.slaughters[index].total -= sale.total;
                             app.data.slaughters[index].total += total;
-                            alert(JSON.stringify(app.data.slaughters));
+                            alert(JSON.stringify(app.data.slaughters[index].total));
                             app.store('slaughter');
                             alert('saved');
                         };

@@ -1485,9 +1485,8 @@ function onDeviceReady() {
                     saleIdx==0 ? tables[saleIdx].children[2].children[0].children[1].innerHTML = 'R' + total : tables[saleIdx].children[1].children[0].children[1].innerHTML = 'R' + total;
                     app.data.slaughters.forEach(function(element, index, array) {
                         if (element.slaughterDate == sale.slaughterDate) {
-                            element.total -= sale.total;
-                            element.total += total;
-                            alert('slaughter mod');
+                            app.data.slaughters[index].total -= sale.total;
+                            app.data.slaughters[index].total += total;
                         };
                     });
                     app.store('sale'); 

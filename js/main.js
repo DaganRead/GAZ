@@ -1495,7 +1495,16 @@ function onDeviceReady() {
 
             },
             customer: function(target) {
-                var element;
+                var element,
+                    //newContact = navigator.contacts.create(),
+                    temp = { 
+                        name:undefined,
+                        emails:[],
+                        phoneNumbers:[],
+                        addresses:[]
+                    },
+                    indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
+                    contact = app.data.customers[indx];
 
                 if (target.tagName == 'FIGCAPTION') {
                     element = target.parentNode.parentNode.parentNode;

@@ -250,6 +250,7 @@ function onDeviceReady() {
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
                                 HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
+                                alert(JSON.stringify(element.location));
                                 if (element.location !== undefined) {
                                     HTMLFrag += '<option disabled selected value="';
                                     HTMLFrag += element.location.location;
@@ -1521,7 +1522,7 @@ function onDeviceReady() {
                     },
                     indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
                     contact = app.data.customers[indx];
-
+                    alert(JSON.stringify(contact.location));
                 if (target.tagName == 'FIGCAPTION') {
                     element = target.parentNode.parentNode.parentNode;
                 }else{
@@ -1599,7 +1600,6 @@ function onDeviceReady() {
                         location : contact.note
                     };
                 };
-                alert(JSON.stringify(contact.location));
                 app.store('customer');
                 alert(JSON.stringify(app.data.customers));
             }

@@ -1501,7 +1501,7 @@ function onDeviceReady() {
                 }else{
                     element = target.parentNode;
                 };
-                alert('1');
+                alert('1'); 
                 temp.name = {
                     givenName : element.children[1].value||element.children[1].placeholder,
                     familyName : element.children[2].value||element.children[2].placeholder

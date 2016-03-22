@@ -1571,11 +1571,19 @@ function onDeviceReady() {
                 newContact.phoneNumbers = contact.phoneNumbers;
                 newContact.note = contact.note;
                 newContact.save(function(data) {},function(err) {}); 
-                alert(JSON.stringify(contact.location));
-                contact.location = {
-                    count : contact.location.count,
-                    location : contact.note
+                //find count
+                if(contact.location == undefined){
+                    contact.location = {
+                        count : 0,
+                        location : contact.note
+                    };
+                }else{
+                    contact.location = {
+                        count : contact.location.count,
+                        location : contact.note
+                    };
                 };
+
                 app.store('customer');
             }
         },

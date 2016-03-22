@@ -1551,7 +1551,6 @@ function onDeviceReady() {
                     },
                     indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
                     contact = app.data.customers[indx];
-                    alert(JSON.stringify(contact.location));
                 if (target.tagName == 'FIGCAPTION') {
                     element = target.parentNode.parentNode.parentNode;
                 }else{
@@ -1618,19 +1617,15 @@ function onDeviceReady() {
                 newContact.note = contact.note;
                 newContact.save(function(data) {},function(err) {}); 
                 //find count
-                if(contact.location == undefined){
-                    contact.location = {
-                        count : 0,
-                        location : contact.note
+                app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
+                    if(innerElement.location == contact.note){
+                        contact.location = {
+                            count : innerElement.count,
+                            location : contact.note
+                        };
                     };
-                }else{
-                    contact.location = {
-                        count : contact.location.count,
-                        location : contact.note
-                    };
-                };
+                });
                 app.store('customer');
-                alert(JSON.stringify(app.data.customers));
             }
         },
         delete : {

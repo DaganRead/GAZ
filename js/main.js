@@ -1495,16 +1495,18 @@ function onDeviceReady() {
 
             },
             customer: function(target) {
-
+                alert('0');
                 if (target.tagName == 'FIGCAPTION') {
                     element = target.parentNode.parentNode.parentNode;
                 }else{
                     element = target.parentNode;
                 };
+                alert('1');
                 temp.name = {
                     givenName : element.children[1].value||element.children[1].placeholder,
                     familyName : element.children[2].value||element.children[2].placeholder
                 };
+                alert('2');
                 element.children[0].children[0].value = temp.name.givenName +' '+ temp.name.familyName;
                 for (var i = 3; i < element.children.length; i++) {
                     if (element.children[i].type == 'email') {
@@ -1525,6 +1527,7 @@ function onDeviceReady() {
                         };
                     };
                 };
+                alert('3');
                 if (contact.honorificPrefix != undefined && contact.honorificPrefix != null) {
                     contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;

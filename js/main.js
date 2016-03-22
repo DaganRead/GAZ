@@ -1495,7 +1495,7 @@ function onDeviceReady() {
 
             },
             customer: function(target) {
-                alert('0');
+                var temp={};
                 if (target.tagName == 'FIGCAPTION') {
                     element = target.parentNode.parentNode.parentNode;
                 }else{

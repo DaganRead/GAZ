@@ -213,7 +213,12 @@ function onDeviceReady() {
                 this.data.customers.sort(function(a, b) {
                     return a.name.givenName.localeCompare(b.name.givenName);
                 });
-                alert(JSON.stringify(this.data.customers));
+                alert(JSON.stringify(this.data.customers[0].location));
+                if (this.data.customers[0].location!=undefined) {
+                    alert('true');
+                }else{
+                    alert('false');
+                };
                 this.data.customers.forEach(function(element, index, array) {
                             newChar = element.name.givenName.charAt(0);
                             if (newChar < compareChar) {

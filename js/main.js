@@ -1495,20 +1495,27 @@ function onDeviceReady() {
 
             },
             customer: function(target) {
-                if (target.tagName == 'FIGCAPTION') {
-                    var element = target.parentNode.parentNode.parentNode;
-                }else{
-                    var element = target.parentNode;
-                };
-                alert('1'); 
-                var temp = {
-                    name : {
-                        givenName : element.children[1].value||element.children[1].placeholder,
-                        familyName : element.children[2].value||element.children[2].placeholder
+                var element,
+                    newContact = navigator.contacts.create(),
+                    temp = { 
+                        name,
+                        emails:[],
+                        phoneNumbers:[],
+                        addresses:[]
                     }
+                    indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
+                    contact = app.data.customers[indx];
+
+                if (target.tagName == 'FIGCAPTION') {
+                    element = target.parentNode.parentNode.parentNode;
+                }else{
+                    element = target.parentNode;
+                };
+                temp.name = {
+                    givenName : element.children[1].value||element.children[1].placeholder,
+                    familyName : element.children[2].value||element.children[2].placeholder
                 };
                 element.children[0].children[0].value = temp.name.givenName +' '+ temp.name.familyName;
-                alert('2');
                 for (var i = 3; i < element.children.length; i++) {
                     if (element.children[i].type == 'email') {
                         if (element.children[i].value != '') {
@@ -1528,7 +1535,6 @@ function onDeviceReady() {
                         };
                     };
                 };
-                alert('3');
                 if (contact.honorificPrefix != undefined && contact.honorificPrefix != null) {
                     contact.displayName = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
                     contact.name.formatted = contact.honorificPrefix +' '+ temp.name.givenName +' '+ temp.name.familyName;
@@ -1539,8 +1545,6 @@ function onDeviceReady() {
                 contact.name.givenName = temp.name.givenName;
                 contact.name.familyName = temp.name.familyName;
                 contact.note = temp.note;
-                alert(temp.note);
-                alert(contact.note);
                 if (contact.emails != null) {
                     contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
                         contact.emails[innerIndex].value = temp.emails[innerIndex];

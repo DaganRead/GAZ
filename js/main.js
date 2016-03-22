@@ -1534,6 +1534,8 @@ function onDeviceReady() {
                 contact.name.givenName = temp.name.givenName;
                 contact.name.familyName = temp.name.familyName;
                 contact.note = temp.note;
+                alert(temp.note);
+                alert(contact.note);
                 if (contact.emails != null) {
                     contact.emails.forEach(function(innerElement, innerIndex, innerArray) {
                         contact.emails[innerIndex].value = temp.emails[innerIndex];
@@ -1578,7 +1580,7 @@ function onDeviceReady() {
                 navigator.notification.confirm(
                     "Are you sure you would like to delete the sale?",
                     function(buttonIndex) {
-                        if (buttonIndex) {
+                        if (buttonIndex == 1) {
                             app.data.slaughters.forEach(function(element, index, array) {
                                 if (element.slaughterDate == app.data.sales[idx].slaughterDate) {
                                     app.data.slaughters[index].total -= app.data.sales[idx].total;
@@ -1599,7 +1601,7 @@ function onDeviceReady() {
                 navigator.notification.confirm(
                     "Are you sure you would like to delete the customer?",
                     function(buttonIndex) {
-                        if (buttonIndex) {
+                        if (buttonIndex == 1) {
                             app.data.customers.splice(idx, 1);
                             app.store('customer');
                             app.binding.customers();
@@ -1613,7 +1615,7 @@ function onDeviceReady() {
                     navigator.notification.confirm(
                     "Are you sure you would like to delete the item?",
                     function(buttonIndex) {
-                        if (buttonIndex) {
+                        if (buttonIndex == 1) {
                             app.data.items.splice(idx, 1);
                             app.store('item');
                             app.binding.items();
@@ -1627,7 +1629,7 @@ function onDeviceReady() {
                     navigator.notification.confirm(
                     "Are you sure you would like to delete the date?",
                     function(buttonIndex) {
-                        if (buttonIndex) {
+                        if (buttonIndex == 1) {
                             app.data.slaughters.splice(idx, 1);
                             app.store('slaughter');
                             app.binding.slaughters();

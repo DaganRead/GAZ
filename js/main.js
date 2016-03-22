@@ -1495,7 +1495,6 @@ function onDeviceReady() {
 
             },
             customer: function(target) {
-                alert('customer update');
                 var element,
                     newContact = navigator.contacts.create(),
                     temp = { 
@@ -1525,6 +1524,8 @@ function onDeviceReady() {
                             temp.emails.push(element.children[i].placeholder);
                         };
                     }else if(element.children[i].tagName == 'ARTICLE'){
+                        alert('here');
+                        alert(element.children[i].children[0].children[0].children[0].selectedOptions[0].value);
                         temp.note = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
                     }else if(element.children[i].type == 'textarea'){     
                         temp.addresses.push(element.children[i].value);

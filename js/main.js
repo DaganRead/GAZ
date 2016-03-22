@@ -1496,7 +1496,7 @@ function onDeviceReady() {
             },
             customer: function(target) {
                 var element,
-                    //newContact = navigator.contacts.create(),
+                    newContact = navigator.contacts.create(),
                     temp = { 
                         name:undefined,
                         emails:[],

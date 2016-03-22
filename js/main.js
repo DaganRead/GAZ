@@ -1502,7 +1502,7 @@ function onDeviceReady() {
                         emails:[],
                         phoneNumbers:[],
                         addresses:[]
-                    }
+                    },
                     indx = target.parentNode.dataset.index || target.parentNode.parentNode.parentNode.dataset.index,
                     contact = app.data.customers[indx];
 

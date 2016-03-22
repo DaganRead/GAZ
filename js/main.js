@@ -250,7 +250,7 @@ function onDeviceReady() {
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
                                 HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
-                                alert(JSON.stringify(element.location));
+                                alert(JSON.stringify(element));
                                 if (element.location !== undefined) {
                                     HTMLFrag += '<option disabled selected value="';
                                     HTMLFrag += element.location.location;

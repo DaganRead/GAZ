@@ -1014,6 +1014,7 @@ function onDeviceReady() {
                     app.DOM.sales.innerHTML = HTMLFrag;
             },
             customers : function() {
+                alert('called fine');
                     var HTMLFrag = '',
                         newChar,
                         compareChar = '9',
@@ -1605,6 +1606,7 @@ function onDeviceReady() {
                             app.data.customers.splice(idx, 1);
                             app.store('customer');
                             app.binding.customers();
+                            alert('fine');
                         };
                     },
                     'Confirm Removal',

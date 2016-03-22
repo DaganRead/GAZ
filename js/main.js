@@ -1495,6 +1495,7 @@ function onDeviceReady() {
 
             },
             customer: function(target) {
+                alert('customer update');
                 var element,
                     newContact = navigator.contacts.create(),
                     temp = { 

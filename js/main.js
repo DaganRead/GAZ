@@ -213,12 +213,6 @@ function onDeviceReady() {
                 this.data.customers.sort(function(a, b) {
                     return a.name.givenName.localeCompare(b.name.givenName);
                 });
-                alert(JSON.stringify(this.data.customers[0].location));
-                if (this.data.customers[0].location!=undefined) {
-                    alert('true');
-                }else{
-                    alert('false');
-                };
                 this.data.customers.forEach(function(element, index, array) {
                             newChar = element.name.givenName.charAt(0);
                             if (newChar < compareChar) {
@@ -323,7 +317,15 @@ function onDeviceReady() {
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
                                 HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
-                                HTMLFrag += '<option disabled selected value=""></option>';
+                                if (element.location != undefined) {
+                                    HTMLFrag += '<option disabled selected value="';
+                                    HTMLFrag += element.location.location;
+                                    HTMLFrag += '">';
+                                    HTMLFrag += element.location.location;
+                                    HTMLFrag += '</option>';
+                                }else{
+                                    HTMLFrag += '<option disabled selected value=""></option>';
+                                };
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
                                     HTMLFrag += innerElement.location;
@@ -375,7 +377,15 @@ function onDeviceReady() {
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
                                 HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
-                                HTMLFrag += '<option disabled selected value=""></option>';
+                                if (element.location != undefined) {
+                                    HTMLFrag += '<option disabled selected value="';
+                                    HTMLFrag += element.location.location;
+                                    HTMLFrag += '">';
+                                    HTMLFrag += element.location.location;
+                                    HTMLFrag += '</option>';
+                                }else{
+                                    HTMLFrag += '<option disabled selected value=""></option>';
+                                };
                                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                     HTMLFrag += '<option value="';
                                     HTMLFrag += innerElement.location;
@@ -1074,8 +1084,15 @@ function onDeviceReady() {
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
                                     HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
-                                    HTMLFrag += '<option disabled selected value=""></option>';
-                                    app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
+                                    if (element.location != undefined) {
+                                        HTMLFrag += '<option disabled selected value="';
+                                        HTMLFrag += element.location.location;
+                                        HTMLFrag += '">';
+                                        HTMLFrag += element.location.location;
+                                        HTMLFrag += '</option>';
+                                    }else{
+                                        HTMLFrag += '<option disabled selected value=""></option>';
+                                    };                                    app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += innerElement.location;
                                         HTMLFrag += '" >';
@@ -1196,8 +1213,15 @@ function onDeviceReady() {
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
                                     HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
-                                    HTMLFrag += '<option disabled selected value=""></option>';
-                                    app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
+                                    if (element.location != undefined) {
+                                        HTMLFrag += '<option disabled selected value="';
+                                        HTMLFrag += element.location.location;
+                                        HTMLFrag += '">';
+                                        HTMLFrag += element.location.location;
+                                        HTMLFrag += '</option>';
+                                    }else{
+                                        HTMLFrag += '<option disabled selected value=""></option>';
+                                    };                                    app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += innerElement.location;
                                         HTMLFrag += '" >';

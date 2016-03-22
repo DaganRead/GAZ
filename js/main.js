@@ -1524,8 +1524,6 @@ function onDeviceReady() {
                             temp.emails.push(element.children[i].placeholder);
                         };
                     }else if(element.children[i].tagName == 'ARTICLE'){
-                        alert('here');
-                        alert(element.children[i].children[0].children[0].children[0].selectedOptions[0].value);
                         temp.note = element.children[i].children[0].children[0].children[0].selectedOptions[0].value;
                     }else if(element.children[i].type == 'textarea'){     
                         temp.addresses.push(element.children[i].value);
@@ -1573,16 +1571,11 @@ function onDeviceReady() {
                 newContact.phoneNumbers = contact.phoneNumbers;
                 newContact.note = contact.note;
                 newContact.save(function(data) {},function(err) {}); 
-                /*contact.location = {
-                    count : 0,
+                alert(JSON.stringify(contact.location));
+                contact.location = {
+                    count : contact.location.count,
                     location : contact.note
-                };*/
-                /*var foo = JSON.stringify(app.data.customers.shift());
-                window.setTimeout(function() {
-                    app.data.customers.unshift(JSON.parse(foo));
-                    app.store('customer');
-                }, 100);*/
-                //app.binding.customers();
+                };
                 app.store('customer');
             }
         },
@@ -1614,9 +1607,8 @@ function onDeviceReady() {
                     function(buttonIndex) {
                         if (buttonIndex == 1) {
                             app.data.customers.splice(idx, 1);
-                            app.store('customer');
                             app.binding.customers();
-                            alert('fine');
+                            app.store('customer');
                         };
                     },
                     'Confirm Removal',

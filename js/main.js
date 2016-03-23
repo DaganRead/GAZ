@@ -129,7 +129,7 @@ function onDeviceReady() {
                             HTMLFrag += '"><legend>&nbsp;';
                             HTMLFrag += element.slaughterDate;
                             HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
-                            HTMLFrag += element.location;
+                            HTMLFrag += element.location.location;
                             HTMLFrag+='</figcaption></figure>';
                             HTMLFrag += element.name.givenName;
                             HTMLFrag+='&nbsp;';
@@ -724,7 +724,7 @@ function onDeviceReady() {
                                 HTMLFrag += '"><legend>&nbsp;';
                                 HTMLFrag += innerElement.slaughterDate;
                                 HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
-                                HTMLFrag += innerElement.location;
+                                HTMLFrag += innerElement.location.location;
                                 HTMLFrag+='</figcaption></figure>';
                                 HTMLFrag += innerElement.name.givenName;
                                 HTMLFrag+='&nbsp;';
@@ -888,7 +888,8 @@ function onDeviceReady() {
                 } else if (temp[i].id == "newCustomerAddLocationText") {
                     temp[i].value = '';
                 };
-            };  
+            };
+            app.binding.customers();  
         },
         nav : {
             prevTab : 0,
@@ -1038,7 +1039,6 @@ function onDeviceReady() {
                     app.DOM.sales.innerHTML = HTMLFrag;
             },
             customers : function() {
-                alert('called fine');
                     var HTMLFrag = '',
                         newChar,
                         compareChar = '9',

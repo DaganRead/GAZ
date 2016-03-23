@@ -129,7 +129,7 @@ function onDeviceReady() {
                             HTMLFrag += '"><legend>&nbsp;';
                             HTMLFrag += element.slaughterDate;
                             HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
-                            HTMLFrag += element.location.location;
+                            HTMLFrag += element.location;
                             HTMLFrag+='</figcaption></figure>';
                             HTMLFrag += element.name.givenName;
                             HTMLFrag+='&nbsp;';
@@ -724,7 +724,7 @@ function onDeviceReady() {
                                 HTMLFrag += '"><legend>&nbsp;';
                                 HTMLFrag += innerElement.slaughterDate;
                                 HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
-                                HTMLFrag += innerElement.location.location;
+                                HTMLFrag += innerElement.location;
                                 HTMLFrag+='</figcaption></figure>';
                                 HTMLFrag += innerElement.name.givenName;
                                 HTMLFrag+='&nbsp;';
@@ -1395,7 +1395,7 @@ function onDeviceReady() {
                                     document.getElementById('newSaleAddress').value = 'Address';
                                 };
                                 if (element.location.location != '' && element.location.location != undefined) {
-                                    document.getElementById('newSaleLocation').innerHTML = element.location;
+                                    document.getElementById('newSaleLocation').innerHTML = element.location.location;
                                     for (var i = 0; i < document.getElementById('newSaleLocationSelect').options.length; i++) {
                                         if (document.getElementById('newSaleLocationSelect').options[i].value == element.location.location) {
                                             document.getElementById('newSaleLocationSelect').options[i].selected = true;

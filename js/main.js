@@ -1494,9 +1494,7 @@ function onDeviceReady() {
                             parseFloat(dom.totalWeight.placeholder.slice(0, -2))
                         ):(
                             dom.totalWeight.placeholder = dom.totalWeight.value+'kg',
-                            alert(dom.totalWeight.placeholder),
                             dom.totalWeight.value = '',
-                            alert(dom.totalWeight.value),
                             parseFloat(dom.totalWeight.placeholder.slice(0, -2))
                         ),
                         itemPrice: parseFloat(dom.item.selectedOptions[0].dataset.price)

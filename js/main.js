@@ -1481,9 +1481,9 @@ function onDeviceReady() {
                     },
                     saleData = {
                         itemCode : dom.item.selectedOptions[0].value,
-                        quantity : dom.quantity.value == '' ? parseFloat(dom.quantity.placeholder) : parseFloat(dom.quantity.placeholder),
+                        quantity : dom.quantity.value == '' ? parseFloat(dom.quantity.placeholder) : parseFloat(dom.quantity.value),
                         weights : sale.purchaseTable[idx].weights,
-                        totalWeight : dom.totalWeight.value == '' ? parseFloat(dom.totalWeight.placeholder.slice(0, -2)):parseFloat(dom.totalWeight.placeholder.slice(0, -2)),
+                        totalWeight : dom.totalWeight.value == '' ? parseFloat(dom.totalWeight.placeholder.slice(0, -2)):parseFloat(dom.totalWeight.value),
                         itemPrice : parseFloat(dom.item.selectedOptions[0].dataset.price)
                     };
                     

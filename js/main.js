@@ -1483,19 +1483,19 @@ function onDeviceReady() {
                 var saleData = {
                         itemCode : dom.item.selectedOptions[0].value,
                         quantity : dom.quantity.value == '' ? (
-                            parseFloat(dom.quantity.placeholder) 
-                        ):(
-                            dom.quantity.placeholder = dom.quantity.value,
-                            dom.quantity.value = '',
-                            parseFloat(dom.quantity.placeholder) 
+                                parseFloat(dom.quantity.placeholder) 
+                            ):(
+                                dom.quantity.placeholder = dom.quantity.value,
+                                //dom.quantity.value = '',
+                                parseFloat(dom.quantity.placeholder) 
                         ),
                         weights : sale.purchaseTable[idx].weights,
                         totalWeight : dom.totalWeight.value == '' ? (
-                            parseFloat(dom.totalWeight.placeholder.slice(0, -2))
-                        ):(
-                            dom.totalWeight.placeholder = dom.totalWeight.value+'kg',
-                            dom.totalWeight.value = '',
-                            parseFloat(dom.totalWeight.placeholder.slice(0, -2))
+                                parseFloat(dom.totalWeight.placeholder.slice(0, -2))
+                            ):(
+                                dom.totalWeight.placeholder = dom.totalWeight.value+'kg',
+                                //dom.totalWeight.value = '',
+                                parseFloat(dom.totalWeight.placeholder.slice(0, -2))
                         ),
                         itemPrice: parseFloat(dom.item.selectedOptions[0].dataset.price)
                     };

@@ -1482,7 +1482,7 @@ function onDeviceReady() {
                     saleIdx==0 ? children = tables[saleIdx].children[1].children : children = tables[saleIdx].children[0].children;
                     app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify({
                         itemCode : children[idx].children[0].children[0].selectedOptions[0].value,
-                        quantity: children[idx].children[1].children[0].value == '' ? parseFloat(children[idx].children[1].children[0].placeholder):parseFloat(children[idx].children[1].children[0].value),
+                        quantity: children[idx].children[1].children[0].value == '' ? parseFloat(children[idx].children[1].children[0].placeholder):alert('fine'); return parseFloat(children[idx].children[1].children[0].value),
                         weights: sale.purchaseTable[idx].weights,
                         totalWeight: children[idx].children[2].children[0].value == '' ? parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2)):parseFloat(children[idx].children[2].children[0].value),
                         itemPrice: parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price)
@@ -1625,6 +1625,17 @@ function onDeviceReady() {
                         };
                     };
                 });
+                if (contact.note.location != temp.note) {
+                    if (contact.note.count <= 1) {
+                        app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
+                            if(contact.note.location == innerElement.location){
+                                app.data.locations.splice(innerIndex, 1);
+                            };
+                        });
+                    } else{
+                        contact.note.count --;
+                    };
+                };
                 app.store('customer');
             }
         },

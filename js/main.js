@@ -1476,7 +1476,8 @@ function onDeviceReady() {
                     HTMLFrag ='',
                     total = 0;
                     alert(JSON.stringify(sale));
-                    alert(JSON.stringify(tables));
+                    alert(JSON.stringify(tables[saleIdx].children[1].children));
+                    alert(JSON.stringify(tables[0]));
                     alert(JSON.stringify(children));
                 var dom = {
                             item : children[idx].children[0].children[0],

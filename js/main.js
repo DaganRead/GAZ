@@ -1471,14 +1471,14 @@ function onDeviceReady() {
                     alert(saleIdx);
                 var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld),
-                    tables = app.DOM.sales.getElementsByTagName('TABLE'),
-                    children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
+                    tables = app.DOM.sales.getElementsByTagName('TABLE');
+                var children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
                     total = 0;
                     alert(JSON.stringify(sale));
-                    alert(JSON.stringify(tables[saleIdx].children[1].children));
-                    alert(JSON.stringify(tables[0]));
-                    alert(JSON.stringify(children));
+                    alert(tables[saleIdx].children[1].children.tagName);
+                    //alert(JSON.stringify(tables[0]));
+                    alert(children[idx].children[1].children[0].tagName);
                 var dom = {
                             item : children[idx].children[0].children[0],
                             quantity : children[idx].children[2].children[0],

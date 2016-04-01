@@ -1468,7 +1468,6 @@ function onDeviceReady() {
             sale : function(target) {
                 var idx = target.dataset.index,
                     saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index;
-                    alert(saleIdx);
                 var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld),
                     tables = app.DOM.sales.getElementsByTagName('TABLE');
@@ -1480,7 +1479,7 @@ function onDeviceReady() {
                             quantity : children[idx].children[2].children[0],
                             totalWeight : children[idx].children[1].children[0]
                     };
-                alert(dom.quantity.placeholder);
+                alert(dom.quantity.value);
                 alert(dom.totalWeight.value);
                 var saleData = {
                         itemCode : dom.item.selectedOptions[0].value,

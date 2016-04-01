@@ -1,6 +1,5 @@
-var app;
 function onDeviceReady() {
-    app = {
+    var app = {
         picked : false,
         contactCached : null,
         DOM : {
@@ -174,7 +173,7 @@ function onDeviceReady() {
                                 HTMLFrag += '</td><td class="priceTag">';
                                 HTMLFrag += 'R ' + innerElement.totalWeight * innerElement.itemPrice;
                                 total    += innerElement.totalWeight * innerElement.itemPrice;
-                                HTMLFrag += '</td></tr>';
+                                HTMLFrag += '</td></tr><tr><td><td onclick="alert(\'Hi!\')">+<td colspan="7"><td></tr>';
                                 /* if (innerElement.weights.length > 1) {
                                     innerElement.weights.forEach(function(iiElement, iiIndex, iiArray) {
                                         total += iiElement * innerElement.itemPrice;

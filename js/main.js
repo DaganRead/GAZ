@@ -1481,7 +1481,7 @@ function onDeviceReady() {
                             totalWeight : children[idx].children[1].children[0]
                     };
                 alert(dom.quantity.placeholder);
-                alert(dom.totalWeight.placeholder);
+                alert(dom.totalWeight.value);
                 var saleData = {
                         itemCode : dom.item.selectedOptions[0].value,
                         quantity : dom.quantity.value == '' ? (

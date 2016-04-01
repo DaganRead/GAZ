@@ -1475,17 +1475,13 @@ function onDeviceReady() {
                 var children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
                     total = 0;
-                    alert(JSON.stringify(sale));
-                    alert(tables[saleIdx].children[1].children.tagName);
-                    //alert(JSON.stringify(tables[0]));
-                    alert(children[idx].children[1].children[0].tagName);
                 var dom = {
                             item : children[idx].children[0].children[0],
                             quantity : children[idx].children[2].children[0],
                             totalWeight : children[idx].children[1].children[0]
                     };
-                alert(JSON.stringify(dom));
-                alert(JSON.stringify(dom.totalWeight));
+                alert(dom.quantity.placeholder);
+                alert(dom.totalWeight.placeholder);
                 var saleData = {
                         itemCode : dom.item.selectedOptions[0].value,
                         quantity : dom.quantity.value == '' ? (

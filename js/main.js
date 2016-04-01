@@ -1471,14 +1471,16 @@ function onDeviceReady() {
                     saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld),
                     tables = app.DOM.sales.getElementsByTagName('TABLE'),
-                    children = saleIdx==0 ? alert(JSON.stringify(tables)), tables[saleIdx].children[1].children :alert(JSON.stringify(tables)), tables[saleIdx].children[0].children,
+                    children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
-                    dom = {
+                    total = 0;
+
+                var dom = {
                             item : children[idx].children[0].children[0],
                             quantity : children[idx].children[2].children[0],
                             totalWeight : children[idx].children[1].children[0]
-                    },
-                    saleData = {
+                    };
+                var saleData = {
                         itemCode : dom.item.selectedOptions[0].value,
                         quantity : dom.quantity.value == '' ? (
                             parseFloat(dom.quantity.placeholder) 
@@ -1498,8 +1500,7 @@ function onDeviceReady() {
                             parseFloat(dom.totalWeight.placeholder.slice(0, -2))
                         ),
                         itemPrice: parseFloat(dom.item.selectedOptions[0].dataset.price)
-                    },
-                    total = 0;
+                    };
                     
                     alert(JSON.stringify(saleData));
                     app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify(saleData);

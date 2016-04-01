@@ -1467,19 +1467,24 @@ function onDeviceReady() {
         update : {
             sale : function(target) {
                 var idx = target.dataset.index,
-                    saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
-                    saleOld = JSON.stringify(app.data.sales[saleIdx]),
+                    saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index;
+                    alert(saleIdx);
+                var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld),
                     tables = app.DOM.sales.getElementsByTagName('TABLE'),
                     children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
                     total = 0;
-
+                    alert(JSON.stringify(sale));
+                    alert(JSON.stringify(tables));
+                    alert(JSON.stringify(children));
                 var dom = {
                             item : children[idx].children[0].children[0],
                             quantity : children[idx].children[2].children[0],
                             totalWeight : children[idx].children[1].children[0]
                     };
+                alert(JSON.stringify(dom));
+                alert(JSON.stringify(dom.totalWeight));
                 var saleData = {
                         itemCode : dom.item.selectedOptions[0].value,
                         quantity : dom.quantity.value == '' ? (

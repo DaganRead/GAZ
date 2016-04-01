@@ -1476,32 +1476,25 @@ function onDeviceReady() {
                     total = 0;
                 var dom = {
                             item : children[idx].children[0].children[0],
-                            quantity : children[idx].children[2].children[0],
-                            totalWeight : children[idx].children[1].children[0]
+                            quantity : children[idx].children[1].children[0],
+                            totalWeight : children[idx].children[2].children[0]
                     };
-                alert(dom.quantity.value);
-                alert(dom.totalWeight.value);
                 var saleData = {
                         itemCode : dom.item.selectedOptions[0].value,
                         quantity : dom.quantity.value == '' ? (
                                 parseFloat(dom.quantity.placeholder) 
                             ):(
-                                dom.quantity.placeholder = dom.quantity.value,
-                                //dom.quantity.value = '',
                                 parseFloat(dom.quantity.placeholder) 
                         ),
                         weights : sale.purchaseTable[idx].weights,
                         totalWeight : dom.totalWeight.value == '' ? (
                                 parseFloat(dom.totalWeight.placeholder.slice(0, -2))
                             ):(
-                                dom.totalWeight.placeholder = dom.totalWeight.value+'kg',
-                                //dom.totalWeight.value = '',
                                 parseFloat(dom.totalWeight.placeholder.slice(0, -2))
                         ),
                         itemPrice: parseFloat(dom.item.selectedOptions[0].dataset.price)
                     };
                     
-                    alert(JSON.stringify(saleData));
                     app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify(saleData);
                     
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
@@ -1531,7 +1524,7 @@ function onDeviceReady() {
                         HTMLFrag += innerElement.quantity;
                         HTMLFrag += '"/></td><td colspan="2" class="small"><input type="text" class="weight" data-index="';
                         HTMLFrag += innerIndex;     
-                        HTMLFrag += '" onblur="app.update.sale(this)" value="';         
+                        HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';         
                         HTMLFrag += innerElement.totalWeight + 'kg';
                         HTMLFrag += '"/></td>';
                         HTMLFrag += '<td class="priceKG">';

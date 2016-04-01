@@ -1466,27 +1466,42 @@ function onDeviceReady() {
         },
         update : {
             sale : function(target) {
-                if (target.tagName == 'TEXTAREA') {
-                    var saleIdx = target.parentNode.dataset.index;
-                }else{
-                    var saleIdx = target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index;
-                };
                 var idx = target.dataset.index,
+                    saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
                     saleOld = JSON.stringify(app.data.sales[saleIdx]),
-                    sale= JSON.parse(saleOld);
-                var data = function() {
-                    var tables = app.DOM.sales.getElementsByTagName('TABLE'),
-                        children,
-                        HTMLFrag='',
-                        total = 0;
-                    saleIdx==0 ? children = tables[saleIdx].children[1].children : children = tables[saleIdx].children[0].children;
-                    app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify({
-                        itemCode : children[idx].children[0].children[0].selectedOptions[0].value,
-                        quantity: children[idx].children[1].children[0].value == '' ? parseFloat(children[idx].children[1].children[0].placeholder):parseFloat(children[idx].children[1].children[0].value),
-                        weights: sale.purchaseTable[idx].weights,
-                        totalWeight: children[idx].children[2].children[0].value == '' ? parseFloat(children[idx].children[2].children[0].placeholder.slice(0, -2)):parseFloat(children[idx].children[2].children[0].value),
-                        itemPrice: parseFloat(children[idx].children[0].children[0].selectedOptions[0].dataset.price)
-                    });
+                    sale = JSON.parse(saleOld),
+                    tables = app.DOM.sales.getElementsByTagName('TABLE'),
+                    children = saleIdx==0 ? children = tables[saleIdx].children[1].children : children = tables[saleIdx].children[0].children,
+                    HTMLFrag ='',
+                    dom = {
+                            item : children[idx].children[0].children[0],
+                            quantity : children[idx].children[2].children[0],
+                            totalWeight : children[idx].children[1].children[0]
+                    },
+                    saleData = {
+                        itemCode : dom.item.selectedOptions[0].value,
+                        quantity : dom.quantity.value == '' ? (
+                            parseFloat(dom.quantity.placeholder) 
+                        ):(
+                            dom.quantity.placeholder = dom.quantity.value,
+                            dom.quantity.value = '',
+                            parseFloat(dom.quantity.placeholder) 
+                        ),
+                        weights : sale.purchaseTable[idx].weights,
+                        totalWeight : dom.totalWeight.value == '' ? (
+                            parseFloat(dom.totalWeight.placeholder.slice(0, -2))
+                        ):(
+                            dom.totalWeight.placeholder = dom.totalWeight.value+'kg',
+                            dom.totalWeight.value = '',
+                            parseFloat(dom.totalWeight.placeholder.slice(0, -2))
+                        ),
+                        itemPrice: parseFloat(dom.item.selectedOptions[0].dataset.price)
+                    },
+                    total = 0;
+                    
+                    alert(JSON.stringify(saleData));
+                    app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify(saleData);
+                    
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                         innerElement = JSON.parse(innerElement);
                         HTMLFrag += '<tr><td colspan="2">';
@@ -1537,8 +1552,6 @@ function onDeviceReady() {
                         };
                     });
                     app.store('sale'); 
-                }();
-
             },
             customer: function(target) {
                 var element,

@@ -1467,32 +1467,24 @@ function onDeviceReady() {
         update : {
             sale : function(target) {
                 var idx = target.dataset.index,
-                    saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index;
-                var saleOld = JSON.stringify(app.data.sales[saleIdx]),
+                    saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
+                    saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld),
-                    tables = app.DOM.sales.getElementsByTagName('TABLE');
-                var children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
+                    tables = app.DOM.sales.getElementsByTagName('TABLE'),
+                    children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
-                    total = 0;
-                var dom = {
+                    total = 0,
+                    dom = {
                             item : children[idx].children[0].children[0],
                             quantity : children[idx].children[1].children[0],
                             totalWeight : children[idx].children[2].children[0]
-                    };
-                var saleData = {
+                    },
+                    saleData = {
                         itemCode : dom.item.selectedOptions[0].value,
-                        quantity : dom.quantity.value == '' ? (
-                                parseFloat(dom.quantity.placeholder) 
-                            ):(
-                                parseFloat(dom.quantity.placeholder) 
-                        ),
+                        quantity : dom.quantity.value == '' ? parseFloat(dom.quantity.placeholder) : parseFloat(dom.quantity.placeholder),
                         weights : sale.purchaseTable[idx].weights,
-                        totalWeight : dom.totalWeight.value == '' ? (
-                                parseFloat(dom.totalWeight.placeholder.slice(0, -2))
-                            ):(
-                                parseFloat(dom.totalWeight.placeholder.slice(0, -2))
-                        ),
-                        itemPrice: parseFloat(dom.item.selectedOptions[0].dataset.price)
+                        totalWeight : dom.totalWeight.value == '' ? parseFloat(dom.totalWeight.placeholder.slice(0, -2)):parseFloat(dom.totalWeight.placeholder.slice(0, -2)),
+                        itemPrice : parseFloat(dom.item.selectedOptions[0].dataset.price)
                     };
                     
                     app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify(saleData);

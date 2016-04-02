@@ -1023,7 +1023,7 @@ function onDeviceReady() {
                                     HTMLFrag += '</td><td class="priceTag">';
                                     HTMLFrag += 'R ' + iiiElement.totalWeight * iiiElement.itemPrice;
                                     total    += iiiElement.totalWeight * iiiElement.itemPrice;
-                                    HTMLFrag += '</td></tr><tr><td><td class="large" onclick="app.newRow(this)">+<td colspan="7"><td></tr>';
+                                    HTMLFrag += '</td></tr><tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';
                                 });
                                 HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
                                 HTMLFrag += 'R' + total;

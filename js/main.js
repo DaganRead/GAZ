@@ -173,7 +173,7 @@ function onDeviceReady() {
                                 HTMLFrag += '</td><td class="priceTag">';
                                 HTMLFrag += 'R ' + innerElement.totalWeight * innerElement.itemPrice;
                                 total    += innerElement.totalWeight * innerElement.itemPrice;
-                                HTMLFrag += '</td></tr><tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';
+                                HTMLFrag += '</td></tr>';
                                 /* if (innerElement.weights.length > 1) {
                                     innerElement.weights.forEach(function(iiElement, iiIndex, iiArray) {
                                         total += iiElement * innerElement.itemPrice;
@@ -190,6 +190,7 @@ function onDeviceReady() {
                                     });
                                 };*/
                             });
+                            HTMLFrag += '<tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';
                             HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
                             HTMLFrag += 'R' + total;
                             HTMLFrag += '</td></tr></tfoot></table>';
@@ -891,7 +892,7 @@ function onDeviceReady() {
             app.binding.customers();  
         },
         newRow : function(target) {
-
+            alert('add row!');
         },
         nav : {
             prevTab : 0,
@@ -1023,8 +1024,9 @@ function onDeviceReady() {
                                     HTMLFrag += '</td><td class="priceTag">';
                                     HTMLFrag += 'R ' + iiiElement.totalWeight * iiiElement.itemPrice;
                                     total    += iiiElement.totalWeight * iiiElement.itemPrice;
-                                    HTMLFrag += '</td></tr><tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';
+                                    HTMLFrag += '</td></tr>';
                                 });
+                                HTMLFrag += '<tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';
                                 HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
                                 HTMLFrag += 'R' + total;
                                 HTMLFrag += '</td></tr></tfoot></table>';

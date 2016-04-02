@@ -173,7 +173,7 @@ function onDeviceReady() {
                                 HTMLFrag += '</td><td class="priceTag">';
                                 HTMLFrag += 'R ' + innerElement.totalWeight * innerElement.itemPrice;
                                 total    += innerElement.totalWeight * innerElement.itemPrice;
-                                HTMLFrag += '</td></tr><tr><td><td class="large" onclick="app.newRow(this)">+<td colspan="7"><td></tr>';
+                                HTMLFrag += '</td></tr><tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';
                                 /* if (innerElement.weights.length > 1) {
                                     innerElement.weights.forEach(function(iiElement, iiIndex, iiArray) {
                                         total += iiElement * innerElement.itemPrice;

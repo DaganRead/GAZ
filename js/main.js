@@ -1,5 +1,6 @@
+var app;
 function onDeviceReady() {
-    var app = {
+    app = {
         picked : false,
         contactCached : null,
         DOM : {

@@ -186,7 +186,9 @@ form#sales table td.headerLarge{
     text-align: center;
 }
 form#sales table td.large{
-    width: 5%;
+    text-align: left;
+    font-size: x-large;
+    font-weight: bold;
 }
 form#sales table td.small{
     width: 8%;

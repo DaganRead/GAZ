@@ -1655,12 +1655,13 @@ function onDeviceReady() {
                 app.store('customer');
             },
             item : function(target) {
-                var indx = target.parentNode.children[1].dataset.index;
-                var editedItem = {
-                    itemName: target.parentNode.children[0],
-                    itemCode : target.parentNode.children[2],
-                    itemPrice : target.parentNode.children[3]
-                };
+                var indx = target.parentNode.children[1].dataset.index,
+                    editedItem = {
+                        itemName: target.parentNode.children[0].value,
+                        itemCode : target.parentNode.children[2].value,
+                        itemPrice : target.parentNode.children[3].value
+                    };
+                alert('2');
                 alert(JSON.stringify(editedItem));
             }
         },

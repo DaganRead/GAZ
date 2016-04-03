@@ -1655,14 +1655,16 @@ function onDeviceReady() {
                 app.store('customer');
             },
             item : function(target) {
-                var indx = target.parentNode.children[1].dataset.index,
-                    editedItem = {
-                        itemName: target.parentNode.children[0].value,
-                        itemCode : target.parentNode.children[2].value,
-                        itemPrice : target.parentNode.children[3].value
-                    };
-                alert('2');
-                alert(JSON.stringify(editedItem));
+                var indx = target.parentNode.children[1].dataset.index;
+                alert(JSON.stringify(app.data.items[indx]));
+                app.data.items[indx] = {
+                    itemName: target.parentNode.children[0].value == '' ? target.parentNode.children[0].placeholder:target.parentNode.children[0].value,
+                    itemCode : target.parentNode.children[2].value == '' ? target.parentNode.children[2].placeholder:target.parentNode.children[2].value,
+                    itemPrice : target.parentNode.children[3].value == '' ? target.parentNode.children[3].placeholder:target.parentNode.children[3].value
+                };
+                app.binding.items();
+                //app.store('item');
+                alert(JSON.stringify(app.data.items[indx]));
             }
         },
         delete : {

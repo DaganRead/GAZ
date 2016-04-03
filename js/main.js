@@ -893,7 +893,7 @@ function onDeviceReady() {
             app.binding.customers();  
         },
         newRow : function(target) {
-            alert(target.tagName);
+            alert(target.parentNode.parentNode.parentNode.tagName);
         },
         nav : {
             prevTab : 0,

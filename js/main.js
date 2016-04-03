@@ -893,7 +893,17 @@ function onDeviceReady() {
             app.binding.customers();  
         },
         newRow : function(target) {
-            alert(target.parentNode.parentNode.parentNode.parentNode.dataset.index);
+            var saleIdx = target.parentNode.parentNode.parentNode.parentNode.dataset.index,
+                emptyPurchase = {
+                    itemCode: '',
+                    quantity: 0,
+                    weights:[],
+                    totalWeight:0,
+                    itemPrice:0
+                };
+            app.data.sales[saleIdx].purchaseTable.push(emptyPurchase);
+            app.binding.sales();
+            //app.store('sale');
         },
         nav : {
             prevTab : 0,

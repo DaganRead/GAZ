@@ -1655,8 +1655,10 @@ function onDeviceReady() {
                 app.store('customer');
             },
             item : function(target) {
+                
+                alert(target.parentNode.children[1].dataset.index);
                 alert('on');
-                alert(target.parentNode.children[1].type);
+                alert(target.parentNode.getElementsByTagName('image')[0].dataset.index);
                 //var indx = target.parentNode.dataset.index;
             }
         },

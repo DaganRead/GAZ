@@ -893,7 +893,7 @@ function onDeviceReady() {
             app.binding.customers();  
         },
         newRow : function(target) {
-            alert(target.parentNode.parentNode.parentNode.tagName);
+            alert(target.parentNode.parentNode.parentNode.dataset.index);
         },
         nav : {
             prevTab : 0,

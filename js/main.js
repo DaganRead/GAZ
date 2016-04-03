@@ -904,7 +904,7 @@ function onDeviceReady() {
                 alert(JSON.stringify(app.data.sales[saleIdx]));
                 alert(saleIdx);
                 alert(JSON.stringify(emptyPurchase));
-            app.data.sales[saleIdx].purchaseTable.push(emptyPurchase);
+            app.data.sales[saleIdx].purchaseTable.push(JSON.stringify(emptyPurchase));
             alert(JSON.stringify(app.data.sales[saleIdx]));
             //app.binding.sales();
             //app.store('sale');

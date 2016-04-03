@@ -1655,11 +1655,13 @@ function onDeviceReady() {
                 app.store('customer');
             },
             item : function(target) {
-                
-                alert(target.parentNode.children[1].dataset.index);
-                alert('on');
-                alert(target.parentNode.getElementsByTagName('image')[0].dataset.index);
-                //var indx = target.parentNode.dataset.index;
+                var indx = target.parentNode.children[1].dataset.index;
+                var editedItem = {
+                    itemName: target.parentNode.children[0],
+                    itemCode : target.parentNode.children[2],
+                    itemPrice : target.parentNode.children[3]
+                };
+                alert(JSON.stringify(editedItem));
             }
         },
         delete : {

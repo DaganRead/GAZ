@@ -1656,7 +1656,7 @@ function onDeviceReady() {
             },
             item : function(target) {
                 alert('on');
-                alert(JSON.stringify(target.parentNode.children[1]));
+                alert(target.parentNode.children[1].type);
                 //var indx = target.parentNode.dataset.index;
             }
         },

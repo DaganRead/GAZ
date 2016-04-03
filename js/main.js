@@ -1656,7 +1656,7 @@ function onDeviceReady() {
             },
             item : function(target) {
                 alert('on');
-                alert(target.parentNode.children[1].type);
+                alert(target.parentNode.tagName);
                 //var indx = target.parentNode.dataset.index;
             }
         },

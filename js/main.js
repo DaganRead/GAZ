@@ -1107,7 +1107,8 @@ function onDeviceReady() {
                                         HTMLFrag += '</option>';
                                     }else{
                                         HTMLFrag += '<option disabled selected value=""></option>';
-                                    };                                    app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
+                                    };                                    
+                                    app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += innerElement.location;
                                         HTMLFrag += '" >';
@@ -1236,7 +1237,8 @@ function onDeviceReady() {
                                         HTMLFrag += '</option>';
                                     }else{
                                         HTMLFrag += '<option disabled selected value=""></option>';
-                                    };                                    app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
+                                    };                                    
+                                    app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += innerElement.location;
                                         HTMLFrag += '" >';

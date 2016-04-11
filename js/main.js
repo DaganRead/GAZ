@@ -1,15 +1,9 @@
 var app;
 function onDeviceReady() {
     app = {
-        //scrypt : require("./scrypt.js"),
         picked : false,
-        websocket : {
-            public : io('http://gaz-huntingapp.rhcloud.com:8000/public'),
-            private : io('http://gaz-huntingapp.rhcloud.com:8000/restricted')
-        },
+        contactCached : null,
         DOM : {
-            username: document.getElementById('username'),
-            password: document.getElementById('password'),
             newSale: document.getElementById('newSale'),
             sales: document.getElementById('sales'),
             customers: document.getElementById('customers'),
@@ -25,26 +19,6 @@ function onDeviceReady() {
             items:[],
             slaughters:[],
             locations:[]
-        },
-        login : function() {
-            var data = {
-                username : this.DOM.username.value,
-                password : this.DOM.password.value
-            };
-            data.password = this.scrypt.crypto_scrypt(this.scrypt.encode_utf8(data.username), this.scrypt.encode_utf8(data.password), 128, 8, 1, 32);
-            data.password = this.scrypt.to_hex(data.password);
-            alert(JSON.stringify(data));
-            this.websocket.public.emit('request login', data);
-        },
-        register : function() {
-            var data = {
-                username : this.DOM.username.value,
-                password : this.DOM.password.value
-            };
-            data.password = this.scrypt.crypto_scrypt(this.scrypt.encode_utf8(data.username), this.scrypt.encode_utf8(data.password), 128, 8, 1, 32);
-            data.password = this.scrypt.to_hex(data.password);
-            alert(JSON.stringify(data));
-            this.websocket.public.emit('request register', data);
         },
         simulate : function(evt) {
           var el = document.body;
@@ -97,19 +71,6 @@ function onDeviceReady() {
         initialize: function() {
 /*                var public = io.connect('http://gaz-huntingapp.rhcloud.com:8000/public'),
                     restricted = io.connect('http://gaz-huntingapp.rhcloud.com:8000/restricted');*/
-
-            app.websocket.public.on('recieve token', function(token) {
-                var data = {
-                    token : token,
-                    redirect : true
-                };
-                app.websocket.private.emit('authenticate', data);
-                localStorage["token"] = token; 
-            });
-            app.websocket.private.on('recieve login', function(userData) {
-                alert('login successful');
-                alert(userData);
-            });
 
             if (!window.localStorage['installed']) {
                 window.localStorage['installed'] = true;
@@ -1146,8 +1107,7 @@ function onDeviceReady() {
                                         HTMLFrag += '</option>';
                                     }else{
                                         HTMLFrag += '<option disabled selected value=""></option>';
-                                    };                                    
-                                    app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
+                                    };                                    app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += innerElement.location;
                                         HTMLFrag += '" >';
@@ -1276,8 +1236,7 @@ function onDeviceReady() {
                                         HTMLFrag += '</option>';
                                     }else{
                                         HTMLFrag += '<option disabled selected value=""></option>';
-                                    };                                    
-                                    app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
+                                    };                                    app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
                                         HTMLFrag += innerElement.location;
                                         HTMLFrag += '" >';

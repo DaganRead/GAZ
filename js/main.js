@@ -2051,4 +2051,4 @@ function onDeviceReady() {
     };
     app.initialize();
 };
-document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener("deviceready", onDeviceReady, false); 

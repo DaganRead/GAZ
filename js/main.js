@@ -1,9 +1,15 @@
 var app;
 function onDeviceReady() {
     app = {
+        //scrypt : require("./scrypt.js"),
         picked : false,
-        contactCached : null,
+        websocket : {
+            //public : io('http://gaz-huntingapp.rhcloud.com:8000/public'),
+            //private : io('http://gaz-huntingapp.rhcloud.com:8000/restricted')
+        },
         DOM : {
+            username: document.getElementById('username'),
+            password: document.getElementById('password'),
             newSale: document.getElementById('newSale'),
             sales: document.getElementById('sales'),
             customers: document.getElementById('customers'),
@@ -19,6 +25,26 @@ function onDeviceReady() {
             items:[],
             slaughters:[],
             locations:[]
+        },
+        login : function() {
+            var data = {
+                username : this.DOM.username.value,
+                password : this.DOM.password.value
+            };
+            data.password = this.scrypt.crypto_scrypt(this.scrypt.encode_utf8(data.username), this.scrypt.encode_utf8(data.password), 128, 8, 1, 32);
+            data.password = this.scrypt.to_hex(data.password);
+            alert(JSON.stringify(data));
+            this.websocket.public.emit('request login', data);
+        },
+        register : function() {
+            var data = {
+                username : this.DOM.username.value,
+                password : this.DOM.password.value
+            };
+            data.password = this.scrypt.crypto_scrypt(this.scrypt.encode_utf8(data.username), this.scrypt.encode_utf8(data.password), 128, 8, 1, 32);
+            data.password = this.scrypt.to_hex(data.password);
+            alert(JSON.stringify(data));
+            this.websocket.public.emit('request register', data);
         },
         simulate : function(evt) {
           var el = document.body;

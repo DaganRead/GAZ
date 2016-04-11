@@ -23,5 +23,5 @@
     <!-- We'll include the contacts plugin as an example -->
     <plugin name="cordova-plugin-dialogs" spec="1.1.1" source="pgb" />
     <plugin name="cordova-plugin-contacts" spec="1.1.0" source="pgb" />
-    <plugin name="cordova-plugin-whitelist" spec="1.0.0" source="pgb" />
+    <plugin name="cordova-plugin-whitelist" spec="1.0.0" source="npm" />
 </widget>

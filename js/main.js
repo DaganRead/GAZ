@@ -2076,9 +2076,6 @@ function onDeviceReady() {
         alert("Error = " + contactError.code);
     };
     app.initialize();
-    
-    var public = io.connect('http://gaz-huntingapp.rhcloud.com:8000/public'),
-    restricted = io.connect('http://gaz-huntingapp.rhcloud.com:8000/restricted');
 
     app.websocket.public.on('recieve token', function(token) {
         var data = {
@@ -2094,3 +2091,6 @@ function onDeviceReady() {
     });
 };
 document.addEventListener("deviceready", onDeviceReady, false);
+
+    var public = io.connect('http://gaz-huntingapp.rhcloud.com:8000/public'),
+    restricted = io.connect('http://gaz-huntingapp.rhcloud.com:8000/restricted');

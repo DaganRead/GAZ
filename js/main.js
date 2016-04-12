@@ -2080,17 +2080,17 @@ function onDeviceReady() {
         alert("Error = " + contactError.code);
     };
     app.initialize();
-            app.websocket.public.on('recieve token', function(token) {
-                var data = {
-                    token : token,
-                    redirect : true
-                };
-                app.websocket.private.emit('authenticate', data);
-                localStorage["token"] = token; 
-            });
-            app.websocket.private.on('recieve login', function(userData) {
-                alert('login successful');
-                alert(userData);
-            });
+    app.websocket.public.on('recieve token', function(token) {
+        var data = {
+            token : token,
+            redirect : true
+        };
+        app.websocket.private.emit('authenticate', data);
+        localStorage["token"] = token; 
+    });
+    app.websocket.private.on('recieve login', function(userData) {
+        alert('login successful');
+        alert(userData);
+    });
 };
 document.addEventListener("deviceready", onDeviceReady, false);

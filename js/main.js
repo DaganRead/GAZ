@@ -97,19 +97,19 @@ function onDeviceReady() {
         initialize: function() {
 /*                var public = io.connect('http://gaz-huntingapp.rhcloud.com:8000/public'),
                     restricted = io.connect('http://gaz-huntingapp.rhcloud.com:8000/restricted');*/
-/*
-            app.websocket.public.on('recieve token', function(token) {
+
+            this.websocket.public.on('recieve token', function(token) {
                 var data = {
                     token : token,
                     redirect : true
                 };
-                app.websocket.private.emit('authenticate', data);
+                this.websocket.private.emit('authenticate', data);
                 localStorage["token"] = token; 
             });
-            app.websocket.private.on('recieve login', function(userData) {
+            this.websocket.private.on('recieve login', function(userData) {
                 alert('login successful');
                 alert(userData);
-            });*/
+            });
 
             if (!window.localStorage['installed']) {
                 window.localStorage['installed'] = true;

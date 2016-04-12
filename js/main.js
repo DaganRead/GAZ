@@ -97,7 +97,7 @@ function onDeviceReady() {
         initialize: function() {
 /*                var public = io.connect('http://gaz-huntingapp.rhcloud.com:8000/public'),
                     restricted = io.connect('http://gaz-huntingapp.rhcloud.com:8000/restricted');*/
-
+/*
             app.websocket.public.on('recieve token', function(token) {
                 var data = {
                     token : token,
@@ -109,7 +109,7 @@ function onDeviceReady() {
             app.websocket.private.on('recieve login', function(userData) {
                 alert('login successful');
                 alert(userData);
-            });
+            });*/
 
             if (!window.localStorage['installed']) {
                 window.localStorage['installed'] = true;

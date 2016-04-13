@@ -2090,7 +2090,7 @@ function onDeviceReady() {
 
     //listen to holla back
     window.addEventListener('message',function(event) {
-        //if(event.origin !== 'http://scriptandstyle.com') return;
+        if(event.origin !== 'http://gaz-huntingapp.rhcloud.com') return;
         alert('received response:  ');
         alert(event.data);
     },false);

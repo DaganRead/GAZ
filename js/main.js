@@ -2084,9 +2084,16 @@ function onDeviceReady() {
     //periodical message sender
     setInterval(function(){
         var message = 'Hello!  The time is: ' + (new Date().getTime());
-        console.log('blog.local:  sending message:  ' + message);
+        //alert('blog.local:  sending message:  ' + message);
         iframe.postMessage(message,domain); //send the message and target URI
     },6000);
+
+    //listen to holla back
+    window.addEventListener('message',function(event) {
+        //if(event.origin !== 'http://scriptandstyle.com') return;
+        alert('received response:  ');
+        alert(JSON.parse( event.data ));
+    },false);
 
 };
 document.addEventListener("deviceready", onDeviceReady, false);

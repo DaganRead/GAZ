@@ -16,13 +16,12 @@
   <script src="js/classie.js"></script>
 </head>
 <body>
-	<section id="page-wrap">
-	 	<div class="md-modal md-effect-12 md-show" id="modal-12">
-			<div class="md-content">
-				<iframe id="serverHandle" align="middle" frameborder="0" scrolling="no" seamless src="http://gaz-huntingapp.rhcloud.com"></iframe> 
-				<button class="md-close">Close me!</button>
-			</div>
+	 <div class="md-modal md-effect-12 md-show" id="modal-12">
+		<div class="md-content">
+			<iframe id="serverHandle" align="middle" frameborder="0" scrolling="no" seamless src="http://gaz-huntingapp.rhcloud.com"></iframe> 
 		</div>
+	</div>
+	<section id="page-wrap">
 	    <div class="tabs">
 	        
 	       <div class="tab">
@@ -85,6 +84,7 @@
 	       </div>
 	    </div>
 	</section>
+	<div class="md-overlay"></div><!-- the overlay element -->
 <script src="cordova.js"></script>
 <script src="js/socket.io.js"></script>
 <script src="dialogs.js"></script>
@@ -93,6 +93,5 @@
 <script src="lib/jquery-1.8.2.min.js"></script>
 <script src="js/storage/memory-store.js"></script>
 <script src="js/main.js"></script>
-
 </body>
 </html>

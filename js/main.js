@@ -2092,15 +2092,4 @@ function onDeviceReady() {
 };
 document.addEventListener("deviceready", onDeviceReady, false);
 
-function httpGet(theUrl){
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-}
-
-alert(httpGet('http://gaz-huntingapp.rhcloud.com'));
-
-    var public = io.connect('http://gaz-huntingapp.rhcloud.com:8000/public'),
-    restricted = io.connect('http://gaz-huntingapp.rhcloud.com:8000/restricted');
-    alert('fine');
+alert(document.domain);

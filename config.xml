@@ -21,6 +21,8 @@
     </platform> 
 
     <allow-navigation href="http://gaz-huntingapp.rhcloud.com/" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="data:*" />
     <allow-intent href="*" />
     <access origin="http://gaz-huntingapp.rhcloud.com/" />
 

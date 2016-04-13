@@ -2098,4 +2098,4 @@ function onDeviceReady() {
 };
 document.addEventListener("deviceready", onDeviceReady, false);
 
-//alert(window.document.domain);
+//alert(window.document.domain); 

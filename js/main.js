@@ -2092,7 +2092,7 @@ function onDeviceReady() {
     window.addEventListener('message',function(event) {
         //if(event.origin !== 'http://scriptandstyle.com') return;
         alert('received response:  ');
-        alert(JSON.parse( event.data ));
+        alert(event.data);
     },false);
 
 };

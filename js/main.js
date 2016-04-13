@@ -2077,21 +2077,18 @@ function onDeviceReady() {
     };
     app.initialize();
 
-    //create popup window
-    var domain = 'http://gaz-huntingapp.rhcloud.com';
-    var iframe = document.getElementById('serverHandle').contentWindow;
-
-    //periodical message sender
-    setInterval(function(){
-        var message = 'Hello!  The time is: ' + (new Date().getTime());
-        //alert('blog.local:  sending message:  ' + message);
-        iframe.postMessage(message,domain); //send the message and target URI
-    },6000);
-
-    //listen to holla back
+    //auth
+    if (localStorage[token]) {
+        var message = {
+            type:'token',
+            data:localStorage[token]
+        };
+        app.dom.serverHandle.postMessage(message,'http://gaz-huntingapp.rhcloud.com');
+    };
     window.addEventListener('message',function(event) {
-        if(event.origin == 'http://gaz-huntingapp.rhcloud.com') {
-            alert(event.data);
+        if(event.origin === 'http://gaz-huntingapp.rhcloud.com') {
+            var message = JSON.parse(event.data);
+            alert(message.type);
         };
     },false);
 

@@ -21,6 +21,7 @@
     </platform> 
 
     <allow-navigation href="http://gaz-huntingapp.rhcloud.com/" />
+    <allow-intent href="*" />
     <access origin="http://gaz-huntingapp.rhcloud.com/" />
 
     <!-- We'll include the contacts plugin as an example -->

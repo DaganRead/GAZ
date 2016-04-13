@@ -2092,11 +2092,15 @@ function onDeviceReady() {
 };
 document.addEventListener("deviceready", onDeviceReady, false);
 
-/*    var public = io.connect('http://gaz-huntingapp.rhcloud.com:8000/public'),
-    restricted = io.connect('http://gaz-huntingapp.rhcloud.com:8000/restricted');*/
 function httpGet(theUrl){
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
     xmlHttp.send( null );
     return xmlHttp.responseText;
-}('http://gaz-huntingapp.rhcloud.com')
+}
+
+alert(httpGet('http://gaz-huntingapp.rhcloud.com'));
+
+    var public = io.connect('http://gaz-huntingapp.rhcloud.com:8000/public'),
+    restricted = io.connect('http://gaz-huntingapp.rhcloud.com:8000/restricted');
+    alert('fine');

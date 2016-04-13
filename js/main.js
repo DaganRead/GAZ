@@ -2077,19 +2077,18 @@ function onDeviceReady() {
     };
     app.initialize();
 
-    app.websocket.public.on('recieve token', function(token) {
-        var data = {
-            token : token,
-            redirect : true
-        };
-        app.websocket.private.emit('authenticate', data);
-        localStorage["token"] = token; 
-    });
-    app.websocket.private.on('recieve login', function(userData) {
-        alert('login successful');
-        alert(userData);
-    });
+    //create popup window
+    var domain = 'http://gaz-huntingapp.rhcloud.com';
+    var iframe = document.getElementById('serverHandle').contentWindow;
+
+    //periodical message sender
+    setInterval(function(){
+        var message = 'Hello!  The time is: ' + (new Date().getTime());
+        console.log('blog.local:  sending message:  ' + message);
+        iframe.postMessage(message,domain); //send the message and target URI
+    },6000);
+
 };
 document.addEventListener("deviceready", onDeviceReady, false);
 
-alert(window.document.domain);
+//alert(window.document.domain);

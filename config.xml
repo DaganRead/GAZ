@@ -20,11 +20,11 @@
         <preference name="android-targetSdkVersion" value="19" />
     </platform> 
 
-    <allow-navigation href="http://gaz-huntingapp.rhcloud.com/" />
+    <allow-navigation href="http://gaz-huntingapp.rhcloud.com/*" />
     <allow-navigation href="https://*/*" />
     <allow-navigation href="data:*" />
     <allow-intent href="*" />
-    <access origin="http://gaz-huntingapp.rhcloud.com/" />
+    <access origin="http://gaz-huntingapp.rhcloud.com/*" />
 
     <!-- We'll include the contacts plugin as an example -->
     <plugin name="cordova-plugin-dialogs" spec="1.2.0" source="npm" />

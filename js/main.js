@@ -2078,11 +2078,6 @@ function onDeviceReady() {
     app.initialize();
 
     //auth
-/*    var message = {
-            type:'initialize'
-    };
-    app.dom.serverHandle.postMessage(message,'http://gaz-huntingapp.rhcloud.com');
-*/
     if (localStorage[token]) {
         var message = {
             type:'token',
@@ -2097,6 +2092,8 @@ function onDeviceReady() {
             alert(message.type);
             if (message.type === 'token') {
                 alert(message.data);
+            }else if(message.type === "login"){
+                alert('close native modal!');
             };
         };
     },false);

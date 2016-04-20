@@ -2079,11 +2079,12 @@ function onDeviceReady() {
     app.initialize();
 
     //auth
+    setInterval(function(){
         var message = {
             type:'initialize'
         };
         app.dom.serverHandle.postMessage(message,'http://gaz-huntingapp.rhcloud.com');
-
+    },6000);
     if (localStorage[token]) {
         var message = {
             type:'token',

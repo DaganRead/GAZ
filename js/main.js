@@ -14,7 +14,8 @@ function onDeviceReady() {
             sales: document.getElementById('sales'),
             customers: document.getElementById('customers'),
             items: document.getElementById('items'),
-            slaughters: document.getElementById('slaughters')
+            slaughters: document.getElementById('slaughters'),
+            modal : document.getElementById('modal-12')
         },
         settings : {
             verboseConsole : false
@@ -2099,6 +2100,9 @@ function onDeviceReady() {
                 alert(message.data);
             }else if(message.type === "login"){
                 alert('close native modal!');
+                if(classie.hasClass(app.dom.modal, 'md-show')){
+                    classie.removeClass(app.dom.modal, 'md-show');
+                };
             };
         };
     },false);

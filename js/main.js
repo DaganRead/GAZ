@@ -15,7 +15,8 @@ function onDeviceReady() {
             customers: document.getElementById('customers'),
             items: document.getElementById('items'),
             slaughters: document.getElementById('slaughters'),
-            modal : document.getElementById('modal-12')
+            modal : document.getElementById('modal-12'),
+            serverHandle : document.getElementById('serverHandle')
         },
         settings : {
             verboseConsole : false
@@ -2084,15 +2085,15 @@ function onDeviceReady() {
             type:'initialize'
         };*/
         var message = 'hello';
-        app.dom.serverHandle.postMessage(message,'http://gaz-huntingapp.rhcloud.com');
+        app.DOM.serverHandle.contentWindow.postMessage(message,'http://gaz-huntingapp.rhcloud.com');
     },6000);
-    if (localStorage[token]) {
+/*    if (localStorage[token]) {
         var message = {
             type:'token',
             data:localStorage[token]
         };
-        app.dom.serverHandle.postMessage(message,'http://gaz-huntingapp.rhcloud.com');
-    };
+        app.DOM.serverHandle.contentWindow.postMessage(message,'http://gaz-huntingapp.rhcloud.com');
+    };*/
     window.addEventListener('message',function(event) {
         alert('coms open');
 /*        if(event.origin === 'http://gaz-huntingapp.rhcloud.com') {
@@ -2102,8 +2103,8 @@ function onDeviceReady() {
                 alert(message.data);
             }else if(message.type === "login"){
                 alert('close native modal!');
-                if(classie.hasClass(app.dom.modal, 'md-show')){
-                    classie.removeClass(app.dom.modal, 'md-show');
+                if(classie.hasClass(app.DOM.modal, 'md-show')){
+                    classie.removeClass(app.DOM.modal, 'md-show');
                 };
             };
         };*/

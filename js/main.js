@@ -2080,9 +2080,10 @@ function onDeviceReady() {
 
     //auth
     setInterval(function(){
-        var message = {
+        /*var message = {
             type:'initialize'
-        };
+        };*/
+        var message = 'hello';
         app.dom.serverHandle.postMessage(message,'http://gaz-huntingapp.rhcloud.com');
     },6000);
     if (localStorage[token]) {
@@ -2094,7 +2095,7 @@ function onDeviceReady() {
     };
     window.addEventListener('message',function(event) {
         alert('coms open');
-        if(event.origin === 'http://gaz-huntingapp.rhcloud.com') {
+/*        if(event.origin === 'http://gaz-huntingapp.rhcloud.com') {
             var message = JSON.parse(event.data);
             alert(message.type);
             if (message.type === 'token') {
@@ -2105,7 +2106,7 @@ function onDeviceReady() {
                     classie.removeClass(app.dom.modal, 'md-show');
                 };
             };
-        };
+        };*/
     },false);
 
 };

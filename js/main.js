@@ -2101,6 +2101,7 @@ function onDeviceReady() {
             alert(message.type);
             if (message.type === 'token') {
                 alert(message.data);
+                //localStorage[token] = message.data;
             }else if(message.type === "login"){
                 alert('close native modal!');
                 if(classie.hasClass(app.DOM.modal, 'md-show')){

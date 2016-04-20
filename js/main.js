@@ -2089,6 +2089,8 @@ function onDeviceReady() {
     };
     window.addEventListener('message',function(event) {
         if(event.origin === 'http://gaz-huntingapp.rhcloud.com') {
+            alert('coms');
+            alert(event.data);
             var message = JSON.parse(event.data);
             alert(message.type);
             if (message.type === 'token') {

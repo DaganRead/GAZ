@@ -2079,10 +2079,10 @@ function onDeviceReady() {
     app.initialize();
 
     //auth
-/*        var message = {
+        var message = {
             type:'initialize'
         };
-        app.dom.serverHandle.postMessage(message,'http://gaz-huntingapp.rhcloud.com');*/
+        app.dom.serverHandle.postMessage(message,'http://gaz-huntingapp.rhcloud.com');
 
     if (localStorage[token]) {
         var message = {

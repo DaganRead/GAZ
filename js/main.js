@@ -2089,7 +2089,7 @@ function onDeviceReady() {
     };*/
     window.addEventListener('message',function(event) {
         alert('coms open');
-/*        if(event.origin === 'http://gaz-huntingapp.rhcloud.com') {
+        if(event.origin === 'http://gaz-huntingapp.rhcloud.com') {
             var message = JSON.parse(event.data);
             alert(message.type);
             if (message.type === 'token') {
@@ -2101,7 +2101,7 @@ function onDeviceReady() {
                     classie.removeClass(app.DOM.modal, 'md-show');
                 };
             };
-        };*/
+        };
     },false);
 
 };

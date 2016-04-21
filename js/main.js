@@ -2093,7 +2093,7 @@ function onDeviceReady() {
             var message = JSON.parse(event.data);
             alert(message.type);
             if (message.type === 'token') {
-                alert(message.data);
+                alert(message.token);
                 //localStorage[token] = message.data;
             }else if(message.type === "login"){
                 alert('close native modal!');

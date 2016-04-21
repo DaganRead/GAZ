@@ -2083,9 +2083,9 @@ function onDeviceReady() {
     if (localStorage['token']) {
         var message = {
             type:'token',
-            data:localStorage['token']
+            token:localStorage['token']
         };
-        app.DOM.serverHandle.contentWindow.postMessage(message,'http://gaz-huntingapp.rhcloud.com');
+        app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
     };
     window.addEventListener('message',function(event) {
         if(event.origin === 'http://gaz-huntingapp.rhcloud.com') {

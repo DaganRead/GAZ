@@ -2081,10 +2081,12 @@ function onDeviceReady() {
 
     //auth
     if (localStorage['token']) {
+        var token = localStorage['token'];
+        alert(token);
         var intervalHandle = window.setInterval(function(){
             var message = {
                 type:'token',
-                token:localStorage['token']
+                token:token
             };
             app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
         },500);
@@ -2093,6 +2095,7 @@ function onDeviceReady() {
         if(event.origin === 'http://gaz-huntingapp.rhcloud.com') {
             var message = JSON.parse(event.data);
             if (message.type === 'token') {
+                alert(JSON.stringify(message.token));
                 localStorage['token'] = message.token;
             }else if(message.type === "login"){
                 if(classie.hasClass(app.DOM.modal, 'md-show')){

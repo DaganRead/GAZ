@@ -16,7 +16,8 @@ function onDeviceReady() {
             items: document.getElementById('items'),
             slaughters: document.getElementById('slaughters'),
             modal : document.getElementById('modal-12'),
-            serverHandle : document.getElementById('serverHandle')
+            serverHandle : document.getElementById('serverHandle'),
+            menuLeft : document.getElementById('cbp-spmenu-s1')
         },
         settings : {
             verboseConsole : false
@@ -27,6 +28,11 @@ function onDeviceReady() {
             items:[],
             slaughters:[],
             locations:[]
+        },
+        openMenu : function(thisObj) {
+            //classie.toggle( thisObj, 'active' );
+            classie.toggle( document.body, 'cbp-spmenu-push-toright' );
+            classie.toggle( app.dom.menuLeft, 'cbp-spmenu-open' );
         },
         login : function() {
             var data = {

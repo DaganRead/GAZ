@@ -42,6 +42,11 @@ function onDeviceReady() {
         logout : function() {
             delete window.localStorage['token'];
             classie.addClass(app.DOM.modal, 'md-show');
+            var message = {
+                type:'logout',
+                token:token
+            };
+            app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
         },
         simulate : function(evt) {
           var el = document.body;

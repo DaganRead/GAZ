@@ -19,6 +19,9 @@ select:-moz-focusring {
     color: transparent;
     text-shadow: 0 0 0 #000;
 }
+body{
+    transform: translate3d(0,0,0);
+}
 input.confirm{
     background-color: #69BD45!important;
     margin-top: 25x!important;

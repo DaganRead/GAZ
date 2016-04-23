@@ -16,24 +16,26 @@
   <script src="js/classie.js"></script>
 </head>
 <body class="cbp-spmenu-push">
-<nav class="banner"><input type="button" onclick="app.openMenu(this)" value="open menu" /><input type="button" onclick="app.logout()" value="logout" /></nav>
+	<nav class="banner">
+		<input type="button" onclick="app.openMenu(this)" value="open menu" />
+		<input type="button" onclick="app.logout()" value="logout" />
+	</nav>
 	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
 		<h3>Menu</h3>
 		<a href="#">Change Password</a>
 		<a href="#">Manual Back Up</a>
 	</nav>
-	 <div class="md-modal md-effect-12 md-show" id="modal-12">
+	<div class="md-modal md-effect-12 md-show" id="modal-12">
 		<div class="md-content">
 			<iframe id="serverHandle" align="middle" frameborder="0" scrolling="no" seamless src="http://gaz-huntingapp.rhcloud.com"></iframe> 
 		</div>
 	</div>
+	<div class="md-overlay"></div>
 	<section id="page-wrap">
 	    <div class="tabs">
-	        
 	       <div class="tab">
 	           <input type="radio" value="Sales" onclick="app.nav.to(this.value)" id="tab-1" name="PrimaryNav" checked>
 	           <label for="tab-1"><img src="img/sales.png" /></label>
-	           
 	           <div class="content">
 	           	 <form id="sales" onsubmit="return false">
 
@@ -90,7 +92,6 @@
 	       </div>
 	    </div>
 	</section>
-	<div class="md-overlay"></div><!-- the overlay element -->
 <script src="cordova.js"></script>
 <script src="js/socket.io.js"></script>
 <script src="dialogs.js"></script>

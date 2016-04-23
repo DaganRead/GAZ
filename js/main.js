@@ -35,24 +35,13 @@ function onDeviceReady() {
             classie.toggle( app.dom.menuLeft, 'cbp-spmenu-open' );
         },
         login : function() {
-            var data = {
-                username : this.DOM.username.value,
-                password : this.DOM.password.value
+            if(classie.hasClass(app.DOM.modal, 'md-show')){
+                classie.removeClass(app.DOM.modal, 'md-show');
             };
-            data.password = this.scrypt.crypto_scrypt(this.scrypt.encode_utf8(data.username), this.scrypt.encode_utf8(data.password), 128, 8, 1, 32);
-            data.password = this.scrypt.to_hex(data.password);
-            alert(JSON.stringify(data));
-            this.websocket.public.emit('request login', data);
         },
-        register : function() {
-            var data = {
-                username : this.DOM.username.value,
-                password : this.DOM.password.value
-            };
-            data.password = this.scrypt.crypto_scrypt(this.scrypt.encode_utf8(data.username), this.scrypt.encode_utf8(data.password), 128, 8, 1, 32);
-            data.password = this.scrypt.to_hex(data.password);
-            alert(JSON.stringify(data));
-            this.websocket.public.emit('request register', data);
+        logout : function() {
+            delete window.localStorage['token'];
+            classie.addClass(app.DOM.modal, 'md-show');
         },
         simulate : function(evt) {
           var el = document.body;
@@ -2067,6 +2056,7 @@ function onDeviceReady() {
             },
             backUp : function() {
                 //app.data
+                alert('backUp');
             }
         }
     };
@@ -2107,9 +2097,7 @@ function onDeviceReady() {
                 alert(JSON.stringify(message.token));
                 localStorage['token'] = message.token;
             }else if(message.type === "login"){
-                if(classie.hasClass(app.DOM.modal, 'md-show')){
-                    classie.removeClass(app.DOM.modal, 'md-show');
-                };
+                app.login();
             }else if(message.type === "token recieved"){
                 window.clearInterval(intervalHandle);
             };

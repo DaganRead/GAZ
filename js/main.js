@@ -2064,6 +2064,9 @@ function onDeviceReady() {
                 });
                 app.store('item');
                 //alert("items sync success!");
+            },
+            backUp : function() {
+                //app.data
             }
         }
     };

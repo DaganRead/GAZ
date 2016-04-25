@@ -7,8 +7,6 @@ function onDeviceReady() {
             private : io('http://gaz-huntingapp.rhcloud.com:8000/restricted')
         },
         DOM : {
-            username: document.getElementById('username'),
-            password: document.getElementById('password'),
             newSale: document.getElementById('newSale'),
             sales: document.getElementById('sales'),
             customers: document.getElementById('customers'),

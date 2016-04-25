@@ -110,6 +110,7 @@ function onDeviceReady() {
                                         locations:[]
                                     });
             };
+            alert('1');
                 this.data = JSON.parse(window.localStorage['data']);
                 //app.binding();
                 /*New Sales*/
@@ -147,6 +148,7 @@ function onDeviceReady() {
                     HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                     HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel" /></article>';
                 app.DOM.newSale.innerHTML = HTMLFrag;
+                alert('2');
                 /* Sales */
                 var HTMLFrag = '',
                     total = 0;
@@ -233,6 +235,7 @@ function onDeviceReady() {
                             HTMLFrag += '"/></fieldset>';
                         });
                 app.DOM.sales.innerHTML = HTMLFrag;
+                alert('3');
                 /*customers*/
                 HTMLFrag = '';
                 var newChar,
@@ -436,6 +439,7 @@ function onDeviceReady() {
                             };
                         app.DOM.customers.innerHTML = HTMLFrag;
                 });
+                alert('3');
                 /*items*/
                 HTMLFrag = '', 
                 newChar,
@@ -487,6 +491,7 @@ function onDeviceReady() {
                             };
                         app.DOM.items.innerHTML = HTMLFrag;
                 });
+                alert('4');
                 /*slaughters*/
                 HTMLFrag = '';
                 this.data.slaughters.sort(function(a, b) {
@@ -2082,7 +2087,7 @@ function onDeviceReady() {
     function onSyncError(contactError) {
         alert("Error = " + contactError.code);
     };
-    app.initialize();
+    //app.initialize();
 
     //auth
     if (localStorage['token']) {

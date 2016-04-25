@@ -29,6 +29,7 @@ function onDeviceReady() {
             locations:[]
         },
         openMenu : function(thisObj) {
+            alert();
             //classie.toggle( thisObj, 'active' );
             classie.toggle( document.body, 'cbp-spmenu-push-toright' );
             classie.toggle( app.dom.menuLeft, 'cbp-spmenu-open' );

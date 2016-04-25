@@ -234,6 +234,7 @@ function onDeviceReady() {
                             HTMLFrag += '"/></fieldset>';
                         });
                 app.DOM.sales.innerHTML = HTMLFrag;
+                alert('3');
                 /*customers*/
                 HTMLFrag = '';
                 var newChar,
@@ -437,6 +438,7 @@ function onDeviceReady() {
                             };
                         app.DOM.customers.innerHTML = HTMLFrag;
                 });
+                alert('4');
                 /*items*/
                 HTMLFrag = '', 
                 newChar,
@@ -506,6 +508,7 @@ function onDeviceReady() {
                 });
                 app.DOM.slaughters.innerHTML = HTMLFrag;
             };
+            alert('5');
         }(),
         forms: {
             newSale : {

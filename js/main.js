@@ -149,8 +149,9 @@ function onDeviceReady() {
                 app.DOM.newSale.innerHTML = HTMLFrag;
                 alert('2');
                 /* Sales */
-                var HTMLFrag = '',
+                HTMLFrag = '',
                     total = 0;
+                alert('2a');
                 this.data.sales.forEach(function(element, index, array) {
                             HTMLFrag +='<fieldset data-index="';
                             HTMLFrag += index;
@@ -233,6 +234,7 @@ function onDeviceReady() {
                             HTMLFrag += index;
                             HTMLFrag += '"/></fieldset>';
                         });
+                alert('2b');
                 app.DOM.sales.innerHTML = HTMLFrag;
                 alert('3');
                 /*customers*/

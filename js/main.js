@@ -97,7 +97,6 @@ function onDeviceReady() {
             }
         },
         initialize: function() {
-            alert('0');
             if (!window.localStorage['installed']) {
                 window.localStorage['installed'] = true;
                 window.localStorage['data'] = JSON.stringify({
@@ -108,9 +107,7 @@ function onDeviceReady() {
                                         locations:[]
                                     });
             };
-            alert('1');
                 this.data = JSON.parse(window.localStorage['data']);
-                alert('2');
                 //app.binding();
                 /*New Sales*/
                 var HTMLFrag = '<article id="newSale"><span class="header">Slaughter Date:</span><br /><select id="newSaleSlaughterDate">';
@@ -122,9 +119,7 @@ function onDeviceReady() {
                     HTMLFrag += element.slaughterDate;
                     HTMLFrag += '</option>';
                 });
-                alert('3');
                 HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location" onclick="app.pickContact()" ><figcaption id="newSaleLocation">Pick</figcaption></figure><input type="text" placeholder="Last Name" onblur="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" onblur="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
-                    alert('3a');
                     HTMLFrag += '<option disabled selected value=""></option>';
                     this.data.locations.forEach(function(element, index, array) {
                         HTMLFrag += '<option value="';
@@ -133,7 +128,6 @@ function onDeviceReady() {
                         HTMLFrag += element.location;
                         HTMLFrag += '</option>';
                     });
-                    alert('3b');
                     HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><thead><tr><th>Item</th><th>Qnt</th><th>Mass</th></tr></thead><tbody><tr><td>';
                     HTMLFrag += '<select class="tableInput" onclick="app.purchaseTableAdd(this)" >';
                     HTMLFrag += '<option disabled selected value=""></option>';
@@ -147,7 +141,6 @@ function onDeviceReady() {
                         HTMLFrag += innerElement.itemName;
                         HTMLFrag += '</option>';
                     });
-                    alert('3d');
                     HTMLFrag += '</select>';
                     HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                     HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel" /></article>';

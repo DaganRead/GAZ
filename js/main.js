@@ -154,7 +154,7 @@ function onDeviceReady() {
                     HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                     HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel" /></article>';
                     alert('3e');
-                app.DOM.newSale.innerHTML = HTMLFrag;
+                this.DOM.newSale.innerHTML = HTMLFrag;
                 alert('4');
                 /* Sales */
                 var HTMLFrag = '',

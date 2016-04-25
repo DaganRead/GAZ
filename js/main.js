@@ -97,6 +97,7 @@ function onDeviceReady() {
             }
         },
         initialize: function() {
+            alert('0');
             if (!window.localStorage['installed']) {
                 window.localStorage['installed'] = true;
                 window.localStorage['data'] = JSON.stringify({
@@ -107,6 +108,7 @@ function onDeviceReady() {
                                         locations:[]
                                     });
             };
+            return function() {      
                 this.data = JSON.parse(window.localStorage['data']);
                 //app.binding();
                 /*New Sales*/
@@ -131,7 +133,6 @@ function onDeviceReady() {
                     HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><thead><tr><th>Item</th><th>Qnt</th><th>Mass</th></tr></thead><tbody><tr><td>';
                     HTMLFrag += '<select class="tableInput" onclick="app.purchaseTableAdd(this)" >';
                     HTMLFrag += '<option disabled selected value=""></option>';
-                    alert('3c');
                     this.data.items.forEach(function(innerElement, innerIndex, innerArray) {
                         HTMLFrag += '<option value="';
                         HTMLFrag += innerElement.itemCode;
@@ -144,9 +145,9 @@ function onDeviceReady() {
                     HTMLFrag += '</select>';
                     HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                     HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel" /></article>';
-                    alert('3e');
-                this.DOM.newSale.innerHTML = HTMLFrag;
-                alert('4');
+                    alert('1');
+                app.DOM.newSale.innerHTML = HTMLFrag;
+                alert('2');
                 /* Sales */
                 var HTMLFrag = '',
                     total = 0;
@@ -504,7 +505,7 @@ function onDeviceReady() {
                     HTMLFrag += '</article>';
                 });
                 app.DOM.slaughters.innerHTML = HTMLFrag;
-                alert('end');
+            };
         }(),
         forms: {
             newSale : {
@@ -2082,7 +2083,7 @@ function onDeviceReady() {
     function onSyncError(contactError) {
         alert("Error = " + contactError.code);
     };
-    //app.initialize();
+    app.initialize();
 
     //auth
     if (localStorage['token']) {

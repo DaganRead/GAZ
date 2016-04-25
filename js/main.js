@@ -1,7 +1,6 @@
 var app;
 function onDeviceReady() {
     app = {
-        //scrypt : require("./scrypt.js"),
         picked : false,
         websocket : {
             public : io('http://gaz-huntingapp.rhcloud.com:8000/public'),
@@ -40,6 +39,7 @@ function onDeviceReady() {
             };
         },
         logout : function() {
+            alert();
             delete window.localStorage['token'];
             classie.addClass(app.DOM.modal, 'md-show');
             var message = {
@@ -47,6 +47,7 @@ function onDeviceReady() {
                 token:token
             };
             app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
+            alert('logged out');
         },
         simulate : function(evt) {
           var el = document.body;

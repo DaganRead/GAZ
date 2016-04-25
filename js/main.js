@@ -1,4 +1,5 @@
 var app;
+alert();
 function onDeviceReady() {
     app = {
         picked : false,
@@ -506,6 +507,7 @@ function onDeviceReady() {
                 });
                 app.DOM.slaughters.innerHTML = HTMLFrag;
             };
+            alert('1');
         }(),
         forms: {
             newSale : {
@@ -2067,6 +2069,7 @@ function onDeviceReady() {
             }
         }
     };
+    alert('2');
     //eventlistener
     document.body.addEventListener("touchend", app.simulate, false);
     function onContactSuccess(contact) {
@@ -2110,6 +2113,6 @@ function onDeviceReady() {
             };
         };
     },false);
-
+    alert('3')
 };
 document.addEventListener("deviceready", onDeviceReady, false);

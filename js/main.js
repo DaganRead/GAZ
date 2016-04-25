@@ -112,6 +112,7 @@ function onDeviceReady() {
             };
             alert('1');
                 this.data = JSON.parse(window.localStorage['data']);
+                alert('2');
                 //app.binding();
                 /*New Sales*/
                 var HTMLFrag = '<article id="newSale"><span class="header">Slaughter Date:</span><br /><select id="newSaleSlaughterDate">';
@@ -123,6 +124,7 @@ function onDeviceReady() {
                     HTMLFrag += element.slaughterDate;
                     HTMLFrag += '</option>';
                 });
+                alert('3');
                 HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location" onclick="app.pickContact()" ><figcaption id="newSaleLocation">Pick</figcaption></figure><input type="text" placeholder="Last Name" onblur="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" onblur="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
                     HTMLFrag += '<option disabled selected value=""></option>';
                     this.data.locations.forEach(function(element, index, array) {
@@ -148,7 +150,7 @@ function onDeviceReady() {
                     HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                     HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel" /></article>';
                 app.DOM.newSale.innerHTML = HTMLFrag;
-                alert('2');
+                alert('4');
                 /* Sales */
                 var HTMLFrag = '',
                     total = 0;
@@ -235,7 +237,6 @@ function onDeviceReady() {
                             HTMLFrag += '"/></fieldset>';
                         });
                 app.DOM.sales.innerHTML = HTMLFrag;
-                alert('3');
                 /*customers*/
                 HTMLFrag = '';
                 var newChar,
@@ -439,7 +440,6 @@ function onDeviceReady() {
                             };
                         app.DOM.customers.innerHTML = HTMLFrag;
                 });
-                alert('3');
                 /*items*/
                 HTMLFrag = '', 
                 newChar,
@@ -491,7 +491,6 @@ function onDeviceReady() {
                             };
                         app.DOM.items.innerHTML = HTMLFrag;
                 });
-                alert('4');
                 /*slaughters*/
                 HTMLFrag = '';
                 this.data.slaughters.sort(function(a, b) {

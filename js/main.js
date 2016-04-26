@@ -2111,8 +2111,9 @@ function onDeviceReady() {
         };
     },false);
     alert('end');
+    document.getElementById('btn_logout').addEventListener("click", function() {
+        alert('clicked');
+    }, false);
+
 };
 document.addEventListener("deviceready", onDeviceReady, false);
-document.getElementById('btn_logout').addEventListener("onclick", function() {
-    alert('clicked');
-}, false);

@@ -987,9 +987,9 @@ function onDeviceReady() {
                                     });
                                     HTMLFrag += '</select>';
                                     HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
-                                    HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>';
-                                    alert(JSON.stringify(HTMLFrag));
+                                    HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" id="btn_newSale" /><input type="button" class="cancel" value="Cancel"></article>';
                                     document.getElementById('newSale').innerHTML = HTMLFrag;
+                                    document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
                                     //alert(parent.children[2].tagName);
                                 break;
                             case "Customers":
@@ -1002,11 +1002,13 @@ function onDeviceReady() {
                                             HTMLFrag += element.location;
                                             HTMLFrag += '</option>';
                                         });
-                                        HTMLFrag += '</select><input type="text" placeholder="New Location" id="newCustomerAddLocationText"/><input type="button" id="newCustomerAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><input type="button" class="confirm" value="Confirm" onclick="app.newCustomer()" /><input type="button" class="cancel" value="Cancel"></article>';
+                                        HTMLFrag += '</select><input type="text" placeholder="New Location" id="newCustomerAddLocationText"/><input type="button" id="newCustomerAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><input type="button" class="confirm" value="Confirm" id="btn_newCustomer" /><input type="button" class="cancel" value="Cancel"></article>';
                                 document.getElementById('newSale').innerHTML = HTMLFrag;
+                                document.getElementById('btn_newCustomer').addEventListener("click", function(e) { app.newCustomer(); }, false);                                
                                 break;
                             case "Items":
-                                document.getElementById('newSale').innerHTML  = '<article id="newItem"><input type="text" id="newItemName" placeholder="Item Name"/><input type="text" id="newItemCode" placeholder="Item Code"/><input type="text" id="newItemPrice" placeholder="R0.00"/><br /><input type="button" class="confirm"value="Confirm" onclick="app.newItem()" /><input type="button" class="cancel" value="Cancel"></article>';
+                                document.getElementById('newSale').innerHTML  = '<article id="newItem"><input type="text" id="newItemName" placeholder="Item Name"/><input type="text" id="newItemCode" placeholder="Item Code"/><input type="text" id="newItemPrice" placeholder="R0.00"/><br /><input type="button" id="btn_newItem" class="confirm"value="Confirm" /><input type="button" class="cancel" value="Cancel"></article>';
+                                document.getElementById('btn_newItem').addEventListener("click", function(e) { app.newItem(); }, false);                                
                                 break;
                             case "Slaughters":
                                 document.getElementById('newSale').innerHTML  = '<article id="newSlaughter"><span>New Slaughter Date:</span><br /><input type="text" id="newSlaughterDate" placeholder="Fri Jan 01 2016"/><br /><input type="button" class="confirm" value="Confirm" id="btn_newSlaughter" onclick="app.newSlaughter()" /><input type="button" class="cancel" value="Cancel"></article>';

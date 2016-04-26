@@ -952,8 +952,6 @@ function onDeviceReady() {
             to :  function(value, parent) {
                     this.prevTab = this.currentTab;
                     this.currentTab = value;
-                    alert(this.prevTab);
-                    alert(this.currentTab);
                     if (value == "New") {
                         switch(this.prevTab){
                             case "Sales":
@@ -990,9 +988,9 @@ function onDeviceReady() {
                                     HTMLFrag += '</select>';
                                     HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                                     HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>';
-                                    parent.children[2].innerHTML = HTMLFrag;
-                                    alert('data2');
-                                    alert(parent.children[2].tagName);
+                                    alert(JSON.stringify(HTMLFrag));
+                                    document.getElementById('newSale').innerHTML = HTMLFrag;
+                                    //alert(parent.children[2].tagName);
                                 break;
                             case "Customers":
                                     var HTMLFrag = '<article id="newCustomer"><span>New Customer Details:</span><br class="clear"/><input type="text" placeholder="First Name" id="newCustomerFirstName"/><input type="text" placeholder="Last Name" id="newCustomerLastName"/><br /><input type="email" placeholder="Email" id="newCustomerEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newCustomerTelephone"/><br /><textarea id="newCustomerAddress" cols="50">Address</textarea> <br class="clear" /><select id="newCustomerLocationSelect">';
@@ -1005,13 +1003,13 @@ function onDeviceReady() {
                                             HTMLFrag += '</option>';
                                         });
                                         HTMLFrag += '</select><input type="text" placeholder="New Location" id="newCustomerAddLocationText"/><input type="button" id="newCustomerAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><input type="button" class="confirm" value="Confirm" onclick="app.newCustomer()" /><input type="button" class="cancel" value="Cancel"></article>';
-                                parent.children[2].innerHTML = HTMLFrag;
+                                document.getElementById('newSale').innerHTML = HTMLFrag;
                                 break;
                             case "Items":
-                                parent.children[2].innerHTML = '<article id="newItem"><input type="text" id="newItemName" placeholder="Item Name"/><input type="text" id="newItemCode" placeholder="Item Code"/><input type="text" id="newItemPrice" placeholder="R0.00"/><br /><input type="button" class="confirm"value="Confirm" onclick="app.newItem()" /><input type="button" class="cancel" value="Cancel"></article>';
+                                document.getElementById('newSale').innerHTML  = '<article id="newItem"><input type="text" id="newItemName" placeholder="Item Name"/><input type="text" id="newItemCode" placeholder="Item Code"/><input type="text" id="newItemPrice" placeholder="R0.00"/><br /><input type="button" class="confirm"value="Confirm" onclick="app.newItem()" /><input type="button" class="cancel" value="Cancel"></article>';
                                 break;
                             case "Slaughters":
-                                parent.children[2].innerHTML = '<article id="newSlaughter"><span>New Slaughter Date:</span><br /><input type="text" id="newSlaughterDate" placeholder="Fri Jan 01 2016"/><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSlaughter()" /><input type="button" class="cancel" value="Cancel"></article>';
+                                document.getElementById('newSale').innerHTML  = '<article id="newSlaughter"><span>New Slaughter Date:</span><br /><input type="text" id="newSlaughterDate" placeholder="Fri Jan 01 2016"/><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSlaughter()" /><input type="button" class="cancel" value="Cancel"></article>';
                                 var slaughterDate = new Pikaday({ 
                                     field: document.getElementById('newSlaughterDate'),
                                     onSelect: function(date) {

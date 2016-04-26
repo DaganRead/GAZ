@@ -2111,5 +2111,6 @@ function onDeviceReady() {
         };
     },false);
     alert('end');
+    app.nav.to('Items');
 };
 document.addEventListener("deviceready", onDeviceReady, false);

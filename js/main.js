@@ -509,11 +509,11 @@ function onDeviceReady() {
 
                 //Event Listereners
 
-                document.getElementById('tab-1').addEventListener("click", app.nav.to('Sales'), false);
-                document.getElementById('tab-2').addEventListener("click", app.nav.to('Customers'), false);
-                document.getElementById('tab-3').addEventListener("click", app.nav.to('Items'), false);
-                document.getElementById('tab-4').addEventListener("click", app.nav.to('Slaughters'), false);
-                document.getElementById('tab-5').addEventListener("click", app.nav.to('New'), false);
+                document.getElementById('tab-1').addEventListener("click", function() { app.nav.to('Sales'); }, false);
+                document.getElementById('tab-2').addEventListener("click", function() { app.nav.to('Customers'); }, false);
+                document.getElementById('tab-3').addEventListener("click", function() { app.nav.to('Items'); }, false);
+                document.getElementById('tab-4').addEventListener("click", function() { app.nav.to('Slaughters'); }, false);
+                document.getElementById('tab-5').addEventListener("click", function() { app.nav.to('New'); }, false);
                 document.getElementById('btn_logout').addEventListener("click", app.logout(), false);
                 document.getElementById('btn_menu').addEventListener("click", app.openMenu(), false);
 
@@ -949,10 +949,9 @@ function onDeviceReady() {
             prevTab : 0,
             currentTab : 0,
             newTab : document.getElementById( 'new-tab' ),
-            to :  function(event, value, parent) {
-                return function(event, value, parent) {
+            to :  function(value, parent) {
+                return function(value, parent) {
                     alert(value);
-                    alert(event);
                     this.prevTab = this.currentTab;
                     this.currentTab = value;
                     if (value == "New") {

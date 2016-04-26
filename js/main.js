@@ -950,7 +950,7 @@ function onDeviceReady() {
             currentTab : 0,
             newTab : document.getElementById( 'new-tab' ),
             to :  function(value, parent) {
-                return function() {
+                return function(value, parent) {
                     alert('data');
                     this.prevTab = this.currentTab;
                     this.currentTab = value;
@@ -991,6 +991,7 @@ function onDeviceReady() {
                                     HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                                     HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>';
                                     parent.children[2].innerHTML = HTMLFrag;
+                                    alert('data2');
                                     alert(parent.children[2].tagName);
                                 break;
                             case "Customers":

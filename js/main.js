@@ -949,7 +949,7 @@ function onDeviceReady() {
             prevTab : 0,
             currentTab : 0,
             newTab : document.getElementById( 'new-tab' ),
-            to :  function(value, parent) {
+            to :  function(event, value, parent) {
                 return function(value, parent) {
                     alert(value);
                     this.prevTab = this.currentTab;

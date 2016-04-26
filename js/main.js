@@ -1009,13 +1009,14 @@ function onDeviceReady() {
                                 document.getElementById('newSale').innerHTML  = '<article id="newItem"><input type="text" id="newItemName" placeholder="Item Name"/><input type="text" id="newItemCode" placeholder="Item Code"/><input type="text" id="newItemPrice" placeholder="R0.00"/><br /><input type="button" class="confirm"value="Confirm" onclick="app.newItem()" /><input type="button" class="cancel" value="Cancel"></article>';
                                 break;
                             case "Slaughters":
-                                document.getElementById('newSale').innerHTML  = '<article id="newSlaughter"><span>New Slaughter Date:</span><br /><input type="text" id="newSlaughterDate" placeholder="Fri Jan 01 2016"/><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSlaughter()" /><input type="button" class="cancel" value="Cancel"></article>';
+                                document.getElementById('newSale').innerHTML  = '<article id="newSlaughter"><span>New Slaughter Date:</span><br /><input type="text" id="newSlaughterDate" placeholder="Fri Jan 01 2016"/><br /><input type="button" class="confirm" value="Confirm" id="btn_newSlaughter" onclick="app.newSlaughter()" /><input type="button" class="cancel" value="Cancel"></article>';
                                 var slaughterDate = new Pikaday({ 
                                     field: document.getElementById('newSlaughterDate'),
                                     onSelect: function(date) {
                                         app.forms.newSlaughter.slaughterDate = slaughterDate.toString();
                                     }
                                 });
+                                document.getElementById('btn_newSlaughter').addEventListener("click", function(e) { app.newSlaughter(); }, false);
                                 break;
                         }
                     };                    

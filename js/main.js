@@ -2112,5 +2112,15 @@ function onDeviceReady() {
     },false);
     alert('end');
     app.nav.to('Items');
+    //Transport
+    if ( typeof define === 'function' && define.amd ) {
+      // AMD
+      define( app );
+    } else {
+      // browser global
+      window.app = app;
+    }
+    })( window );
+
 };
 document.addEventListener("deviceready", onDeviceReady, false);

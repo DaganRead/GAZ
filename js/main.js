@@ -950,10 +950,10 @@ function onDeviceReady() {
             currentTab : 0,
             newTab : document.getElementById( 'new-tab' ),
             to :  function(value, parent) {
-                alert('a');
-                    alert(value);
                     this.prevTab = this.currentTab;
                     this.currentTab = value;
+                    alert(this.prevTab);
+                    alert(this.currentTab);
                     if (value == "New") {
                         switch(this.prevTab){
                             case "Sales":

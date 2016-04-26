@@ -509,7 +509,7 @@ function onDeviceReady() {
 
                 //Event Listereners
 
-                document.getElementById('tab-1').addEventListener("click", function() { app.nav.to('Sales'); }, false);
+                document.getElementById('tab-1').addEventListener("click", function(e) { app.nav.to('Sales'); }, false);
                 document.getElementById('tab-2').addEventListener("click", function() { app.nav.to('Customers'); }, false);
                 document.getElementById('tab-3').addEventListener("click", function() { app.nav.to('Items'); }, false);
                 document.getElementById('tab-4').addEventListener("click", function() { app.nav.to('Slaughters'); }, false);
@@ -950,6 +950,7 @@ function onDeviceReady() {
             currentTab : 0,
             newTab : document.getElementById( 'new-tab' ),
             to :  function(value, parent) {
+                alert('a');
                 return function(value, parent) {
                     alert(value);
                     this.prevTab = this.currentTab;

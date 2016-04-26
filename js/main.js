@@ -503,6 +503,16 @@ function onDeviceReady() {
                     HTMLFrag += '</article>';
                 });
                 app.DOM.slaughters.innerHTML = HTMLFrag;
+
+                //Event Listereners
+
+                document.getElementById('tab-1').addEventListener("click", app.nav.to(this.value), false);
+                document.getElementById('tab-2').addEventListener("click", app.nav.to(this.value), false);
+                document.getElementById('tab-3').addEventListener("click", app.nav.to(this.value), false);
+                document.getElementById('tab-4').addEventListener("click", app.nav.to(this.value), false);
+                document.getElementById('tab-5').addEventListener("click", app.nav.to(this.value), false);
+                document.getElementById('btn_logout').addEventListener("click", app.logout(), false);
+
             };
         }(),
         forms: {
@@ -2110,10 +2120,5 @@ function onDeviceReady() {
             };
         };
     },false);
-    alert('end');
-    document.getElementById('btn_logout').addEventListener("click", function() {
-        alert('clicked');
-    }, false);
-
 };
 document.addEventListener("deviceready", onDeviceReady, false);

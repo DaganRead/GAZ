@@ -35,11 +35,9 @@ function onDeviceReady() {
             };
         },
         login : function() {
-            return function() {
-                if(classie.hasClass(app.DOM.modal, 'md-show')){
-                    classie.removeClass(app.DOM.modal, 'md-show');
-                }; 
-            };
+            if(classie.hasClass(app.DOM.modal, 'md-show')){
+                classie.removeClass(app.DOM.modal, 'md-show');
+            }; 
         },
         logout : function() {
             return function() {

@@ -2084,7 +2084,7 @@ function onDeviceReady() {
         alert("Error = " + contactError.code);
     };
     app.initialize();
-    alert(JSON.stringify(app));
+
     //auth
     if (localStorage['token']) {
         var token = localStorage['token'];
@@ -2110,6 +2110,6 @@ function onDeviceReady() {
             };
         };
     },false);
-
+    alert('end');
 };
 document.addEventListener("deviceready", onDeviceReady, false);

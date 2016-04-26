@@ -27,10 +27,12 @@ function onDeviceReady() {
             locations:[]
         },
         openMenu : function(thisObj) {
-            alert();
-            //classie.toggle( thisObj, 'active' );
-            classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-            classie.toggle( app.dom.menuLeft, 'cbp-spmenu-open' );
+            return function() {
+                alert('open sesame');
+                //classie.toggle( thisObj, 'active' );
+                classie.toggle( document.body, 'cbp-spmenu-push-toright' );
+                classie.toggle( app.dom.menuLeft, 'cbp-spmenu-open' );
+            };
         },
         login : function() {
             if(classie.hasClass(app.DOM.modal, 'md-show')){
@@ -506,12 +508,12 @@ function onDeviceReady() {
 
                 //Event Listereners
 
-                document.getElementById('tab-1').addEventListener("click", app.nav.to(this.value), false);
-                document.getElementById('tab-2').addEventListener("click", app.nav.to(this.value), false);
-                document.getElementById('tab-3').addEventListener("click", app.nav.to(this.value), false);
-                document.getElementById('tab-4').addEventListener("click", app.nav.to(this.value), false);
-                document.getElementById('tab-5').addEventListener("click", app.nav.to(this.value), false);
-                document.getElementById('btn_logout').addEventListener("click", app.logout(), false);
+                //document.getElementById('tab-1').addEventListener("click", app.nav.to(this.value), false);
+                //document.getElementById('tab-2').addEventListener("click", app.nav.to(this.value), false);
+                //document.getElementById('tab-3').addEventListener("click", app.nav.to(this.value), false);
+                //document.getElementById('tab-4').addEventListener("click", app.nav.to(this.value), false);
+                //document.getElementById('tab-5').addEventListener("click", app.nav.to(this.value), false);
+                //document.getElementById('btn_logout').addEventListener("click", app.logout(), false);
                 document.getElementById('btn_menu').addEventListener("click", app.openMenu(), false);
 
             };

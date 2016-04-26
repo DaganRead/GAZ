@@ -951,7 +951,6 @@ function onDeviceReady() {
             newTab : document.getElementById( 'new-tab' ),
             to :  function(value, parent) {
                 alert('a');
-                return function(value, parent) {
                     alert(value);
                     this.prevTab = this.currentTab;
                     this.currentTab = value;
@@ -1022,7 +1021,6 @@ function onDeviceReady() {
                                 break;
                         }
                     };                    
-                };
             }
         },
         binding : {

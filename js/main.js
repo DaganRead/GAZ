@@ -2120,7 +2120,6 @@ function onDeviceReady() {
       // browser global
       window.app = app;
     }
-    })( window );
 
 };
 document.addEventListener("deviceready", onDeviceReady, false);

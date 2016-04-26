@@ -512,6 +512,7 @@ function onDeviceReady() {
                 document.getElementById('tab-4').addEventListener("click", app.nav.to(this.value), false);
                 document.getElementById('tab-5').addEventListener("click", app.nav.to(this.value), false);
                 document.getElementById('btn_logout').addEventListener("click", app.logout(), false);
+                document.getElementById('btn_menu').addEventListener("click", app.openMenu(), false);
 
             };
         }(),

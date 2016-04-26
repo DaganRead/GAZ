@@ -97,7 +97,6 @@ function onDeviceReady() {
             }
         },
         initialize: function() {
-            alert('0');
             if (!window.localStorage['installed']) {
                 window.localStorage['installed'] = true;
                 window.localStorage['data'] = JSON.stringify({
@@ -145,13 +144,10 @@ function onDeviceReady() {
                     HTMLFrag += '</select>';
                     HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                     HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel" /></article>';
-                    alert('1');
                 app.DOM.newSale.innerHTML = HTMLFrag;
-                alert('2');
                 /* Sales */
                 HTMLFrag = '',
                     total = 0;
-                alert('2a');
                 this.data.sales.forEach(function(element, index, array) {
                             HTMLFrag +='<fieldset data-index="';
                             HTMLFrag += index;
@@ -234,9 +230,7 @@ function onDeviceReady() {
                             HTMLFrag += index;
                             HTMLFrag += '"/></fieldset>';
                         });
-                alert('2b');
                 app.DOM.sales.innerHTML = HTMLFrag;
-                alert('3');
                 /*customers*/
                 HTMLFrag = '';
                 var newChar,
@@ -440,7 +434,6 @@ function onDeviceReady() {
                             };
                         app.DOM.customers.innerHTML = HTMLFrag;
                 });
-                alert('4');
                 /*items*/
                 HTMLFrag = '', 
                 newChar,
@@ -510,9 +503,7 @@ function onDeviceReady() {
                     HTMLFrag += '</article>';
                 });
                 app.DOM.slaughters.innerHTML = HTMLFrag;
-                alert('5a');
             };
-            alert('5b');
         }(),
         forms: {
             newSale : {
@@ -945,6 +936,7 @@ function onDeviceReady() {
             currentTab : 0,
             newTab : document.getElementById( 'new-tab' ),
             to :  function(value, parent) {
+                alert('data');
                 this.prevTab = this.currentTab;
                 this.currentTab = value;
                 if (value == "New") {
@@ -984,6 +976,7 @@ function onDeviceReady() {
                                 HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                                 HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel"></article>';
                                 parent.children[2].innerHTML = HTMLFrag;
+                                alert(parent.children[2].tagName);
                             break;
                         case "Customers":
                                 var HTMLFrag = '<article id="newCustomer"><span>New Customer Details:</span><br class="clear"/><input type="text" placeholder="First Name" id="newCustomerFirstName"/><input type="text" placeholder="Last Name" id="newCustomerLastName"/><br /><input type="email" placeholder="Email" id="newCustomerEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newCustomerTelephone"/><br /><textarea id="newCustomerAddress" cols="50">Address</textarea> <br class="clear" /><select id="newCustomerLocationSelect">';

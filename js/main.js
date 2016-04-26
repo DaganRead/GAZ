@@ -446,6 +446,7 @@ function onDeviceReady() {
                 newChar,
                 compareChar = '9',
                 numbersStarted = false;
+                
                 this.data.items.sort(function(a, b) {
                     return a.itemName.localeCompare(b.itemName);
                 });
@@ -509,8 +510,9 @@ function onDeviceReady() {
                     HTMLFrag += '</article>';
                 });
                 app.DOM.slaughters.innerHTML = HTMLFrag;
+                alert('5a');
             };
-            alert('5');
+            alert('5b');
         }(),
         forms: {
             newSale : {

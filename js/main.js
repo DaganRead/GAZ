@@ -975,7 +975,7 @@ function onDeviceReady() {
                                         HTMLFrag += '</option>';
                                     }); 
                                     HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><thead><tr><th>Item</th><th>Qnt</th><th>Mass</th></tr></thead><tbody><tr><td>';
-                                    HTMLFrag += '<select class="tableInput" >';
+                                    HTMLFrag += '<select id="btn_tableInput" class="tableInput" >';
                                     HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.items.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
@@ -994,7 +994,7 @@ function onDeviceReady() {
                                     document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
                                     document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
                                     document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
-                                    document.getElementById('tableInput').addEventListener("click", function(e) {
+                                    document.getElementById('btn_tableInput').addEventListener("click", function(e) {
                                             app.purchaseTableAdd(e.target);
                                         }, false);                                    
                                     //alert(parent.children[2].tagName);

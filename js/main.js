@@ -989,6 +989,7 @@ function onDeviceReady() {
                                     HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                                     HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" id="btn_newSale" /><input type="button" class="cancel" value="Cancel"></article>';
                                     document.getElementById('newSale').innerHTML = HTMLFrag;
+                                    //Event listeners
                                     document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
                                     document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false);
                                     //alert(parent.children[2].tagName);

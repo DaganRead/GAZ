@@ -995,7 +995,9 @@ function onDeviceReady() {
                                     document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
                                     document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
                                     var tableInputsLive = document.getElementsByTagName('SELECT');
+                                    alert(tableInputsLive.length);
                                     for (var i = 0; i < tableInputsLive.length; i++) {
+                                        alert(i);
                                         if (tableInputsLive[i].className == "tableInput") {
                                             tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
                                         };

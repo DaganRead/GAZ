@@ -684,6 +684,7 @@ function onDeviceReady() {
             }
         },
         newSale : function() {
+            alert('newSale');
             app.forms.newSale.location().innerHTML = document.getElementById('newSaleLocationSelect').selectedOptions[0].value;
             this.forms.newSale.purchaseTable = [];
             // Update mapped structure
@@ -1440,7 +1441,7 @@ function onDeviceReady() {
         },
         pickContact : function() {
             navigator.contacts.pickContact(function(contact){
-                alert(JSON.stringify(contact));
+                alert(contact);
                 app.picked = true;
                     app.data.customers.forEach(function(element, index, array) {
                         if (contact.name.givenName != null && contact.name.familyName != null) {

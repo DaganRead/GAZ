@@ -994,9 +994,12 @@ function onDeviceReady() {
                                     document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
                                     document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
                                     document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
-                                    document.getElementById('btn_tableInput').addEventListener("click", function(e) {
-                                            app.purchaseTableAdd(e.target);
-                                        }, false);                                    
+                                    var tableInputsLive = document.getElementsByTagName('SELECT');
+                                    for (var i = 0; i < tableInputsLive.length; i++) {
+                                        if (tableInputsLive[i].className == "tableInput") {
+                                            tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
+                                        };
+                                    };                                    
                                     //alert(parent.children[2].tagName);
                                 break;
                             case "Customers":
@@ -1420,7 +1423,7 @@ function onDeviceReady() {
             classie.toggleClass(container, 'acc-open');
         },
         purchaseTableAdd : function(target) {
-            alert('JSON.stringify(target)');
+            alert(JSON.stringify(target));
             if(!classie.hasClass(target, 'touched')){
                 classie.addClass(target, 'touched');
                 var input = document.createElement('tr'),
@@ -1441,6 +1444,12 @@ function onDeviceReady() {
                 temp += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td>';
                 input.innerHTML = temp;
                 document.getElementById('newSalePurchaseTable').children[1].appendChild(input);
+                var tableInputsLive = document.getElementsByTagName('SELECT');
+                for (var i = 0; i < tableInputsLive.length; i++) {
+                    if (tableInputsLive[i].className == "tableInput") {
+                        tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
+                    };
+                };
             };
         },
         pickContact : function() {

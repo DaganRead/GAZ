@@ -991,6 +991,12 @@ function onDeviceReady() {
                                     document.getElementById('newSale').innerHTML = HTMLFrag;
                                     document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
                                     document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false);
+                                var Things = document.getElementsByTagName('SELECT');
+                                for (var i = 0; i < Things.length; i++) {
+                                    if (Things[i].className == 'tableInput') {
+                                        Things[i]addEventListener("click", function(e) { alert('added');alert(e.target); }, false);
+                                    };
+                                };    
                                     //alert(parent.children[2].tagName);
                                 break;
                             case "Customers":
@@ -1006,14 +1012,7 @@ function onDeviceReady() {
                                         HTMLFrag += '</select><input type="text" placeholder="New Location" id="newCustomerAddLocationText"/><input type="button" id="newCustomerAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><input type="button" class="confirm" value="Confirm" id="btn_newCustomer" /><input type="button" class="cancel" value="Cancel"></article>';
                                 document.getElementById('newSale').innerHTML = HTMLFrag;
                                 document.getElementById('btn_newCustomer').addEventListener("click", function(e) { app.newCustomer(); }, false);
-                                 //app.purchaseTableAdd(this) 
-
-                                var Things = document.getElementsByTagName('SELECT');
-                                for (var i = 0; i < Things.length; i++) {
-                                    if (Things[i].className == 'tableInput') {
-                                        Things[i]addEventListener("click", function(e) { alert('added');alert(e.target); }, false);
-                                    };
-                                };                               
+                                 //app.purchaseTableAdd(this)                            
                                 break;
                             case "Items":
                                 document.getElementById('newSale').innerHTML  = '<article id="newItem"><input type="text" id="newItemName" placeholder="Item Name"/><input type="text" id="newItemCode" placeholder="Item Code"/><input type="text" id="newItemPrice" placeholder="R0.00"/><br /><input type="button" id="btn_newItem" class="confirm"value="Confirm" /><input type="button" class="cancel" value="Cancel"></article>';

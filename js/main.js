@@ -706,6 +706,7 @@ function onDeviceReady() {
                     total: 0,
                     notes : ''
                 };
+                alert(JSON.stringify(newSale));
             for (var i = 0; i < purchaseTableSelects.length; i++) {
                 if (classie.hasClass(purchaseTableSelects[i], 'touched')) {
                         foo.itemCode = purchaseTableSelects[i].value;
@@ -1439,6 +1440,7 @@ function onDeviceReady() {
         },
         pickContact : function() {
             navigator.contacts.pickContact(function(contact){
+                alert(JSON.stringify(contact));
                 app.picked = true;
                     app.data.customers.forEach(function(element, index, array) {
                         if (contact.name.givenName != null && contact.name.familyName != null) {

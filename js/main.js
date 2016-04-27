@@ -991,7 +991,7 @@ function onDeviceReady() {
                                     document.getElementById('newSale').innerHTML = HTMLFrag;
                                     //Event listeners
                                     document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
-                                    document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false);
+                                    document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
                                     //alert(parent.children[2].tagName);
                                 break;
                             case "Customers":

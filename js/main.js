@@ -1443,9 +1443,15 @@ function onDeviceReady() {
                 alert(JSON.stringify(contact));
                 app.picked = true;
                     app.data.customers.forEach(function(element, index, array) {
-                        if (contact.name.givenName != null && contact.name.familyName != null) {
-                            document.getElementById('newSaleFirstName').value = contact.name.givenName;
-                            document.getElementById('newSaleLastName').value = contact.name.familyName;
+                        if (contact.name.formatted != null) {
+                            if (contact.name.givenName != null) {
+                                document.getElementById('newSaleFirstName').value = contact.name.givenName;
+                            }else{
+                                document.getElementById('newSaleFirstName').value = contact.name.formatted;                                
+                            };
+                            if (contact.name.familyName != null) {
+                                document.getElementById('newSaleLastName').value = contact.name.familyName;
+                            };
                                 if (contact.phoneNumbers!=null) {
                                     document.getElementById('newSaleTelephone').value = contact.phoneNumbers[0].value;
                                 }else{

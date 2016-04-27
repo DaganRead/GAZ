@@ -996,11 +996,10 @@ function onDeviceReady() {
                                     document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
                                     var tableInputsLive = document.getElementsByTagName('select');
                                     for (var i = 0; i < tableInputsLive.length; i++) {
-                                        if (tableInputsLive[i].className == "tableInput") {
+                                        if (classie.hasClass(tableInputsLive[i], "tableInput")) {
                                             tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
                                         };
                                     };
-                                    alert(document.getElementsByTagName('select').length);                                    
                                     //alert(parent.children[2].tagName);
                                 break;
                             case "Customers":

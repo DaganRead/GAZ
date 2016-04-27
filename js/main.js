@@ -964,7 +964,7 @@ function onDeviceReady() {
                                     HTMLFrag += element.slaughterDate;
                                     HTMLFrag += '</option>';
                                 });
-                                HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location" onclick="app.pickContact()" ><figcaption id="newSaleLocation">Pick</figcaption></figure><input type="text" placeholder="Last Name" onblur="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" onblur="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
+                                HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location" getElementById="btn_pickContact" ><figcaption id="newSaleLocation">Pick</figcaption></figure><input type="text" placeholder="Last Name" onblur="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" onblur="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
                                     HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.locations.forEach(function(element, index, array) {
                                         HTMLFrag += '<option value="';
@@ -974,7 +974,7 @@ function onDeviceReady() {
                                         HTMLFrag += '</option>';
                                     }); 
                                     HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><thead><tr><th>Item</th><th>Qnt</th><th>Mass</th></tr></thead><tbody><tr><td>';
-                                    HTMLFrag += '<select class="tableInput" onclick="app.purchaseTableAdd(this)" >';
+                                    HTMLFrag += '<select class="tableInput" >';
                                     HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.items.forEach(function(innerElement, innerIndex, innerArray) {
                                         HTMLFrag += '<option value="';
@@ -990,6 +990,7 @@ function onDeviceReady() {
                                     HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" id="btn_newSale" /><input type="button" class="cancel" value="Cancel"></article>';
                                     document.getElementById('newSale').innerHTML = HTMLFrag;
                                     document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
+                                    document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false);
                                     //alert(parent.children[2].tagName);
                                 break;
                             case "Customers":
@@ -1004,7 +1005,16 @@ function onDeviceReady() {
                                         });
                                         HTMLFrag += '</select><input type="text" placeholder="New Location" id="newCustomerAddLocationText"/><input type="button" id="newCustomerAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><input type="button" class="confirm" value="Confirm" id="btn_newCustomer" /><input type="button" class="cancel" value="Cancel"></article>';
                                 document.getElementById('newSale').innerHTML = HTMLFrag;
-                                document.getElementById('btn_newCustomer').addEventListener("click", function(e) { app.newCustomer(); }, false);                                
+                                document.getElementById('btn_newCustomer').addEventListener("click", function(e) { app.newCustomer(); }, false);
+                                 app.purchaseTableAdd(this) 
+
+                                var Things = document.getElementsByTagName('SELECT');
+                                for (var i = 0; i < Things.length; i++) {
+                                    Things[i]
+                                    if (Things[i].className == 'tableInput') {
+                                        Things[i]addEventListener("click", function(e) { alert('added');alert(e.target); }, false);
+                                    };
+                                ;                               
                                 break;
                             case "Items":
                                 document.getElementById('newSale').innerHTML  = '<article id="newItem"><input type="text" id="newItemName" placeholder="Item Name"/><input type="text" id="newItemCode" placeholder="Item Code"/><input type="text" id="newItemPrice" placeholder="R0.00"/><br /><input type="button" id="btn_newItem" class="confirm"value="Confirm" /><input type="button" class="cancel" value="Cancel"></article>';

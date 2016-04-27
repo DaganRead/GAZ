@@ -974,7 +974,7 @@ function onDeviceReady() {
                                         HTMLFrag += element.location;
                                         HTMLFrag += '</option>';
                                     }); 
-                                    HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><thead><tr><th>Item</th><th>Qnt</th><th>Mass</th></tr></thead><tbody><tr><td>';
+                                    HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><thead><tr><th>Item</th><th>Qnt</th><th>Mass</th></tr></thead><tbody><tr><td>';
                                     HTMLFrag += '<select class="tableInput" >';
                                     HTMLFrag += '<option disabled selected value=""></option>';
                                     app.data.items.forEach(function(innerElement, innerIndex, innerArray) {
@@ -993,6 +993,11 @@ function onDeviceReady() {
                                     //Event listeners
                                     document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
                                     document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
+                                    document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
+                                    document.getElementById('newSaleAddLocationBtn').addEventListener("click", function(e) {
+                                            alert(JSON.stringify(e.target.tagName));
+                                            app.purchaseTableAdd(e.target);
+                                        }, false);                                    
                                     //alert(parent.children[2].tagName);
                                 break;
                             case "Customers":
@@ -1481,7 +1486,10 @@ function onDeviceReady() {
                                 }else{
                                     
                                 };
-                            if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
+                            
+                        };
+                    app.data.customers.forEach(function(element, index, array){
+                        if (element.name.givenName == contact.name.givenName && element.name.familyName == contact.name.familyName) {
                                 //app.picked = true;
                                 /*element.location = {
                                     count : 0,
@@ -1493,9 +1501,6 @@ function onDeviceReady() {
                                     classie.addClass(document.getElementById('newSale'), 'acc-open');
                                 };*/
                             };
-                        };
-                    app.data.customers.forEach(function(element, index, array) {
-
                     });
 
                 if(app.picked){

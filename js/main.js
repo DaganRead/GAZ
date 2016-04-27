@@ -1420,7 +1420,7 @@ function onDeviceReady() {
             classie.toggleClass(container, 'acc-open');
         },
         purchaseTableAdd : function(target) {
-            alert(JSON.stringify(target));
+            alert('JSON.stringify(target)');
             if(!classie.hasClass(target, 'touched')){
                 classie.addClass(target, 'touched');
                 var input = document.createElement('tr'),

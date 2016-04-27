@@ -1442,8 +1442,7 @@ function onDeviceReady() {
             navigator.contacts.pickContact(function(contact){
                 alert(JSON.stringify(contact));
                 app.picked = true;
-                    app.data.customers.forEach(function(element, index, array) {
-                        if (contact.name.formatted != null) {
+                if (contact.name.formatted != null) {
                             if (contact.name.givenName != null) {
                                 document.getElementById('newSaleFirstName').value = contact.name.givenName;
                             }else{
@@ -1495,6 +1494,8 @@ function onDeviceReady() {
                                 };*/
                             };
                         };
+                    app.data.customers.forEach(function(element, index, array) {
+
                     });
 
                 if(app.picked){

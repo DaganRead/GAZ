@@ -307,12 +307,8 @@ section#page-wrap{
     right: -240px;
 }
 
-.cbp-spmenu-left.cbp-spmenu-open {
-    left: 0px;
-}
-
-.cbp-spmenu-right.cbp-spmenu-open {
-    right: 0px;
+.cbp-spmenu-push-toright nav:first-child{
+    left: 0px!important;
 }
 
 /* Horizontal menu that slides from the top or bottom */
@@ -397,7 +393,10 @@ section#page-wrap{
         left: 190px;
     }
 }
-
+nav.banner {
+    background-color: #000;
+    height: 5%;
+};
 /*
 *   Views
 */

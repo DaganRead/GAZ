@@ -28,10 +28,9 @@ function onDeviceReady() {
         },
         openMenu : function(thisObj) {
             return function() {
-                alert('open sesame');
                 //classie.toggle( thisObj, 'active' );
                 classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                classie.toggle( app.dom.menuLeft, 'cbp-spmenu-open' );
+                //classie.toggle( this.dom.menuLeft, 'cbp-spmenu-open' );
             };
         },
         login : function() {
@@ -111,7 +110,16 @@ function onDeviceReady() {
                                     });
             };
             return function() {
-            alert('alive');      
+                var menuLinksLive = document.getElementsByTagName('nav');
+                console.log(menuLinksLive);
+                for (var i = 0; i < menuLinksLive.length; i++) {
+                    for (var ii = 0; ii < menuLinksLive[i].children.length; ii++) {
+                        if (classie.hasClass(menuLinksLive[i].children[ii], "backUp")) {
+                            menuLinksLive[i].children[ii].addEventListener("click", function(e) { app.sync.backUp();}, false);
+                        };
+                    };
+                };
+
                 this.data = JSON.parse(window.localStorage['data']);
                 //app.binding();
                 /*New Sales*/
@@ -245,7 +253,6 @@ function onDeviceReady() {
                             HTMLFrag += '"/></fieldset>';
                         });
                 app.DOM.sales.innerHTML = HTMLFrag;
-                alert('starting'); 
                 var newRowsLive = document.getElementsByTagName('td'),
                     inputsLive = document.getElementsByTagName('input'),
                     notesLive = document.getElementsByTagName('textarea'),
@@ -279,7 +286,6 @@ function onDeviceReady() {
                         notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
                     };
                 };
-                alert('fine');
                 /*customers*/
                 HTMLFrag = '';
                 var newChar,
@@ -2152,7 +2158,12 @@ function onDeviceReady() {
             },
             backUp : function() {
                 //app.data
-                alert('backUp');
+                var message = {
+                    type:'back up',
+                    data:app.data
+                };
+                app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
+                alert('backUp requested');
             }
         }
     };

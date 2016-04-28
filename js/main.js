@@ -709,6 +709,7 @@ function onDeviceReady() {
                 alert(JSON.stringify(newSale));
             for (var i = 0; i < purchaseTableSelects.length; i++) {
                 if (classie.hasClass(purchaseTableSelects[i], 'touched')) {
+                    alert('found');
                         foo.itemCode = purchaseTableSelects[i].value;
                         foo.itemPrice = purchaseTableSelects[i].selectedOptions[0].dataset.price;
                         foo.quantity = purchaseTableSelects[i].parentNode.nextSibling.children[0].value;

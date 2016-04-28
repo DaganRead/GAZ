@@ -997,7 +997,8 @@ function onDeviceReady() {
                                     var tableInputsLive = document.getElementsByTagName('select');
                                     tableInputsLive[2].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
                                     for (var i = 0; i < tableInputsLive.length; i++) {
-                                        alert(i);
+                                        alert(tableInputsLive[i].className);
+                                        alert(classie.hasClass(tableInputsLive[i], "tableInput"));
                                         if (classie.hasClass(tableInputsLive[i], "tableInput")) {
                                             tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
                                         };

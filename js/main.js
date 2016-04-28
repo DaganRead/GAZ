@@ -708,9 +708,7 @@ function onDeviceReady() {
                 };
                 //alert(JSON.stringify(newSale));
             for (var i = 0; i < purchaseTableSelects.length; i++) {
-                alert('length');
                 if (classie.hasClass(purchaseTableSelects[i], 'touched')) {
-                    alert('found');
                         foo.itemCode = purchaseTableSelects[i].value;
                         foo.itemPrice = purchaseTableSelects[i].selectedOptions[0].dataset.price;
                         foo.quantity = purchaseTableSelects[i].parentNode.nextSibling.children[0].value;
@@ -726,7 +724,7 @@ function onDeviceReady() {
                         };
                 };
             };
-            
+            alert(JSON.stringify(newSale));
             if (!this.picked) {
                 var newCustomer = navigator.contacts.create({
                     "displayName": this.forms.newCustomer.givenName() + ' ' + this.forms.newCustomer.familyName(),
@@ -746,6 +744,8 @@ function onDeviceReady() {
                     //update dataset
                     //this.binding.customers();
                     this.store('customer');
+                }else{
+                    alert('pick instead');
                 };
             };
 

@@ -706,8 +706,9 @@ function onDeviceReady() {
                     total: 0,
                     notes : ''
                 };
-                alert(JSON.stringify(newSale));
+                //alert(JSON.stringify(newSale));
             for (var i = 0; i < purchaseTableSelects.length; i++) {
+                alert('length');
                 if (classie.hasClass(purchaseTableSelects[i], 'touched')) {
                     alert('found');
                         foo.itemCode = purchaseTableSelects[i].value;

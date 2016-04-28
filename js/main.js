@@ -110,54 +110,55 @@ function onDeviceReady() {
                                         locations:[]
                                     });
             };
-            return function() {      
+            return function() {
+            alert('alive');      
                 this.data = JSON.parse(window.localStorage['data']);
                 //app.binding();
                 /*New Sales*/
                 var HTMLFrag = '<article id="newSale"><span class="header">Slaughter Date:</span><br /><select id="newSaleSlaughterDate">';
-                HTMLFrag += '<option disabled selected value=""></option>';
-                this.data.slaughters.forEach(function(element, index, array) {
-                    HTMLFrag += '<option value="';
-                    HTMLFrag += element.slaughterDate;
-                    HTMLFrag += '">';
-                    HTMLFrag += element.slaughterDate;
-                    HTMLFrag += '</option>';
-                });
-                HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location" onclick="app.pickContact()" ><figcaption id="newSaleLocation">Pick</figcaption></figure><input type="text" placeholder="Last Name" onblur="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" onblur="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
-                    HTMLFrag += '<option disabled selected value=""></option>';
-                    this.data.locations.forEach(function(element, index, array) {
-                        HTMLFrag += '<option value="';
-                        HTMLFrag += element.location;
-                        HTMLFrag += '">';
-                        HTMLFrag += element.location;
-                        HTMLFrag += '</option>';
-                    });
-                    HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add" onclick="app.newLocation()"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><thead><tr><th>Item</th><th>Qnt</th><th>Mass</th></tr></thead><tbody><tr><td>';
-                    HTMLFrag += '<select class="tableInput" onclick="app.purchaseTableAdd(this)" >';
-                    HTMLFrag += '<option disabled selected value=""></option>';
-                    this.data.items.forEach(function(innerElement, innerIndex, innerArray) {
-                        HTMLFrag += '<option value="';
-                        HTMLFrag += innerElement.itemCode;
-                        HTMLFrag += '" data-price="';
-                        HTMLFrag += innerElement.itemPrice;
-                        HTMLFrag += '" >';
-                        HTMLFrag += innerElement.itemName;
-                        HTMLFrag += '</option>';
-                    });
-                    HTMLFrag += '</select>';
-                    HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
-                    HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel" /></article>';
-                app.DOM.newSale.innerHTML = HTMLFrag;
-                document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
-                document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
-                document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
-                var tableInputsLive = document.getElementsByTagName('select');
-                for (var i = 0; i < tableInputsLive.length; i++) {
-                    if (classie.hasClass(tableInputsLive[i], "tableInput")) {
-                        tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
-                    };
-                };
-
+                                HTMLFrag += '<option disabled selected value=""></option>';
+                                app.data.slaughters.forEach(function(element, index, array) {
+                                    HTMLFrag += '<option value="';
+                                    HTMLFrag += element.slaughterDate;
+                                    HTMLFrag += '">';
+                                    HTMLFrag += element.slaughterDate;
+                                    HTMLFrag += '</option>';
+                                });
+                                HTMLFrag += '</select><br /><span class="header">Customer:</span><br /><figure class="location" id="btn_pickContact" ><figcaption id="newSaleLocation">Pick</figcaption></figure><input type="text" placeholder="Last Name" onblur="app.customerSearch( null, this.value )" id="newSaleLastName"/><input type="text" placeholder="First Name" id="newSaleFirstName" onblur="app.customerSearch( this.value )" /><br class="clear" /><input type="email" placeholder="Email" id="newSaleEmail"/><br /><input type="text" placeholder="046-625 526 0" id="newSaleTelephone"/><br /><textarea id="newSaleAddress" cols="50">Address</textarea> <br class="clear" /><select id="newSaleLocationSelect">';
+                                    HTMLFrag += '<option disabled selected value=""></option>';
+                                    app.data.locations.forEach(function(element, index, array) {
+                                        HTMLFrag += '<option value="';
+                                        HTMLFrag += element.location;
+                                        HTMLFrag += '">';
+                                        HTMLFrag += element.location;
+                                        HTMLFrag += '</option>';
+                                    }); 
+                                    HTMLFrag += '</select><input type="text" placeholder="New Location" id="newSaleAddLocationText"/><input type="button" id="newSaleAddLocationBtn" value="Add"><br class="clear"/><span class="header">Purchase Table:</span><br /><table id="newSalePurchaseTable"><thead><tr><th>Item</th><th>Qnt</th><th>Mass</th></tr></thead><tbody><tr><td>';
+                                    HTMLFrag += '<select id="btn_tableInput" class="tableInput" >';
+                                    HTMLFrag += '<option disabled selected value=""></option>';
+                                    app.data.items.forEach(function(innerElement, innerIndex, innerArray) {
+                                        HTMLFrag += '<option value="';
+                                        HTMLFrag += innerElement.itemCode;
+                                        HTMLFrag += '" data-price="';
+                                        HTMLFrag += innerElement.itemPrice;
+                                        HTMLFrag += '" >';
+                                        HTMLFrag += innerElement.itemName;
+                                        HTMLFrag += '</option>';
+                                    });
+                                    HTMLFrag += '</select>';
+                                    HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
+                                    HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" id="btn_newSale" /><input type="button" class="cancel" value="Cancel"></article>';
+                                    document.getElementById('newSale').innerHTML = HTMLFrag;
+                                    //Event listeners
+                                    document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
+                                    document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
+                                    document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
+                                    var tableInputsLive = document.getElementsByTagName('select');
+                                    for (var i = 0; i < tableInputsLive.length; i++) {
+                                        if (classie.hasClass(tableInputsLive[i], "tableInput")) {
+                                            tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
+                                        };
+                                    };
                 /* Sales */
                 HTMLFrag = '',
                     total = 0;

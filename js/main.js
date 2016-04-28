@@ -2160,7 +2160,8 @@ function onDeviceReady() {
                 //app.data
                 var message = {
                     type:'back up',
-                    data:app.data
+                    data:app.data,
+                    token:localStorage['token']
                 };
                 app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
                 alert('backUp requested');

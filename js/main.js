@@ -1,5 +1,5 @@
 var app;
-function onDeviceReady() {
+//function onDeviceReady() {
     app = {
         picked : false,
         websocket : {
@@ -110,6 +110,8 @@ function onDeviceReady() {
                                     });
             };
             return function() {
+                window.scroll(0, window.innerHeight*0.05);
+
                 var menuLinksLive = document.getElementsByTagName('nav');
                 console.log(menuLinksLive);
                 for (var i = 0; i < menuLinksLive.length; i++) {
@@ -2211,5 +2213,5 @@ function onDeviceReady() {
             };
         };
     },false);
-};
-document.addEventListener("deviceready", onDeviceReady, false);
+/*};
+document.addEventListener("deviceready", onDeviceReady, false);*/

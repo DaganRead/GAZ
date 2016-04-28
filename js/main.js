@@ -997,9 +997,8 @@ function onDeviceReady() {
                                     var tableInputsLive = document.getElementsByTagName('select');
                                     tableInputsLive[2].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
                                     for (var i = 0; i < tableInputsLive.length; i++) {
-                                        alert(tableInputsLive[i].className);
-                                        alert(classie.hasClass(tableInputsLive[i], "tableInput"));
                                         if (classie.hasClass(tableInputsLive[i], "tableInput")) {
+                                            alert('assign:');
                                             tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
                                         };
                                     };
@@ -1426,7 +1425,7 @@ function onDeviceReady() {
             classie.toggleClass(container, 'acc-open');
         },
         purchaseTableAdd : function(target) {
-            alert(JSON.stringify(target));
+            alert('JSON.stringify(target)');
             if(!classie.hasClass(target, 'touched')){
                 classie.addClass(target, 'touched');
                 var input = document.createElement('tr'),

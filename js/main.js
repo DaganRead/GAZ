@@ -717,6 +717,7 @@ function onDeviceReady() {
                             foo.weights.push(foo.totalWeight/foo.quantity);
                         };
                         newSale.total += foo.totalWeight * foo.itemPrice;
+                        alert(foo);
                         if (foo.quantity != 0) {
                             this.forms.newSale.purchaseTable.push(JSON.stringify(foo));
                             foo.weights = [];

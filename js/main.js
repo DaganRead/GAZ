@@ -995,10 +995,8 @@ function onDeviceReady() {
                                     document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
                                     document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
                                     var tableInputsLive = document.getElementsByTagName('select');
-                                    tableInputsLive[2].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
                                     for (var i = 0; i < tableInputsLive.length; i++) {
                                         if (classie.hasClass(tableInputsLive[i], "tableInput")) {
-                                            alert('assign:');
                                             tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
                                         };
                                     };
@@ -1425,13 +1423,12 @@ function onDeviceReady() {
             classie.toggleClass(container, 'acc-open');
         },
         purchaseTableAdd : function(target) {
-            alert('JSON.stringify(target)');
             if(!classie.hasClass(target, 'touched')){
                 classie.addClass(target, 'touched');
                 var input = document.createElement('tr'),
                     temp ='';
 
-                    temp += '<td><select class="tableInput" onclick="app.purchaseTableAdd(this)" >';
+                    temp += '<td><select class="tableInput" >';
                     temp += '<option disabled selected value=""></option>';
                     app.data.items.forEach(function(innerElement, innerIndex, innerArray) {
                         temp += '<option value="';
@@ -1448,7 +1445,7 @@ function onDeviceReady() {
                 document.getElementById('newSalePurchaseTable').children[1].appendChild(input);
                 var tableInputsLive = document.getElementsByTagName('SELECT');
                 for (var i = 0; i < tableInputsLive.length; i++) {
-                    if (tableInputsLive[i].className == "tableInput") {
+                    if (classie.hasClass(tableInputsLive[i], "tableInput")) {
                         tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
                     };
                 };

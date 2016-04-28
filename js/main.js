@@ -148,6 +148,16 @@ function onDeviceReady() {
                     HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                     HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" onclick="app.newSale()" /><input type="button" class="cancel" value="Cancel" /></article>';
                 app.DOM.newSale.innerHTML = HTMLFrag;
+                document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
+                document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
+                document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
+                var tableInputsLive = document.getElementsByTagName('select');
+                for (var i = 0; i < tableInputsLive.length; i++) {
+                    if (classie.hasClass(tableInputsLive[i], "tableInput")) {
+                        tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
+                    };
+                };
+
                 /* Sales */
                 HTMLFrag = '',
                     total = 0;
@@ -219,21 +229,44 @@ function onDeviceReady() {
                                     });
                                 };*/
                             });
-                            HTMLFrag += '<tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';
+                            HTMLFrag += '<tr><td class="large">+</td><td colspan="7"></td></tr>';
                             HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
                             HTMLFrag += 'R' + total;
                             HTMLFrag += '</td></tr></tfoot></table>';
                             total = 0;
-                            HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" onblur="app.update.sale(this);" data-index="';
+                            HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" data-index="';
                             HTMLFrag += index;
                             HTMLFrag += '" >'; 
                             HTMLFrag += element.notes;
                             HTMLFrag += '</textarea>';
-                            HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.dataset.index)" class="cancel" data-index="';
+                            HTMLFrag += '<input type="button" value="clear" class="noteClear"/> <br class="clear" /><input type="image" src="img/delete.png" class="cancel" value="sales" data-index="';
                             HTMLFrag += index;
                             HTMLFrag += '"/></fieldset>';
                         });
-                app.DOM.sales.innerHTML = HTMLFrag;
+                app.DOM.sales.innerHTML = HTMLFrag; 
+                var newRowsLive = document.getElementsByTagName('td'),
+                    inputsLive = document.getElementsByTagName('input'),
+                    notesLive = document.getElementsByTagName('textarea');
+
+                for (var i = 0; i < newRowsLive.length; i++) {
+                    if (classie.hasClass(newRowsLive[i], "large")) {
+                        newRowsLive[i].addEventListener("click", function(e) { app.newRow(e.target);}, false);
+                    };
+                };
+                for (var i = 0; i < inputsLive.length; i++) {
+                    if (classie.hasClass(inputsLive[i], "cancel") && inputsLive[i].value == "sales") {
+                        inputsLive[i].addEventListener("click", function(e) { app.delete.sale(e.target.dataset.index);}, false);
+                    }else if(classie.hasClass(inputsLive[i], "noteClear")){
+                        inputsLive[i].addEventListener("click", function(e) { app.delete.sale(e.target.previousSibling.value='' );}, false);                        
+                    }else if(classie.hasClass(inputsLive[i], "weight")||classie.hasClass(inputsLive[i], "quantity")){
+                        inputsLive[i].addEventListener("click", function(e) { app.update.sale(this)}, false);                        
+                    };
+                };
+                for (var i = 0; i < notesLive.length; i++) {
+                    if (classie.hasClass(notesLive[i], "notes")) {
+                        notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                    };
+                };
                 /*customers*/
                 HTMLFrag = '';
                 var newChar,
@@ -717,14 +750,12 @@ function onDeviceReady() {
                             foo.weights.push(foo.totalWeight/foo.quantity);
                         };
                         newSale.total += foo.totalWeight * foo.itemPrice;
-                        alert(foo);
                         if (foo.quantity != 0) {
                             this.forms.newSale.purchaseTable.push(JSON.stringify(foo));
                             foo.weights = [];
                         };
                 };
             };
-            alert(JSON.stringify(newSale));
             if (!this.picked) {
                 var newCustomer = navigator.contacts.create({
                     "displayName": this.forms.newCustomer.givenName() + ' ' + this.forms.newCustomer.familyName(),

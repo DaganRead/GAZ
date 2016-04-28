@@ -47,7 +47,6 @@ var app;
                     token:token
                 };
                 app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
-                alert('logged out');
             };
         },
         simulate : function(evt) {
@@ -113,7 +112,6 @@ var app;
                 window.scroll(0, window.innerHeight*0.05);
 
                 var menuLinksLive = document.getElementsByTagName('nav');
-                console.log(menuLinksLive);
                 for (var i = 0; i < menuLinksLive.length; i++) {
                     for (var ii = 0; ii < menuLinksLive[i].children.length; ii++) {
                         if (classie.hasClass(menuLinksLive[i].children[ii], "backUp")) {
@@ -254,6 +252,7 @@ var app;
                             HTMLFrag += index;
                             HTMLFrag += '"/></fieldset>';
                         });
+                alert(HTMLFrag);
                 app.DOM.sales.innerHTML = HTMLFrag;
                 var newRowsLive = document.getElementsByTagName('td'),
                     inputsLive = document.getElementsByTagName('input'),
@@ -1508,7 +1507,6 @@ var app;
         },
         pickContact : function() {
             navigator.contacts.pickContact(function(contact){
-                alert(JSON.stringify(contact));
                 app.picked = true;
                 if (contact.name.formatted != null) {
                             if (contact.name.givenName != null) {
@@ -2166,7 +2164,6 @@ var app;
                     token:localStorage['token']
                 };
                 app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
-                alert('backUp requested');
             }
         }
     };
@@ -2191,7 +2188,6 @@ var app;
     //auth
     if (localStorage['token']) {
         var token = localStorage['token'];
-        alert(token);
         var intervalHandle = window.setInterval(function(){
             var message = {
                 type:'token',
@@ -2204,7 +2200,6 @@ var app;
         if(event.origin === 'http://gaz-huntingapp.rhcloud.com') {
             var message = JSON.parse(event.data);
             if (message.type === 'token') {
-                alert(JSON.stringify(message.token));
                 localStorage['token'] = message.token;
             }else if(message.type === "login"){
                 app.login();

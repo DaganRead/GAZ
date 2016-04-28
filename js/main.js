@@ -243,7 +243,8 @@ function onDeviceReady() {
                             HTMLFrag += index;
                             HTMLFrag += '"/></fieldset>';
                         });
-                app.DOM.sales.innerHTML = HTMLFrag; 
+                app.DOM.sales.innerHTML = HTMLFrag;
+                alert('starting'); 
                 var newRowsLive = document.getElementsByTagName('td'),
                     inputsLive = document.getElementsByTagName('input'),
                     notesLive = document.getElementsByTagName('textarea'),
@@ -277,6 +278,7 @@ function onDeviceReady() {
                         notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
                     };
                 };
+                alert('fine');
                 /*customers*/
                 HTMLFrag = '';
                 var newChar,

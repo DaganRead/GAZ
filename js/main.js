@@ -575,7 +575,7 @@ var app;
                 //window.scroll(0,100);
                 //document.body.scrollTo(0, 100);
                 window.setInterval(function() {
-                    alert(document.body.scrollTop);
+                    alert(window.scrollTop);
                 }, 1000);
             };
         }(),

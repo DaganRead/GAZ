@@ -29,7 +29,15 @@ function onDeviceReady() {
         openMenu : function(thisObj) {
             return function() {
                 //classie.toggle( thisObj, 'active' );
-                classie.toggle( document.body, 'cbp-spmenu-push-toright' )
+                classie.toggle( document.body, 'cbp-spmenu-push-toright' );
+                document.body.addEventListener("click",app.closeMenu, false);
+            };
+        },
+        closeMenu : function(thisObj) {
+            return function() {
+                classie.toggle( document.body, 'cbp-spmenu-push-toright' );
+                window.location.hash = '#page-wrap';
+                document.body.removeEventListener('click',app.closeMenu, false);
             };
         },
         login : function() {

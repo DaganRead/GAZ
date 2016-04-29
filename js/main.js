@@ -31,8 +31,8 @@ function onDeviceReady() {
                 //classie.toggle( thisObj, 'active' );
                 classie.toggle( document.body, 'cbp-spmenu-push-toright' );
                 //classie.toggle( this.dom.menuLeft, 'cbp-spmenu-open' );
+                alert(document.body.scrollTop);
             };
-            alert(document.body.scrollTop);
         },
         login : function() {
             if(classie.hasClass(app.DOM.modal, 'md-show')){

@@ -30,13 +30,11 @@ function onDeviceReady() {
         openMenu : function() {
             return function() {
                 if (app.menu) {
-                    alert('true');
                     app.menu = false;
                     window.location.hash = '#page-wrap';
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
                     document.getElementById('page-wrap').removeEventListener('click',app.closeMenu, false);
                 } else{
-                    alert('false');
                     app.menu = true;
                     window.location.hash = '';
                     //classie.toggle( thisObj, 'active' );
@@ -46,11 +44,10 @@ function onDeviceReady() {
             };
         },
         closeMenu : function() {
-                alert('true click');
-                app.menu = false;
-                window.location.hash = '#page-wrap';
-                classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                document.getElementById('page-wrap').removeEventListener('click',app.closeMenu, false);
+            app.menu = false;
+            window.location.hash = '#page-wrap';
+            classie.toggle( document.body, 'cbp-spmenu-push-toright' );
+            document.getElementById('page-wrap').removeEventListener('click',app.closeMenu, false);
         },
         login : function() {
             if(classie.hasClass(app.DOM.modal, 'md-show')){

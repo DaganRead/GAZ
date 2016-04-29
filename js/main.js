@@ -110,6 +110,7 @@ var app;
             };
             return function() {
                 document.body.scrollTop = window.innerHeight*0.05;
+                window.scroll(0,100);
 
                 var menuLinksLive = document.getElementsByTagName('nav');
                 for (var i = 0; i < menuLinksLive.length; i++) {

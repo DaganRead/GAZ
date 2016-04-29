@@ -41,7 +41,7 @@ function onDeviceReady() {
                     window.location.hash = '';
                     //classie.toggle( thisObj, 'active' );
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                    //document.body.addEventListener("click",app.closeMenu(), false);
+                    document.body.addEventListener("click",function() {alert('closeMe')}, false);
                 };
             };
         },

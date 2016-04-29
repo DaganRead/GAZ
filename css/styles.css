@@ -235,6 +235,7 @@ section#page-wrap{
 .cbp-spmenu {
     background: #47a3da;
     position: fixed;
+    overflow: hidden;
 }
 
 .cbp-spmenu h3 {

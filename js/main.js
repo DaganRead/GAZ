@@ -109,7 +109,7 @@ var app;
                                     });
             };
             return function() {
-                window.scroll(0, window.innerHeight*0.05 +"px");
+                window.scrollTop = window.innerHeight*0.05;
 
                 var menuLinksLive = document.getElementsByTagName('nav');
                 for (var i = 0; i < menuLinksLive.length; i++) {

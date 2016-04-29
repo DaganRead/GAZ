@@ -30,12 +30,14 @@ function onDeviceReady() {
         openMenu : function() {
             return function() {
                 if (app.menu) {
+                    alert('true');
                     app.menu = false;
                     window.location.hash = '#page-wrap';
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
                     document.body.removeEventListener('click',app.closeMenu(), false);
                 } else{
                     app.menu = true;
+                    alert('false');
                     //classie.toggle( thisObj, 'active' );
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
                     document.body.addEventListener("click",app.closeMenu(), false);
@@ -43,12 +45,10 @@ function onDeviceReady() {
             };
         },
         closeMenu : function() {
-            return function() {
                 app.menu = false;
                 classie.toggle( document.body, 'cbp-spmenu-push-toright' );
                 window.location.hash = '#page-wrap';
                 document.body.removeEventListener('click',app.closeMenu(), false);
-            };
         },
         login : function() {
             if(classie.hasClass(app.DOM.modal, 'md-show')){

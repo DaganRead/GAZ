@@ -570,7 +570,7 @@ var app;
                 document.getElementById('btn_menu').addEventListener("click", app.openMenu(), false);
 
                 //Scroll
-                document.body.scrollTop = 32;
+                document.body.scrollTop = 30;
                 //document.body.scrollTop = '100px';
                 //window.scroll(0,100);
             };

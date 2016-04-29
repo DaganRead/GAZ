@@ -231,6 +231,9 @@ section#page-wrap{
 /*
 *   Push Menu
 */
+body{
+    overflow-x: hidden; 
+}
 /* General styles for all menus */
 .cbp-spmenu {
     background: #47a3da;

@@ -189,7 +189,7 @@ var app;
                             element.purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                                 innerElement = JSON.parse(innerElement);
                                 HTMLFrag += '<tr><td colspan="2">';
-                                HTMLFrag += '<select data-index="';
+                                HTMLFrag += '<select class="itemCode" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '" >';
                                 HTMLFrag += '<option disabled selected value=""></option>';
@@ -261,12 +261,12 @@ var app;
 
                 for (var i = 0; i < selectsLive.length; i++) {
                     if (classie.hasClass(selectsLive[i], "itemCode")) {
-                        selectsLive[i].addEventListener("change", function(e) { app.update.sale(e.target);}, false);
+                        selectsLive[i].addEventListener("click", function(e) { app.update.sale(e.target);}, false);
                     };
                 };
                 for (var i = 0; i < newRowsLive.length; i++) {
                     if (classie.hasClass(newRowsLive[i], "large")) {
-                        newRowsLive[i].addEventListener("click", function(e) { app.newRow(e.target);}, false);
+                        newRowsLive[i].addEventListener("click", function(e) { alert('add');app.newRow(e.target);}, false);
                     };
                 };
                 for (var i = 0; i < inputsLive.length; i++) {

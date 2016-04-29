@@ -133,14 +133,16 @@ function onDeviceReady() {
                 var menuLinksLive = document.getElementsByTagName('nav');
                 for (var i = 0; i < menuLinksLive.length; i++) {
                     for (var ii = 0; ii < menuLinksLive[i].children.length; ii++) {
-                        if (classie.hasClass(menuLinksLive[i].children[ii], "backUp")) {
-                            menuLinksLive[i].children[ii].addEventListener("click", function(e) { app.sync.backUp();}, false);
-                        }else if(classie.hasClass(menuLinksLive[i].children[ii], "advanced") || classie.hasClass(menuLinksLive[i].children[ii], "main")){
-                            menuLinksLive[i].children[ii].addEventListener("click", function(e) { alert();}, false);
-                        }else if(classie.hasClass(menuLinksLive[i].children[ii], "loginExpire" )){
-                            menuLinksLive[i].children[ii].addEventListener("change", function(e) { nextSibling.innerHTML = e.target.value +' day/days';}, false);
-                        }else if(classie.hasClass(menuLinksLive[i].children[ii], "storeLocal" )){
-                            menuLinksLive[i].children[ii].addEventListener("change", function(e) { alert('keep local');}, false);
+                        for (var iii = 0; iii < menuLinksLive[i].children[ii].length; iii++) {
+                            if (classie.hasClass(menuLinksLive[i].children[ii].children[iii], "backUp")) {
+                                menuLinksLive[i].children[ii].children[iii].addEventListener("click", function(e) { app.sync.backUp();}, false);
+                            }else if(classie.hasClass(menuLinksLive[i].children[ii].children[iii], "advanced") || classie.hasClass(menuLinksLive[i].children[ii], "main")){
+                                menuLinksLive[i].children[ii].children[iii].addEventListener("click", function(e) { alert();}, false);
+                            }else if(classie.hasClass(menuLinksLive[i].children[ii].children[iii], "loginExpire" )){
+                                menuLinksLive[i].children[ii].children[iii].addEventListener("change", function(e) { nextSibling.innerHTML = e.target.value +' day/days';}, false);
+                            }else if(classie.hasClass(menuLinksLive[i].children[ii].children[iii], "storeLocal" )){
+                                menuLinksLive[i].children[ii].children[iii].addEventListener("change", function(e) { alert('keep local');}, false);
+                            };
                         };
                     };
                 };

@@ -136,8 +136,10 @@ function onDeviceReady() {
                     for (var ii = 0; ii < menuLinksLive[i].children.length; ii++) {
                         if (classie.hasClass(menuLinksLive[i].children[ii], "backUp")) {
                             menuLinksLive[i].children[ii].addEventListener("click", function(e) { app.sync.backUp();}, false);
-                        }else if(classie.hasClass(menuLinksLive[i].children[ii], "advanced" || classie.hasClass(menuLinksLive[i].children[ii], "main")){
+                        }else if(classie.hasClass(menuLinksLive[i].children[ii], "advanced") || classie.hasClass(menuLinksLive[i].children[ii], "main")){
                             menuLinksLive[i].children[ii].addEventListener("click", function(e) { app.switchMenu();}, false);
+                        }else if(classie.hasClass(menuLinksLive[i].children[ii], "advanced" )){
+                            menuLinksLive[i].children[ii].addEventListener("change", function(e) { nextSibling.innerHTML = e.target.value +' day/days';}, false);
                         };
                     };
                 };

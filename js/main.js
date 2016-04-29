@@ -27,26 +27,27 @@ function onDeviceReady() {
             slaughters:[],
             locations:[]
         },
-        openMenu : function(thisObj) {
+        openMenu : function() {
             return function() {
                 if (app.menu) {
                     app.menu = false;
                     window.location.hash = '#page-wrap';
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                    document.body.removeEventListener('click',app.closeMenu, false);
+                    document.body.removeEventListener('click',app.closeMenu(), false);
                 } else{
                     app.menu = true;
                     //classie.toggle( thisObj, 'active' );
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                    document.body.addEventListener("click",app.closeMenu, false);
+                    document.body.addEventListener("click",app.closeMenu(), false);
                 };
             };
         },
-        closeMenu : function(thisObj) {
+        closeMenu : function() {
             return function() {
+                app.menu = false;
                 classie.toggle( document.body, 'cbp-spmenu-push-toright' );
                 window.location.hash = '#page-wrap';
-                document.body.removeEventListener('click',app.closeMenu, false);
+                document.body.removeEventListener('click',app.closeMenu(), false);
             };
         },
         login : function() {

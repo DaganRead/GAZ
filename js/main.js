@@ -109,9 +109,6 @@ var app;
                                     });
             };
             return function() {
-                document.body.scrollTop = 100;
-                window.scroll(0,100);
-                window.scrollTo(0, 100)
 
                 var menuLinksLive = document.getElementsByTagName('nav');
                 for (var i = 0; i < menuLinksLive.length; i++) {
@@ -572,6 +569,10 @@ var app;
                 document.getElementById('btn_logout').addEventListener("click", app.logout(), false);
                 document.getElementById('btn_menu').addEventListener("click", app.openMenu(), false);
 
+                //Scroll
+                //document.body.scrollTop = 100;
+                //window.scroll(0,100);
+                document.body.scrollTo(0, 100);
             };
         }(),
         forms: {

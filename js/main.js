@@ -30,16 +30,18 @@ function onDeviceReady() {
         openMenu : function() {
             return function() {
                 if (app.menu) {
+                    alert('true');
                     app.menu = false;
                     window.location.hash = '#page-wrap';
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                    document.getElementById('page-wrap').removeEventListener('click',app.closeMenu(), false);
+                    document.getElementById('page-wrap').removeEventListener('click',app.closeMenu, false);
                 } else{
+                    alert('false');
                     app.menu = true;
                     window.location.hash = '';
                     //classie.toggle( thisObj, 'active' );
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                    document.getElementById('page-wrap').addEventListener("click",app.closeMenu(), false);
+                    document.getElementById('page-wrap').addEventListener("click",app.closeMenu, false);
                 };
             };
         },
@@ -48,7 +50,7 @@ function onDeviceReady() {
                 app.menu = false;
                 window.location.hash = '#page-wrap';
                 classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                document.getElementById('page-wrap').removeEventListener('click',app.closeMenu(), false);
+                document.getElementById('page-wrap').removeEventListener('click',app.closeMenu, false);
             };
         },
         login : function() {

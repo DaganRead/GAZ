@@ -261,7 +261,9 @@ section#page-wrap{
     background: #afdefa;
     color: #47a3da;
 }
-
+.cbp-spmenu-active {
+    z-index: 1001;
+}
 /* Orientation-dependent styles for the content of the menu */
 
 .cbp-spmenu-vertical {

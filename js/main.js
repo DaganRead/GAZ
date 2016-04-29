@@ -15,7 +15,8 @@ function onDeviceReady() {
             slaughters: document.getElementById('slaughters'),
             modal : document.getElementById('modal-12'),
             serverHandle : document.getElementById('serverHandle'),
-            menuLeft : document.getElementById('cbp-spmenu-s1')
+            menuLeft : document.getElementById('cbp-spmenu-s1'),
+            menuLeft2 : document.getElementById('cbp-spmenu-s2')
         },
         settings : {
             verboseConsole : false
@@ -48,6 +49,10 @@ function onDeviceReady() {
             window.location.hash = '#page-wrap';
             classie.toggle( document.body, 'cbp-spmenu-push-toright' );
             document.getElementById('page-wrap').removeEventListener('click',app.closeMenu, false);
+        },
+        switchMenu : function() {
+            classie.toggle( menuLeft, 'cbp-spmenu-active' );
+            classie.toggle( menuLeft2, 'cbp-spmenu-active' );
         },
         login : function() {
             if(classie.hasClass(app.DOM.modal, 'md-show')){
@@ -131,6 +136,8 @@ function onDeviceReady() {
                     for (var ii = 0; ii < menuLinksLive[i].children.length; ii++) {
                         if (classie.hasClass(menuLinksLive[i].children[ii], "backUp")) {
                             menuLinksLive[i].children[ii].addEventListener("click", function(e) { app.sync.backUp();}, false);
+                        }else if(classie.hasClass(menuLinksLive[i].children[ii], "advanced" || classie.hasClass(menuLinksLive[i].children[ii], "main")){
+                            menuLinksLive[i].children[ii].addEventListener("click", function(e) { app.switchMenu();}, false);
                         };
                     };
                 };

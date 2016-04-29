@@ -2,6 +2,7 @@ var app;
 function onDeviceReady() {
     app = {
         picked : false,
+        menu : false,
         websocket : {
             public : io('http://gaz-huntingapp.rhcloud.com:8000/public'),
             private : io('http://gaz-huntingapp.rhcloud.com:8000/restricted')
@@ -28,9 +29,17 @@ function onDeviceReady() {
         },
         openMenu : function(thisObj) {
             return function() {
-                //classie.toggle( thisObj, 'active' );
-                classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                document.body.addEventListener("click",app.closeMenu, false);
+                if (app.menu) {
+                    app.menu = false;
+                    window.location.hash = '#page-wrap';
+                    classie.toggle( document.body, 'cbp-spmenu-push-toright' );
+                    document.body.removeEventListener('click',app.closeMenu, false);
+                } else{
+                    app.menu = true;
+                    //classie.toggle( thisObj, 'active' );
+                    classie.toggle( document.body, 'cbp-spmenu-push-toright' );
+                    document.body.addEventListener("click",app.closeMenu, false);
+                };
             };
         },
         closeMenu : function(thisObj) {

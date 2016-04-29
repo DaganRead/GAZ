@@ -33,14 +33,22 @@ function onDeviceReady() {
                     app.menu = false;
                     window.location.hash = '#page-wrap';
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                    document.getElementById('page-wrap').removeEventListener('click',app.openMenu(), false);
+                    document.getElementById('page-wrap').removeEventListener('click',app.closeMenu(), false);
                 } else{
                     app.menu = true;
                     window.location.hash = '';
                     //classie.toggle( thisObj, 'active' );
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                    document.getElementById('page-wrap').addEventListener("click",app.openMenu(), false);
+                    document.getElementById('page-wrap').addEventListener("click",app.closeMenu(), false);
                 };
+            };
+        },
+        closeMenu : function() {
+            return function() {
+                app.menu = false;
+                window.location.hash = '#page-wrap';
+                classie.toggle( document.body, 'cbp-spmenu-push-toright' );
+                document.getElementById('page-wrap').removeEventListener('click',app.closeMenu(), false);
             };
         },
         login : function() {

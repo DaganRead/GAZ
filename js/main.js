@@ -575,7 +575,8 @@ var app;
                 //window.scroll(0,100);
                 //document.body.scrollTo(0, 100);
                 window.setInterval(function() {
-                    alert(document.getElementById('cbp-spmenu-s1').scrollTop);
+                    alert(window.pageYOffset);
+                    
                 }, 1000);
             };
         }(),

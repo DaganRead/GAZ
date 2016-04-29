@@ -1,5 +1,5 @@
 var app;
-//function onDeviceReady() {
+function onDeviceReady() {
     app = {
         picked : false,
         websocket : {
@@ -2211,5 +2211,5 @@ var app;
             };
         };
     },false);
-/*};
-document.addEventListener("deviceready", onDeviceReady, false);*/
+};
+document.addEventListener("deviceready", onDeviceReady, false);

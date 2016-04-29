@@ -31,9 +31,10 @@ function onDeviceReady() {
                 //classie.toggle( thisObj, 'active' );
                 classie.toggle( document.body, 'cbp-spmenu-push-toright' );
                 //classie.toggle( this.dom.menuLeft, 'cbp-spmenu-open' );
-                alert(document.scrollTop);
-                alert(window.scrollTop);
-                $(window).scrollTop(32);
+                //alert(document.scrollTop);
+                //alert(window.scrollTop);
+                //$(window).scrollTop(32);
+                window.location.hash = '#page-wrap';
             };
         },
         login : function() {

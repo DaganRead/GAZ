@@ -261,7 +261,14 @@ section#page-wrap{
     background: #afdefa;
     color: #47a3da;
 }
-.cbp-spmenu-active {
+.cbp-spmenu section {
+    z-index: 1000;
+    height: inherit;
+    width: inherit;
+    padding: 0;
+    margin: 0;
+}
+.cbp-spmenu section.active {
     z-index: 1001;
 }
 /* Orientation-dependent styles for the content of the menu */

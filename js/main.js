@@ -29,12 +29,7 @@ function onDeviceReady() {
         openMenu : function(thisObj) {
             return function() {
                 //classie.toggle( thisObj, 'active' );
-                classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                //classie.toggle( this.dom.menuLeft, 'cbp-spmenu-open' );
-                //alert(document.scrollTop);
-                //alert(window.scrollTop);
-                //$(window).scrollTop(32);
-                window.location.hash = '#page-wrap';
+                classie.toggle( document.body, 'cbp-spmenu-push-toright' )
             };
         },
         login : function() {
@@ -113,7 +108,7 @@ function onDeviceReady() {
                                     });
             };
             return function() {
-
+                window.location.hash = '#page-wrap';
                 var menuLinksLive = document.getElementsByTagName('nav');
                 for (var i = 0; i < menuLinksLive.length; i++) {
                     for (var ii = 0; ii < menuLinksLive[i].children.length; ii++) {
@@ -572,11 +567,6 @@ function onDeviceReady() {
                 document.getElementById('tab-5').addEventListener("click", function() { app.nav.to('New'); }, false);
                 document.getElementById('btn_logout').addEventListener("click", app.logout(), false);
                 document.getElementById('btn_menu').addEventListener("click", app.openMenu(), false);
-
-                //Scroll
-                //document.body.scrollTop = 30;
-                //document.body.scrollTop = '100px';
-                //window.scroll(0,100);
             };
         }(),
         forms: {

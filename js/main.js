@@ -30,18 +30,16 @@ function onDeviceReady() {
         openMenu : function() {
             return function() {
                 if (app.menu) {
-                    alert('true');
                     app.menu = false;
                     window.location.hash = '#page-wrap';
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
                     //document.body.removeEventListener('click',app.closeMenu(), false);
                 } else{
                     app.menu = true;
-                    alert('false');
                     window.location.hash = '';
                     //classie.toggle( thisObj, 'active' );
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                    document.body.addEventListener("click",function() {alert('closeMe')}, false);
+                    document.getElementById('page-wrap').addEventListener("click",function() {alert('closeMe')}, false);
                 };
             };
         },

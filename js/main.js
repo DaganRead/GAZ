@@ -117,12 +117,12 @@ function onDeviceReady() {
             if (!window.localStorage['installed']) {
                 window.localStorage['installed'] = true;
                 window.localStorage['data'] = JSON.stringify({
-                                        sales:[],
-                                        customers:[],
-                                        items:[],
-                                        slaughters:[],
-                                        locations:[]
-                                    });
+                    sales:[],
+                    customers:[],
+                    items:[],
+                    slaughters:[],
+                    locations:[]
+                });
             };
             return function() {
                 window.location.hash = '#page-wrap';
@@ -267,7 +267,6 @@ function onDeviceReady() {
                             HTMLFrag += index;
                             HTMLFrag += '"/></fieldset>';
                         });
-                alert(HTMLFrag);
                 app.DOM.sales.innerHTML = HTMLFrag;
                 var newRowsLive = document.getElementsByTagName('td'),
                     inputsLive = document.getElementsByTagName('input'),

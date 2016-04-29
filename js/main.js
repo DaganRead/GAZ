@@ -37,6 +37,9 @@ function onDeviceReady() {
             if(classie.hasClass(app.DOM.modal, 'md-show')){
                 classie.removeClass(app.DOM.modal, 'md-show');
             }; 
+            window.setInterval(function() {
+                    alert(document.body.scrollTop);        
+            }, 2000);
         },
         logout : function() {
             return function() {

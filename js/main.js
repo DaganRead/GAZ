@@ -34,13 +34,13 @@ function onDeviceReady() {
                     app.menu = false;
                     window.location.hash = '#page-wrap';
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                    document.body.removeEventListener('click',app.closeMenu(), false);
+                    //document.body.removeEventListener('click',app.closeMenu(), false);
                 } else{
                     app.menu = true;
                     alert('false');
                     //classie.toggle( thisObj, 'active' );
                     classie.toggle( document.body, 'cbp-spmenu-push-toright' );
-                    document.body.addEventListener("click",app.closeMenu(), false);
+                    //document.body.addEventListener("click",app.closeMenu(), false);
                 };
             };
         },

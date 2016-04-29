@@ -46,13 +46,11 @@ function onDeviceReady() {
             };
         },
         closeMenu : function() {
-            return function() {
                 alert('true click');
                 app.menu = false;
                 window.location.hash = '#page-wrap';
                 classie.toggle( document.body, 'cbp-spmenu-push-toright' );
                 document.getElementById('page-wrap').removeEventListener('click',app.closeMenu, false);
-            };
         },
         login : function() {
             if(classie.hasClass(app.DOM.modal, 'md-show')){

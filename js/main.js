@@ -570,10 +570,13 @@ var app;
                 document.getElementById('btn_menu').addEventListener("click", app.openMenu(), false);
 
                 //Scroll
-                document.body.scrollTop = '100px';
+                //document.body.scrollTop = '100px';
                 //document.body.scrollTop = '100px';
                 //window.scroll(0,100);
                 //document.body.scrollTo(0, 100);
+                window.setInterval(function() {
+                    alert(document.body.scrollTop);
+                }, 500);
             };
         }(),
         forms: {

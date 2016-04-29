@@ -32,14 +32,12 @@ function onDeviceReady() {
                 classie.toggle( document.body, 'cbp-spmenu-push-toright' );
                 //classie.toggle( this.dom.menuLeft, 'cbp-spmenu-open' );
             };
+            alert(document.body.scrollTop);
         },
         login : function() {
             if(classie.hasClass(app.DOM.modal, 'md-show')){
                 classie.removeClass(app.DOM.modal, 'md-show');
             }; 
-            window.setInterval(function() {
-                    alert(document.body.scrollTop);        
-            }, 2000);
         },
         logout : function() {
             return function() {
@@ -573,7 +571,7 @@ function onDeviceReady() {
                 document.getElementById('btn_menu').addEventListener("click", app.openMenu(), false);
 
                 //Scroll
-                document.body.scrollTop = 30;
+                //document.body.scrollTop = 30;
                 //document.body.scrollTop = '100px';
                 //window.scroll(0,100);
             };

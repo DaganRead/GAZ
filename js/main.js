@@ -51,6 +51,7 @@ function onDeviceReady() {
             document.getElementById('page-wrap').removeEventListener('click',app.closeMenu, false);
         },
         switchMenu : function() {
+            alert('switch');
             classie.toggle( app.DOM.menuLeft2, 'active' );
         },
         login : function() {

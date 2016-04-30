@@ -1187,6 +1187,41 @@ function onDeviceReady() {
                                 HTMLFrag += '"/></fieldset>';
                     });
                     app.DOM.sales.innerHTML = HTMLFrag;
+
+                    var newRowsLive = document.getElementsByTagName('td'),
+                        inputsLive = document.getElementsByTagName('input'),
+                        notesLive = document.getElementsByTagName('textarea'),
+                        selectsLive = document.getElementsByTagName('select');
+
+                    for (var i = 0; i < selectsLive.length; i++) {
+                        if (classie.hasClass(selectsLive[i], "itemCode")) {
+                            selectsLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                        };
+                    };
+                    for (var i = 0; i < newRowsLive.length; i++) {
+                        if (classie.hasClass(newRowsLive[i], "large")) {
+                            newRowsLive[i].addEventListener("click", function(e) { alert('add');app.newRow(e.target);}, false);
+                        };
+                    };
+                    for (var i = 0; i < inputsLive.length; i++) {
+
+                        if (classie.hasClass(inputsLive[i], "cancel") && inputsLive[i].value == "sales") {
+                            inputsLive[i].addEventListener("click", function(e) { app.delete.sale(e.target.dataset.index);}, false);
+
+                        }else if(classie.hasClass(inputsLive[i], "noteClear")){
+                            inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value='';}, false);
+
+                        }else if(classie.hasClass(inputsLive[i], "weight")||classie.hasClass(inputsLive[i], "quantity")){
+                            inputsLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+
+                        };
+                    };
+                    for (var i = 0; i < notesLive.length; i++) {
+                        if (classie.hasClass(notesLive[i], "notes")) {
+                            notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                        };
+                    };
+
             },
             customers : function() {
                     var HTMLFrag = '',

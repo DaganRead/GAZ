@@ -51,7 +51,7 @@ function onDeviceReady() {
             document.getElementById('page-wrap').removeEventListener('click',app.closeMenu, false);
         },
         switchMenu : function() {
-            classie.toggle( menuLeft2, 'active' );
+            classie.toggle( app.DOM.menuLeft2, 'active' );
         },
         login : function() {
             if(classie.hasClass(app.DOM.modal, 'md-show')){
@@ -134,7 +134,6 @@ function onDeviceReady() {
                 for (var i = 0; i < menuLinksLive.length; i++) {
                     for (var ii = 0; ii < menuLinksLive[i].children.length; ii++) {
                         for (var iii = 0; iii < menuLinksLive[i].children[ii].children.length; iii++) {
-                            alert(menuLinksLive[i].children[ii].children[iii].className);
                             if (classie.hasClass(menuLinksLive[i].children[ii].children[iii], "backUp")) {
                                 menuLinksLive[i].children[ii].children[iii].addEventListener("click", function(e) { app.sync.backUp();}, false);
                             }else if(classie.hasClass(menuLinksLive[i].children[ii].children[iii], "advanced")){

@@ -1889,6 +1889,7 @@ function onDeviceReady() {
                 navigator.notification.confirm(
                     "Are you sure you would like to delete the sale?",
                     function(buttonIndex) {
+                        alert();
                         if (buttonIndex == 1) {
                             app.data.slaughters.forEach(function(element, index, array) {
                                 if (element.slaughterDate == app.data.sales[idx].slaughterDate) {

@@ -133,7 +133,7 @@ function onDeviceReady() {
                 var menuLinksLive = document.getElementsByTagName('nav');
                 for (var i = 0; i < menuLinksLive.length; i++) {
                     for (var ii = 0; ii < menuLinksLive[i].children.length; ii++) {
-                        for (var iii = 0; iii < menuLinksLive[i].children[ii].length; iii++) {
+                        for (var iii = 0; iii < menuLinksLive[i].children[ii].children.length; iii++) {
                             alert(menuLinksLive[i].children[ii].children[iii].className);
                             if (classie.hasClass(menuLinksLive[i].children[ii].children[iii], "backUp")) {
                                 menuLinksLive[i].children[ii].children[iii].addEventListener("click", function(e) { app.sync.backUp();}, false);

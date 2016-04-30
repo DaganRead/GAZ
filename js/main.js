@@ -134,14 +134,15 @@ function onDeviceReady() {
                 for (var i = 0; i < menuLinksLive.length; i++) {
                     for (var ii = 0; ii < menuLinksLive[i].children.length; ii++) {
                         for (var iii = 0; iii < menuLinksLive[i].children[ii].length; iii++) {
+                            alert(menuLinksLive[i].children[ii].children[iii].className);
                             if (classie.hasClass(menuLinksLive[i].children[ii].children[iii], "backUp")) {
                                 menuLinksLive[i].children[ii].children[iii].addEventListener("click", function(e) { app.sync.backUp();}, false);
-                            }else if(classie.hasClass(menuLinksLive[i].children[ii].children[iii], "advanced") || classie.hasClass(menuLinksLive[i].children[ii], "main")){
+                            }else if(classie.hasClass(menuLinksLive[i].children[ii].children[iii], "advanced")){
                                 menuLinksLive[i].children[ii].children[iii].addEventListener("click", function(e) { alert();}, false);
                             }else if(classie.hasClass(menuLinksLive[i].children[ii].children[iii], "loginExpire" )){
                                 menuLinksLive[i].children[ii].children[iii].addEventListener("change", function(e) { nextSibling.innerHTML = e.target.value +' day/days';}, false);
                             }else if(classie.hasClass(menuLinksLive[i].children[ii].children[iii], "storeLocal" )){
-                                menuLinksLive[i].children[ii].children[iii].addEventListener("change", function(e) { alert('keep local');}, false);
+                                menuLinksLive[i].children[ii].children[iii].children[0].addEventListener("change", function(e) { alert('keep local');}, false);
                             };
                         };
                     };

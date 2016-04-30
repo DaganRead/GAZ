@@ -270,7 +270,7 @@ section#page-wrap{
     position: relative;
 }
 .cbp-spmenu section.active {
-    z-index: 1001;
+    z-index: 1002;
 }
 /* Orientation-dependent styles for the content of the menu */
 

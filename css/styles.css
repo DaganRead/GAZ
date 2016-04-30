@@ -238,12 +238,12 @@ section#page-wrap{
 }
 
 .cbp-spmenu h3 {
-    color: #afdefa;
+    color: white;
     font-size: 1.9em;
     padding: 20px;
     margin: 0;
     font-weight: 300;
-    background: #0d77b6;
+    background: #36A189;
 }
 
 .cbp-spmenu a {
@@ -267,12 +267,15 @@ section#page-wrap{
     width: inherit;
     padding: 0;
     margin: 0;
-    position: relative;
+    position: absolute;
+    top: 0;
+    background-color: #00B4B8;
 }
-#advancedMenu {
-    z-index: 1002;
-    position: relative;
-    float: left;
+#advancedMenu{
+    z-index: 999;
+}
+.cbp-spmenu section.active {
+    z-index: 1002!important;
 }
 /* Orientation-dependent styles for the content of the menu */
 

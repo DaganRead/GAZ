@@ -231,9 +231,6 @@ section#page-wrap{
 /*
 *   Push Menu
 */
-body{
-    overflow-x: hidden; 
-}
 /* General styles for all menus */
 .cbp-spmenu {
     background: #47a3da;
@@ -270,6 +267,7 @@ body{
     width: inherit;
     padding: 0;
     margin: 0;
+    position: relative;
 }
 .cbp-spmenu section.active {
     z-index: 1001;

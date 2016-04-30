@@ -138,7 +138,7 @@ function onDeviceReady() {
                             if (classie.hasClass(menuLinksLive[i].children[ii].children[iii], "backUp")) {
                                 menuLinksLive[i].children[ii].children[iii].addEventListener("click", function(e) { app.sync.backUp();}, false);
                             }else if(classie.hasClass(menuLinksLive[i].children[ii].children[iii], "advanced")){
-                                menuLinksLive[i].children[ii].children[iii].addEventListener("click", function(e) { alert();}, false);
+                                menuLinksLive[i].children[ii].children[iii].addEventListener("click", function(e) { app.switchMenu();}, false);
                             }else if(classie.hasClass(menuLinksLive[i].children[ii].children[iii], "loginExpire" )){
                                 menuLinksLive[i].children[ii].children[iii].addEventListener("change", function(e) { nextSibling.innerHTML = e.target.value +' day/days';}, false);
                             }else if(classie.hasClass(menuLinksLive[i].children[ii].children[iii], "storeLocal" )){

@@ -301,7 +301,7 @@ function onDeviceReady() {
                         inputsLive[i].addEventListener("click", function(e) { app.delete.sale(e.target.dataset.index);}, false);
 
                     }else if(classie.hasClass(inputsLive[i], "noteClear")){
-                        inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value='';}, false);
+                        inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value=''; app.update.sale(e.target.previousSibling);}, false);
 
                     }else if(classie.hasClass(inputsLive[i], "weight")||classie.hasClass(inputsLive[i], "quantity")){
                         inputsLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);

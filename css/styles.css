@@ -269,8 +269,10 @@ section#page-wrap{
     margin: 0;
     position: relative;
 }
-.cbp-spmenu section.active {
+#advancedMenu {
     z-index: 1002;
+    position: relative;
+    float: left;
 }
 /* Orientation-dependent styles for the content of the menu */
 

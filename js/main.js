@@ -2294,6 +2294,7 @@ function onDeviceReady() {
         if(event.origin === 'http://gaz-huntingapp.rhcloud.com') {
             var message = JSON.parse(event.data);
             if (message.type === 'token') {
+                alert('token recieved client');
                 localStorage['token'] = message.token;
             }else if(message.type === "login"){
                 app.login();

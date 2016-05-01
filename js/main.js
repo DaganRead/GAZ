@@ -1182,7 +1182,7 @@ function onDeviceReady() {
                                 HTMLFrag += '"  > '; 
                                 HTMLFrag += innerElement.notes;
                                 HTMLFrag += '</textarea>';
-                                HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.dataset.index)" class="cancel" data-index="';
+                                HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"/></fieldset>';
                     });
@@ -1206,7 +1206,7 @@ function onDeviceReady() {
                     for (var i = 0; i < inputsLive.length; i++) {
 
                         if (classie.hasClass(inputsLive[i], "cancel") && inputsLive[i].value == "sales") {
-                            inputsLive[i].addEventListener("click", function(e) { app.delete.sale(e.target.dataset.index);}, false);
+                            inputsLive[i].addEventListener("click", function(e) { alert('delete');}, false);
 
                         }else if(classie.hasClass(inputsLive[i], "noteClear")){
                             inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value='';}, false);
@@ -1775,7 +1775,7 @@ function onDeviceReady() {
                     for (var i = 0; i < inputsLive.length; i++) {
 
                         if (classie.hasClass(inputsLive[i], "cancel") && inputsLive[i].value == "sales") {
-                            inputsLive[i].addEventListener("click", function(e) { app.delete.sale(e.target.dataset.index);}, false);
+                            inputsLive[i].addEventListener("click", function(e) { alert('delete');}, false);
 
                         }else if(classie.hasClass(inputsLive[i], "noteClear")){
                             inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value='';}, false);

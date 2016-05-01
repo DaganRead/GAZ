@@ -1902,12 +1902,12 @@ function onDeviceReady() {
         },
         delete : {
             sale : function(idx) {
-                navigator.notification.confirm(
+                /*navigator.notification.confirm(
                     "Are you sure you would like to delete the sale?",
                     app.dialogs.sale(),
                     'Confirm Removal',
                     ['Delete','Cancel']
-                );
+                );*/
             },
             customer : function(idx) {
                 navigator.notification.confirm(

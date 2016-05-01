@@ -1664,22 +1664,6 @@ function onDeviceReady() {
                     });
                 };
         },
-        dialogs:{
-            sale:function(buttonIndex) {
-                if (buttonIndex == 1) {
-                    app.data.slaughters.forEach(function(element, index, array) {
-                        if (element.slaughterDate == app.data.sales[idx].slaughterDate) {
-                            app.data.slaughters[index].total -= app.data.sales[idx].total;
-                            app.binding.slaughters();
-                            app.store('slaughters');
-                        };
-                    });
-                    app.data.sales.splice(idx, 1);
-                    app.binding.sales();
-                    app.store('sale');
-                };
-            }
-        },
         update : {
             sale : function(target) {
                 var idx = target.dataset.index,
@@ -1904,7 +1888,23 @@ function onDeviceReady() {
             sale : function(idx) {
                 navigator.notification.confirm(
                     "Are you sure you would like to delete the sale?",
-                    app.dialogs.sale(),
+                    function(buttonIndex) {
+                        alert(buttonIndex);
+                        if (buttonIndex == 1) {
+                            app.data.slaughters.forEach(function(element, index, array) {
+                                if (element.slaughterDate == app.data.sales[idx].slaughterDate) {
+                                    app.data.slaughters[index].total -= app.data.sales[idx].total;
+                                    app.binding.slaughters();
+                                    app.store('slaughters');
+                                };
+                            });
+                            alert('0');
+                            app.data.sales.splice(idx, 1);
+                            app.binding.sales();
+                            app.store('sale');
+                            alert('1');
+                        };
+                    },
                     'Confirm Removal',
                     ['Delete','Cancel']
                 );

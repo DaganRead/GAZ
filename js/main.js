@@ -298,7 +298,7 @@ function onDeviceReady() {
                 for (var i = 0; i < inputsLive.length; i++) {
 
                     if (classie.hasClass(inputsLive[i], "cancel") && inputsLive[i].value == "sales") {
-                        inputsLive[i].addEventListener("click", function(e) {alert(e.target.dataset.index);}, false);
+                        inputsLive[i].addEventListener("click", function(e) {app.delete.sale(e.target.dataset.index);}, false);
 
                     }else if(classie.hasClass(inputsLive[i], "noteClear")){
                         inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value=''; app.update.sale(e.target.previousSibling);}, false);

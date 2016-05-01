@@ -298,7 +298,7 @@ function onDeviceReady() {
                 for (var i = 0; i < inputsLive.length; i++) {
 
                     if (classie.hasClass(inputsLive[i], "cancel") && inputsLive[i].value == "sales") {
-                        inputsLive[i].addEventListener("click", function(e) { alert(e.target.dataset.index);app.delete.sale(e.target.dataset.index);}, false);
+                        inputsLive[i].addEventListener("click", function(e) {app.delete.sale(e.target.dataset.index);}, false);
 
                     }else if(classie.hasClass(inputsLive[i], "noteClear")){
                         inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value=''; app.update.sale(e.target.previousSibling);}, false);
@@ -1664,6 +1664,22 @@ function onDeviceReady() {
                     });
                 };
         },
+        dialogs:{
+            sale:function(buttonIndex) {
+                if (buttonIndex == 1) {
+                    app.data.slaughters.forEach(function(element, index, array) {
+                        if (element.slaughterDate == app.data.sales[idx].slaughterDate) {
+                            app.data.slaughters[index].total -= app.data.sales[idx].total;
+                            app.binding.slaughters();
+                            app.store('slaughters');
+                        };
+                    });
+                    app.data.sales.splice(idx, 1);
+                    app.binding.sales();
+                    app.store('sale');
+                };
+            }
+        },
         update : {
             sale : function(target) {
                 var idx = target.dataset.index,
@@ -1888,20 +1904,7 @@ function onDeviceReady() {
             sale : function(idx) {
                 navigator.notification.confirm(
                     "Are you sure you would like to delete the sale?",
-                    function(buttonIndex) {
-                        if (buttonIndex == 1) {
-                            app.data.slaughters.forEach(function(element, index, array) {
-                                if (element.slaughterDate == app.data.sales[idx].slaughterDate) {
-                                    app.data.slaughters[index].total -= app.data.sales[idx].total;
-                                    app.binding.slaughters();
-                                    app.store('slaughters');
-                                };
-                            });
-                            app.data.sales.splice(idx, 1);
-                            app.binding.sales();
-                            app.store('sale');
-                        };
-                    },
+                    app.dialogs.sale(buttonIndex),
                     'Confirm Removal',
                     ['Delete','Cancel']
                 );

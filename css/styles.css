@@ -27,7 +27,7 @@ input.confirm{
     border: 2px solid white;
 
 }
-input.cancel{
+img.cancel{
     background-color: #ED1F24 !important;
     margin-top: 25px;
     padding: 10px;
@@ -501,7 +501,7 @@ form#sales input.weight{
     width: 40px;
     text-align: center;
 }
-form#sales input.cancel{
+form#sales img.cancel{
     margin: 0px !important;
     height: 40px;
     padding: 5px 41%;
@@ -797,7 +797,7 @@ article#newCustomer input#newCustomerAddLocationBtn{
     padding: 5px;
     background-color: #989898;
 }
-article#newCustomer input.cancel{
+article#newCustomer img.cancel{
     padding: 10px;
 }
 /* Items */
@@ -838,7 +838,7 @@ form#items fieldset article input.itemPrice{
     width: 60px;
     margin-top: 10px;
 }
-form#items fieldset article input.cancel{
+form#items fieldset article img.cancel{
     margin: 0px;
     vertical-align: top;
     float: right;

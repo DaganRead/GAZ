@@ -275,7 +275,7 @@ function onDeviceReady() {
                             HTMLFrag += '" >'; 
                             HTMLFrag += element.notes;
                             HTMLFrag += '</textarea>';
-                            HTMLFrag += '<input type="button" value="clear" class="noteClear"/> <br class="clear" /><img class="cancel" data-type="sale" data-index="';
+                            HTMLFrag += '<input type="button" value="clear" class="noteClear"/> <br class="clear" /><img src="img/delete.png" class="cancel" data-type="sale" data-index="';
                             HTMLFrag += index;
                             HTMLFrag += '"/></fieldset>';
                         });

@@ -25,7 +25,7 @@
     <access origin="http://gaz-huntingapp.rhcloud.com/*" />
 
     <!-- We'll include the contacts plugin as an example -->
-    <gap:plugin name="org.apache.cordova.dialogs" source="npm" />
+    <plugin name="cordova-plugin-dialogs" spec="1.2.0" source="npm" />
     <plugin name="cordova-plugin-contacts" spec="2.0.1" source="npm" />
     <plugin name="cordova-plugin-whitelist" spec="1.2.1" source="npm" />
     <plugin name="cordova-plugin-network-information" spec="1.2.0" source="npm" />

@@ -845,7 +845,7 @@ form#items fieldset article input.itemPrice{
     width: 60px;
     margin-top: 10px;
 }
-form#items fieldset article input.cancel{
+form#items fieldset article img.cancel{
     margin: 0px;
     vertical-align: top;
     float: right;

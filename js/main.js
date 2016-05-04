@@ -390,7 +390,7 @@ function onDeviceReady() {
                                         HTMLFrag += '</textarea>';
                                     });
                                 };
-                                HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.dataset.index)" class="cancel" data-index="';
+                                HTMLFrag += '<img data-type="customer" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += index;
                                 HTMLFrag += '"/></fieldset>';
                             };
@@ -457,7 +457,7 @@ function onDeviceReady() {
                                         HTMLFrag += '</textarea>';
                                     });
                                 };
-                                HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.dataset.index)" class="cancel" data-index="';
+                                HTMLFrag += '<img data-type="customer" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += index;
                                 HTMLFrag += '"/>';                              
                                 HTMLFrag += '</fieldset>';
@@ -517,7 +517,7 @@ function onDeviceReady() {
                                         HTMLFrag += '</textarea>';
                                     });
                                 };
-                                HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.dataset.index)" class="cancel" data-index="';
+                                HTMLFrag += '<img data-type="customer" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += index;
                                 HTMLFrag += '"/>';                              
                                 HTMLFrag += '</fieldset>';
@@ -541,7 +541,7 @@ function onDeviceReady() {
                                 };
                                 HTMLFrag += '<article><input type="button" onblur="app.update.item(this)" class="itemName" value="';
                                 HTMLFrag += element.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" class="cancel" onclick="app.delete.item(this.dataset.index)" data-index="';
+                                HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += index;
                                 HTMLFrag += '" /><input type="text" onblur="app.update.item(this)" class="itemCode" placeholder="';
                                 HTMLFrag += element.itemCode;
@@ -556,7 +556,7 @@ function onDeviceReady() {
                                 compareChar = newChar;
                                 HTMLFrag += '<article><input type="button" onblur="app.update.item(this)" class="itemName" value="';
                                 HTMLFrag += element.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" class="cancel" onclick="app.delete.item(this.dataset.index)" data-index="';
+                                HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += index;
                                 HTMLFrag += '" /><input type="text" onblur="app.update.item(this)" class="itemCode" placeholder="';
                                 HTMLFrag += element.itemCode;
@@ -566,7 +566,7 @@ function onDeviceReady() {
                             }else if(newChar == compareChar){
                                 HTMLFrag += '<article><input type="button" onblur="app.update.item(this)" class="itemName" value="';
                                 HTMLFrag += element.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" class="cancel" onclick="app.delete.item(this.dataset.index)" data-index="';
+                                HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += index;
                                 HTMLFrag += '" /><input type="text" onblur="app.update.item(this)" class="itemCode" placeholder="';
                                 HTMLFrag += element.itemCode;
@@ -587,7 +587,7 @@ function onDeviceReady() {
                     HTMLFrag += element.slaughterDate;
                     HTMLFrag += '</span><b>-</b><span>Total: </span><input type="text" value="R';
                     HTMLFrag += element.total;
-                    HTMLFrag += '"/><input type="image" src="img/delete.png" onclick="app.delete.slaughter(this.dataset.index)" class="cancel" data-index="';
+                    HTMLFrag += '"/><img data-type="slaughter" src="img/delete.png" class="cancel" data-index="';
                     HTMLFrag += index;
                     HTMLFrag += '" />';
                     HTMLFrag += '</article>';
@@ -910,11 +910,53 @@ function onDeviceReady() {
                                 HTMLFrag += '" onblur="app.update.sale(this)" > '; 
                                 HTMLFrag += innerElement.notes;
                                 HTMLFrag += '</textarea>';
-                                HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="image" src="img/delete.png" onclick="app.delete.sale(this.dataset.index)" class="cancel" data-index="';
+                                HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><img src="img/delete.png" class="cancel" data-type="sale" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"/></fieldset>';
                     });
                     app.DOM.sales.innerHTML = HTMLFrag;
+                    var newRowsLive = document.getElementsByTagName('td'),
+                    inputsLive = document.getElementsByTagName('input'),
+                    notesLive = document.getElementsByTagName('textarea'),
+                    selectsLive = document.getElementsByTagName('select'),
+                    imgsLive = document.getElementsByTagName('img');
+
+                for (var i = 0; i < selectsLive.length; i++) {
+                    if (classie.hasClass(selectsLive[i], "itemCode")) {
+                        selectsLive[i].addEventListener("click", function(e) { app.update.sale(e.target);}, false);
+                    };
+                };
+                for (var i = 0; i < newRowsLive.length; i++) {
+                    if (classie.hasClass(newRowsLive[i], "large")) {
+                        newRowsLive[i].addEventListener("click", function(e) { alert('add');app.newRow(e.target);}, false);
+                    };
+                };
+                for (var i = 0; i < inputsLive.length; i++) {
+
+                    if (classie.hasClass(inputsLive[i], "cancel") && inputsLive[i].value == "sales") {
+                        inputsLive[i].addEventListener("click", function(e) {app.delete.sale(e.target.dataset.index);}, false);
+
+                    }else if(classie.hasClass(inputsLive[i], "noteClear")){
+                        inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value=''; app.update.sale(e.target.previousSibling);}, false);
+
+                    }else if(classie.hasClass(inputsLive[i], "weight")||classie.hasClass(inputsLive[i], "quantity")){
+                        inputsLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+
+                    };
+                };
+                for (var i = 0; i < imgsLive.length; i++) {
+
+                    if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "sale") {
+                        imgsLive[i].addEventListener("click", function(e) {app.delete.sale(e.target.dataset.index);}, false);
+
+                    };
+                };
+                for (var i = 0; i < notesLive.length; i++) {
+                    if (classie.hasClass(notesLive[i], "notes")) {
+                        notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                    };
+                };
+
                 /*************************/
                 this.store('sale');
                 //this.binding.slaughters();
@@ -929,7 +971,7 @@ function onDeviceReady() {
                             HTMLFrag += innerElement.slaughterDate;
                             HTMLFrag += '</span><b>-</b><span>Total: </span><input type="text" value="R';
                             HTMLFrag += innerElement.total;
-                            HTMLFrag += '"/><input type="image" src="img/delete.png" onclick="app.delete.slaughter(this.dataset.index)" class="cancel" data-index="';
+                            HTMLFrag += '"/><img data-type="slaughter" src="img/delete.png" class="cancel" data-index="';
                             HTMLFrag += innerIndex;
                             HTMLFrag += '" /></article>';
                         });
@@ -1190,7 +1232,7 @@ function onDeviceReady() {
                                 HTMLFrag += '"  > '; 
                                 HTMLFrag += innerElement.notes;
                                 HTMLFrag += '</textarea>';
-                                HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><input type="button" class="cancel" value="sales" data-index="';
+                                HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><img src="img/delete.png" class="cancel" data-type="sale" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"/></fieldset>';
                     });
@@ -1308,7 +1350,7 @@ function onDeviceReady() {
                                             HTMLFrag += '</textarea>';
                                         });
                                     };
-                                    HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.dataset.index)" class="cancel" data-index="';
+                                    HTMLFrag += '<img data-type="customer" src="img/delete.png" class="cancel" data-index="';
                                     HTMLFrag += index;
                                     HTMLFrag += '"/></fieldset>';
                                 };
@@ -1375,7 +1417,7 @@ function onDeviceReady() {
                                             HTMLFrag += '</textarea>';
                                         });
                                     };
-                                    HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.dataset.index)" class="cancel" data-index="';
+                                    HTMLFrag += '<img data-type="customer" src="img/delete.png" class="cancel" data-index="';
                                     HTMLFrag += index;
                                     HTMLFrag += '"/>';                              
                                     HTMLFrag += '</fieldset>';
@@ -1438,7 +1480,7 @@ function onDeviceReady() {
                                             HTMLFrag += '</textarea>';
                                         });
                                     };
-                                    HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.dataset.index)" class="cancel" data-index="';
+                                    HTMLFrag += '<img data-type="customer" src="img/delete.png" class="cancel" data-index="';
                                     HTMLFrag += index;
                                     HTMLFrag += '"/>';                              
                                     HTMLFrag += '</fieldset>';
@@ -1463,7 +1505,7 @@ function onDeviceReady() {
                                 };
                                 HTMLFrag += '<article><input type="button" onblur="app.update.item(this)" class="itemName" value="';
                                 HTMLFrag += innerElement.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" class="cancel" onclick="app.delete.item(this.dataset.index)" data-index="';
+                                HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '" />';
                                 HTMLFrag+='<input type="text" onblur="app.update.item(this)" class="itemCode" placeholder="';
@@ -1481,7 +1523,7 @@ function onDeviceReady() {
                                 compareChar = newChar;
                                 HTMLFrag += '<article><input type="button" onblur="app.update.item(this)" class="itemName" value="';
                                 HTMLFrag += innerElement.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" class="cancel" onclick="app.delete.item(this.dataset.index)" data-index="';
+                                HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"/>';
                                 HTMLFrag+='<input type="text" onblur="app.update.item(this)" class="itemCode" placeholder="';
@@ -1494,7 +1536,7 @@ function onDeviceReady() {
                             }else if(newChar == compareChar){
                                 HTMLFrag += '<article><input type="button" onblur="app.update.item(this)" class="itemName" value="';
                                 HTMLFrag += innerElement.itemName;
-                                HTMLFrag += '" /><input type="image" src="img/delete.png" class="cancel" onclick="app.delete.item(this.dataset.index)" data-index="';
+                                HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '" />';
                                 HTMLFrag+='<input type="text" onblur="app.update.item(this)" class="itemCode" placeholder="';
@@ -1520,7 +1562,7 @@ function onDeviceReady() {
                             HTMLFrag += innerElement.slaughterDate;
                             HTMLFrag += '</span><b>-</b><span>Total: </span><input type="text" value="R';
                             HTMLFrag += innerElement.total;
-                            HTMLFrag += '"/><input type="image" src="img/delete.png" onclick="app.delete.slaughter(this.dataset.index)" class="cancel" data-index="';
+                            HTMLFrag += '"/><img data-type="slaughter" src="img/delete.png" class="cancel" data-index="';
                             HTMLFrag += innerIndex;
                             HTMLFrag += '" /></article>';
                         });
@@ -2029,7 +2071,7 @@ function onDeviceReady() {
                                         HTMLFrag += innerElement.value;
                                         HTMLFrag += '</textarea>';
                                     });
-                                    HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.dataset.index)" class="cancel" data-index="';
+                                    HTMLFrag += '<img data-type="customer" src="img/delete.png" class="cancel" data-index="';
                                     HTMLFrag += index;
                                     HTMLFrag += '"/></fieldset>';
                                 };
@@ -2080,7 +2122,7 @@ function onDeviceReady() {
                                         HTMLFrag += innerElement.value;
                                         HTMLFrag += '</textarea>';
                                     });
-                                    HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
+                                    HTMLFrag += '<img data-type="customer" src="img/delete.png" class="cancel" data-index="';
                                     HTMLFrag += index;
                                     HTMLFrag += '"/>';                              
                                     HTMLFrag += '</fieldset>';
@@ -2127,7 +2169,7 @@ function onDeviceReady() {
                                         HTMLFrag += innerElement.value;
                                         HTMLFrag += '</textarea>';
                                     });
-                                    HTMLFrag += '<input type="image" src="img/delete.png" onclick="app.delete.customer(this.alt)" class="cancel" alt="';
+                                    HTMLFrag += '<img data-type="customer" src="img/delete.png" class="cancel" data-index="';
                                     HTMLFrag += index;
                                     HTMLFrag += '"/>';                              
                                     HTMLFrag += '</fieldset>';
@@ -2153,7 +2195,7 @@ function onDeviceReady() {
                                     };
                                     HTMLFrag += '<article><input type="button" class="itemName" value="';
                                     HTMLFrag += element.itemName;
-                                    HTMLFrag += '" /><input type="image" src="img/delete.png" class="cancel" onclick="app.delete.item(this.alt)" alt="';
+                                    HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                     HTMLFrag += index;
                                     HTMLFrag += '" /><input type="text" class="itemCode" placeholder="';
                                     HTMLFrag += element.itemCode;
@@ -2168,7 +2210,7 @@ function onDeviceReady() {
                                     compareChar = newChar;
                                     HTMLFrag += '<article><input type="button" class="itemName" value="';
                                     HTMLFrag += element.itemName;
-                                    HTMLFrag += '" /><input type="image" src="img/delete.png" class="cancel" onclick="app.delete.item(this.alt)" alt="';
+                                    HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                     HTMLFrag += index;
                                     HTMLFrag += '" /><input type="text" class="itemCode" placeholder="';
                                     HTMLFrag += element.itemCode;
@@ -2178,7 +2220,7 @@ function onDeviceReady() {
                                 }else if(newChar == compareChar){
                                     HTMLFrag += '<article><input type="button" class="itemName" value="';
                                     HTMLFrag += element.itemName;
-                                    HTMLFrag += '" /><input type="image" src="img/delete.png" class="cancel" onclick="app.delete.item(this.alt)" alt="';
+                                    HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                     HTMLFrag += index;
                                     HTMLFrag += '" /><input type="text" class="itemCode" placeholder="';
                                     HTMLFrag += element.itemCode;
@@ -2198,8 +2240,6 @@ function onDeviceReady() {
         sync : {
             customers : function() {
                 function onPrompt(results) {
-                //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
-
                     // find all contacts with 'Bob' in any name field
                     var options      = new ContactFindOptions();
                     options.filter   = results.input1;
@@ -2315,6 +2355,8 @@ function onDeviceReady() {
                 app.login();
             }else if(message.type === "token recieved"){
                 window.clearInterval(intervalHandle);
+            }else if (message.type === 'back up') {
+                alert('Back up success!');
             };
         };
     },false);

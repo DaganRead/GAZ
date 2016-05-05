@@ -290,14 +290,14 @@ function onDeviceReady() {
                                 HTMLFrag += '"><legend><input type="button" value="';
                                 HTMLFrag += element.displayName;
                                         HTMLFrag += '" class="accordion" /></legend>';
-                                        HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                        HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                 HTMLFrag += element.name.givenName;
-                                HTMLFrag += '"/><input type="text" onblur="app.update.customer(this)" placeholder="';
+                                HTMLFrag += '"/><input type="text" data-type="updateCustomer" placeholder="';
                                 HTMLFrag += element.name.familyName;
                                 HTMLFrag += '"/>';
                                 if (element.emails!=null) {
                                     element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                        HTMLFrag += '<input type="email" onblur="app.update.customer(this)" placeholder="';
+                                        HTMLFrag += '<input type="email" data-type="updateCustomer" placeholder="';
                                         HTMLFrag += innerElement.value;
                                         HTMLFrag += '" data-index="';
                                         HTMLFrag += innerIndex;
@@ -306,7 +306,7 @@ function onDeviceReady() {
                                 };
                                 if (element.phoneNumbers!=null) {
                                     element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                        HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                        HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                         HTMLFrag += innerElement.value;
                                         HTMLFrag += '" data-index="';
                                         HTMLFrag += innerIndex;
@@ -315,7 +315,7 @@ function onDeviceReady() {
                                 };
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
+                                HTMLFrag += '<select data-type="updateCustomer">';
                                 if (element.location != undefined) {
                                     HTMLFrag += '<option disabled selected value="';
                                     HTMLFrag += element.location.location;
@@ -335,7 +335,7 @@ function onDeviceReady() {
                                 HTMLFrag += '</select></figcaption></figure></article>';
                                 if (element.addresses!=null) {
                                     element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                        HTMLFrag += '<textarea onblur="app.update.customer(this)">';
+                                        HTMLFrag += '<textarea data-type="updateCustomer">';
                                         HTMLFrag += innerElement.formatted;
                                         HTMLFrag += '</textarea>';
                                     });
@@ -356,14 +356,14 @@ function onDeviceReady() {
                                         HTMLFrag += '" class="accordion" data-index="';
                                         HTMLFrag += index;
                                         HTMLFrag += '"/></legend>';
-                                        HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                        HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                 HTMLFrag += element.name.givenName;
-                                HTMLFrag += '" /><input type="text" onblur="app.update.customer(this)" placeholder="';
+                                HTMLFrag += '" /><input type="text" data-type="updateCustomer" placeholder="';
                                 HTMLFrag += element.name.familyName;
                                 HTMLFrag += '" />';
                                 if (element.emails!=null) {
                                     element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                        HTMLFrag += '<input type="email" onblur="app.update.customer(this)" placeholder="';
+                                        HTMLFrag += '<input type="email" data-type="updateCustomer" placeholder="';
                                         HTMLFrag += innerElement.value;
                                         HTMLFrag += '" data-index="';
                                         HTMLFrag += innerIndex;
@@ -372,7 +372,7 @@ function onDeviceReady() {
                                 };
                                 if (element.phoneNumbers!=null) {
                                     element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                        HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                        HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                         HTMLFrag += innerElement.value;
                                         HTMLFrag += '" data-index="';
                                         HTMLFrag += innerIndex;
@@ -381,7 +381,7 @@ function onDeviceReady() {
                                 };
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
+                                HTMLFrag += '<select data-type="updateCustomer">';
                                 if (element.location != undefined) {
                                     HTMLFrag += '<option disabled selected value="';
                                     HTMLFrag += element.location.location;
@@ -401,7 +401,7 @@ function onDeviceReady() {
                                 HTMLFrag += '</select></figcaption></figure></article>';
                                 if (element.addresses!=null) {
                                     element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                        HTMLFrag += '<textarea onblur="app.update.customer(this)">';
+                                        HTMLFrag += '<textarea data-type="updateCustomer">';
                                         HTMLFrag += innerElement.formatted;
                                         HTMLFrag += '</textarea>';
                                     });
@@ -416,14 +416,14 @@ function onDeviceReady() {
                                 HTMLFrag += '"><legend><input type="button" value="';
                                 HTMLFrag += element.displayName;
                                         HTMLFrag += '" class="accordion" /></legend>';
-                                        HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                        HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                 HTMLFrag += element.name.givenName;
-                                HTMLFrag += '"/><input type="text" onblur="app.update.customer(this)" placeholder="';
+                                HTMLFrag += '"/><input type="text" data-type="updateCustomer" placeholder="';
                                 HTMLFrag += element.name.familyName;
                                 HTMLFrag += '"/>';
                                 if (element.emails!=null) {
                                     element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                        HTMLFrag += '<input type="email" onblur="app.update.customer(this)" placeholder="';
+                                        HTMLFrag += '<input type="email" data-type="updateCustomer" placeholder="';
                                         HTMLFrag += innerElement.value;
                                         HTMLFrag += '" data-index="';
                                         HTMLFrag += innerIndex;
@@ -432,7 +432,7 @@ function onDeviceReady() {
                                 };
                                 if (element.phoneNumbers!=null) {
                                     element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                        HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                        HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                         HTMLFrag += innerElement.value;
                                         HTMLFrag += '" data-index="';
                                         HTMLFrag += innerIndex;
@@ -441,7 +441,7 @@ function onDeviceReady() {
                                 };
                                 HTMLFrag += '<br /><article>';
                                 HTMLFrag += '<figure class="location" ><figcaption>';
-                                HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
+                                HTMLFrag += '<select data-type="updateCustomer">';
                                 if (element.location != undefined) {
                                     HTMLFrag += '<option disabled selected value="';
                                     HTMLFrag += element.location.location;
@@ -461,7 +461,7 @@ function onDeviceReady() {
                                 HTMLFrag += '</select></figcaption></figure></article>';
                                 if (element.addresses!=null) {
                                     element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                        HTMLFrag += '<textarea onblur="app.update.customer(this)">';
+                                        HTMLFrag += '<textarea data-type="updateCustomer">';
                                         HTMLFrag += innerElement.formatted;
                                         HTMLFrag += '</textarea>';
                                     });
@@ -554,15 +554,15 @@ function onDeviceReady() {
                 document.getElementById('btn_menu').addEventListener("click", app.openMenu(), false);
                 document.getElementById('btn_sync_customer').addEventListener("click", function() { app.sync.customers() }, false);
                 //new Sale
-                                    document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
-                                    document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
-                                    document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
-                                    var tableInputsLive = document.getElementsByTagName('select');
-                                    for (var i = 0; i < tableInputsLive.length; i++) {
-                                        if (classie.hasClass(tableInputsLive[i], "tableInput")) {
-                                            tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
-                                        };
-                                    };
+                document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
+                document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
+                document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
+                var tableInputsLive = document.getElementsByTagName('select');
+                for (var i = 0; i < tableInputsLive.length; i++) {
+                    if (classie.hasClass(tableInputsLive[i], "tableInput")) {
+                        tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
+                    };
+                };
                 // Delete and sales
                 var newRowsLive = document.getElementsByTagName('td'),
                     inputsLive = document.getElementsByTagName('input'),
@@ -573,6 +573,8 @@ function onDeviceReady() {
                 for (var i = 0; i < selectsLive.length; i++) {
                     if (classie.hasClass(selectsLive[i], "itemCode")) {
                         selectsLive[i].addEventListener("click", function(e) { app.update.sale(e.target);}, false);
+                    }else if (selectsLive[i].dataset.type == "updateCustomer") {
+                        selectsLive[i].addEventListener("blur", function(e) { app.update.customer(e.target.parentNode);}, false);
                     };
                 };
                 for (var i = 0; i < newRowsLive.length; i++) {
@@ -594,6 +596,8 @@ function onDeviceReady() {
                     }else if(classie.hasClass(inputsLive[i], "accordion")){
                         inputsLive[i].addEventListener("click", function(e) { app.accordion(e.target);}, false);
 
+                    }else if(inputsLive[i].dataset.type == "updateCustomer"){
+                        inputsLive[i].addEventListener("blur", function(e) { app.update.customer(e.target);}, false);
                     };
 
                 };
@@ -616,6 +620,8 @@ function onDeviceReady() {
                 for (var i = 0; i < notesLive.length; i++) {
                     if (classie.hasClass(notesLive[i], "notes")) {
                         notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                    }else if (notesLive[i].dataset.type == "updateCustomer") {
+                        notesLive[i].addEventListener("blur", function(e) { app.update.customer(e.target);}, false);
                     };
                 };
                 //end
@@ -1334,14 +1340,14 @@ function onDeviceReady() {
                                     HTMLFrag += '"><legend><input type="button" value="';
                                     HTMLFrag += element.displayName;
                                     HTMLFrag += '" class="accordion" /></legend>';
-                                    HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                    HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                     HTMLFrag += element.name.givenName;
-                                    HTMLFrag += '"/><input type="text" onblur="app.update.customer(this)" placeholder="';
+                                    HTMLFrag += '"/><input type="text" data-type="updateCustomer" placeholder="';
                                     HTMLFrag += element.name.familyName;
                                     HTMLFrag += '"/>'; 
                                     if (element.emails!=null) {
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="email" onblur="app.update.customer(this)" placeholder="';
+                                            HTMLFrag += '<input type="email" data-type="updateCustomer" placeholder="';
                                             HTMLFrag += innerElement.value;
                                             HTMLFrag += '" data-index="';
                                             HTMLFrag += innerIndex;
@@ -1350,7 +1356,7 @@ function onDeviceReady() {
                                     };
                                     if (element.phoneNumbers!=null) {
                                         element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                            HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                             HTMLFrag += innerElement.value;
                                             HTMLFrag += '" data-index="';
                                             HTMLFrag += innerIndex;
@@ -1359,7 +1365,7 @@ function onDeviceReady() {
                                     };
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
-                                    HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
+                                    HTMLFrag += '<select data-type="updateCustomer">';
                                     if (element.location != undefined) {
                                         HTMLFrag += '<option disabled selected value="';
                                         HTMLFrag += element.location.location;
@@ -1379,7 +1385,7 @@ function onDeviceReady() {
                                     HTMLFrag += '</select></figcaption></figure></article>';
                                     if (element.addresses!=null) {
                                         element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<textarea onblur="app.update.customer(this)">';
+                                            HTMLFrag += '<textarea data-type="updateCustomer">';
                                             HTMLFrag += innerElement.formatted;
                                             HTMLFrag += '</textarea>';
                                         });
@@ -1400,14 +1406,14 @@ function onDeviceReady() {
                                     HTMLFrag += '" class="accordion" data-index="';
                                     HTMLFrag += index;
                                     HTMLFrag += '"/></legend>';
-                                    HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                    HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                     HTMLFrag += element.name.givenName;
-                                    HTMLFrag += '" /><input type="text" onblur="app.update.customer(this)" placeholder="';
+                                    HTMLFrag += '" /><input type="text" data-type="updateCustomer" placeholder="';
                                     HTMLFrag += element.name.familyName;
                                     HTMLFrag += '" />';
                                     if (element.emails!=null) {
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="email" onblur="app.update.customer(this)" placeholder="';
+                                            HTMLFrag += '<input type="email" data-type="updateCustomer" placeholder="';
                                             HTMLFrag += innerElement.value;
                                             HTMLFrag += '" data-index="';
                                             HTMLFrag += innerIndex;
@@ -1416,7 +1422,7 @@ function onDeviceReady() {
                                     };
                                     if (element.phoneNumbers!=null) {
                                         element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                            HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                             HTMLFrag += innerElement.value;
                                             HTMLFrag += '" data-index="';
                                             HTMLFrag += innerIndex;
@@ -1425,7 +1431,7 @@ function onDeviceReady() {
                                     };
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
-                                    HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
+                                    HTMLFrag += '<select data-type="updateCustomer">';
                                     if (element.location !== undefined) {
                                         HTMLFrag += '<option disabled selected value="';
                                         HTMLFrag += element.location.location;
@@ -1445,7 +1451,7 @@ function onDeviceReady() {
                                     HTMLFrag += '</select></figcaption></figure></article>';
                                     if (element.addresses!=null) {
                                         element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<textarea onblur="app.update.customer(this)">';
+                                            HTMLFrag += '<textarea data-type="updateCustomer">';
                                             HTMLFrag += innerElement.formatted;
                                             HTMLFrag += '</textarea>';
                                         });
@@ -1462,14 +1468,14 @@ function onDeviceReady() {
                                             HTMLFrag += '" class="accordion" data-index="';
                                             HTMLFrag += index;
                                             HTMLFrag += '"/></legend>';
-                                            HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                            HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                     HTMLFrag += element.name.givenName;
-                                    HTMLFrag += '"/><input type="text" onblur="app.update.customer(this)" placeholder="';
+                                    HTMLFrag += '"/><input type="text" data-type="updateCustomer" placeholder="';
                                     HTMLFrag += element.name.familyName;
                                     HTMLFrag += '"/>';
                                     if (element.emails!=null) {
                                         element.emails.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="email" onblur="app.update.customer(this)" placeholder="';
+                                            HTMLFrag += '<input type="email" data-type="updateCustomer" placeholder="';
                                             HTMLFrag += innerElement.value;
                                             HTMLFrag += '" data-index="';
                                             HTMLFrag += innerIndex;
@@ -1478,7 +1484,7 @@ function onDeviceReady() {
                                     };
                                     if (element.phoneNumbers!=null) {
                                         element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
+                                            HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                             HTMLFrag += innerElement.value;
                                             HTMLFrag += '" data-index="';
                                             HTMLFrag += innerIndex;
@@ -1487,7 +1493,7 @@ function onDeviceReady() {
                                     };
                                     HTMLFrag += '<br /><article>';
                                     HTMLFrag += '<figure class="location" ><figcaption>';
-                                    HTMLFrag += '<select onblur="app.update.customer(this.parentNode)">';
+                                    HTMLFrag += '<select data-type="updateCustomer">';
                                     if (element.location != undefined) {
                                         HTMLFrag += '<option disabled selected value="';
                                         HTMLFrag += element.location.location;
@@ -1507,7 +1513,7 @@ function onDeviceReady() {
                                     HTMLFrag += '</select></figcaption></figure></article>';
                                     if (element.addresses!=null) {
                                         element.addresses.forEach(function(innerElement, innerIndex, innerArray) {
-                                            HTMLFrag += '<textarea onblur="app.update.customer(this)">';
+                                            HTMLFrag += '<textarea data-type="updateCustomer">';
                                             HTMLFrag += innerElement.formatted;
                                             HTMLFrag += '</textarea>';
                                         });
@@ -1522,21 +1528,35 @@ function onDeviceReady() {
 
                 //event listeners
                    var inputsLive = document.getElementsByTagName('input'),
-                    imgsLive = document.getElementsByTagName('img');
+                    imgsLive = document.getElementsByTagName('img'),
+                    notesLive = document.getElementsByTagName('textarea'),
+                    selectsLive = document.getElementsByTagName('select');
 
                 for (var i = 0; i < inputsLive.length; i++) {
 
                     if(classie.hasClass(inputsLive[i], "accordion")){
                         inputsLive[i].addEventListener("click", function(e) { app.accordion(e.target);}, false);
 
+                    }else if(inputsLive[i].dataset.type == "updateCustomer"){
+                        inputsLive[i].addEventListener("blur", function(e) { app.update.customer(e.target);}, false);
                     };
 
+                };
+                for (var i = 0; i < selectsLive.length; i++) {
+                    if (selectsLive[i].dataset.type == "updateCustomer") {
+                        selectsLive[i].addEventListener("blur", function(e) { app.update.customer(e.target.parentNode);}, false);
+                    };
                 };
                 for (var i = 0; i < imgsLive.length; i++) {
 
                     if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "customer") {
                         imgsLive[i].addEventListener("click", function(e) { app.delete.customer(e.target.dataset.index); }, false);
 
+                    };
+                };
+                for (var i = 0; i < notesLive.length; i++) {
+                    if (notesLive[i].dataset.type == "updateCustomer") {
+                        notesLive[i].addEventListener("blur", function(e) { app.update.customer(e.target);}, false);
                     };
                 };
 

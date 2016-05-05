@@ -353,8 +353,7 @@ function onDeviceReady() {
                                 HTMLFrag += index;
                                 HTMLFrag += '"><legend><input type="button" value="';
                                 HTMLFrag += element.displayName;
-                                        HTMLFrag += '" onclick="app.accordion(this)" ';
-                                        HTMLFrag += ' data-index="';
+                                        HTMLFrag += '" class="accordion" data-index="';
                                         HTMLFrag += index;
                                         HTMLFrag += '"/></legend>';
                                         HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
@@ -416,7 +415,7 @@ function onDeviceReady() {
                                 HTMLFrag += index;
                                 HTMLFrag += '"><legend><input type="button" value="';
                                 HTMLFrag += element.displayName;
-                                        HTMLFrag += '" onclick="app.accordion(this)" /></legend>';
+                                        HTMLFrag += '" class="accordion" /></legend>';
                                         HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
                                 HTMLFrag += element.name.givenName;
                                 HTMLFrag += '"/><input type="text" onblur="app.update.customer(this)" placeholder="';
@@ -1334,7 +1333,7 @@ function onDeviceReady() {
                                     HTMLFrag += index;
                                     HTMLFrag += '"><legend><input type="button" value="';
                                     HTMLFrag += element.displayName;
-                                    HTMLFrag += '" onclick="app.accordion(this)" /></legend>';
+                                    HTMLFrag += '" class="accordion" /></legend>';
                                     HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
                                     HTMLFrag += element.name.givenName;
                                     HTMLFrag += '"/><input type="text" onblur="app.update.customer(this)" placeholder="';
@@ -1398,8 +1397,7 @@ function onDeviceReady() {
                                     HTMLFrag += index;
                                     HTMLFrag += '"><legend><input type="button" value="';
                                     HTMLFrag += element.displayName;
-                                    HTMLFrag += '" onclick="app.accordion(this)" ';
-                                    HTMLFrag += ' data-index="';
+                                    HTMLFrag += '" class="accordion" data-index="';
                                     HTMLFrag += index;
                                     HTMLFrag += '"/></legend>';
                                     HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
@@ -1461,8 +1459,7 @@ function onDeviceReady() {
                                     HTMLFrag += index;
                                     HTMLFrag += '"><legend><input type="button" value="';
                                     HTMLFrag += element.displayName;
-                                            HTMLFrag += '" onclick="app.accordion(this)" ';
-                                            HTMLFrag += ' data-index="';
+                                            HTMLFrag += '" class="accordion" data-index="';
                                             HTMLFrag += index;
                                             HTMLFrag += '"/></legend>';
                                             HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';

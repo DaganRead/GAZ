@@ -553,6 +553,7 @@ function onDeviceReady() {
                 document.getElementById('tab-5').addEventListener("click", function() { app.nav.to('New'); }, false);
                 document.getElementById('btn_logout').addEventListener("click", app.logout(), false);
                 document.getElementById('btn_menu').addEventListener("click", app.openMenu(), false);
+                document.getElementById('btn_sync_customer').addEventListener("click", function() { app.sync.customers() }, false);
                 //new Sale
                                     document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
                                     document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 

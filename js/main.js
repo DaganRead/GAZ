@@ -184,16 +184,6 @@ function onDeviceReady() {
                                     HTMLFrag += '</td><td><input type="text" class="tableInput" placeholder="0" /></td><td><input type="text" class="tableInput" placeholder="0" /></td></tr>';
                                     HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" id="btn_newSale" /><input type="button" class="cancel" value="Cancel"></article>';
                                     document.getElementById('newSale').innerHTML = HTMLFrag;
-                                    //Event listeners
-                                    document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
-                                    document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
-                                    document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
-                                    var tableInputsLive = document.getElementsByTagName('select');
-                                    for (var i = 0; i < tableInputsLive.length; i++) {
-                                        if (classie.hasClass(tableInputsLive[i], "tableInput")) {
-                                            tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
-                                        };
-                                    };
                 /* Sales */
                 HTMLFrag = '',
                     total = 0;
@@ -280,47 +270,7 @@ function onDeviceReady() {
                             HTMLFrag += '"/></fieldset>';
                         });
                 app.DOM.sales.innerHTML = HTMLFrag;
-                var newRowsLive = document.getElementsByTagName('td'),
-                    inputsLive = document.getElementsByTagName('input'),
-                    notesLive = document.getElementsByTagName('textarea'),
-                    selectsLive = document.getElementsByTagName('select'),
-                    imgsLive = document.getElementsByTagName('img');
 
-                for (var i = 0; i < selectsLive.length; i++) {
-                    if (classie.hasClass(selectsLive[i], "itemCode")) {
-                        selectsLive[i].addEventListener("click", function(e) { app.update.sale(e.target);}, false);
-                    };
-                };
-                for (var i = 0; i < newRowsLive.length; i++) {
-                    if (classie.hasClass(newRowsLive[i], "large")) {
-                        newRowsLive[i].addEventListener("click", function(e) { alert('add');app.newRow(e.target);}, false);
-                    };
-                };
-                for (var i = 0; i < inputsLive.length; i++) {
-
-                    if (classie.hasClass(inputsLive[i], "cancel") && inputsLive[i].value == "sales") {
-                        inputsLive[i].addEventListener("click", function(e) {app.delete.sale(e.target.dataset.index);}, false);
-
-                    }else if(classie.hasClass(inputsLive[i], "noteClear")){
-                        inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value=''; app.update.sale(e.target.previousSibling);}, false);
-
-                    }else if(classie.hasClass(inputsLive[i], "weight")||classie.hasClass(inputsLive[i], "quantity")){
-                        inputsLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
-
-                    };
-                };
-                for (var i = 0; i < imgsLive.length; i++) {
-
-                    if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "sale") {
-                        imgsLive[i].addEventListener("click", function(e) {app.delete.sale(e.target.dataset.index);}, false);
-
-                    };
-                };
-                for (var i = 0; i < notesLive.length; i++) {
-                    if (classie.hasClass(notesLive[i], "notes")) {
-                        notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
-                    };
-                };
                 /*customers*/
                 HTMLFrag = '';
                 var newChar,
@@ -603,6 +553,68 @@ function onDeviceReady() {
                 document.getElementById('tab-5').addEventListener("click", function() { app.nav.to('New'); }, false);
                 document.getElementById('btn_logout').addEventListener("click", app.logout(), false);
                 document.getElementById('btn_menu').addEventListener("click", app.openMenu(), false);
+                //new Sale
+                                    document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
+                                    document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
+                                    document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
+                                    var tableInputsLive = document.getElementsByTagName('select');
+                                    for (var i = 0; i < tableInputsLive.length; i++) {
+                                        if (classie.hasClass(tableInputsLive[i], "tableInput")) {
+                                            tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
+                                        };
+                                    };
+                // Delete and sales
+                var newRowsLive = document.getElementsByTagName('td'),
+                    inputsLive = document.getElementsByTagName('input'),
+                    notesLive = document.getElementsByTagName('textarea'),
+                    selectsLive = document.getElementsByTagName('select'),
+                    imgsLive = document.getElementsByTagName('img');
+
+                for (var i = 0; i < selectsLive.length; i++) {
+                    if (classie.hasClass(selectsLive[i], "itemCode")) {
+                        selectsLive[i].addEventListener("click", function(e) { app.update.sale(e.target);}, false);
+                    };
+                };
+                for (var i = 0; i < newRowsLive.length; i++) {
+                    if (classie.hasClass(newRowsLive[i], "large")) {
+                        newRowsLive[i].addEventListener("click", function(e) { alert('add');app.newRow(e.target);}, false);
+                    };
+                };
+                for (var i = 0; i < inputsLive.length; i++) {
+
+                    if (classie.hasClass(inputsLive[i], "cancel") && inputsLive[i].value == "sales") {
+                        inputsLive[i].addEventListener("click", function(e) {app.delete.sale(e.target.dataset.index);}, false);
+
+                    }else if(classie.hasClass(inputsLive[i], "noteClear")){
+                        inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value=''; app.update.sale(e.target.previousSibling);}, false);
+
+                    }else if(classie.hasClass(inputsLive[i], "weight")||classie.hasClass(inputsLive[i], "quantity")){
+                        inputsLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+
+                    };
+                };
+                for (var i = 0; i < imgsLive.length; i++) {
+
+                    if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "sale") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.sale(e.target.dataset.index); }, false);
+
+                    } else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "customer") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.customer(e.target.dataset.index); }, false);
+
+                    } else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "item") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.item(e.target.dataset.index); }, false);
+
+                    }else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "slaughter") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.slaughter(e.target.dataset.index); }, false);
+
+                    };
+                };
+                for (var i = 0; i < notesLive.length; i++) {
+                    if (classie.hasClass(notesLive[i], "notes")) {
+                        notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                    };
+                };
+                //end
             };
         }(),
         forms: {
@@ -947,7 +959,16 @@ function onDeviceReady() {
                 for (var i = 0; i < imgsLive.length; i++) {
 
                     if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "sale") {
-                        imgsLive[i].addEventListener("click", function(e) {app.delete.sale(e.target.dataset.index);}, false);
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.sale(e.target.dataset.index); }, false);
+
+                    } else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "customer") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.customer(e.target.dataset.index); }, false);
+
+                    } else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "item") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.item(e.target.dataset.index); }, false);
+
+                    }else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "slaughter") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.slaughter(e.target.dataset.index); }, false);
 
                     };
                 };
@@ -1270,7 +1291,16 @@ function onDeviceReady() {
                 for (var i = 0; i < imgsLive.length; i++) {
 
                     if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "sale") {
-                        imgsLive[i].addEventListener("click", function(e) {app.delete.sale(e.target.dataset.index);}, false);
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.sale(e.target.dataset.index); }, false);
+
+                    } else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "customer") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.customer(e.target.dataset.index); }, false);
+
+                    } else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "item") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.item(e.target.dataset.index); }, false);
+
+                    }else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "slaughter") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.slaughter(e.target.dataset.index); }, false);
 
                     };
                 };

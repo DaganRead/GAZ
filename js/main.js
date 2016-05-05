@@ -289,7 +289,7 @@ function onDeviceReady() {
                                 HTMLFrag += index;
                                 HTMLFrag += '"><legend><input type="button" value="';
                                 HTMLFrag += element.displayName;
-                                        HTMLFrag += '" onclick="app.accordion(this)" /></legend>';
+                                        HTMLFrag += '" class="accordion" /></legend>';
                                         HTMLFrag += '<input type="text" onblur="app.update.customer(this)" placeholder="';
                                 HTMLFrag += element.name.givenName;
                                 HTMLFrag += '"/><input type="text" onblur="app.update.customer(this)" placeholder="';
@@ -592,7 +592,11 @@ function onDeviceReady() {
                     }else if(classie.hasClass(inputsLive[i], "weight")||classie.hasClass(inputsLive[i], "quantity")){
                         inputsLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
 
+                    }else if(classie.hasClass(inputsLive[i], "accordion")){
+                        inputsLive[i].addEventListener("click", function(e) { app.accordion(e.target);}, false);
+
                     };
+
                 };
                 for (var i = 0; i < imgsLive.length; i++) {
 
@@ -1518,6 +1522,28 @@ function onDeviceReady() {
                                 };
                             app.DOM.customers.innerHTML = HTMLFrag;
                     });
+
+                //event listeners
+                   var inputsLive = document.getElementsByTagName('input'),
+                    imgsLive = document.getElementsByTagName('img');
+
+                for (var i = 0; i < inputsLive.length; i++) {
+
+                    if(classie.hasClass(inputsLive[i], "accordion")){
+                        inputsLive[i].addEventListener("click", function(e) { app.accordion(e.target);}, false);
+
+                    };
+
+                };
+                for (var i = 0; i < imgsLive.length; i++) {
+
+                    if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "customer") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.customer(e.target.dataset.index); }, false);
+
+                    };
+                };
+
+
             },
             items : function() {      
                     var HTMLFrag = '', 

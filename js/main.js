@@ -488,13 +488,13 @@ function onDeviceReady() {
                                 if (element == array[0]) {
                                     HTMLFrag += '<fieldset><legend>#</legend>';
                                 };
-                                HTMLFrag += '<article><input type="button" onblur="app.update.item(this)" class="itemName" value="';
+                                HTMLFrag += '<article><input type="button" data-type="updateItem" class="itemName" value="';
                                 HTMLFrag += element.itemName;
                                 HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += index;
-                                HTMLFrag += '" /><input type="text" onblur="app.update.item(this)" class="itemCode" placeholder="';
+                                HTMLFrag += '" /><input type="text" data-type="updateItem" class="itemCode" placeholder="';
                                 HTMLFrag += element.itemCode;
-                                HTMLFrag += '" /><input type="text" onblur="app.update.item(this)" class="itemPrice" placeholder="';
+                                HTMLFrag += '" /><input type="text" data-type="updateItem" class="itemPrice" placeholder="';
                                 HTMLFrag += element.itemPrice;
                                 HTMLFrag += '" /></article>';
                             };
@@ -503,23 +503,23 @@ function onDeviceReady() {
                                 HTMLFrag += newChar;
                                 HTMLFrag += '</legend>';  
                                 compareChar = newChar;
-                                HTMLFrag += '<article><input type="button" onblur="app.update.item(this)" class="itemName" value="';
+                                HTMLFrag += '<article><input type="button" data-type="updateItem" class="itemName" value="';
                                 HTMLFrag += element.itemName;
                                 HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += index;
-                                HTMLFrag += '" /><input type="text" onblur="app.update.item(this)" class="itemCode" placeholder="';
+                                HTMLFrag += '" /><input type="text" data-type="updateItem" class="itemCode" placeholder="';
                                 HTMLFrag += element.itemCode;
-                                HTMLFrag += '" /><input type="text" onblur="app.update.item(this)" class="itemPrice" placeholder="';
+                                HTMLFrag += '" /><input type="text" data-type="updateItem" class="itemPrice" placeholder="';
                                 HTMLFrag += element.itemPrice;
                                 HTMLFrag += '" /></article>';
                             }else if(newChar == compareChar){
-                                HTMLFrag += '<article><input type="button" onblur="app.update.item(this)" class="itemName" value="';
+                                HTMLFrag += '<article><input type="button" data-type="updateItem" class="itemName" value="';
                                 HTMLFrag += element.itemName;
                                 HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += index;
-                                HTMLFrag += '" /><input type="text" onblur="app.update.item(this)" class="itemCode" placeholder="';
+                                HTMLFrag += '" /><input type="text" data-type="updateItem" class="itemCode" placeholder="';
                                 HTMLFrag += element.itemCode;
-                                HTMLFrag += '" /><input type="text" onblur="app.update.item(this)" class="itemPrice" placeholder="';
+                                HTMLFrag += '" /><input type="text" data-type="updateItem" class="itemPrice" placeholder="';
                                 HTMLFrag += element.itemPrice;
                                 HTMLFrag += '" /></article>';
                             };
@@ -583,38 +583,29 @@ function onDeviceReady() {
                     };
                 };
                 for (var i = 0; i < inputsLive.length; i++) {
-
                     if (classie.hasClass(inputsLive[i], "cancel") && inputsLive[i].value == "sales") {
                         inputsLive[i].addEventListener("click", function(e) {app.delete.sale(e.target.dataset.index);}, false);
-
                     }else if(classie.hasClass(inputsLive[i], "noteClear")){
                         inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value=''; app.update.sale(e.target.previousSibling);}, false);
-
                     }else if(classie.hasClass(inputsLive[i], "weight")||classie.hasClass(inputsLive[i], "quantity")){
                         inputsLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
-
                     }else if(classie.hasClass(inputsLive[i], "accordion")){
                         inputsLive[i].addEventListener("click", function(e) { app.accordion(e.target);}, false);
-
                     }else if(inputsLive[i].dataset.type == "updateCustomer"){
                         inputsLive[i].addEventListener("blur", function(e) { app.update.customer(e.target);}, false);
+                    }else if (inputsLive[i].dataset.type == "updateItem") {
+                        inputsLive[i].addEventListener("blur", function(e) { app.update.item(e.target);}, false);
                     };
-
                 };
                 for (var i = 0; i < imgsLive.length; i++) {
-
                     if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "sale") {
                         imgsLive[i].addEventListener("click", function(e) { app.delete.sale(e.target.dataset.index); }, false);
-
                     } else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "customer") {
                         imgsLive[i].addEventListener("click", function(e) { app.delete.customer(e.target.dataset.index); }, false);
-
                     } else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "item") {
                         imgsLive[i].addEventListener("click", function(e) { app.delete.item(e.target.dataset.index); }, false);
-
                     }else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "slaughter") {
                         imgsLive[i].addEventListener("click", function(e) { app.delete.slaughter(e.target.dataset.index); }, false);
-
                     };
                 };
                 for (var i = 0; i < notesLive.length; i++) {
@@ -1539,6 +1530,8 @@ function onDeviceReady() {
 
                     }else if(inputsLive[i].dataset.type == "updateCustomer"){
                         inputsLive[i].addEventListener("blur", function(e) { app.update.customer(e.target);}, false);
+                    }else if (inputsLive[i].dataset.type == "updateItem") {
+                        inputsLive[i].addEventListener("blur", function(e) { app.update.item(e.target);}, false);
                     };
 
                 };
@@ -1577,15 +1570,15 @@ function onDeviceReady() {
                                 if (innerElement == innerArray[0]) {
                                     HTMLFrag += '<fieldset><legend>#</legend>';
                                 };
-                                HTMLFrag += '<article><input type="button" onblur="app.update.item(this)" class="itemName" value="';
+                                HTMLFrag += '<article><input type="button" data-type="updateItem" class="itemName" value="';
                                 HTMLFrag += innerElement.itemName;
                                 HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '" />';
-                                HTMLFrag+='<input type="text" onblur="app.update.item(this)" class="itemCode" placeholder="';
+                                HTMLFrag+='<input type="text" data-type="updateItem" class="itemCode" placeholder="';
                                 HTMLFrag += innerElement.itemCode;
                                 HTMLFrag += '" />';
-                                HTMLFrag += '<input type="text" onblur="app.update.item(this)" class="itemPrice" placeholder="';
+                                HTMLFrag += '<input type="text" data-type="updateItem" class="itemPrice" placeholder="';
                                 HTMLFrag += innerElement.itemPrice;
                                 HTMLFrag += '" />';
                                 HTMLFrag +='</article>';
@@ -1595,28 +1588,28 @@ function onDeviceReady() {
                                 HTMLFrag += newChar;
                                 HTMLFrag += '</legend>';  
                                 compareChar = newChar;
-                                HTMLFrag += '<article><input type="button" onblur="app.update.item(this)" class="itemName" value="';
+                                HTMLFrag += '<article><input type="button" data-type="updateItem" class="itemName" value="';
                                 HTMLFrag += innerElement.itemName;
                                 HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '"/>';
-                                HTMLFrag+='<input type="text" onblur="app.update.item(this)" class="itemCode" placeholder="';
+                                HTMLFrag+='<input type="text" data-type="updateItem" class="itemCode" placeholder="';
                                 HTMLFrag += innerElement.itemCode;
                                 HTMLFrag += '" />';
-                                HTMLFrag += '<input type="text" onblur="app.update.item(this)" class="itemPrice" placeholder="';
+                                HTMLFrag += '<input type="text" data-type="updateItem" class="itemPrice" placeholder="';
                                 HTMLFrag += innerElement.itemPrice;
                                 HTMLFrag += '" />';
                                 HTMLFrag +='</article>';
                             }else if(newChar == compareChar){
-                                HTMLFrag += '<article><input type="button" onblur="app.update.item(this)" class="itemName" value="';
+                                HTMLFrag += '<article><input type="button" data-type="updateItem" class="itemName" value="';
                                 HTMLFrag += innerElement.itemName;
                                 HTMLFrag += '" /><img data-type="item" src="img/delete.png" class="cancel" data-index="';
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '" />';
-                                HTMLFrag+='<input type="text" onblur="app.update.item(this)" class="itemCode" placeholder="';
+                                HTMLFrag+='<input type="text" data-type="updateItem" class="itemCode" placeholder="';
                                 HTMLFrag += innerElement.itemCode;
                                 HTMLFrag += '" />';
-                                HTMLFrag += '<input type="text" onblur="app.update.item(this)" class="itemPrice" placeholder="';
+                                HTMLFrag += '<input type="text" data-type="updateItem" class="itemPrice" placeholder="';
                                 HTMLFrag += innerElement.itemPrice;
                                 HTMLFrag += '" />';
                                 HTMLFrag +='</article>';

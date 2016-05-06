@@ -2323,7 +2323,7 @@ function onDeviceReady() {
                             if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
                             tempNumber ++;
                                 app.data.customers.forEach(function(element2, index2, array2) {
-                                    if (element2.name.formatted =! element.name.formatted) {
+                                    if (app.data.customers.indexOf(element) == -1) {
                                         temp += syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
                                         syncNumber++;
                                         syncArr.push(element);

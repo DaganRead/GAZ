@@ -16,11 +16,11 @@
     </author>
 
     <preference name="phonegap-version" value="cli-6.1.0" />
-    <preference name="Orientation" value="portrait" />
     <!--<preference name="Fullscreen" value="true" /-->
     <platform name="android" >
         <preference name="android-minSdkVersion" value="17" />
         <preference name="android-targetSdkVersion" value="19" />
+        <preference name="Orientation" value="portrait" />
     </platform> 
 
     <allow-navigation href="http://gaz-huntingapp.rhcloud.com/*" />

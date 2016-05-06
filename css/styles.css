@@ -48,6 +48,7 @@ section#page-wrap{
     height: inherit;
     background-color:#74C8B3;
     color: white;
+    overflow: hidden;
 }
 .search-button {
     height: 30px;

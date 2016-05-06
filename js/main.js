@@ -115,7 +115,7 @@ function onDeviceReady() {
                             temp.locations = this.data.locations;
                             window.localStorage['data'] = JSON.stringify(temp);
                             break;
-            }
+            };
         },
         initialize: function() {
             if (!window.localStorage['installed']) {
@@ -2322,7 +2322,7 @@ function onDeviceReady() {
                         contacts.forEach(function(element, index, array) {
                             if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
                             tempNumber ++;
-                                if (app.data.customers.indexOf(element) == -1) {
+                                if (app.data.customers.indexOf(JSON.parse(element)) == -1) {
                                     temp += syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
                                     syncNumber++;
                                     syncArr.push(element);
@@ -2336,7 +2336,8 @@ function onDeviceReady() {
                                 if (buttonIndex == 1) {
                                     syncArr.forEach(function(element, index, array) {
                                         var newCustomer = element;
-                                        newCustomer.synced = true;
+                                        //newCustomer.synced = true;
+                                        //bug if (indexOf) {};
                                         tempArr.push(newCustomer);
                                     });
                                     app.data.customers = tempArr;

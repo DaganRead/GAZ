@@ -1617,6 +1617,49 @@ function onDeviceReady() {
                         
                     });
                     app.DOM.items.innerHTML = HTMLFrag;
+                //Event Listereners
+
+                document.getElementById('tab-1').addEventListener("click", function(e) { app.nav.to('Sales'); }, false);
+                document.getElementById('tab-2').addEventListener("click", function() { app.nav.to('Customers'); }, false);
+                document.getElementById('tab-3').addEventListener("click", function() { app.nav.to('Items'); }, false);
+                document.getElementById('tab-4').addEventListener("click", function() { app.nav.to('Slaughters'); }, false);
+                document.getElementById('tab-5').addEventListener("click", function() { app.nav.to('New'); }, false);
+                document.getElementById('btn_logout').addEventListener("click", app.logout(), false);
+                document.getElementById('btn_menu').addEventListener("click", app.openMenu(), false);
+                document.getElementById('btn_sync_customer').addEventListener("click", function() { app.sync.customers() }, false);
+                //new Sale
+                document.getElementById('btn_newSale').addEventListener("click", function(e) { app.newSale(); }, false);
+                document.getElementById('btn_pickContact').addEventListener("click", function() { app.pickContact(); }, false); 
+                document.getElementById('newSaleAddLocationBtn').addEventListener("click", function() { app.newLocation(); }, false); 
+                var tableInputsLive = document.getElementsByTagName('select');
+                for (var i = 0; i < tableInputsLive.length; i++) {
+                    if (classie.hasClass(tableInputsLive[i], "tableInput")) {
+                        tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
+                    };
+                };
+                // Delete and sales
+                var inputsLive = document.getElementsByTagName('input'),
+                    selectsLive = document.getElementsByTagName('select'),
+                    imgsLive = document.getElementsByTagName('img');
+
+                for (var i = 0; i < selectsLive.length; i++) {
+                    if (classie.hasClass(selectsLive[i], "itemCode")) {
+                        selectsLive[i].addEventListener("click", function(e) { app.update.sale(e.target);}, false);
+                    };
+                };
+                for (var i = 0; i < inputsLive.length; i++) {
+                    if(classie.hasClass(inputsLive[i], "weight")||classie.hasClass(inputsLive[i], "quantity")){
+                        inputsLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                    }else if (inputsLive[i].dataset.type == "updateItem") {
+                        inputsLive[i].addEventListener("blur", function(e) { app.update.item(e.target);}, false);
+                    };
+                };
+                for (var i = 0; i < imgsLive.length; i++) {
+                    if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "item") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.item(e.target.dataset.index); }, false);
+                    };
+                };
+                //end
             },
             slaughters : function() {
                         var HTMLFrag = '',

@@ -235,6 +235,9 @@ section#page-wrap{
     transform: scale(1);
     opacity: 1;
 }
+body{
+    font-size: 16px sans-serif;
+}
 /*
 *   Push Menu
 */

@@ -2322,6 +2322,8 @@ function onDeviceReady() {
                         contacts.forEach(function(element, index, array) {
                             if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
                             tempNumber ++;
+                            alert(element);
+                            alert(JSON.stringify(app.data.customers));
                                 if (app.data.customers.indexOf(element) == -1) {
                                     temp += syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
                                     syncNumber++;

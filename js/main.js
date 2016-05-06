@@ -2322,13 +2322,18 @@ function onDeviceReady() {
                         contacts.forEach(function(element, index, array) {
                             if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
                             tempNumber ++;
-                            alert(element);
-                            alert(JSON.stringify(app.data.customers));
-                                if (app.data.customers.indexOf(element) == -1) {
+                                app.data.customers.forEach(function(element2, index2, array2) {
+                                    if (element2.name.formatted =! element.name.formatted) {
+                                        temp += syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
+                                        syncNumber++;
+                                        syncArr.push(element);
+                                    };
+                                };
+                                /*if (app.data.customers.indexOf(element) == -1) {
                                     temp += syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
                                     syncNumber++;
                                     syncArr.push(element);
-                                };
+                                };*/
                             };
                         });
                     msg += (tempNumber - 1) + ' contacts successfully retrieved; ' + (syncNumber-1) + ' contacts are not in the customer listing:\n\n' + temp;                

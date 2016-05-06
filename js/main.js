@@ -2328,12 +2328,7 @@ function onDeviceReady() {
                                         syncNumber++;
                                         syncArr.push(element);
                                     };
-                                };
-                                /*if (app.data.customers.indexOf(element) == -1) {
-                                    temp += syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
-                                    syncNumber++;
-                                    syncArr.push(element);
-                                };*/
+                                });
                             };
                         });
                     msg += (tempNumber - 1) + ' contacts successfully retrieved; ' + (syncNumber-1) + ' contacts are not in the customer listing:\n\n' + temp;                

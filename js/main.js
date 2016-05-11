@@ -2428,8 +2428,10 @@ function onDeviceReady() {
     };
     app.initialize();
 
+    alert(localStorage['token']);
+
     //auth
-    if (localStorage['token']) {
+    if (localStorage['token'] !== undefined && localStorage['token'] !== null) {
         var token = localStorage['token'];
         var intervalHandle = window.setInterval(function(){
             var message = {

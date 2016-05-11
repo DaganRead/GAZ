@@ -2447,6 +2447,8 @@ function onDeviceReady() {
                 localStorage['token'] = message.token;
             }else if(message.type === "login"){
                 app.login();
+            }else if(message.type === "reauth"){
+                app.logout();
             }else if(message.type === "token recieved"){
                 window.clearInterval(intervalHandle);
             }else if (message.type === 'back up') {

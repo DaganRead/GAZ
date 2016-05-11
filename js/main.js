@@ -2438,6 +2438,8 @@ function onDeviceReady() {
             };
             app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
         },500);
+    }else{
+        app.logout();
     };
     window.addEventListener('message',function(event) {
         if(event.origin === 'http://gaz-huntingapp.rhcloud.com') {

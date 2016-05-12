@@ -257,7 +257,7 @@ function onDeviceReady() {
                             });
                             HTMLFrag += '<tr><td class="large">+</td><td colspan="7"></td></tr>';
                             HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
-                            HTMLFrag += 'R' + total;
+                            HTMLFrag += 'R' + Math.ceil10(total, -1);
                             HTMLFrag += '</td></tr></tfoot></table>';
                             total = 0;
                             HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" data-index="';
@@ -915,7 +915,7 @@ function onDeviceReady() {
                                     HTMLFrag += '</td></tr>';
                                 });
                                 HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
-                                HTMLFrag += 'R' + total;
+                                HTMLFrag += 'R' + Math.ceil10(total, -1);
                                 HTMLFrag += '</td></tr></tfoot></table>';
                                 total = 0;
                                 HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" data-index="';
@@ -1246,7 +1246,7 @@ function onDeviceReady() {
                                 });
                                 HTMLFrag += '<tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';
                                 HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
-                                HTMLFrag += 'R' + total;
+                                HTMLFrag += 'R' + Math.ceil10(total, -1);
                                 HTMLFrag += '</td></tr></tfoot></table>';
                                 total = 0;
                                 HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" onblur="app.update.sale(this)" data-index="';

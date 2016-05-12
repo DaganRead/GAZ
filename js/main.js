@@ -1708,7 +1708,7 @@ function onDeviceReady() {
                 var tableInputsLive = document.getElementsByTagName('SELECT');
                 for (var i = 0; i < tableInputsLive.length; i++) {
                     if (classie.hasClass(tableInputsLive[i], "tableInput")) {
-                        tableInputsLive[i].addEventListener("click", function(e) { app.purchaseTableAdd(e.target);}, false);
+                        tableInputsLive[i].addEventListener("change", function(e) { app.purchaseTableAdd(e.target);}, false);
                     };
                 };
             };

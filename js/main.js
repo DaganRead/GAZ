@@ -910,8 +910,8 @@ function onDeviceReady() {
                                     HTMLFrag += '<td class="priceKG">';
                                     HTMLFrag += 'R ' + iiiElement.itemPrice;
                                     HTMLFrag += '</td><td class="priceTag">';
-                                    HTMLFrag += 'R ' + iiiElement.totalWeight * iiiElement.itemPrice;
-                                    total    += iiiElement.totalWeight * iiiElement.itemPrice;
+                                    HTMLFrag += 'R ' + Math.ceil10((iiiElement.totalWeight * iiiElement.itemPrice), -1);
+                                    total    += Math.ceil10((iiiElement.totalWeight * iiiElement.itemPrice), -1);
                                     HTMLFrag += '</td></tr>';
                                 });
                                 HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
@@ -1240,8 +1240,8 @@ function onDeviceReady() {
                                     HTMLFrag += '<td class="priceKG">';
                                     HTMLFrag += 'R ' + iiiElement.itemPrice;
                                     HTMLFrag += '</td><td class="priceTag">';
-                                    HTMLFrag += 'R ' + iiiElement.totalWeight * iiiElement.itemPrice;
-                                    total    += iiiElement.totalWeight * iiiElement.itemPrice;
+                                    HTMLFrag += 'R ' + Math.ceil10((iiiElement.totalWeight * iiiElement.itemPrice), -1);
+                                    total    += Math.ceil10((iiiElement.totalWeight * iiiElement.itemPrice), -1);
                                     HTMLFrag += '</td></tr>';
                                 });
                                 HTMLFrag += '<tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';

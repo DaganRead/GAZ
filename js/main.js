@@ -185,8 +185,23 @@ function onDeviceReady() {
                                     HTMLFrag += '</tbody></table><br /><input type="button" class="confirm" value="Confirm" id="btn_newSale" /><input type="button" class="cancel" value="Cancel"></article>';
                                     document.getElementById('newSale').innerHTML = HTMLFrag;
                 /* Sales */
-                HTMLFrag = '',
-                    total = 0;
+                HTMLFrag = '';
+                var total = 0;
+
+/*                this.data.sales.sort(function(a,b) { 
+                    var month = a.slaughterDate.substring(4,7),
+                    day = a.slaughterDate.substring(8,10),
+                    year = a.slaughterDate.substring(11,15),
+                    dateString = month +' '+ day +', '+ year,
+                    month2 = b.slaughterDate.substring(4,7),
+                    day2 = b.slaughterDate.substring(8,10),
+                    year2 = b.slaughterDate.substring(11,15),
+                    dateString2 = month2 +' '+ day2 +', '+ year2;
+
+                    return new Date(dateString).getTime() - new Date(dateString2).getTime() 
+                });*/
+                    
+
                 this.data.sales.forEach(function(element, index, array) {
                     var month = element.slaughterDate.substring(4,7),
                     day = element.slaughterDate.substring(8,10),

@@ -46,6 +46,14 @@
 	           <input type="radio" value="Sales" id="tab-1" name="PrimaryNav" checked>
 	           <label for="tab-1"><img src="img/sales.png" /></label>
 	           <div class="content">
+	            <article class="search" >
+	            	<input type="image" src="img/sync.png" class="sync-button" id="btn_sync_sales">
+	            	<input type="text" class="search-bar" id="salesSearchText" />
+	            	<input type="image" src="img/search.png" class="search-button"  id="btn_salesSearch" onclick="app.search.sales(this.previousSibling.value)" >
+					<input type="radio" name="filter" value="date"> Date
+					<input type="radio" name="filter" value="location"> Location
+					<input type="radio" name="filter" checked value="name"> Name
+	            </article>
 	           	 <form id="sales" onsubmit="return false">
 
 				</form> 

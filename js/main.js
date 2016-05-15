@@ -188,6 +188,13 @@ function onDeviceReady() {
                 HTMLFrag = '',
                     total = 0;
                 this.data.sales.forEach(function(element, index, array) {
+                    var month = element.slaughterDate.substring(4,7),
+                    day = element.slaughterDate.substring(8,10),
+                    year = element.slaughterDate.substring(11,15),
+                    dateString = month +' '+ day +', '+ year;
+
+                    alert(new Date(dateString).getTime());
+
                             HTMLFrag +='<fieldset data-index="';
                             HTMLFrag += index;
                             HTMLFrag += '"><legend>&nbsp;';

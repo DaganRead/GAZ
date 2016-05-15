@@ -146,7 +146,7 @@ function onDeviceReady() {
                         };
                     };
                 };
-
+                document.getElementById('btn_search_sales').addEventListener("click", function(e) { app.search.sales(e.target);}, false);
                 this.data = JSON.parse(window.localStorage['data']);
                 //app.binding();
                 /*New Sales*/
@@ -1225,7 +1225,7 @@ function onDeviceReady() {
                 var HTMLFrag = '',
                     total = 0;
 
-                    app.data.sales.sort(function(a,b) { 
+                app.data.sales.sort(function(a,b) { 
                     var month = a.slaughterDate.substring(4,7),
                     day = a.slaughterDate.substring(8,10),
                     year = a.slaughterDate.substring(11,15),
@@ -2146,9 +2146,11 @@ function onDeviceReady() {
             }
         },
         search : {
-            sale : function(searchTerm) {
-                app.data.sales.splice(index, 1);
-                app.store('sale');
+            sales : function(target) {
+                alert(target.previousSibling.value);
+                alert(target.nextSibling.checked);
+                alert(target.nextSibling.nextSibling.checked);
+                alert(target.nextSibling.nextSibling.nextSibling.checked);
             },
             customer : function(searchTerm) {
                 var arr = [];

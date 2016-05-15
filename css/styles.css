@@ -62,11 +62,11 @@ section#page-wrap{
     margin: 15px 15px 20px;
     background-color: rgb(116, 200, 179);
     border: none;
-    border: 1px solid white;
+    border: 2px solid white!important;
     margin-bottom: 13px;
 }
 article.sales{
-    
+
 }
 .header{
     font-size: large;

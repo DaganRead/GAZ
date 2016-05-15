@@ -65,7 +65,9 @@ section#page-wrap{
     border: 1px solid white;
     margin-bottom: 13px;
 }
-
+article.sales{
+    
+}
 .header{
     font-size: large;
 }

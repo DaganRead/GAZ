@@ -62,13 +62,8 @@ section#page-wrap{
     margin: 15px 15px 20px;
     background-color: rgb(116, 200, 179);
     border: none;
-    border-bottom: 1px solid white;
+    border: 1px solid white;
     margin-bottom: 13px;
-}
-input {
-  left: 0;
-  position: relative;
-  border-radius: 10px;
 }
 
 .header{

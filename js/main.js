@@ -879,6 +879,18 @@ function onDeviceReady() {
                 this.data.sales.push(newSale);
                 //this.binding.sales();
                 /*************************/
+                this.data.sales.sort(function(a,b) { 
+                    var month = a.slaughterDate.substring(4,7),
+                    day = a.slaughterDate.substring(8,10),
+                    year = a.slaughterDate.substring(11,15),
+                    dateString = month +' '+ day +', '+ year,
+                    month2 = b.slaughterDate.substring(4,7),
+                    day2 = b.slaughterDate.substring(8,10),
+                    year2 = b.slaughterDate.substring(11,15),
+                    dateString2 = month2 +' '+ day2 +', '+ year2;
+
+                    return new Date(dateString).getTime() - new Date(dateString2).getTime() 
+                });
                 var HTMLFrag = '',
                     total = 0;
                     //alert('0');
@@ -1212,6 +1224,20 @@ function onDeviceReady() {
             sales : function() {
                 var HTMLFrag = '',
                     total = 0;
+
+                    app.data.sales.sort(function(a,b) { 
+                    var month = a.slaughterDate.substring(4,7),
+                    day = a.slaughterDate.substring(8,10),
+                    year = a.slaughterDate.substring(11,15),
+                    dateString = month +' '+ day +', '+ year,
+                    month2 = b.slaughterDate.substring(4,7),
+                    day2 = b.slaughterDate.substring(8,10),
+                    year2 = b.slaughterDate.substring(11,15),
+                    dateString2 = month2 +' '+ day2 +', '+ year2;
+
+                    return new Date(dateString).getTime() - new Date(dateString2).getTime() 
+                });
+
                     app.data.sales.forEach(function(innerElement, innerIndex, innerArray) {
                                 HTMLFrag +='<fieldset data-index="';
                                 HTMLFrag += innerIndex;

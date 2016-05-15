@@ -2147,10 +2147,15 @@ function onDeviceReady() {
         },
         search : {
             sales : function(target) {
+                alert(target.previousSibling.previousSibling.value);
                 alert(target.previousSibling.value);
                 alert(target.nextSibling.checked);
                 alert(target.nextSibling.nextSibling.checked);
                 alert(target.nextSibling.nextSibling.nextSibling.checked);
+                alert(target.nextSibling.nextSibling.nextSibling.nextSibling.checked);
+                alert(target.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.checked);
+                alert(target.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.checked);
+                alert(target.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.checked);
             },
             customer : function(searchTerm) {
                 var arr = [];

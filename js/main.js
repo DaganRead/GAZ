@@ -2152,22 +2152,23 @@ function onDeviceReady() {
                     location = document.getElementById('btn_filter_location').checked,
                     name = document.getElementById('btn_filter_name').checked,
                     tempArr = [];
-
+                    alert(name);
                 if (name) {
                     app.data.sales.forEach(function(element, index, array) {
+                        alert(element.name.formatted.includes(searchTerm));
                         if(element.name.formatted.includes(searchTerm)){
                             tempArr.push(element);
                         };
                     });
                 }else if (location) {
                     app.data.sales.forEach(function(element, index, array) {
-                        if(element.name.formatted.includes(searchTerm)){
+                        if(element.location.location.includes(searchTerm)){
                             tempArr.push(element);
                         };
                     });
                 }else if (date) {
                     app.data.sales.forEach(function(element, index, array) {
-                        if(element.name.formatted.includes(searchTerm)){
+                        if(element.slaughterDate.includes(searchTerm)){
                             tempArr.push(element);
                         };
                     });

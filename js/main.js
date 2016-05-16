@@ -2150,21 +2150,155 @@ function onDeviceReady() {
                 var searchTerm = document.getElementById('salesSearchText').value,
                     date = document.getElementById('btn_filter_date').checked,
                     location = document.getElementById('btn_filter_location').checked,
-                    name = document.getElementById('btn_filter_name').checked;
-
-                function filterOption(string, searchTerm) {
-                  return string.includes(searchTerm);
-                }
+                    name = document.getElementById('btn_filter_name').checked,
+                    tempArr = [];
 
                 if (name) {
-                    var filteredSales = app.data.sales.filter(filterOption(element.name.formatted, searchTerm));
+                    app.data.sales.forEach(function(element, index, array) {
+                        if(element.name.formatted.includes(searchTerm)){
+                            tempArr.push(element);
+                        };
+                    });
                 }else if (location) {
-                    var filteredSales = app.data.sales.filter(filterOption(element.location.location, searchTerm));
+                    app.data.sales.forEach(function(element, index, array) {
+                        if(element.name.formatted.includes(searchTerm)){
+                            tempArr.push(element);
+                        };
+                    });
                 }else if (date) {
-                    var filteredSales = app.data.sales.filter(filterOption(element.slaughterDate, searchTerm));
+                    app.data.sales.forEach(function(element, index, array) {
+                        if(element.name.formatted.includes(searchTerm)){
+                            tempArr.push(element);
+                        };
+                    });
                 };
 
-                alert(JSON.stringify(filteredSales));
+                var HTMLFrag = '',
+                    total = 0;
+
+                    tempArr.forEach(function(innerElement, innerIndex, innerArray) {
+                                HTMLFrag +='<fieldset data-index="';
+                                HTMLFrag += innerIndex;
+                                HTMLFrag += '"><legend>&nbsp;';
+                                HTMLFrag += innerElement.slaughterDate;
+                                HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
+                                HTMLFrag += innerElement.location;
+                                HTMLFrag+='</figcaption></figure>';
+                                HTMLFrag += innerElement.name.givenName;
+                                HTMLFrag+='&nbsp;';
+                                HTMLFrag += innerElement.name.familyName;
+                                if (innerIndex == 0) {
+                                    HTMLFrag += '<br class="clear"><table class="purchase-table"><thead><tr><th>Item</th><th></th><th>Qnt</th><th colspan="2"></th><th>Mass</th><th>@</th><th>Total</th></tr></thead><tbody>';
+                                }else{
+                                    HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
+                                };
+                                innerElement.purchaseTable.forEach(function(iiiElement, iiiIndex, iiiArray) {
+                                    iiiElement = JSON.parse(iiiElement);
+                                    
+                                    HTMLFrag += '<tr><td colspan="2">';
+                                    HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
+                                    HTMLFrag += iiiIndex;
+                                    HTMLFrag += '" >';
+                                    HTMLFrag += '<option disabled selected value=""></option>';
+                                    app.data.items.forEach(function(iiElement, iiIndex, iiArray) {
+                                        HTMLFrag += '<option value="';
+                                        HTMLFrag += iiElement.itemCode;
+                                        HTMLFrag += '" '; 
+                                        if (iiElement.itemCode == iiiElement.itemCode) {
+                                            HTMLFrag += 'selected'; 
+                                        };
+                                        HTMLFrag += ' data-price="';
+                                        HTMLFrag += iiElement.itemPrice;
+                                        HTMLFrag += '" >';
+                                        HTMLFrag += iiElement.itemName;
+                                        HTMLFrag += '</option>';
+                                    });
+                                    HTMLFrag += '</select>';
+                                    HTMLFrag += '</td><td colspan="2" class="small"><input type="text" class="quantity" data-index="';
+                                    HTMLFrag += iiiIndex;         
+                                    HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';
+                                    HTMLFrag += iiiElement.quantity;
+                                    HTMLFrag += '"/></td><td colspan="2" class="small"><input type="text" class="weight" data-index="';
+                                    HTMLFrag += iiiIndex;  
+                                    HTMLFrag += '" onblur="app.update.sale(this)" placeholder="';         
+                                    HTMLFrag += iiiElement.totalWeight + 'kg';
+                                    HTMLFrag += '"/></td>';
+                                    HTMLFrag += '<td class="priceKG">';
+                                    HTMLFrag += 'R ' + iiiElement.itemPrice;
+                                    HTMLFrag += '</td><td class="priceTag">';
+                                    HTMLFrag += 'R ' + Math.ceil10((iiiElement.totalWeight * iiiElement.itemPrice), -1);
+                                    total    += Math.ceil10((iiiElement.totalWeight * iiiElement.itemPrice), -1);
+                                    HTMLFrag += '</td></tr>';
+                                });
+                                HTMLFrag += '<tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';
+                                HTMLFrag += '</tbody><tfoot><tr><td colspan="6">Total: </td><td colspan="2">';
+                                HTMLFrag += 'R' + Math.ceil10(total, -1);
+                                HTMLFrag += '</td></tr></tfoot></table>';
+                                total = 0;
+                                HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" onblur="app.update.sale(this)" data-index="';
+                                HTMLFrag += innerIndex;
+                                HTMLFrag += '"  > '; 
+                                HTMLFrag += innerElement.notes;
+                                HTMLFrag += '</textarea>';
+                                HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><img src="img/delete.png" class="cancel" data-type="sale" data-index="';
+                                HTMLFrag += innerIndex;
+                                HTMLFrag += '"/></fieldset>';
+                    });
+                    app.DOM.sales.innerHTML = HTMLFrag;
+
+                    var newRowsLive = document.getElementsByTagName('td'),
+                    inputsLive = document.getElementsByTagName('input'),
+                    notesLive = document.getElementsByTagName('textarea'),
+                    selectsLive = document.getElementsByTagName('select'),
+                    imgsLive = document.getElementsByTagName('img');
+
+                for (var i = 0; i < selectsLive.length; i++) {
+                    if (classie.hasClass(selectsLive[i], "itemCode")) {
+                        selectsLive[i].addEventListener("click", function(e) { app.update.sale(e.target);}, false);
+                    };
+                };
+                for (var i = 0; i < newRowsLive.length; i++) {
+                    if (classie.hasClass(newRowsLive[i], "large")) {
+                        newRowsLive[i].addEventListener("click", function(e) { alert('add');app.newRow(e.target);}, false);
+                    };
+                };
+                for (var i = 0; i < inputsLive.length; i++) {
+
+                    if (classie.hasClass(inputsLive[i], "cancel") && inputsLive[i].value == "sales") {
+                        inputsLive[i].addEventListener("click", function(e) {app.delete.sale(e.target.dataset.index);}, false);
+
+                    }else if(classie.hasClass(inputsLive[i], "noteClear")){
+                        inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value=''; app.update.sale(e.target.previousSibling);}, false);
+
+                    }else if(classie.hasClass(inputsLive[i], "weight")||classie.hasClass(inputsLive[i], "quantity")){
+                        inputsLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+
+                    };
+                };
+                for (var i = 0; i < imgsLive.length; i++) {
+
+                    if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "sale") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.sale(e.target.dataset.index); }, false);
+
+                    } else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "customer") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.customer(e.target.dataset.index); }, false);
+
+                    } else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "item") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.item(e.target.dataset.index); }, false);
+
+                    }else if (classie.hasClass(imgsLive[i], "cancel") && imgsLive[i].dataset.type == "slaughter") {
+                        imgsLive[i].addEventListener("click", function(e) { app.delete.slaughter(e.target.dataset.index); }, false);
+
+                    };
+                };
+                for (var i = 0; i < notesLive.length; i++) {
+                    if (classie.hasClass(notesLive[i], "notes")) {
+                        notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                    };
+                };
+
+
+
             },
             customer : function(searchTerm) {
                 var arr = [];

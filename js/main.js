@@ -2152,11 +2152,12 @@ function onDeviceReady() {
                     location = document.getElementById('btn_filter_location').checked,
                     name = document.getElementById('btn_filter_name').checked,
                     tempArr = [];
-                    alert(name);
+                    alert(searchTerm);
                 if (name) {
                     app.data.sales.forEach(function(element, index, array) {
                         alert('fine');
                         alert(element.name.formatted);
+                        alert(searchTerm);
                         if(element.name.formatted.includes(searchTerm)){
                             tempArr.push(element);
                         };

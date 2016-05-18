@@ -2169,7 +2169,7 @@ function onDeviceReady() {
                     app.data.sales.forEach(function(element, index, array) {
                         alert('Location');
                         alert(JSON.stringify(element));
-                        if(element.location.location.includes(searchTerm)){
+                        if(element.location.includes(searchTerm)){
                             tempArr.push(element);
                         };
                     });

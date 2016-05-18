@@ -2153,7 +2153,7 @@ function onDeviceReady() {
                     name = document.getElementById('btn_filter_name').checked,
                     tempArr = [];
                     //alert(searchTerm);
-                if (name) {
+                if (name && searchTerm != '') {
                     app.data.sales.forEach(function(element, index, array) {
                         if(element.name.formatted != undefined){
                             if (element.name.formatted.includes(searchTerm) ) {
@@ -2165,19 +2165,21 @@ function onDeviceReady() {
                             };
                         };
                     });
-                }else if (location) {
+                }else if (location && searchTerm != '') {
                     app.data.sales.forEach(function(element, index, array) {
-                        alert('Location');
-                        alert(JSON.stringify(element));
                         if(element.location.includes(searchTerm)){
                             tempArr.push(element);
                         };
                     });
-                }else if (date) {
+                }else if (date && searchTerm != '') {
                     app.data.sales.forEach(function(element, index, array) {
                         if(element.slaughterDate.includes(searchTerm)){
                             tempArr.push(element);
                         };
+                    });
+                }else if(searchTerm == ''){
+                    app.data.sales.forEach(function(element, index, array) {
+                        tempArr.push(element);
                     });
                 };
 

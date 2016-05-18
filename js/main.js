@@ -2157,7 +2157,18 @@ function onDeviceReady() {
                     app.data.sales.forEach(function(element, index, array) {
                         alert('fine');
                         alert(JSON.stringify(element));
-                        
+                        alert(searchTerm);
+                        if(element.name.formatted != undefined){
+                            if (element.name.formatted.includes(searchTerm) ) {
+                                alert('here');
+                                tempArr.push(element);
+                            };
+                        } else if(element.name.givenName != undefined){
+                            if (element.name.givenName.includes(searchTerm)) {
+                                alert('here2');
+                                tempArr.push(element);
+                            };
+                        };
                     });
                 }else if (location) {
                     app.data.sales.forEach(function(element, index, array) {

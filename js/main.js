@@ -2156,7 +2156,7 @@ function onDeviceReady() {
                 if (name) {
                     app.data.sales.forEach(function(element, index, array) {
                         alert('fine');
-                        alert(element.name.formatted);
+                        alert(JSON.stringify(element));
                         alert(searchTerm);
                         if(element.name.formatted.includes(searchTerm)){
                             tempArr.push(element);

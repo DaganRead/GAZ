@@ -2156,6 +2156,7 @@ function onDeviceReady() {
                 if (name) {
                     app.data.sales.forEach(function(element, index, array) {
                         alert('fine');
+                        alert(JSON.stringify(element));
                         
                     });
                 }else if (location) {

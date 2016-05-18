@@ -2158,7 +2158,11 @@ function onDeviceReady() {
                         alert('fine');
                         alert(JSON.stringify(element));
                         alert(searchTerm);
-                        if(element.name.formatted.includes(searchTerm)){
+                        if(element.name.formatted.includes(searchTerm) !== undefined){
+                            alert('here');
+                            tempArr.push(element);
+                        } else if(element.name.givenName.includes(searchTerm)){
+                            alert('here2');
                             tempArr.push(element);
                         };
                     });

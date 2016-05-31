@@ -2155,31 +2155,39 @@ function onDeviceReady() {
                     //alert(searchTerm);
                 if (name && searchTerm != '') {
                     app.data.sales.forEach(function(element, index, array) {
+                        var tempElem = element;
+                        tempElem.oldIndex = index;
                         if(element.name.formatted != undefined){
                             if (element.name.formatted.includes(searchTerm) ) {
-                                tempArr.push(element);
+                                tempArr.push(tempElem);
                             };
                         } else if(element.name.givenName != undefined){
                             if (element.name.givenName.includes(searchTerm)) {
-                                tempArr.push(element);
+                                tempArr.push(tempElem);
                             };
                         };
                     });
                 }else if (location && searchTerm != '') {
                     app.data.sales.forEach(function(element, index, array) {
                         if(element.location.includes(searchTerm)){
-                            tempArr.push(element);
+                            var tempElem = element;
+                            tempElem.oldIndex = index;
+                            tempArr.push(tempElem);
                         };
                     });
                 }else if (date && searchTerm != '') {
                     app.data.sales.forEach(function(element, index, array) {
                         if(element.slaughterDate.includes(searchTerm)){
-                            tempArr.push(element);
+                            var tempElem = element;
+                            tempElem.oldIndex = index;
+                            tempArr.push(tempElem);
                         };
                     });
                 }else if(searchTerm == ''){
                     app.data.sales.forEach(function(element, index, array) {
-                        tempArr.push(element);
+                        var tempElem = element;
+                        tempElem.oldIndex = index;
+                        tempArr.push(tempElem);
                     });
                 };
 
@@ -2188,7 +2196,7 @@ function onDeviceReady() {
 
                     tempArr.forEach(function(innerElement, innerIndex, innerArray) {
                                 HTMLFrag +='<fieldset data-index="';
-                                HTMLFrag += innerIndex;
+                                HTMLFrag += innerElement.oldIndex;
                                 HTMLFrag += '"><legend>&nbsp;';
                                 HTMLFrag += innerElement.slaughterDate;
                                 HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
@@ -2197,7 +2205,7 @@ function onDeviceReady() {
                                 HTMLFrag += innerElement.name.givenName;
                                 HTMLFrag+='&nbsp;';
                                 HTMLFrag += innerElement.name.familyName;
-                                if (innerIndex == 0) {
+                                if (innerElement.oldIndex == 0) {
                                     HTMLFrag += '<br class="clear"><table class="purchase-table"><thead><tr><th>Item</th><th></th><th>Qnt</th><th colspan="2"></th><th>Mass</th><th>@</th><th>Total</th></tr></thead><tbody>';
                                 }else{
                                     HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
@@ -2246,12 +2254,12 @@ function onDeviceReady() {
                                 HTMLFrag += '</td></tr></tfoot></table>';
                                 total = 0;
                                 HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" onblur="app.update.sale(this)" data-index="';
-                                HTMLFrag += innerIndex;
+                                HTMLFrag += innerElement.oldIndex;
                                 HTMLFrag += '"  > '; 
                                 HTMLFrag += innerElement.notes;
                                 HTMLFrag += '</textarea>';
                                 HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><img src="img/delete.png" class="cancel" data-type="sale" data-index="';
-                                HTMLFrag += innerIndex;
+                                HTMLFrag += innerElement.oldIndex;
                                 HTMLFrag += '"/></fieldset>';
                     });
                     app.DOM.sales.innerHTML = HTMLFrag;

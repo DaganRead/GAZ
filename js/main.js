@@ -2157,13 +2157,14 @@ function onDeviceReady() {
                     app.data.sales.forEach(function(element, index, array) {
                         var tempElem = element;
                         tempElem.oldIndex = index;
-                        alert(tempElem.oldIndex);
                         if(element.name.formatted != undefined){
                             if (element.name.formatted.includes(searchTerm) ) {
+                                alert(tempElem.oldIndex);
                                 tempArr.push(tempElem);
                             };
                         } else if(element.name.givenName != undefined){
                             if (element.name.givenName.includes(searchTerm)) {
+                                alert(tempElem.oldIndex);
                                 tempArr.push(tempElem);
                             };
                         };

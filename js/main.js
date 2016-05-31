@@ -1862,6 +1862,7 @@ function onDeviceReady() {
         },
         update : {
             sale : function(target) {
+                alert(target.dataset.index);
                 var idx = target.dataset.index,
                     saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
                     saleOld = JSON.stringify(app.data.sales[saleIdx]),
@@ -2279,7 +2280,7 @@ function onDeviceReady() {
                 };
                 for (var i = 0; i < newRowsLive.length; i++) {
                     if (classie.hasClass(newRowsLive[i], "large")) {
-                        newRowsLive[i].addEventListener("click", function(e) { alert('add');app.newRow(e.target);}, false);
+                        newRowsLive[i].addEventListener("click", function(e) { app.newRow(e.target);}, false);
                     };
                 };
                 for (var i = 0; i < inputsLive.length; i++) {

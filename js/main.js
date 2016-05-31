@@ -2157,6 +2157,7 @@ function onDeviceReady() {
                     app.data.sales.forEach(function(element, index, array) {
                         var tempElem = element;
                         tempElem.oldIndex = index;
+                        alert(tempElem.oldIndex);
                         if(element.name.formatted != undefined){
                             if (element.name.formatted.includes(searchTerm) ) {
                                 tempArr.push(tempElem);

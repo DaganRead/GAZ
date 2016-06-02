@@ -2153,13 +2153,13 @@ function onDeviceReady() {
                     location = document.getElementById('btn_filter_location').checked,
                     name = document.getElementById('btn_filter_name').checked,
                     tempArr = [],
-                    searchArr = undefined,
-                    resultsArr = [false, false, false];
+                    searchArr = undefined;
                     //alert(searchTerm);
                 if (searchTerm != '') {
                     searchArr = searchTerm.split(' ');
                     app.data.sales.forEach(function(element, index, array) {
-                        var tempElem = element;
+                        var tempElem = element,
+                        resultsArr = [false, false, false];
                         tempElem.oldIndex = index;
                         for (var i = 0; i < searchArr.length; i++) {
                             if (name) {

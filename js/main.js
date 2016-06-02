@@ -2153,7 +2153,8 @@ function onDeviceReady() {
                     location = document.getElementById('btn_filter_location').checked,
                     name = document.getElementById('btn_filter_name').checked,
                     tempArr = [],
-                    searchArr = undefined;
+                    searchArr = undefined,
+                    resultsArr = [false, false, false];
                     //alert(searchTerm);
                 if (searchTerm != '') {
                     searchArr = searchTerm.split(' ');
@@ -2164,34 +2165,51 @@ function onDeviceReady() {
                             if (name) {
                                 if(element.name.formatted != undefined){
                                     if (element.name.formatted.includes(searchArr[i]) ) {
-                                        if (tempArr.indexOf(tempElem) === -1) {
-                                            tempArr.push(tempElem);
-                                        };
+                                        resultsArr[0] = true;
                                     };
                                 } else if(element.name.givenName != undefined){
                                     if (element.name.givenName.includes(searchArr[i])) {
-                                        if (tempArr.indexOf(tempElem) === -1) {
-                                            tempArr.push(tempElem);
-                                        };
+                                        resultsArr[0] = true;
                                     };
                                 };
                             };
-
                             if (location) {
                                 if(element.location.includes(searchArr[i])){
-                                    if (tempArr.indexOf(tempElem) === -1) {
-                                        tempArr.push(tempElem);
-                                    };
+                                    resultsArr[1] = true;
+                                };
+                            };
+                            if (date) {
+                                if(element.slaughterDate.includes(searchArr[i])){
+                                    resultsArr[2] = true;
                                 };
                             };
 
-                            if (date) {
-                                if(element.slaughterDate.includes(searchArr[i])){
+                            if (name && location && date) {
+                                if (resultsArr[0] && resultsArr[1] && resultsArr[2]) {
+                                    if (tempArr.indexOf(tempElem) === -1) {
+                                        tempArr.push(tempElem);
+                                    };
+                                };
+                            } else if(name && location){
+                                if (resultsArr[0] && resultsArr[1]) {
+                                    if (tempArr.indexOf(tempElem) === -1) {
+                                        tempArr.push(tempElem);
+                                    };
+                                };
+                            } else if(name && date){
+                                if (resultsArr[0] && resultsArr[2]) {
+                                    if (tempArr.indexOf(tempElem) === -1) {
+                                        tempArr.push(tempElem);
+                                    };
+                                };
+                            }else if(location && date){
+                                if (resultsArr[1] && resultsArr[2]) {
                                     if (tempArr.indexOf(tempElem) === -1) {
                                         tempArr.push(tempElem);
                                     };
                                 };
                             };
+                            
                         };
                     });
                 }else{

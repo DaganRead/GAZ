@@ -2183,7 +2183,7 @@ function onDeviceReady() {
                                     resultsArr[2] = true;
                                 };
                             };
-
+                            alert(JSON.stringify(resultsArr));
                             if (name && location && date) {
                                 if (resultsArr[0] && resultsArr[1] && resultsArr[2]) {
                                     if (tempArr.indexOf(tempElem) === -1) {
@@ -2208,8 +2208,26 @@ function onDeviceReady() {
                                         tempArr.push(tempElem);
                                     };
                                 };
+                            }else if(name && !date && !location){
+                                if (resultsArr[0]) {
+                                    if (tempArr.indexOf(tempElem) === -1) {
+                                        tempArr.push(tempElem);
+                                    };
+                                };
+                            }else if(!name && date && !location){
+                                if (resultsArr[2]) {
+                                    if (tempArr.indexOf(tempElem) === -1) {
+                                        tempArr.push(tempElem);
+                                    };
+                                };
+                            }else if(!name && !date && location){
+                                if (resultsArr[1]) {
+                                    if (tempArr.indexOf(tempElem) === -1) {
+                                        tempArr.push(tempElem);
+                                    };
+                                };
                             };
-                            
+
                         };
                     });
                 }else{

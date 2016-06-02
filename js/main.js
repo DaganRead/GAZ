@@ -2154,44 +2154,44 @@ function onDeviceReady() {
                     name = document.getElementById('btn_filter_name').checked,
                     tempArr = [];
                     //alert(searchTerm);
-                if (name && searchTerm != '') {
+                if (searchTerm != '') {
                     app.data.sales.forEach(function(element, index, array) {
                         var tempElem = element;
                         tempElem.oldIndex = index;
-                        if(element.name.formatted != undefined){
-                            if (element.name.formatted.includes(searchTerm) ) {
-                                alert(tempElem.oldIndex);
-                                tempArr.push(tempElem);
+                        if (name) {
+                            if(element.name.formatted != undefined){
+                                if (element.name.formatted.includes(searchTerm) ) {
+                                    if (tempArr.indexOf(tempElem) === -1) {
+                                        tempArr.push(tempElem);
+                                    };
+                                };
+                            } else if(element.name.givenName != undefined){
+                                if (element.name.givenName.includes(searchTerm)) {
+                                    if (tempArr.indexOf(tempElem) === -1) {
+                                        tempArr.push(tempElem);
+                                    };
+                                };
                             };
-                        } else if(element.name.givenName != undefined){
-                            if (element.name.givenName.includes(searchTerm)) {
-                                alert(tempElem.oldIndex);
-                                tempArr.push(tempElem);
+                        };
+
+                        if (location) {
+                            if(element.location.includes(searchTerm)){
+                                if (tempArr.indexOf(tempElem) === -1) {
+                                    tempArr.push(tempElem);
+                                };
+                            };
+                        };
+
+                        if (date) {
+                            if(element.slaughterDate.includes(searchTerm)){
+                                if (tempArr.indexOf(tempElem) === -1) {
+                                    tempArr.push(tempElem);
+                                };
                             };
                         };
                     });
-                }else if (location && searchTerm != '') {
-                    app.data.sales.forEach(function(element, index, array) {
-                        if(element.location.includes(searchTerm)){
-                            var tempElem = element;
-                            tempElem.oldIndex = index;
-                            tempArr.push(tempElem);
-                        };
-                    });
-                }else if (date && searchTerm != '') {
-                    app.data.sales.forEach(function(element, index, array) {
-                        if(element.slaughterDate.includes(searchTerm)){
-                            var tempElem = element;
-                            tempElem.oldIndex = index;
-                            tempArr.push(tempElem);
-                        };
-                    });
-                }else if(searchTerm == ''){
-                    app.data.sales.forEach(function(element, index, array) {
-                        var tempElem = element;
-                        tempElem.oldIndex = index;
-                        tempArr.push(tempElem);
-                    });
+                }else{
+                    tempArr = app.data.sales;
                 };
 
                 var HTMLFrag = '',
@@ -2199,7 +2199,11 @@ function onDeviceReady() {
 
                     tempArr.forEach(function(innerElement, innerIndex, innerArray) {
                                 HTMLFrag +='<fieldset data-index="';
-                                HTMLFrag += innerElement.oldIndex;
+                                if (innerElement.oldIndex !== undefined) {
+                                    HTMLFrag += innerElement.oldIndex;
+                                }else{
+                                    HTMLFrag += innerIndex;
+                                };
                                 HTMLFrag += '"><legend>&nbsp;';
                                 HTMLFrag += innerElement.slaughterDate;
                                 HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
@@ -2208,11 +2212,20 @@ function onDeviceReady() {
                                 HTMLFrag += innerElement.name.givenName;
                                 HTMLFrag+='&nbsp;';
                                 HTMLFrag += innerElement.name.familyName;
-                                if (innerElement.oldIndex == 0) {
-                                    HTMLFrag += '<br class="clear"><table class="purchase-table"><thead><tr><th>Item</th><th></th><th>Qnt</th><th colspan="2"></th><th>Mass</th><th>@</th><th>Total</th></tr></thead><tbody>';
+                                if (innerElement.oldIndex !== undefined) {
+                                    if (innerElement.oldIndex == 0) {
+                                        HTMLFrag += '<br class="clear"><table class="purchase-table"><thead><tr><th>Item</th><th></th><th>Qnt</th><th colspan="2"></th><th>Mass</th><th>@</th><th>Total</th></tr></thead><tbody>';
+                                    }else{
+                                        HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
+                                    };
                                 }else{
-                                    HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
+                                    if (innerIndex == 0) {
+                                        HTMLFrag += '<br class="clear"><table class="purchase-table"><thead><tr><th>Item</th><th></th><th>Qnt</th><th colspan="2"></th><th>Mass</th><th>@</th><th>Total</th></tr></thead><tbody>';
+                                    }else{
+                                        HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
+                                    };
                                 };
+
                                 innerElement.purchaseTable.forEach(function(iiiElement, iiiIndex, iiiArray) {
                                     iiiElement = JSON.parse(iiiElement);
                                     
@@ -2257,12 +2270,20 @@ function onDeviceReady() {
                                 HTMLFrag += '</td></tr></tfoot></table>';
                                 total = 0;
                                 HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" onblur="app.update.sale(this)" data-index="';
-                                HTMLFrag += innerElement.oldIndex;
+                                if (innerElement.oldIndex !== undefined) {
+                                    HTMLFrag += innerElement.oldIndex;
+                                }else{
+                                    HTMLFrag += innerIndex;
+                                };
                                 HTMLFrag += '"  > '; 
                                 HTMLFrag += innerElement.notes;
                                 HTMLFrag += '</textarea>';
                                 HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><img src="img/delete.png" class="cancel" data-type="sale" data-index="';
-                                HTMLFrag += innerElement.oldIndex;
+                                if (innerElement.oldIndex !== undefined) {
+                                    HTMLFrag += innerElement.oldIndex;
+                                }else{
+                                    HTMLFrag += innerIndex;
+                                };
                                 HTMLFrag += '"/></fieldset>';
                     });
                     app.DOM.sales.innerHTML = HTMLFrag;

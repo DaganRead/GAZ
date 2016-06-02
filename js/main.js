@@ -2152,40 +2152,44 @@ function onDeviceReady() {
                     date = document.getElementById('btn_filter_date').checked,
                     location = document.getElementById('btn_filter_location').checked,
                     name = document.getElementById('btn_filter_name').checked,
-                    tempArr = [];
+                    tempArr = [],
+                    searchArr = undefined;
                     //alert(searchTerm);
                 if (searchTerm != '') {
+                    searchArr = searchTerm.split(' ');
                     app.data.sales.forEach(function(element, index, array) {
                         var tempElem = element;
                         tempElem.oldIndex = index;
-                        if (name) {
-                            if(element.name.formatted != undefined){
-                                if (element.name.formatted.includes(searchTerm) ) {
-                                    if (tempArr.indexOf(tempElem) === -1) {
-                                        tempArr.push(tempElem);
+                        for (var i = 0; i < searchArr.length; i++) {
+                            if (name) {
+                                if(element.name.formatted != undefined){
+                                    if (element.name.formatted.includes(searchArr[i]) ) {
+                                        if (tempArr.indexOf(tempElem) === -1) {
+                                            tempArr.push(tempElem);
+                                        };
+                                    };
+                                } else if(element.name.givenName != undefined){
+                                    if (element.name.givenName.includes(searchArr[i])) {
+                                        if (tempArr.indexOf(tempElem) === -1) {
+                                            tempArr.push(tempElem);
+                                        };
                                     };
                                 };
-                            } else if(element.name.givenName != undefined){
-                                if (element.name.givenName.includes(searchTerm)) {
+                            };
+
+                            if (location) {
+                                if(element.location.includes(searchArr[i])){
                                     if (tempArr.indexOf(tempElem) === -1) {
                                         tempArr.push(tempElem);
                                     };
                                 };
                             };
-                        };
 
-                        if (location) {
-                            if(element.location.includes(searchTerm)){
-                                if (tempArr.indexOf(tempElem) === -1) {
-                                    tempArr.push(tempElem);
-                                };
-                            };
-                        };
-
-                        if (date) {
-                            if(element.slaughterDate.includes(searchTerm)){
-                                if (tempArr.indexOf(tempElem) === -1) {
-                                    tempArr.push(tempElem);
+                            if (date) {
+                                if(element.slaughterDate.includes(searchArr[i])){
+                                    if (tempArr.indexOf(tempElem) === -1) {
+                                        tempArr.push(tempElem);
+                                    };
                                 };
                             };
                         };

@@ -2185,25 +2185,25 @@ function onDeviceReady() {
                             };
                             //alert(JSON.stringify(resultsArr));
                             if (name && location && date) {
-                                if (resultsArr[0] || resultsArr[1] || resultsArr[2]) {
+                                if (resultsArr[0] && resultsArr[1] && resultsArr[2]) {
                                     if (tempArr.indexOf(tempElem) === -1) {
                                         tempArr.push(tempElem);
                                     };
                                 };
                             } else if(name && location){
-                                if (resultsArr[0] || resultsArr[1]) {
+                                if (resultsArr[0] && resultsArr[1]) {
                                     if (tempArr.indexOf(tempElem) === -1) {
                                         tempArr.push(tempElem);
                                     };
                                 };
                             } else if(name && date){
-                                if (resultsArr[0] || resultsArr[2]) {
+                                if (resultsArr[0] && resultsArr[2]) {
                                     if (tempArr.indexOf(tempElem) === -1) {
                                         tempArr.push(tempElem);
                                     };
                                 };
                             }else if(location && date){
-                                if (resultsArr[1] || resultsArr[2]) {
+                                if (resultsArr[1] && resultsArr[2]) {
                                     if (tempArr.indexOf(tempElem) === -1) {
                                         tempArr.push(tempElem);
                                     };

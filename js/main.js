@@ -69,6 +69,15 @@ function onDeviceReady() {
                 app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
             };
         },
+        failSafe : function() {
+                delete window.localStorage['token'];
+                classie.addClass(app.DOM.modal, 'md-show');
+                var message = {
+                    type:'logout',
+                    token:token
+                };
+                app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
+        },
         simulate : function(evt) {
           var el = document.body;
           var touches = evt.changedTouches;
@@ -2735,8 +2744,8 @@ function onDeviceReady() {
                 app.login();
             }else if(message.type === "reauth"){
                 //alert('reauth');
-                app.logout();
-                app.logout();
+                app.failSafe();
+                //app.logout();
             }else if(message.type === "token recieved"){
                 window.clearInterval(intervalHandle);
             }else if (message.type === 'back up') {

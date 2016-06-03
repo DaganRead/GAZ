@@ -1862,23 +1862,23 @@ function onDeviceReady() {
         },
         update : {
             sale : function(target) {
-                var saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index;
-                alert("sale ID: " + saleIdx);
-                alert("original ID: " + target.dataset.index);
                 var idx = target.dataset.index,
-                    saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
-                    saleOld = JSON.stringify(app.data.sales[saleIdx]),
-                    sale = JSON.parse(saleOld),
-                    tables = app.DOM.sales.getElementsByTagName('TABLE'),
+                    saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index;
+                alert(saleIdx);
+                    var saleOld = JSON.stringify(app.data.sales[saleIdx]),
+                    sale = JSON.parse(saleOld);
+                alert(JSON.stringify(sale));
+                    var tables = app.DOM.sales.getElementsByTagName('TABLE'),
                     children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
-                    total = 0,
-                    dom = {
+                    total = 0;
+                alert(JSON.stringify(children));
+                    var dom = {
                             item : children[idx].children[0].children[0],
                             quantity : children[idx].children[1].children[0],
                             totalWeight : children[idx].children[2].children[0]
-                    },
-                    saleData = {
+                    };
+                    var saleData = {
                         itemCode : dom.item.selectedOptions[0].value,
                         quantity : dom.quantity.value == '' ? parseFloat(dom.quantity.placeholder) : parseFloat(dom.quantity.value),
                         weights : sale.purchaseTable[idx].weights,

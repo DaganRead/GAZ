@@ -2734,7 +2734,8 @@ function onDeviceReady() {
             }else if(message.type === "login"){
                 app.login();
             }else if(message.type === "reauth"){
-                alert('reauth');
+                //alert('reauth');
+                app.logout();
                 app.logout();
             }else if(message.type === "token recieved"){
                 window.clearInterval(intervalHandle);

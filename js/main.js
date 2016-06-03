@@ -1869,7 +1869,7 @@ function onDeviceReady() {
                     sale = JSON.parse(saleOld);
                     alert(JSON.stringify(sale));
                     var tables = document.getElementById('sales').getElementsByTagName('TABLE');
-                    alert(JSON.stringify(tables));
+                    alert(JSON.stringify(document.getElementById('sales').children));
                     var children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
                     total = 0;

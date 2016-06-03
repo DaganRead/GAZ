@@ -1862,7 +1862,7 @@ function onDeviceReady() {
         },
         update : {
             sale : function(target) {
-                alert("original ID: " target.dataset.index);
+                alert("original ID: " + target.dataset.index);
                 var idx = target.dataset.index,
                     saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
                     saleOld = JSON.stringify(app.data.sales[saleIdx]),

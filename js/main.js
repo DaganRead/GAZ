@@ -1864,14 +1864,14 @@ function onDeviceReady() {
             sale : function(target) {
                 var idx = target.dataset.index,
                     saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index;
-                alert(saleIdx);
+                //alert(saleIdx);
                     var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld);
                     var tables = app.DOM.sales.getElementsByTagName('TABLE'),
                     children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
                     total = 0;
-                alert(JSON.stringify(tables[saleIdx]));
+                //alert(JSON.stringify(tables[saleIdx]));
                     var dom = {
                             item : children[idx].children[0].children[0],
                             quantity : children[idx].children[1].children[0],
@@ -1884,7 +1884,7 @@ function onDeviceReady() {
                         totalWeight : dom.totalWeight.value == '' ? parseFloat(dom.totalWeight.placeholder.slice(0, -2)):parseFloat(dom.totalWeight.value),
                         itemPrice : parseFloat(dom.item.selectedOptions[0].dataset.price)
                     };
-                    alert(saleIdx);
+                    //alert(saleIdx);
                     app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify(saleData);
                     
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
@@ -1938,7 +1938,7 @@ function onDeviceReady() {
                         };
                     });
                     app.store('sale'); 
-                    alert('fine');
+                    //alert('fine');
                     var newRowsLive = document.getElementsByTagName('td'),
                         inputsLive = document.getElementsByTagName('input'),
                         notesLive = document.getElementsByTagName('textarea'),
@@ -1972,7 +1972,7 @@ function onDeviceReady() {
                             notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
                         };
                     };
-                    alert('eventlisteners attached');
+                    //alert('eventlisteners attached');
             },
             customer: function(target) {
                 var element,

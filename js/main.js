@@ -2150,7 +2150,7 @@ function onDeviceReady() {
         },
         search : {
             sales : function(target) {
-                var searchTerm = document.getElementById('salesSearchText').value,
+                var searchTerm = document.getElementById('salesSearchText').value.toLowerCase(),
                     date = document.getElementById('btn_filter_date').checked,
                     location = document.getElementById('btn_filter_location').checked,
                     name = document.getElementById('btn_filter_name').checked,
@@ -2166,22 +2166,22 @@ function onDeviceReady() {
                         for (var i = 0; i < searchArr.length; i++) {
                             if (name) {
                                 if(element.name.formatted != undefined){
-                                    if (element.name.formatted.includes(searchArr[i]) ) {
+                                    if (element.name.formatted.toLowerCase().includes(searchArr[i]) ) {
                                         resultsArr[0] = true;
                                     };
                                 } else if(element.name.givenName != undefined){
-                                    if (element.name.givenName.includes(searchArr[i])) {
+                                    if (element.name.givenName.toLowerCase().includes(searchArr[i])) {
                                         resultsArr[0] = true;
                                     };
                                 };
                             };
                             if (location) {
-                                if(element.location.includes(searchArr[i])){
+                                if(element.location.toLowerCase().includes(searchArr[i])){
                                     resultsArr[1] = true;
                                 };
                             };
                             if (date) {
-                                if(element.slaughterDate.includes(searchArr[i])){
+                                if(element.slaughterDate.toLowerCase().includes(searchArr[i])){
                                     resultsArr[2] = true;
                                 };
                             };

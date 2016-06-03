@@ -1862,6 +1862,8 @@ function onDeviceReady() {
         },
         update : {
             sale : function(target) {
+                var saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index;
+                alert("sale ID: " + saleIdx);
                 alert("original ID: " + target.dataset.index);
                 var idx = target.dataset.index,
                     saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,

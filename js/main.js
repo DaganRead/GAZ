@@ -1862,7 +1862,7 @@ function onDeviceReady() {
         },
         update : {
             sale : function(target) {
-                alert(target.dataset.index);
+                alert("original ID: " target.dataset.index);
                 var idx = target.dataset.index,
                     saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
                     saleOld = JSON.stringify(app.data.sales[saleIdx]),
@@ -1883,7 +1883,7 @@ function onDeviceReady() {
                         totalWeight : dom.totalWeight.value == '' ? parseFloat(dom.totalWeight.placeholder.slice(0, -2)):parseFloat(dom.totalWeight.value),
                         itemPrice : parseFloat(dom.item.selectedOptions[0].dataset.price)
                     };
-                    
+                    alert(saleIdx);
                     app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify(saleData);
                     
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
@@ -1937,7 +1937,7 @@ function onDeviceReady() {
                         };
                     });
                     app.store('sale'); 
-
+                    alert('fine');
                     var newRowsLive = document.getElementsByTagName('td'),
                         inputsLive = document.getElementsByTagName('input'),
                         notesLive = document.getElementsByTagName('textarea'),
@@ -1971,6 +1971,7 @@ function onDeviceReady() {
                             notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
                         };
                     };
+                    alert('eventlisteners attached');
             },
             customer: function(target) {
                 var element,

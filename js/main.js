@@ -1895,7 +1895,7 @@ function onDeviceReady() {
                         totalWeight : dom.totalWeight.value == '' ? parseFloat(dom.totalWeight.placeholder.slice(0, -2)):parseFloat(dom.totalWeight.value),
                         itemPrice : parseFloat(dom.item.selectedOptions[0].dataset.price)
                     };
-                    //alert(saleIdx);
+                //alert(saleIdx);
                     app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify(saleData);
                     
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
@@ -1952,7 +1952,7 @@ function onDeviceReady() {
                     });
                     app.store('sale'); 
                     //alert('fine');
-                    var newRowsLive = document.getElementsByTagName('td'),
+                    /*var newRowsLive = document.getElementsByTagName('td'),
                         inputsLive = document.getElementsByTagName('input'),
                         notesLive = document.getElementsByTagName('textarea'),
                         selectsLive = document.getElementsByTagName('select');
@@ -1984,7 +1984,7 @@ function onDeviceReady() {
                         if (classie.hasClass(notesLive[i], "notes")) {
                             notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
                         };
-                    };
+                    };*/
                     //alert('eventlisteners attached');
             },
             customer: function(target) {

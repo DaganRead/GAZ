@@ -1,5 +1,6 @@
 var app;
 function onDeviceReady() {
+    alert(JSON.stringify(window.localStorage['data']));
     app = {
         picked : false,
         menu : false,

@@ -267,7 +267,7 @@ function onDeviceReady() {
                                 HTMLFrag += '<td class="priceKG">';
                                 HTMLFrag += 'R ' + innerElement.itemPrice;
                                 HTMLFrag += '</td><td class="priceTag">';
-                                HTMLFrag += 'R ' + innerElement.totalWeight * innerElement.itemPrice;
+                                HTMLFrag += 'R ' + Math.ceil10(innerElement.totalWeight * innerElement.itemPrice, -1);//bug
                                 total    += innerElement.totalWeight * innerElement.itemPrice;
                                 HTMLFrag += '</td></tr>';
                                 /* if (innerElement.weights.length > 1) {
@@ -1876,9 +1876,9 @@ function onDeviceReady() {
                 //alert(saleIdx);
                     var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld);
-                    alert(JSON.stringify(sale));
+                    //alert(JSON.stringify(sale));
                     var tables = document.getElementById('sales').getElementsByTagName('TABLE');
-                    alert(JSON.stringify(document.getElementById('sales').children));
+                    //alert(JSON.stringify(document.getElementById('sales').children));
                     var children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
                     total = 0;
@@ -1931,7 +1931,7 @@ function onDeviceReady() {
                         HTMLFrag += '<td class="priceKG">';
                         HTMLFrag += 'R ' + innerElement.itemPrice;
                         HTMLFrag += '</td><td class="priceTag">';
-                        HTMLFrag += 'R ' + innerElement.totalWeight * innerElement.itemPrice;
+                        HTMLFrag += 'R ' + Math.ceil10(innerElement.totalWeight * innerElement.itemPrice, -1);
                         total    += innerElement.totalWeight * innerElement.itemPrice;
                         HTMLFrag += '</td></tr>';
                     });

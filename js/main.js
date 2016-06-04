@@ -1,6 +1,5 @@
 var app;
 function onDeviceReady() {
-    alert(JSON.stringify(window.localStorage['data']));
     app = {
         picked : false,
         menu : false,
@@ -69,6 +68,15 @@ function onDeviceReady() {
                 };
                 app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
             };
+        },
+        failSafe : function() {
+                delete window.localStorage['token'];
+                classie.addClass(app.DOM.modal, 'md-show');
+                var message = {
+                    type:'logout',
+                    token:token
+                };
+                app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
         },
         simulate : function(evt) {
           var el = document.body;
@@ -257,10 +265,10 @@ function onDeviceReady() {
                                 HTMLFrag += innerElement.totalWeight + 'kg';
                                 HTMLFrag += '"/></td>';
                                 HTMLFrag += '<td class="priceKG">';
-                                HTMLFrag += 'R ' + innerElement.itemPrice;
+                                HTMLFrag += 'R ' + Math.ceil10(innerElement.itemPrice, -1);
                                 HTMLFrag += '</td><td class="priceTag">';
-                                HTMLFrag += 'R ' + innerElement.totalWeight * innerElement.itemPrice;
-                                total    += innerElement.totalWeight * innerElement.itemPrice;
+                                HTMLFrag += 'R ' + Math.ceil10(innerElement.totalWeight * innerElement.itemPrice, -1);//bug
+                                total    += Math.ceil10(innerElement.totalWeight * innerElement.itemPrice, -1);
                                 HTMLFrag += '</td></tr>';
                                 /* if (innerElement.weights.length > 1) {
                                     innerElement.weights.forEach(function(iiElement, iiIndex, iiArray) {
@@ -558,7 +566,7 @@ function onDeviceReady() {
                     HTMLFrag += '<span class="slaughterDate">';
                     HTMLFrag += element.slaughterDate;
                     HTMLFrag += '</span><b>-</b><span>Total: </span><input type="text" value="R';
-                    HTMLFrag += element.total;
+                    HTMLFrag += Math.ceil10(element.total, -1);
                     HTMLFrag += '"/><img data-type="slaughter" src="img/delete.png" class="cancel" data-index="';
                     HTMLFrag += index;
                     HTMLFrag += '" />';
@@ -602,7 +610,7 @@ function onDeviceReady() {
                 };
                 for (var i = 0; i < newRowsLive.length; i++) {
                     if (classie.hasClass(newRowsLive[i], "large")) {
-                        newRowsLive[i].addEventListener("click", function(e) { alert('add');app.newRow(e.target);}, false);
+                        newRowsLive[i].addEventListener("click", function(e) { app.newRow(e.target);}, false);
                     };
                 };
                 for (var i = 0; i < inputsLive.length; i++) {
@@ -943,7 +951,7 @@ function onDeviceReady() {
                                     HTMLFrag += iiiElement.totalWeight + 'kg';
                                     HTMLFrag += '"/></td>';
                                     HTMLFrag += '<td class="priceKG">';
-                                    HTMLFrag += 'R ' + iiiElement.itemPrice;
+                                    HTMLFrag += 'R ' + Math.ceil10(iiiElement.itemPrice, -1);
                                     HTMLFrag += '</td><td class="priceTag">';
                                     HTMLFrag += 'R ' + Math.ceil10((iiiElement.totalWeight * iiiElement.itemPrice), -1);
                                     total    += Math.ceil10((iiiElement.totalWeight * iiiElement.itemPrice), -1);
@@ -976,7 +984,7 @@ function onDeviceReady() {
                 };
                 for (var i = 0; i < newRowsLive.length; i++) {
                     if (classie.hasClass(newRowsLive[i], "large")) {
-                        newRowsLive[i].addEventListener("click", function(e) { alert('add');app.newRow(e.target);}, false);
+                        newRowsLive[i].addEventListener("click", function(e) { app.newRow(e.target);}, false);
                     };
                 };
                 for (var i = 0; i < inputsLive.length; i++) {
@@ -1287,7 +1295,7 @@ function onDeviceReady() {
                                     HTMLFrag += iiiElement.totalWeight + 'kg';
                                     HTMLFrag += '"/></td>';
                                     HTMLFrag += '<td class="priceKG">';
-                                    HTMLFrag += 'R ' + iiiElement.itemPrice;
+                                    HTMLFrag += 'R ' + Math.ceil10(iiiElement.itemPrice, -1);
                                     HTMLFrag += '</td><td class="priceTag">';
                                     HTMLFrag += 'R ' + Math.ceil10((iiiElement.totalWeight * iiiElement.itemPrice), -1);
                                     total    += Math.ceil10((iiiElement.totalWeight * iiiElement.itemPrice), -1);
@@ -1322,7 +1330,7 @@ function onDeviceReady() {
                 };
                 for (var i = 0; i < newRowsLive.length; i++) {
                     if (classie.hasClass(newRowsLive[i], "large")) {
-                        newRowsLive[i].addEventListener("click", function(e) { alert('add');app.newRow(e.target);}, false);
+                        newRowsLive[i].addEventListener("click", function(e) { app.newRow(e.target);}, false);
                     };
                 };
                 for (var i = 0; i < inputsLive.length; i++) {
@@ -1868,8 +1876,10 @@ function onDeviceReady() {
                 //alert(saleIdx);
                     var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld);
-                    var tables = app.DOM.sales.getElementsByTagName('TABLE'),
-                    children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
+                    //alert(JSON.stringify(sale));
+                    var tables = document.getElementById('sales').getElementsByTagName('TABLE');
+                    //alert(JSON.stringify(document.getElementById('sales').children));
+                    var children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
                     total = 0;
                 //alert(JSON.stringify(tables[saleIdx]));
@@ -1919,21 +1929,21 @@ function onDeviceReady() {
                         HTMLFrag += innerElement.totalWeight + 'kg';
                         HTMLFrag += '"/></td>';
                         HTMLFrag += '<td class="priceKG">';
-                        HTMLFrag += 'R ' + innerElement.itemPrice;
+                        HTMLFrag += 'R ' + Math.ceil10(innerElement.itemPrice, -1);
                         HTMLFrag += '</td><td class="priceTag">';
-                        HTMLFrag += 'R ' + innerElement.totalWeight * innerElement.itemPrice;
-                        total    += innerElement.totalWeight * innerElement.itemPrice;
+                        HTMLFrag += 'R ' + Math.ceil10(innerElement.totalWeight * innerElement.itemPrice, -1);
+                        total    += Math.ceil10(innerElement.totalWeight * innerElement.itemPrice, -1);
                         HTMLFrag += '</td></tr>';
                     });
                     HTMLFrag += '<tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';
-                    app.data.sales[saleIdx].total = total;
+                    app.data.sales[saleIdx].total = Math.ceil10(total, -1);
                     app.data.sales[saleIdx].notes = children[idx].parentNode.parentNode.parentNode.children[7].value;
                     saleIdx==0 ? tables[saleIdx].children[1].innerHTML = HTMLFrag : tables[saleIdx].children[0].innerHTML = HTMLFrag;
-                    saleIdx==0 ? tables[saleIdx].children[2].children[0].children[1].innerHTML = 'R' + total : tables[saleIdx].children[1].children[0].children[1].innerHTML = 'R' + total;
+                    saleIdx==0 ? tables[saleIdx].children[2].children[0].children[1].innerHTML = 'R' + Math.ceil10(total, -1) : tables[saleIdx].children[1].children[0].children[1].innerHTML = 'R' + Math.ceil10(total, -1);
                     app.data.slaughters.forEach(function(element, index, array) {
                         if (element.slaughterDate == sale.slaughterDate) {
-                            app.data.slaughters[index].total -= sale.total;
-                            app.data.slaughters[index].total += total;
+                            app.data.slaughters[index].total -= Math.ceil10(sale.total, -1);
+                            app.data.slaughters[index].total += Math.ceil10(total, -1);
                             app.binding.slaughters();
                             app.store('slaughter');
                         };
@@ -2301,7 +2311,7 @@ function onDeviceReady() {
                                     HTMLFrag += iiiElement.totalWeight + 'kg';
                                     HTMLFrag += '"/></td>';
                                     HTMLFrag += '<td class="priceKG">';
-                                    HTMLFrag += 'R ' + iiiElement.itemPrice;
+                                    HTMLFrag += 'R ' + Math.ceil10(iiiElement.itemPrice, -1);
                                     HTMLFrag += '</td><td class="priceTag">';
                                     HTMLFrag += 'R ' + Math.ceil10((iiiElement.totalWeight * iiiElement.itemPrice), -1);
                                     total    += Math.ceil10((iiiElement.totalWeight * iiiElement.itemPrice), -1);
@@ -2733,8 +2743,9 @@ function onDeviceReady() {
             }else if(message.type === "login"){
                 app.login();
             }else if(message.type === "reauth"){
-                alert('reauth');
-                app.logout();
+                //alert('reauth');
+                app.failSafe();
+                //app.logout();
             }else if(message.type === "token recieved"){
                 window.clearInterval(intervalHandle);
             }else if (message.type === 'back up') {

@@ -1913,7 +1913,7 @@ function onDeviceReady() {
                                 HTMLFrag += 'selected'; 
                             };
                             HTMLFrag += ' data-price="';
-                            HTMLFrag += iiElement.itemPrice;
+                            HTMLFrag += iiElement.itemPrice; 
                             HTMLFrag += '" >';
                             HTMLFrag += iiElement.itemName;
                             HTMLFrag += '</option>';

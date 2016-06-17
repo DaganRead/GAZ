@@ -335,6 +335,7 @@ function onDeviceReady() {
                                         HTMLFrag += '"/>';
                                     });
                                 };
+                                alert(JSON.stringify(element.phoneNumbers));
                                 if (element.phoneNumbers!=null) {
 /*                                        element.phoneNumbers.forEach(function(innerElement, innerIndex, innerArray) {
                                             HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
@@ -343,7 +344,7 @@ function onDeviceReady() {
                                             HTMLFrag += innerIndex;
                                             HTMLFrag += '"/>';
                                         });*/
-                                        alert(JSON.stringify(element.phoneNumbers[0]));
+                                        
                                         HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                         HTMLFrag += element.phoneNumbers[0].value;
                                         HTMLFrag += '" data-index="';

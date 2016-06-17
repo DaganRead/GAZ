@@ -1101,6 +1101,7 @@ function onDeviceReady() {
                 });
             });
             if (!match) {
+                alert('Doesnt exist');
                 this.data.customers.push(newCustomer);
                 //update dataset
                 this.binding.customers();
@@ -2129,7 +2130,7 @@ function onDeviceReady() {
                 newContact.emails = contact.emails;
                 newContact.phoneNumbers = contact.phoneNumbers;
                 newContact.note = contact.note;
-                newContact.save(function(data) {},function(err) {}); 
+                //newContact.save(function(data) {},function(err) {}); 
                 //find count
                 app.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
                     if(innerElement.location == contact.note){

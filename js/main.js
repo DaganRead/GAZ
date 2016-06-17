@@ -671,9 +671,9 @@ function onDeviceReady() {
                 };
                 for (var i = 0; i < notesLive.length; i++) {
                     if (classie.hasClass(notesLive[i], "notes")) {
-                        notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                        notesLive[i].onblur =  function(e) { app.update.sale(e.target);};
                     }else if (notesLive[i].dataset.type == "updateCustomer") {
-                        notesLive[i].addEventListener("blur", function(e) { app.update.customer(e.target);}, false);
+                        notesLive[i].onblur = function(e) { app.update.customer(e.target);};
                     };
                 };
                 //end
@@ -1048,7 +1048,7 @@ function onDeviceReady() {
                 };
                 for (var i = 0; i < notesLive.length; i++) {
                     if (classie.hasClass(notesLive[i], "notes")) {
-                        notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                        notesLive[i].onblur =  function(e) { app.update.sale(e.target);};
                     };
                 };
 
@@ -1395,7 +1395,7 @@ function onDeviceReady() {
                 };
                 for (var i = 0; i < notesLive.length; i++) {
                     if (classie.hasClass(notesLive[i], "notes")) {
-                        notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                        notesLive[i].onblur =  function(e) { app.update.sale(e.target);};
                     };
                 };
             },
@@ -2051,7 +2051,7 @@ function onDeviceReady() {
                     };
                     for (var i = 0; i < notesLive.length; i++) {
                         if (classie.hasClass(notesLive[i], "notes")) {
-                            //notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                            notesLive[i].onblur =  function(e) { app.update.sale(e.target);};
                         };
                     };
                     //alert('eventlisteners attached');
@@ -2459,7 +2459,7 @@ function onDeviceReady() {
                 };
                 for (var i = 0; i < notesLive.length; i++) {
                     if (classie.hasClass(notesLive[i], "notes")) {
-                        notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                        notesLive[i].onblur =  function(e) { app.update.sale(e.target);};
                     };
                 };
 

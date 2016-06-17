@@ -2019,7 +2019,7 @@ function onDeviceReady() {
                     });
                     app.store('sale'); 
                     //alert('fine');
-                    /*var newRowsLive = document.getElementsByTagName('td'),
+                    var newRowsLive = document.getElementsByTagName('td'),
                         inputsLive = document.getElementsByTagName('input'),
                         notesLive = document.getElementsByTagName('textarea'),
                         selectsLive = document.getElementsByTagName('select');
@@ -2037,10 +2037,10 @@ function onDeviceReady() {
                     for (var i = 0; i < inputsLive.length; i++) {
 
                         if (classie.hasClass(inputsLive[i], "cancel") && inputsLive[i].value == "sales") {
-                            inputsLive[i].addEventListener("click", function(e) { alert('delete');}, false);
+                            //inputsLive[i].addEventListener("click", function(e) { alert('delete');}, false);
 
                         }else if(classie.hasClass(inputsLive[i], "noteClear")){
-                            inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value='';}, false);
+                            //inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value='';}, false);
 
                         }else if(classie.hasClass(inputsLive[i], "weight")||classie.hasClass(inputsLive[i], "quantity")){
                             inputsLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
@@ -2049,9 +2049,9 @@ function onDeviceReady() {
                     };
                     for (var i = 0; i < notesLive.length; i++) {
                         if (classie.hasClass(notesLive[i], "notes")) {
-                            notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                            //notesLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
                         };
-                    };*/
+                    };
                     //alert('eventlisteners attached');
             },
             customer: function(target) {
@@ -2729,8 +2729,8 @@ function onDeviceReady() {
                         contacts.forEach(function(element, index, array) {
                             if (element.name.formatted !== '' && element.displayName !== null && (element.displayName.indexOf('@') == -1 || element.name.formatted.indexOf('@') == -1) ) {
                             tempNumber ++;
-                            alert(JSON.stringify(element));
-                            alert(app.data.customers);
+                            //alert(JSON.stringify(element));
+                            //alert(app.data.customers);
                                 if (app.data.customers.indexOf(element) == -1) {
                                         temp += syncNumber+' - ' + (element.name.formatted || element.displayName)  + '\n';
                                         syncNumber++;

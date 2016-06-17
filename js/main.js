@@ -2032,8 +2032,8 @@ function onDeviceReady() {
                     };
                     for (var i = 0; i < newRowsLive.length; i++) {
                         if (classie.hasClass(newRowsLive[i], "large")) {
-                            newRowsLive[i].removeEventListener("click", function(e) { app.newRow(e.target);}, false);
-                            newRowsLive[i].addEventListener("click", function(e) { app.newRow(e.target);}, false);
+                            //newRowsLive[i].removeEventListener("click", function(e) { app.newRow(e.target);}, false);
+                            newRowsLive[i].onclick = function(e) { app.newRow(e.target);};
                         };
                     };
                     for (var i = 0; i < inputsLive.length; i++) {

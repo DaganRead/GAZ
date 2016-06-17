@@ -2032,7 +2032,7 @@ function onDeviceReady() {
                     };
                     for (var i = 0; i < newRowsLive.length; i++) {
                         if (classie.hasClass(newRowsLive[i], "large")) {
-                            newRowsLive[i].addEventListener("click", function(e) { app.newRow(e.target);}, false);
+                            //newRowsLive[i].addEventListener("click", function(e) { app.newRow(e.target);}, false);
                         };
                     };
                     for (var i = 0; i < inputsLive.length; i++) {

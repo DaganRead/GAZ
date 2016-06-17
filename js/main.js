@@ -343,6 +343,7 @@ function onDeviceReady() {
                                             HTMLFrag += innerIndex;
                                             HTMLFrag += '"/>';
                                         });*/
+                                        alert(JSON.stringify(element.phoneNumbers[0]));
                                         HTMLFrag += '<input type="text" data-type="updateCustomer" placeholder="';
                                         HTMLFrag += element.phoneNumbers[0].value;
                                         HTMLFrag += '" data-index="';

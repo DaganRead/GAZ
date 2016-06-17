@@ -1100,13 +1100,13 @@ function onDeviceReady() {
                     }
                 });
             });
-            if (!match) {
-                alert('Doesnt exist');
+            //if (!match) {
+                //alert('Doesnt exist');
                 this.data.customers.push(newCustomer);
                 //update dataset
                 this.binding.customers();
                 this.store('customer');
-            };
+            //};
         },
         newItem : function() {
             //add to loaded dataset

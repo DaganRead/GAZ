@@ -1087,7 +1087,7 @@ function onDeviceReady() {
                 "phoneNumbers" : [this.forms.newCustomer.telephone()],
                 "addresses" : [this.forms.newCustomer.address()]
             }), match = false;
-            
+            alert('0');
             this.data.customers.forEach(function(element, index, array) {
                 alert('looping');
                 if (newCustomer.displayName == element.displayName) {

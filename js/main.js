@@ -1091,13 +1091,6 @@ function onDeviceReady() {
                 if (newCustomer.displayName == element.displayName) {
                     match = false;
                 };
-/*                this.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
-                    if(this.forms.newCustomer.location() == innerElement.location){
-                        innerElement.count ++;
-                        this.store('location');
-                    }
-                });*/
-
             });
             if (match) {
                 this.data.customers.push(newCustomer);
@@ -1105,8 +1098,8 @@ function onDeviceReady() {
                 this.binding.customers();
                 this.store('customer');
             };
-            //alert('works');
-            //alert(JSON.stringify(newCustomer));
+            alert('works');
+            alert(JSON.stringify(newCustomer));
         },
         newItem : function() {
             //add to loaded dataset

@@ -1088,6 +1088,7 @@ function onDeviceReady() {
                 "addresses" : [this.forms.newCustomer.address()]
             });
             alert('works');
+            alert(JSON.stringify(newCustomer));
         },
         newItem : function() {
             //add to loaded dataset

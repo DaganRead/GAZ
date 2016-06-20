@@ -1086,7 +1086,15 @@ function onDeviceReady() {
                 "emails" : [this.forms.newCustomer.email()],
                 "phoneNumbers" : [this.forms.newCustomer.telephone()],
                 "addresses" : [this.forms.newCustomer.address()]
+            }), match = false;
+            
+            this.data.customers.forEach(function(element, index, array) {
+                if (newCustomer.displayName == element.displayName) {
+                    alert('matched');
+                    match = true;
+                };
             });
+
             alert('works');
             alert(JSON.stringify(newCustomer));
         },
@@ -1122,7 +1130,7 @@ function onDeviceReady() {
             //add to loaded dataset
             var newLocation = {
                 location : this.forms.newLocation.location(),
-                count : 1
+                count : 0
             };
             if (this.data.locations.indexOf(JSON.stringify(newLocation)) == -1) {
                 this.data.locations.push(newLocation);

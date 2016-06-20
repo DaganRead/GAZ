@@ -1067,7 +1067,7 @@ function onDeviceReady() {
                             HTMLFrag += '<article><span class="slaughterDate">';
                             HTMLFrag += innerElement.slaughterDate;
                             HTMLFrag += '</span><b>-</b><span>Total: </span><input type="text" value="R';
-                            HTMLFrag += Math.ceil10(innerElement.total, -1);
+                            HTMLFrag += innerElement.total;
                             HTMLFrag += '"/><img data-type="slaughter" src="img/delete.png" class="cancel" data-index="';
                             HTMLFrag += innerIndex;
                             HTMLFrag += '" /></article>';
@@ -1765,7 +1765,7 @@ function onDeviceReady() {
                             HTMLFrag += '<article><span class="slaughterDate">';
                             HTMLFrag += innerElement.slaughterDate;
                             HTMLFrag += '</span><b>-</b><span>Total: </span><input type="text" value="R';
-                            HTMLFrag += Math.ceil10(innerElement.total, -1);
+                            HTMLFrag += innerElement.total;
                             HTMLFrag += '"/><img data-type="slaughter" src="img/delete.png" class="cancel" data-index="';
                             HTMLFrag += innerIndex;
                             HTMLFrag += '" /></article>';

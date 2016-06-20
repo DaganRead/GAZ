@@ -1086,16 +1086,21 @@ function onDeviceReady() {
                 "emails" : [this.forms.newCustomer.email()],
                 "phoneNumbers" : [this.forms.newCustomer.telephone()],
                 "addresses" : [this.forms.newCustomer.address()]
-            }), match = false;
+            }), match = true;
             alert('0');
             this.data.customers.forEach(function(element, index, array) {
                 alert('looping');
                 if (newCustomer.displayName == element.displayName) {
-                    alert('matched');
-                    match = true;
+                    match = false;
                 };
             });
-
+            if (match) {
+                alert('Doesnt exist');
+                this.data.customers.push(newCustomer);
+                //update dataset
+                this.binding.customers();
+                this.store('customer');
+            };
             alert('works');
             alert(JSON.stringify(newCustomer));
         },

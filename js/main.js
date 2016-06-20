@@ -1089,6 +1089,7 @@ function onDeviceReady() {
             }), match = false;
             
             this.data.customers.forEach(function(element, index, array) {
+                alert('looping');
                 if (newCustomer.displayName == element.displayName) {
                     alert('matched');
                     match = true;

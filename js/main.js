@@ -1053,9 +1053,7 @@ function onDeviceReady() {
                 };
 
                 /*************************/
-                if(foo.quantity != 0)){
-                    this.store('sale');
-                }
+                this.store('sale');
                 //this.binding.slaughters();
                 /******************************/
                         var HTMLFrag = '',

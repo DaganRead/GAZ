@@ -1086,27 +1086,8 @@ function onDeviceReady() {
                 "emails" : [this.forms.newCustomer.email()],
                 "phoneNumbers" : [this.forms.newCustomer.telephone()],
                 "addresses" : [this.forms.newCustomer.address()]
-            }),
-            match = false;
-            //add to loaded dataset
-            this.data.customers.forEach(function(element, index, array) {
-                if (newCustomer.displayName == element.displayName) {
-                    match = true;
-                };
-                this.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
-                    if(this.forms.newCustomer.location() == innerElement.location){
-                        innerElement.count ++;
-                        this.store('location');
-                    }
-                });
             });
-            //if (!match) {
-                //alert('Doesnt exist');
-                this.data.customers.push(newCustomer);
-                //update dataset
-                this.binding.customers();
-                this.store('customer');
-            //};
+            alert('works');
         },
         newItem : function() {
             //add to loaded dataset

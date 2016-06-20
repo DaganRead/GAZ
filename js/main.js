@@ -1087,22 +1087,26 @@ function onDeviceReady() {
                 "phoneNumbers" : [this.forms.newCustomer.telephone()],
                 "addresses" : [this.forms.newCustomer.address()]
             }), match = true;
-            alert('0');
             this.data.customers.forEach(function(element, index, array) {
-                alert('looping');
                 if (newCustomer.displayName == element.displayName) {
                     match = false;
                 };
+/*                this.data.locations.forEach(function(innerElement, innerIndex, innerArray) {
+                    if(this.forms.newCustomer.location() == innerElement.location){
+                        innerElement.count ++;
+                        this.store('location');
+                    }
+                });*/
+
             });
             if (match) {
-                alert('Doesnt exist');
                 this.data.customers.push(newCustomer);
                 //update dataset
                 this.binding.customers();
                 this.store('customer');
             };
-            alert('works');
-            alert(JSON.stringify(newCustomer));
+            //alert('works');
+            //alert(JSON.stringify(newCustomer));
         },
         newItem : function() {
             //add to loaded dataset

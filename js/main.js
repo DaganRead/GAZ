@@ -1087,6 +1087,8 @@ function onDeviceReady() {
                 "phoneNumbers" : [this.forms.newCustomer.telephone()],
                 "addresses" : [this.forms.newCustomer.address()]
             }), match = true;
+
+            alert(JSON.stringify(newCustomer.emails));
             this.data.customers.forEach(function(element, index, array) {
                 if (newCustomer.displayName == element.displayName) {
                     match = false;

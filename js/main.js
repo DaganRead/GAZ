@@ -1082,7 +1082,7 @@ function onDeviceReady() {
                     givenName : this.forms.newCustomer.givenName(),
                     familyName : this.forms.newCustomer.familyName()
                 },
-                "notes" : this.forms.newCustomer.location(),
+                "location" : {location:this.forms.newCustomer.location()},
                 "emails" : [new ContactField('work', this.forms.newCustomer.email(), false)],
                 "phoneNumbers" : [new ContactField('work', this.forms.newCustomer.telephone(), false)],
                 "addresses" : [{formatted:this.forms.newCustomer.address()}]

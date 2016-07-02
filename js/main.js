@@ -1083,12 +1083,11 @@ function onDeviceReady() {
                     familyName : this.forms.newCustomer.familyName()
                 },
                 "note" : this.forms.newCustomer.location(),
-                "emails" : [this.forms.newCustomer.email()],
-                "phoneNumbers" : [this.forms.newCustomer.telephone()],
+                "emails" : [new ContactField('work', this.forms.newCustomer.email(), false)],
+                "phoneNumbers" : [new ContactField('work', this.forms.newCustomer.telephone(), false)],
                 "addresses" : [this.forms.newCustomer.address()]
             }), match = true;
 
-            alert(JSON.stringify(newCustomer.emails));
             this.data.customers.forEach(function(element, index, array) {
                 if (newCustomer.displayName == element.displayName) {
                     match = false;

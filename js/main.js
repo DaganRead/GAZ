@@ -1085,7 +1085,7 @@ function onDeviceReady() {
                 "notes" : this.forms.newCustomer.location(),
                 "emails" : [new ContactField('work', this.forms.newCustomer.email(), false)],
                 "phoneNumbers" : [new ContactField('work', this.forms.newCustomer.telephone(), false)],
-                "addresses" : [this.forms.newCustomer.address()]
+                "addresses" : [{formatted:this.forms.newCustomer.address()}]
             }), match = true;
 
             this.data.customers.forEach(function(element, index, array) {

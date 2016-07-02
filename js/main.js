@@ -1955,7 +1955,7 @@ function onDeviceReady() {
                         totalWeight : dom.totalWeight.value == '' ? parseFloat(dom.totalWeight.placeholder.slice(0, -2)):parseFloat(dom.totalWeight.value),
                         itemPrice : parseFloat(dom.item.selectedOptions[0].dataset.price)
                     };
-                //alert(saleIdx);
+                alert('saleIdx');
                     app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify(saleData);
                     
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
@@ -2019,7 +2019,7 @@ function onDeviceReady() {
 
                     for (var i = 0; i < selectsLive.length; i++) {
                         if (classie.hasClass(selectsLive[i], "itemCode")) {
-                            selectsLive[i].addEventListener("change", function(e) { app.update.sale(e.target);}, false);
+                            selectsLive[i].onchange = function(e) { app.update.sale(e.target);};
                         };
                     };
                     for (var i = 0; i < newRowsLive.length; i++) {
@@ -2037,7 +2037,7 @@ function onDeviceReady() {
                             //inputsLive[i].addEventListener("click", function(e) { e.target.previousSibling.value='';}, false);
 
                         }else if(classie.hasClass(inputsLive[i], "weight")||classie.hasClass(inputsLive[i], "quantity")){
-                            inputsLive[i].addEventListener("blur", function(e) { app.update.sale(e.target);}, false);
+                            inputsLive[i].onblur = function(e) { app.update.sale(e.target);};
 
                         };
                     };

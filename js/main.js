@@ -1933,7 +1933,7 @@ function onDeviceReady() {
             sale : function(target) {
                 var idx = target.dataset.index,
                     saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index;
-                //alert(saleIdx);
+                alert(saleIdx);
                     var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld);
                     //alert(JSON.stringify(sale));

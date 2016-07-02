@@ -1099,8 +1099,6 @@ function onDeviceReady() {
                 this.binding.customers();
                 this.store('customer');
             };
-            alert('works');
-            alert(JSON.stringify(newCustomer));
         },
         newItem : function() {
             //add to loaded dataset

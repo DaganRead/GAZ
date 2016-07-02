@@ -1082,7 +1082,7 @@ function onDeviceReady() {
                     givenName : this.forms.newCustomer.givenName(),
                     familyName : this.forms.newCustomer.familyName()
                 },
-                "note" : this.forms.newCustomer.location(),
+                "notes" : this.forms.newCustomer.location(),
                 "emails" : [new ContactField('work', this.forms.newCustomer.email(), false)],
                 "phoneNumbers" : [new ContactField('work', this.forms.newCustomer.telephone(), false)],
                 "addresses" : [this.forms.newCustomer.address()]
@@ -2718,7 +2718,6 @@ function onDeviceReady() {
                         syncArr      = [],
                         tempArr      = app.data.customers;
                     navigator.contacts.find(fields, function(contacts) {
-                        alert(JSON.stringify(contacts));
                         var msg = '',
                             temp = '',
                             tempNumber = 1,

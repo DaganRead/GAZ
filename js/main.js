@@ -2718,6 +2718,7 @@ function onDeviceReady() {
                         syncArr      = [],
                         tempArr      = app.data.customers;
                     navigator.contacts.find(fields, function(contacts) {
+                        alert(JSON.stringify(contacts));
                         var msg = '',
                             temp = '',
                             tempNumber = 1,

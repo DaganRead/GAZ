@@ -1082,12 +1082,12 @@ function onDeviceReady() {
                     givenName : this.forms.newCustomer.givenName(),
                     familyName : this.forms.newCustomer.familyName()
                 },
-                "location" : {location:this.forms.newCustomer.location()},
+                "note" : '',
                 "emails" : [new ContactField('work', this.forms.newCustomer.email(), false)],
                 "phoneNumbers" : [new ContactField('work', this.forms.newCustomer.telephone(), false)],
                 "addresses" : [{formatted:this.forms.newCustomer.address()}]
             }), match = true;
-
+            newCustomer.location = this.forms.newCustomer.location();
             this.data.customers.forEach(function(element, index, array) {
                 if (newCustomer.displayName == element.displayName) {
                     match = false;

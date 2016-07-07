@@ -1934,8 +1934,8 @@ function onDeviceReady() {
                 var idx = target.dataset.index,
                     saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
                     saleOldIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.indexold:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.indexold;
-                alert(saleIdx);
-                alert(saleOldIdx);
+                //alert(saleIdx);
+                //alert(saleOldIdx);
                     var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld);
                 //alert(saleOld);
@@ -1957,7 +1957,7 @@ function onDeviceReady() {
                         totalWeight : dom.totalWeight.value == '' ? parseFloat(dom.totalWeight.placeholder.slice(0, -2)):parseFloat(dom.totalWeight.value),
                         itemPrice : parseFloat(dom.item.selectedOptions[0].dataset.price)
                     };
-                //alert('saleIdx');
+                alert('0');
                     app.data.sales[saleOldIdx].purchaseTable[idx] = JSON.stringify(saleData);
                     
                     app.data.sales[saleOldIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
@@ -1999,6 +1999,7 @@ function onDeviceReady() {
                     });
                     HTMLFrag += '<tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';
                     app.data.sales[saleOldIdx].total = Math.ceil10(total, -1);
+                    alert('1');
 /*                    alert('notes: ');
                     alert(children[idx].parentNode.parentNode.parentNode.children[7].tagName);*/
                     app.data.sales[saleOldIdx].notes = children[idx].parentNode.parentNode.parentNode.children[7].value;
@@ -2012,6 +2013,7 @@ function onDeviceReady() {
                             app.store('slaughter');
                         };
                     });
+                    alert('2');
                     app.store('sale'); 
                     //alert('fine');
                     var newRowsLive = document.getElementsByTagName('td'),
@@ -2048,7 +2050,7 @@ function onDeviceReady() {
                             notesLive[i].onblur =  function(e) { app.update.sale(e.target);};
                         };
                     };
-                    //alert('eventlisteners attached');
+                    alert('eventlisteners attached');
             },
             customer: function(target) {
                 var element,

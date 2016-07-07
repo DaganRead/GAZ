@@ -1935,7 +1935,7 @@ function onDeviceReady() {
                     saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
                     saleOldIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.indexOld:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.indexOld;
                 alert(saleIdx);
-                alert(target.parentNode.parentNode.parentNode.parentNode.parentNode.tagName);
+                alert(target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset);
                     var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld);
                 //alert(saleOld);
@@ -1944,7 +1944,7 @@ function onDeviceReady() {
                     var children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
                     total = 0;
-                alert(tables);
+                //alert(tables);
                     var dom = {
                             item : children[idx].children[0].children[0],
                             quantity : children[idx].children[1].children[0],
@@ -2386,7 +2386,7 @@ function onDeviceReady() {
                                 HTMLFrag += innerIndex;
                                 HTMLFrag += '" data-indexOld="';
                                 HTMLFrag += innerElement.oldIndex;
-                                HTMLFrag += '/></fieldset>';
+                                HTMLFrag += '" /></fieldset>';
                     });
                     app.DOM.sales.innerHTML = HTMLFrag;
 

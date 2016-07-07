@@ -1935,7 +1935,7 @@ function onDeviceReady() {
                     saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
                     saleOldIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.indexOld:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.indexOld;
                 alert(saleIdx);
-                alert(target.parentNode.dataset);
+                alert(target.parentNode.parentNode.parentNode.parentNode.parentNode.tagName);
                     var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld);
                 //alert(saleOld);
@@ -2383,8 +2383,10 @@ function onDeviceReady() {
                                 HTMLFrag += innerElement.notes;
                                 HTMLFrag += '</textarea>';
                                 HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><img src="img/delete.png" class="cancel" data-type="sale" data-index="';
+                                HTMLFrag += innerIndex;
+                                HTMLFrag += '" data-indexOld="';
                                 HTMLFrag += innerElement.oldIndex;
-                                HTMLFrag += '"/></fieldset>';
+                                HTMLFrag += '/></fieldset>';
                     });
                     app.DOM.sales.innerHTML = HTMLFrag;
 

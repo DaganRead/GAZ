@@ -1932,8 +1932,10 @@ function onDeviceReady() {
         update : {
             sale : function(target) {
                 var idx = target.dataset.index,
-                    saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index;
-                //alert(saleIdx);
+                    saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
+                    saleOldIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.indexOld:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.indexOld;
+                alert(saleIdx);
+                alert(saleOldIdx);
                     var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld);
                 //alert(saleOld);
@@ -2315,11 +2317,9 @@ function onDeviceReady() {
 
                     tempArr.forEach(function(innerElement, innerIndex, innerArray) {
                                 HTMLFrag +='<fieldset data-index="';
-                                if (innerElement.oldIndex !== undefined) {
-                                    HTMLFrag += innerElement.oldIndex;
-                                }else{
-                                    HTMLFrag += innerIndex;
-                                };
+                                HTMLFrag += innerIndex;
+                                HTMLFrag += '" data-indexOld="';
+                                HTMLFrag += innerElement.oldIndex;
                                 HTMLFrag += '"><legend>&nbsp;';
                                 HTMLFrag += innerElement.slaughterDate;
                                 HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
@@ -2328,18 +2328,10 @@ function onDeviceReady() {
                                 HTMLFrag += innerElement.name.givenName;
                                 HTMLFrag+='&nbsp;';
                                 HTMLFrag += innerElement.name.familyName;
-                                if (innerElement.oldIndex !== undefined) {
-                                    if (innerElement.oldIndex == 0) {
-                                        HTMLFrag += '<br class="clear"><table class="purchase-table"><thead><tr><th>Item</th><th></th><th>Qnt</th><th colspan="2"></th><th>Mass</th><th>@</th><th>Total</th></tr></thead><tbody>';
-                                    }else{
-                                        HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
-                                    };
+                                if (innerIndex == 0) {
+                                    HTMLFrag += '<br class="clear"><table class="purchase-table"><thead><tr><th>Item</th><th></th><th>Qnt</th><th colspan="2"></th><th>Mass</th><th>@</th><th>Total</th></tr></thead><tbody>';
                                 }else{
-                                    if (innerIndex == 0) {
-                                        HTMLFrag += '<br class="clear"><table class="purchase-table"><thead><tr><th>Item</th><th></th><th>Qnt</th><th colspan="2"></th><th>Mass</th><th>@</th><th>Total</th></tr></thead><tbody>';
-                                    }else{
-                                        HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
-                                    };
+                                    HTMLFrag += '<br class="clear"><table class="purchase-table"><tbody>';
                                 };
 
                                 innerElement.purchaseTable.forEach(function(iiiElement, iiiIndex, iiiArray) {
@@ -2386,20 +2378,12 @@ function onDeviceReady() {
                                 HTMLFrag += '</td></tr></tfoot></table>';
                                 total = 0;
                                 HTMLFrag += '<br /><span class="noteHeader" >Notes:</span><br class="clear" /><textarea class="notes" onblur="app.update.sale(this)" data-index="';
-                                if (innerElement.oldIndex !== undefined) {
-                                    HTMLFrag += innerElement.oldIndex;
-                                }else{
-                                    HTMLFrag += innerIndex;
-                                };
+                                HTMLFrag += innerIndex;
                                 HTMLFrag += '"  > '; 
                                 HTMLFrag += innerElement.notes;
                                 HTMLFrag += '</textarea>';
                                 HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><img src="img/delete.png" class="cancel" data-type="sale" data-index="';
-                                if (innerElement.oldIndex !== undefined) {
-                                    HTMLFrag += innerElement.oldIndex;
-                                }else{
-                                    HTMLFrag += innerIndex;
-                                };
+                                HTMLFrag += innerElement.oldIndex;
                                 HTMLFrag += '"/></fieldset>';
                     });
                     app.DOM.sales.innerHTML = HTMLFrag;

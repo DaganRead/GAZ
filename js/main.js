@@ -1944,7 +1944,7 @@ function onDeviceReady() {
                     var children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
                     total = 0;
-                //alert(tables);
+                alert(tables);
                     var dom = {
                             item : children[idx].children[0].children[0],
                             quantity : children[idx].children[1].children[0],
@@ -2383,10 +2383,8 @@ function onDeviceReady() {
                                 HTMLFrag += innerElement.notes;
                                 HTMLFrag += '</textarea>';
                                 HTMLFrag += '<input type="button" value="clear" class="noteClear" onclick="this.previousSibling.value=\' \' " /> <br class="clear" /><img src="img/delete.png" class="cancel" data-type="sale" data-index="';
-                                HTMLFrag += innerIndex;
-                                HTMLFrag += '" data-indexOld="';
                                 HTMLFrag += innerElement.oldIndex;
-                                HTMLFrag += '" /></fieldset>';
+                                HTMLFrag += '"/></fieldset>';
                     });
                     app.DOM.sales.innerHTML = HTMLFrag;
 

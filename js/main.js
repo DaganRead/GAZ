@@ -1933,10 +1933,10 @@ function onDeviceReady() {
             sale : function(target) {
                 var idx = target.dataset.index,
                     saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index;
-                alert(saleIdx);
+                //alert(saleIdx);
                     var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld);
-                    //alert(JSON.stringify(sale));
+                alert(saleOld);
                     var tables = document.getElementById('sales').getElementsByTagName('TABLE');
                     //alert(JSON.stringify(document.getElementById('sales').children));
                     var children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
@@ -1955,7 +1955,7 @@ function onDeviceReady() {
                         totalWeight : dom.totalWeight.value == '' ? parseFloat(dom.totalWeight.placeholder.slice(0, -2)):parseFloat(dom.totalWeight.value),
                         itemPrice : parseFloat(dom.item.selectedOptions[0].dataset.price)
                     };
-                alert('saleIdx');
+                //alert('saleIdx');
                     app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify(saleData);
                     
                     app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {

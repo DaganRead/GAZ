@@ -2003,8 +2003,11 @@ function onDeviceReady() {
 /*                    alert('notes: ');
                     alert(children[idx].parentNode.parentNode.parentNode.children[7].tagName);*/
                     app.data.sales[saleOldIdx].notes = children[idx].parentNode.parentNode.parentNode.children[7].value;
-                    saleOldIdx==0 ? tables[saleOldIdx].children[1].innerHTML = HTMLFrag : tables[saleOldIdx].children[0].innerHTML = HTMLFrag;
-                    saleOldIdx==0 ? tables[saleOldIdx].children[2].children[0].children[1].innerHTML = 'R' + Math.ceil10(total, -1) : tables[saleOldIdx].children[1].children[0].children[1].innerHTML = 'R' + Math.ceil10(total, -1);
+                    alert('1a');
+                    saleIdx==0 ? tables[saleIdx].children[1].innerHTML = HTMLFrag : tables[saleIdx].children[0].innerHTML = HTMLFrag;
+                    alert('1b');
+                    saleIdx==0 ? tables[saleIdx].children[2].children[0].children[1].innerHTML = 'R' + Math.ceil10(total, -1) : tables[saleIdx].children[1].children[0].children[1].innerHTML = 'R' + Math.ceil10(total, -1);
+                    alert('1c');
                     app.data.slaughters.forEach(function(element, index, array) {
                         if (element.slaughterDate == sale.slaughterDate) {
                             app.data.slaughters[index].total -= Math.ceil10(sale.total, -1);

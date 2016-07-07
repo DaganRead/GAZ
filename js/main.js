@@ -1933,9 +1933,9 @@ function onDeviceReady() {
             sale : function(target) {
                 var idx = target.dataset.index,
                     saleIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.index:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.index,
-                    saleOldIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.indexOld:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.indexOld;
+                    saleOldIdx = target.tagName == 'TEXTAREA'? target.parentNode.dataset.indexold:target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.indexold;
                 alert(saleIdx);
-                alert(target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.indexold);
+                alert(saleOldIdx);
                     var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld);
                 //alert(saleOld);
@@ -1944,7 +1944,7 @@ function onDeviceReady() {
                     var children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
                     total = 0;
-                alert(tables);
+                //alert(tables);
                     var dom = {
                             item : children[idx].children[0].children[0],
                             quantity : children[idx].children[1].children[0],
@@ -1958,9 +1958,9 @@ function onDeviceReady() {
                         itemPrice : parseFloat(dom.item.selectedOptions[0].dataset.price)
                     };
                 //alert('saleIdx');
-                    app.data.sales[saleIdx].purchaseTable[idx] = JSON.stringify(saleData);
+                    app.data.sales[saleOldIdx].purchaseTable[idx] = JSON.stringify(saleData);
                     
-                    app.data.sales[saleIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
+                    app.data.sales[saleOldIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
                         innerElement = JSON.parse(innerElement);
                         HTMLFrag += '<tr><td colspan="2">';
                         HTMLFrag += '<select class="itemCode" onChange="app.update.sale(this)" data-index="';
@@ -1998,12 +1998,12 @@ function onDeviceReady() {
                         HTMLFrag += '</td></tr>';
                     });
                     HTMLFrag += '<tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';
-                    app.data.sales[saleIdx].total = Math.ceil10(total, -1);
+                    app.data.sales[saleOldIdx].total = Math.ceil10(total, -1);
 /*                    alert('notes: ');
                     alert(children[idx].parentNode.parentNode.parentNode.children[7].tagName);*/
-                    app.data.sales[saleIdx].notes = children[idx].parentNode.parentNode.parentNode.children[7].value;
-                    saleIdx==0 ? tables[saleIdx].children[1].innerHTML = HTMLFrag : tables[saleIdx].children[0].innerHTML = HTMLFrag;
-                    saleIdx==0 ? tables[saleIdx].children[2].children[0].children[1].innerHTML = 'R' + Math.ceil10(total, -1) : tables[saleIdx].children[1].children[0].children[1].innerHTML = 'R' + Math.ceil10(total, -1);
+                    app.data.sales[saleOldIdx].notes = children[idx].parentNode.parentNode.parentNode.children[7].value;
+                    saleOldIdx==0 ? tables[saleOldIdx].children[1].innerHTML = HTMLFrag : tables[saleOldIdx].children[0].innerHTML = HTMLFrag;
+                    saleOldIdx==0 ? tables[saleOldIdx].children[2].children[0].children[1].innerHTML = 'R' + Math.ceil10(total, -1) : tables[saleOldIdx].children[1].children[0].children[1].innerHTML = 'R' + Math.ceil10(total, -1);
                     app.data.slaughters.forEach(function(element, index, array) {
                         if (element.slaughterDate == sale.slaughterDate) {
                             app.data.slaughters[index].total -= Math.ceil10(sale.total, -1);

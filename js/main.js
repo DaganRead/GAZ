@@ -1936,13 +1936,13 @@ function onDeviceReady() {
                 //alert(saleIdx);
                     var saleOld = JSON.stringify(app.data.sales[saleIdx]),
                     sale = JSON.parse(saleOld);
-                alert(saleOld);
+                //alert(saleOld);
                     var tables = document.getElementById('sales').getElementsByTagName('TABLE');
-                    //alert(JSON.stringify(document.getElementById('sales').children));
+                //alert(JSON.stringify(document.getElementById('sales').children));
                     var children = saleIdx==0 ? tables[saleIdx].children[1].children : tables[saleIdx].children[0].children,
                     HTMLFrag ='',
                     total = 0;
-                //alert(JSON.stringify(tables[saleIdx]));
+                alert(JSON.stringify(tables[saleIdx]));
                     var dom = {
                             item : children[idx].children[0].children[0],
                             quantity : children[idx].children[1].children[0],

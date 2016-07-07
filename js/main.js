@@ -221,6 +221,8 @@ function onDeviceReady() {
 
                             HTMLFrag +='<fieldset data-index="';
                             HTMLFrag += index;
+                            HTMLFrag += '" data-indexOld="';
+                            HTMLFrag += index;
                             HTMLFrag += '"><legend>&nbsp;';
                             HTMLFrag += element.slaughterDate;
                             HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
@@ -1273,6 +1275,8 @@ function onDeviceReady() {
                     app.data.sales.forEach(function(innerElement, innerIndex, innerArray) {
                                 HTMLFrag +='<fieldset data-index="';
                                 HTMLFrag += innerIndex;
+                                HTMLFrag += '" data-indexOld="';
+                                HTMLFrag += innerIndex;
                                 HTMLFrag += '"><legend>&nbsp;';
                                 HTMLFrag += innerElement.slaughterDate;
                                 HTMLFrag+='&nbsp;</legend><figure class="location"><figcaption>';
@@ -1957,7 +1961,7 @@ function onDeviceReady() {
                         totalWeight : dom.totalWeight.value == '' ? parseFloat(dom.totalWeight.placeholder.slice(0, -2)):parseFloat(dom.totalWeight.value),
                         itemPrice : parseFloat(dom.item.selectedOptions[0].dataset.price)
                     };
-                alert('0');
+                //alert('0');
                     app.data.sales[saleOldIdx].purchaseTable[idx] = JSON.stringify(saleData);
                     
                     app.data.sales[saleOldIdx].purchaseTable.forEach(function(innerElement, innerIndex, innerArray) {
@@ -1999,15 +2003,15 @@ function onDeviceReady() {
                     });
                     HTMLFrag += '<tr><td class="large" onclick="app.newRow(this)">+</td><td colspan="7"></td></tr>';
                     app.data.sales[saleOldIdx].total = Math.ceil10(total, -1);
-                    alert('1');
+                    //alert('1');
 /*                    alert('notes: ');
                     alert(children[idx].parentNode.parentNode.parentNode.children[7].tagName);*/
                     app.data.sales[saleOldIdx].notes = children[idx].parentNode.parentNode.parentNode.children[7].value;
-                    alert('1a');
+                    //alert('1a');
                     saleIdx==0 ? tables[saleIdx].children[1].innerHTML = HTMLFrag : tables[saleIdx].children[0].innerHTML = HTMLFrag;
-                    alert('1b');
+                    //alert('1b');
                     saleIdx==0 ? tables[saleIdx].children[2].children[0].children[1].innerHTML = 'R' + Math.ceil10(total, -1) : tables[saleIdx].children[1].children[0].children[1].innerHTML = 'R' + Math.ceil10(total, -1);
-                    alert('1c');
+                    //alert('1c');
                     app.data.slaughters.forEach(function(element, index, array) {
                         if (element.slaughterDate == sale.slaughterDate) {
                             app.data.slaughters[index].total -= Math.ceil10(sale.total, -1);
@@ -2016,7 +2020,7 @@ function onDeviceReady() {
                             app.store('slaughter');
                         };
                     });
-                    alert('2');
+                    //alert('2');
                     app.store('sale'); 
                     //alert('fine');
                     var newRowsLive = document.getElementsByTagName('td'),
@@ -2053,7 +2057,7 @@ function onDeviceReady() {
                             notesLive[i].onblur =  function(e) { app.update.sale(e.target);};
                         };
                     };
-                    alert('eventlisteners attached');
+                    //alert('eventlisteners attached');
             },
             customer: function(target) {
                 var element,

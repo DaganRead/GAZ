@@ -23,8 +23,8 @@
         <preference name="orientation" value="portrait" />
     </platform> 
 
-    <allow-navigation href="http://gaz-huntingapp.rhcloud.com/*" />
-    <access origin="http://gaz-huntingapp.rhcloud.com/*" />
+    <allow-navigation href="*" />
+    <access origin="*" />
 
     <!-- We'll include the contacts plugin as an example -->
     <plugin name="cordova-plugin-dialogs" spec="1.2.0" source="npm" />

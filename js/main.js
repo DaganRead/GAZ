@@ -2811,7 +2811,7 @@ function onDeviceReady() {
             app.DOM.serverHandle.contentWindow.postMessage(JSON.stringify(message),'http://gaz-huntingapp.rhcloud.com');
         },500);
     }else{
-        classie.addClass(app.DOM.modal, 'md-show');
+        //classie.addClass(app.DOM.modal, 'md-show');
     };
     window.addEventListener('message',function(event) {
         if(event.origin === 'http://gaz-huntingapp.rhcloud.com') {

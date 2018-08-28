@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
-    id          = "GAZ"
+    id          = "Farm Manager"
     versionCode = "21"
     version     = "1.0.0" >
     <!-- versionCode is optional and Android only -->
@@ -15,6 +15,7 @@
       Dagan Read
     </author>
 
+    <icon src="icon.png" />
     <preference name="phonegap-version" value="cli-6.5.0" /> 
     <!--<preference name="Fullscreen" value="true" /-->
     <platform name="android" >
@@ -23,12 +24,12 @@
         <preference name="orientation" value="portrait" />
     </platform> 
 
-    <allow-navigation href="http://gaz-huntingapp.rhcloud.com/*" />
-    <access origin="http://gaz-huntingapp.rhcloud.com/*" />
+    <!-- <allow-navigation href="http://gaz-huntingapp.rhcloud.com/*" />
+    <access origin="http://gaz-huntingapp.rhcloud.com/*" /> -->
 
     <!-- We'll include the contacts plugin as an example -->
     <plugin name="cordova-plugin-dialogs" spec="1.2.0" source="npm" />
     <plugin name="cordova-plugin-contacts" spec="2.0.1" source="npm" />
-    <plugin name="cordova-plugin-whitelist" spec="1.2.1" source="npm" />
+    <!-- <plugin name="cordova-plugin-whitelist" spec="1.2.1" source="npm" /> -->
     <plugin name="cordova-plugin-network-information" spec="1.2.0" source="npm" />
 </widget>
